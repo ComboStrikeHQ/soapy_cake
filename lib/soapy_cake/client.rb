@@ -2,9 +2,15 @@ module SoapyCake
   class Client
     attr_reader :api_key
 
-    def initialize(opts)
+    def initialize(opts = {})
       @api_key = opts.fetch(:api_key) do
-        get_api_key(opts[:username], opts[:password])
+        if opts[:username] && opts[:password]
+          get_api_key(opts[:username], opts[:password])
+        elsif ENV['CAKE_API_KEY']
+          ENV['CAKE_API_KEY']
+        else
+          raise 'We need an API key here!'
+        end
       end
     end
 
@@ -18,10 +24,31 @@ module SoapyCake
       operation.body = { method.camelize.to_sym => { api_key: api_key }.merge(opts) }
       response = operation.call.body
       raise response[:fault][:reason][:text] if response[:fault]
-      response[:"#{method}_response"][:"#{method}_result"]
+      node_name = { "affiliate_tags" => "tags" }.fetch(method, method)
+      extract_collection(node_name, response[:"#{method}_response"][:"#{method}_result"]).
+        map {|hash| remove_prefix(node_name, hash) }
     end
 
     private
+
+    def extract_collection(node_name, response)
+      node_name = node_name.to_sym
+      if response.has_key?(node_name)
+        response = response[node_name]
+      end
+      [response[response.keys.first]].flatten
+    end
+
+    def remove_prefix(prefix, object)
+      object.each_with_object({}) do |(k,v),m|
+        prefix_ = "#{prefix.singularize}_"
+        if k.to_s.start_with?(prefix_)
+          m[k[(prefix_.size)..-1].to_sym] = v
+        else
+          m[k] = v
+        end
+      end
+    end
 
     def get_api_key(username, password)
       operation = self.class.client.operation('get', 'getSoap12', 'GetAPIKey')
