@@ -25,12 +25,18 @@ RSpec.configure do |config|
   end
 end
 
-ENV['CAKE_API_KEY'] ||= 'cake-api-key'
+if ENV['CAKE_API_KEY'].blank?
+  ENV['CAKE_API_KEY'] = 'cake-api-key'
+end
+if ENV['CAKE_DOMAIN'].blank?
+  ENV['CAKE_DOMAIN'] = 'cake-partner-domain.com'
+end
 
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
   c.hook_into :webmock
   c.filter_sensitive_data('cake-api-key') { ENV['CAKE_API_KEY'] }
+  c.filter_sensitive_data('cake-domain') { ENV['CAKE_DOMAIN'] }
   c.default_cassette_options = { match_requests_on: [:method, :uri, :body] }
 end
 

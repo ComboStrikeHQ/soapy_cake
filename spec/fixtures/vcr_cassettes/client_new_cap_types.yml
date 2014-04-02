@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://ad2games-partners.com/api/1/get.asmx?WSDL
+    uri: https://cake-partner-domain.com/api/1/get.asmx?WSDL
     body:
       encoding: UTF-8
       string: ''
@@ -1132,19 +1132,19 @@ http_interactions:
         />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <mime:mimeXml
         part=\"Body\" />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n  </wsdl:binding>\r\n
         \ <wsdl:service name=\"get\">\r\n    <wsdl:port name=\"getSoap\" binding=\"tns:getSoap\">\r\n
-        \     <soap:address location=\"https://ad2games-partners.com/api/1/get.asmx\"
+        \     <soap:address location=\"https://cake-partner-domain.com/api/1/get.asmx\"
         />\r\n    </wsdl:port>\r\n    <wsdl:port name=\"getSoap12\" binding=\"tns:getSoap12\">\r\n
-        \     <soap12:address location=\"https://ad2games-partners.com/api/1/get.asmx\"
+        \     <soap12:address location=\"https://cake-partner-domain.com/api/1/get.asmx\"
         />\r\n    </wsdl:port>\r\n    <wsdl:port name=\"getHttpGet\" binding=\"tns:getHttpGet\">\r\n
-        \     <http:address location=\"https://ad2games-partners.com/api/1/get.asmx\"
+        \     <http:address location=\"https://cake-partner-domain.com/api/1/get.asmx\"
         />\r\n    </wsdl:port>\r\n    <wsdl:port name=\"getHttpPost\" binding=\"tns:getHttpPost\">\r\n
-        \     <http:address location=\"https://ad2games-partners.com/api/1/get.asmx\"
+        \     <http:address location=\"https://cake-partner-domain.com/api/1/get.asmx\"
         />\r\n    </wsdl:port>\r\n  </wsdl:service>\r\n</wsdl:definitions>"
     http_version: 
   recorded_at: Wed, 02 Apr 2014 14:54:53 GMT
 - request:
     method: post
-    uri: https://ad2games-partners.com/api/1/get.asmx
+    uri: https://cake-partner-domain.com/api/1/get.asmx
     body:
       encoding: UTF-8
       string: |
