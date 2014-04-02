@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ad2games-partners.com/api/1/get.asmx?WSDL
+    uri: https://ad2games-partners.com/api/1/get.asmx?WSDL
     body:
       encoding: UTF-8
       string: ''
@@ -12,7 +12,7 @@ http_interactions:
       Accept:
       - "*/*"
       Date:
-      - Wed, 02 Apr 2014 13:12:22 GMT
+      - Wed, 02 Apr 2014 14:54:50 GMT
   response:
     status:
       code: 200
@@ -29,9 +29,9 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Wed, 02 Apr 2014 13:12:22 GMT
+      - Wed, 02 Apr 2014 14:54:50 GMT
       Content-Length:
-      - '87381'
+      - '87385'
     body:
       encoding: UTF-8
       string: "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<wsdl:definitions xmlns:soap=\"http://schemas.xmlsoap.org/wsdl/soap/\"
@@ -1132,19 +1132,19 @@ http_interactions:
         />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <mime:mimeXml
         part=\"Body\" />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n  </wsdl:binding>\r\n
         \ <wsdl:service name=\"get\">\r\n    <wsdl:port name=\"getSoap\" binding=\"tns:getSoap\">\r\n
-        \     <soap:address location=\"http://ad2games-partners.com/api/1/get.asmx\"
+        \     <soap:address location=\"https://ad2games-partners.com/api/1/get.asmx\"
         />\r\n    </wsdl:port>\r\n    <wsdl:port name=\"getSoap12\" binding=\"tns:getSoap12\">\r\n
-        \     <soap12:address location=\"http://ad2games-partners.com/api/1/get.asmx\"
+        \     <soap12:address location=\"https://ad2games-partners.com/api/1/get.asmx\"
         />\r\n    </wsdl:port>\r\n    <wsdl:port name=\"getHttpGet\" binding=\"tns:getHttpGet\">\r\n
-        \     <http:address location=\"http://ad2games-partners.com/api/1/get.asmx\"
+        \     <http:address location=\"https://ad2games-partners.com/api/1/get.asmx\"
         />\r\n    </wsdl:port>\r\n    <wsdl:port name=\"getHttpPost\" binding=\"tns:getHttpPost\">\r\n
-        \     <http:address location=\"http://ad2games-partners.com/api/1/get.asmx\"
+        \     <http:address location=\"https://ad2games-partners.com/api/1/get.asmx\"
         />\r\n    </wsdl:port>\r\n  </wsdl:service>\r\n</wsdl:definitions>"
     http_version: 
-  recorded_at: Wed, 02 Apr 2014 13:12:22 GMT
+  recorded_at: Wed, 02 Apr 2014 14:54:50 GMT
 - request:
     method: post
-    uri: http://ad2games-partners.com/api/1/get.asmx
+    uri: https://ad2games-partners.com/api/1/get.asmx
     body:
       encoding: UTF-8
       string: |
@@ -1163,7 +1163,7 @@ http_interactions:
       Accept:
       - "*/*"
       Date:
-      - Wed, 02 Apr 2014 13:12:22 GMT
+      - Wed, 02 Apr 2014 14:54:50 GMT
       Soapaction:
       - '"http://cakemarketing.com/api/1/BillingCycles"'
       Content-Type:
@@ -1184,7 +1184,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Wed, 02 Apr 2014 13:12:22 GMT
+      - Wed, 02 Apr 2014 14:54:50 GMT
       Content-Length:
       - '963'
     body:
@@ -1196,5 +1196,5 @@ http_interactions:
         xmlns="API:id_name_store">2</billing_cycle_id><billing_cycle_name xmlns="API:id_name_store">Bi-Monthly</billing_cycle_name></billing_cycle><billing_cycle><billing_cycle_id
         xmlns="API:id_name_store">3</billing_cycle_id><billing_cycle_name xmlns="API:id_name_store">Monthly</billing_cycle_name></billing_cycle></billing_cycles></BillingCyclesResult></BillingCyclesResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Wed, 02 Apr 2014 13:12:23 GMT
+  recorded_at: Wed, 02 Apr 2014 14:54:50 GMT
 recorded_with: VCR 2.9.0

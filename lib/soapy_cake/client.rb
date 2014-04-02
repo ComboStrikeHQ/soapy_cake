@@ -1,8 +1,16 @@
 module SoapyCake
   class Client
-    attr_reader :api_key
+    attr_reader :api_key, :domain
 
     def initialize(opts = {})
+      @domain = opts.fetch(:domain) do
+        if ENV['CAKE_DOMAIN'].present?
+          ENV['CAKE_DOMAIN']
+        else
+          raise 'We need a domain'
+        end
+      end
+
       @api_key = opts.fetch(:api_key) do
         if opts[:username] && opts[:password]
           get_api_key(opts[:username], opts[:password])
@@ -14,13 +22,16 @@ module SoapyCake
       end
     end
 
-    def self.client
-      @client ||= Savon.new('http://ad2games-partners.com/api/1/get.asmx?WSDL')
+    @@client = {}
+
+    def client
+      url = "https://#{domain}/api/1/get.asmx?WSDL"
+      @@client[url] ||= Savon.new(url)
     end
 
     def method_missing(method, opts={})
       method = method.to_s
-      operation = self.class.client.operation('get', 'getSoap12', method.camelize)
+      operation = client.operation('get', 'getSoap12', method.camelize)
       operation.body = { method.camelize.to_sym => { api_key: api_key }.merge(opts) }
       response = operation.call.body
       raise response[:fault][:reason][:text] if response[:fault]
@@ -51,7 +62,7 @@ module SoapyCake
     end
 
     def get_api_key(username, password)
-      operation = self.class.client.operation('get', 'getSoap12', 'GetAPIKey')
+      operation = client.operation('get', 'getSoap12', 'GetAPIKey')
       operation.body = { GetAPIKey: { username: username, password: password }}
       response = operation.call.body
       response[:get_api_key_response][:get_api_key_result]
