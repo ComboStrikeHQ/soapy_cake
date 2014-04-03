@@ -1,3 +1,5 @@
+require 'savon'
+
 module SoapyCake
   class Client
     attr_reader :api_key, :domain
