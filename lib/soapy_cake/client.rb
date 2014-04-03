@@ -35,14 +35,17 @@ module SoapyCake
       method = method.to_s
       operation = client.operation('get', 'getSoap12', method.camelize)
       operation.body = { method.camelize.to_sym => { api_key: api_key }.merge(opts) }
-      response = operation.call.body
+      process_response(method, operation.call.body)
+    end
+
+    private
+
+    def process_response(method, response)
       raise response[:fault][:reason][:text] if response[:fault]
       node_name = { 'affiliate_tags' => 'tags' }.fetch(method, method)
       extract_collection(node_name, response[:"#{method}_response"][:"#{method}_result"]).
         map { |hash| remove_prefix(node_name, hash) }
     end
-
-    private
 
     def extract_collection(node_name, response)
       node_name = node_name.to_sym
