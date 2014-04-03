@@ -1,4 +1,4 @@
-Copyright (c) 2014 Helge Rausch
+Copyright (c) 2014 ad2games GmbH
 
 MIT License
 

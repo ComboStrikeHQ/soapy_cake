@@ -6,7 +6,7 @@ require 'soapy_cake/version'
 Gem::Specification.new do |spec|
   spec.name          = "soapy_cake"
   spec.version       = SoapyCake::VERSION
-  spec.authors       = ["Helge Rausch"]
+  spec.authors       = ["ad2games GmbH"]
   spec.email         = ["developers@ad2games.com"]
   spec.summary       = %q{Simple client for the CAKE API}
   spec.description   = %q{Simple client for the CAKE API (http://getcake.com)}
