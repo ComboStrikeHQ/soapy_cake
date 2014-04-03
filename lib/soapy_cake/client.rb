@@ -50,6 +50,7 @@ module SoapyCake
     def extract_collection(node_name, response)
       node_name = node_name.to_sym
       if response.has_key?(node_name)
+        return [] if response[node_name].nil?
         response = response[node_name]
       end
       [response[response.keys.first]].flatten

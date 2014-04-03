@@ -41,7 +41,8 @@ describe SoapyCake::Client do
     currencies: { id: '1', symbol: '€', name: 'Euro', abbr: 'EUR' },
     # TODO: Let's test this when there is data.
     #departments: [],
-    # TODO: Takes parameters which we don't support, yet.
+    # TODO: We don't get any exchange rates from the test API. Fill in when we
+    # have real API access.
     #exchange_rates: {},
     languages: { id: '1', name: 'ENGLISH', abbr: 'en' },
     media_types: { id: '15', name: 'Adware' },
@@ -62,6 +63,20 @@ describe SoapyCake::Client do
 
       it { should include(exp_sample) }
     end
+  end
+
+  describe 'an empty response' do
+    subject do
+      SoapyCake::Client.new.
+        exchange_rates(start_date: '2013-01-01T00:00:00',
+                       end_date: '2013-01-31T00:00:00')
+    end
+
+    around do |example|
+      VCR.use_cassette(:client_new_empty_response, &example)
+    end
+
+    it { should eq([]) }
   end
 
   describe '#remove_prefixes' do
