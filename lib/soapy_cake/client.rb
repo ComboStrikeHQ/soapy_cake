@@ -29,7 +29,7 @@ module SoapyCake
       @@client[url] ||= Savon.new(url)
     end
 
-    def method_missing(method, opts={})
+    def method_missing(method, opts = {})
       method = method.to_s
       operation = client.operation('get', 'getSoap12', method.camelize)
       operation.body = { method.camelize.to_sym => { api_key: api_key }.merge(opts) }
@@ -37,7 +37,7 @@ module SoapyCake
       raise response[:fault][:reason][:text] if response[:fault]
       node_name = { "affiliate_tags" => "tags" }.fetch(method, method)
       extract_collection(node_name, response[:"#{method}_response"][:"#{method}_result"]).
-        map {|hash| remove_prefix(node_name, hash) }
+        map { |hash| remove_prefix(node_name, hash) }
     end
 
     private
@@ -51,7 +51,7 @@ module SoapyCake
     end
 
     def remove_prefix(prefix, object)
-      object.each_with_object({}) do |(k,v),m|
+      object.each_with_object({}) do |(k, v), m|
         prefix_ = "#{prefix.singularize}_"
         if k.to_s.start_with?(prefix_)
           m[k[(prefix_.size)..-1].to_sym] = v
