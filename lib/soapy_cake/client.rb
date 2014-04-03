@@ -37,7 +37,7 @@ module SoapyCake
       operation.body = { method.camelize.to_sym => { api_key: api_key }.merge(opts) }
       response = operation.call.body
       raise response[:fault][:reason][:text] if response[:fault]
-      node_name = { "affiliate_tags" => "tags" }.fetch(method, method)
+      node_name = { 'affiliate_tags' => 'tags' }.fetch(method, method)
       extract_collection(node_name, response[:"#{method}_response"][:"#{method}_result"]).
         map { |hash| remove_prefix(node_name, hash) }
     end
