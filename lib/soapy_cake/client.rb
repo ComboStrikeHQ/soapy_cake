@@ -2,9 +2,12 @@ require 'savon'
 
 module SoapyCake
   class Client
-    attr_reader :api_key, :domain
+    attr_reader :service, :api_key, :domain
 
-    def initialize(opts = {})
+    def initialize(service, opts = {})
+      @service = service
+      @version = opts[:version]
+
       @domain = opts.fetch(:domain) do
         if ENV['CAKE_DOMAIN'].present?
           ENV['CAKE_DOMAIN']
@@ -24,21 +27,23 @@ module SoapyCake
       end
     end
 
-    @@client = {}
-
     def client
-      url = "https://#{domain}/api/1/get.asmx?WSDL"
-      @@client[url] ||= Savon.new(url)
+      self.class.client(wsdl)
     end
 
     def method_missing(method, opts = {})
       method = method.to_s
-      operation = client.operation('get', 'getSoap12', method.camelize)
+      operation = client.operation(service, "#{service}Soap12", method.camelize)
       operation.body = { method.camelize.to_sym => { api_key: api_key }.merge(opts) }
       process_response(method, operation.call.body)
     end
 
     private
+
+    def self.client(url)
+      @client ||= {}
+      @client[url] ||= Savon.new(url)
+    end
 
     def process_response(method, response)
       raise response[:fault][:reason][:text] if response[:fault]
@@ -72,6 +77,14 @@ module SoapyCake
       operation.body = { GetAPIKey: { username: username, password: password }}
       response = operation.call.body
       response[:get_api_key_response][:get_api_key_result]
+    end
+
+    def wsdl
+      "https://#{domain}/api/#{version}/#{service}.asmx?WSDL"
+    end
+
+    def version
+      @version || 1
     end
   end
 end
