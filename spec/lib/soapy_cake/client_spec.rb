@@ -8,7 +8,7 @@ describe SoapyCake::Client do
   end
 
   describe '.new' do
-    subject { SoapyCake::Client.new(opts) }
+    subject { SoapyCake::Client.new(:get, opts) }
 
     context 'when passed api key' do
       let(:opts) {{ api_key: 'api-key' }}
@@ -55,7 +55,7 @@ describe SoapyCake::Client do
     verticals: { id: '-1', name: 'Global' },
   }.each do |name, exp_sample|
     describe "##{name}" do
-      subject { SoapyCake::Client.new.public_send(name) }
+      subject { SoapyCake::Client.new(:get).public_send(name) }
 
       around do |example|
         VCR.use_cassette(:"client_new_#{name}", &example)
@@ -67,7 +67,7 @@ describe SoapyCake::Client do
 
   describe 'an empty response' do
     subject do
-      SoapyCake::Client.new.
+      SoapyCake::Client.new(:get).
         exchange_rates(start_date: '2013-01-01T00:00:00',
                        end_date: '2013-01-31T00:00:00')
     end
@@ -82,7 +82,7 @@ describe SoapyCake::Client do
   describe '#remove_prefixes' do
     it 'removes prefix from hash keys' do
       expect(
-        SoapyCake::Client.new.
+        SoapyCake::Client.new(:get).
           send(:remove_prefix, 'foo', { foo_id: 'bar', foo_name: 'baz' })
       ).to eq({ id: 'bar', name: 'baz' })
     end
