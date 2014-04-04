@@ -5,7 +5,7 @@ module SoapyCake
     attr_reader :service, :api_key, :domain
 
     def initialize(service, opts = {})
-      @service = service
+      @service = service.to_sym
       @version = opts[:version]
 
       @domain = opts.fetch(:domain) do
