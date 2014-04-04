@@ -24,11 +24,9 @@ module SoapyCake
       end
     end
 
-    @@client = {}
-
     def client
       url = "https://#{domain}/api/1/get.asmx?WSDL"
-      @@client[url] ||= Savon.new(url)
+      self.class.client(url)
     end
 
     def method_missing(method, opts = {})
@@ -39,6 +37,11 @@ module SoapyCake
     end
 
     private
+
+    def self.client(url)
+      @client ||= {}
+      @client[url] ||= Savon.new(url)
+    end
 
     def process_response(method, response)
       raise response[:fault][:reason][:text] if response[:fault]
