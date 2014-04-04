@@ -38,14 +38,17 @@
   :advertisers: 1
   :affiliate_tags: 1
   :affiliate_tiers: 1
-  :biling_cycles: 1
+  :billing_cycles: 1
   :cap_intervals: 1
   :cap_types: 1
+  :client_new_media: 1
+  :countries: 1
   :currencies: 1
   :departments: 1
   :exchange_rates: 1
   :get_api_key: 1
   :languages: 1
+  :media_types: 1
   :offer_statuses: 1
   :offer_types: 1
   :payment_settings: 1
