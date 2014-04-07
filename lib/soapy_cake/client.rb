@@ -5,7 +5,7 @@ module SoapyCake
     attr_reader :service, :api_key, :domain
 
     def initialize(service, opts = {})
-      @service = service
+      @service = service.to_sym
       @version = opts[:version]
 
       @domain = opts.fetch(:domain) do
@@ -27,22 +27,47 @@ module SoapyCake
       end
     end
 
-    def client
-      self.class.client(wsdl)
+    def savon_client(method)
+      self.class.savon_client(wsdl_url(version(method)))
+    end
+
+    def self.savon_client(url)
+      @savon_clients ||= {}
+      @savon_clients[url] ||= Savon.new(url)
     end
 
     def method_missing(method, opts = {})
-      method = method.to_s
-      operation = client.operation(service, "#{service}Soap12", method.camelize)
-      operation.body = { method.camelize.to_sym => { api_key: api_key }.merge(opts) }
-      process_response(method, operation.call.body)
+      if is_supported?(method)
+        method = method.to_s
+        operation = savon_client(method).operation(service, "#{service}Soap12", method.camelize)
+        operation.body = build_body(method, opts)
+        process_response(method, operation.call.body)
+      else
+        super
+      end
     end
 
     private
 
-    def self.client(url)
-      @client ||= {}
-      @client[url] ||= Savon.new(url)
+    def build_body(method, opts)
+      {
+        method.camelize.to_sym => { api_key: api_key }.merge(
+          opts.each_with_object({}) do |(key, value), memo|
+            memo[key] = format_param(value)
+          end
+        )
+      }
+    end
+
+    def format_param(value)
+      case value
+      when Time
+        value.utc.strftime('%Y-%m-%dT%H:%M:%S')
+      when Date
+        value.to_time.strftime('%Y-%m-%dT%H:%M:%S')
+      else
+        value
+      end
     end
 
     def process_response(method, response)
@@ -73,18 +98,22 @@ module SoapyCake
     end
 
     def get_api_key(username, password)
-      operation = client.operation('get', 'getSoap12', 'GetAPIKey')
+      operation = savon_client(:get_api_key).operation('get', 'getSoap12', 'GetAPIKey')
       operation.body = { GetAPIKey: { username: username, password: password }}
       response = operation.call.body
       response[:get_api_key_response][:get_api_key_result]
     end
 
-    def wsdl
+    def wsdl_url(version)
       "https://#{domain}/api/#{version}/#{service}.asmx?WSDL"
     end
 
-    def version
-      @version || 1
+    def version(method)
+      API_VERSIONS[service][method.to_sym]
+    end
+
+    def is_supported?(method)
+      API_VERSIONS[service].keys.include?(method)
     end
   end
 end

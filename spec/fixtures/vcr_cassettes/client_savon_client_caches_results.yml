@@ -2,17 +2,17 @@
 http_interactions:
 - request:
     method: get
-    uri: https://cake-partner-domain.com/api/2/get.asmx?WSDL
+    uri: https://cake-partner-domain.com/api/1/get.asmx?WSDL
     body:
-      encoding: UTF-8
+      encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - HTTPClient/1.0 (2.3.4.1, ruby 2.1.1 (2014-02-24))
+      - HTTPClient/1.0 (2.3.4.1, ruby 1.9.3 (2014-02-24))
       Accept:
-      - "*/*"
+      - ! '*/*'
       Date:
-      - Wed, 02 Apr 2014 14:54:50 GMT
+      - Mon, 07 Apr 2014 07:25:46 GMT
   response:
     status:
       code: 200
@@ -29,12 +29,12 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Wed, 02 Apr 2014 14:54:50 GMT
+      - Mon, 07 Apr 2014 07:25:48 GMT
       Content-Length:
       - '87385'
     body:
-      encoding: UTF-8
-      string: "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<wsdl:definitions xmlns:soap=\"http://schemas.xmlsoap.org/wsdl/soap/\"
+      encoding: US-ASCII
+      string: ! "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<wsdl:definitions xmlns:soap=\"http://schemas.xmlsoap.org/wsdl/soap/\"
         xmlns:tm=\"http://microsoft.com/wsdl/mime/textMatching/\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\"
         xmlns:mime=\"http://schemas.xmlsoap.org/wsdl/mime/\" xmlns:tns=\"http://cakemarketing.com/api/1/\"
         xmlns:s1=\"API:id_name_store\" xmlns:s=\"http://www.w3.org/2001/XMLSchema\"
@@ -1141,57 +1141,5 @@ http_interactions:
         \     <http:address location=\"https://cake-partner-domain.com/api/1/get.asmx\"
         />\r\n    </wsdl:port>\r\n  </wsdl:service>\r\n</wsdl:definitions>"
     http_version: 
-  recorded_at: Wed, 02 Apr 2014 14:54:51 GMT
-- request:
-    method: post
-    uri: https://cake-partner-domain.com/api/1/get.asmx
-    body:
-      encoding: UTF-8
-      string: |
-        <env:Envelope xmlns:lol0="http://cakemarketing.com/api/1/" xmlns:env="http://www.w3.org/2003/05/soap-envelope">
-          <env:Header>
-          </env:Header>
-          <env:Body>
-            <lol0:Verticals>
-              <lol0:api_key>cake-api-key</lol0:api_key>
-            </lol0:Verticals>
-          </env:Body>
-        </env:Envelope>
-    headers:
-      User-Agent:
-      - HTTPClient/1.0 (2.3.4.1, ruby 2.1.1 (2014-02-24))
-      Accept:
-      - "*/*"
-      Date:
-      - Wed, 02 Apr 2014 14:54:51 GMT
-      Soapaction:
-      - '"http://cakemarketing.com/api/1/Verticals"'
-      Content-Type:
-      - application/soap+xml;charset=UTF-8
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Type:
-      - application/soap+xml; charset=utf-8
-      Server:
-      - Microsoft-IIS/7.5
-      X-Aspnet-Version:
-      - 4.0.30319
-      X-Powered-By:
-      - ASP.NET
-      Date:
-      - Wed, 02 Apr 2014 14:54:51 GMT
-      Content-Length:
-      - '615'
-    body:
-      encoding: UTF-8
-      string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><VerticalsResponse
-        xmlns="http://cakemarketing.com/api/1/"><VerticalsResult><Vertical><vertical_id>-1</vertical_id><vertical_name>Global</vertical_name></Vertical><Vertical><vertical_id>55</vertical_id><vertical_name>Games</vertical_name></Vertical><Vertical><vertical_id>56</vertical_id><vertical_name>SOI</vertical_name></Vertical></VerticalsResult></VerticalsResponse></soap:Body></soap:Envelope>
-    http_version: 
-  recorded_at: Wed, 02 Apr 2014 14:54:51 GMT
+  recorded_at: Mon, 07 Apr 2014 07:25:48 GMT
 recorded_with: VCR 2.9.0
