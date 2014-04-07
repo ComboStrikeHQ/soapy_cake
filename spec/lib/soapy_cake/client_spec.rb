@@ -69,8 +69,8 @@ describe SoapyCake::Client do
   describe 'an empty response' do
     subject do
       client.exchange_rates(
-        start_date: '2013-01-01T00:00:00',
-        end_date: '2013-01-31T00:00:00'
+        start_date: Time.parse('2013-01-01 00:00:00 +0000)'),
+        end_date: Date.parse('2013-01-31')
       )
     end
 

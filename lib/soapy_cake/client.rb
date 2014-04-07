@@ -40,7 +40,7 @@ module SoapyCake
       if is_supported?(method)
         method = method.to_s
         operation = savon_client(method).operation(service, "#{service}Soap12", method.camelize)
-        operation.body = { method.camelize.to_sym => { api_key: api_key }.merge(opts) }
+        operation.body = build_body(method, opts)
         process_response(method, operation.call.body)
       else
         super
@@ -48,6 +48,27 @@ module SoapyCake
     end
 
     private
+
+    def build_body(method, opts)
+      {
+        method.camelize.to_sym => { api_key: api_key }.merge(
+          opts.each_with_object({}) do |(key, value), memo|
+            memo[key] = format_param(value)
+          end
+        )
+      }
+    end
+
+    def format_param(value)
+      case value
+      when Time
+        value.utc.strftime('%Y-%m-%dT%H:%M:%S')
+      when Date
+        value.to_time.strftime('%Y-%m-%dT%H:%M:%S')
+      else
+        value
+      end
+    end
 
     def process_response(method, response)
       raise response[:fault][:reason][:text] if response[:fault]
