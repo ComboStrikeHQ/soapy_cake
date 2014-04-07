@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe SoapyCake::Client do
   before do
-    SoapyCake::Client.instance_variable_set(:@client, nil)
+    SoapyCake::Client.instance_variable_set(:@savon_clients, nil)
   end
 
   describe '.new' do
@@ -85,6 +85,29 @@ describe SoapyCake::Client do
         SoapyCake::Client.new(:get).
           send(:remove_prefix, 'foo', { foo_id: 'bar', foo_name: 'baz' })
       ).to eq({ id: 'bar', name: 'baz' })
+    end
+  end
+
+  describe '#savon_client' do
+    let(:client) { SoapyCake::Client.new(:get) }
+
+    around do |example|
+      VCR.use_cassette(:"client_savon_client_caches_results", &example)
+    end
+
+    it 'results are cached' do
+      expect(client.savon_client('roles')).to equal(client.savon_client('roles'))
+    end
+
+    context 'for different methods with the same wsdl url' do
+      before do
+        expect(client).to receive(:wsdl_url).twice.
+          and_return("https://cake-partner-domain.com/api/1/get.asmx?WSDL")
+      end
+
+      it 'results are cached' do
+        expect(client.savon_client('roles')).to equal(client.savon_client('advertisers'))
+      end
     end
   end
 end

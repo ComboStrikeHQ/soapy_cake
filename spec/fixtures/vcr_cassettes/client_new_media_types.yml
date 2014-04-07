@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://cake-partner-domain.com/api/2/get.asmx?WSDL
+    uri: https://cake-partner-domain.com/api/1/get.asmx?WSDL
     body:
       encoding: UTF-8
       string: ''

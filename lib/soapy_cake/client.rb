@@ -27,18 +27,18 @@ module SoapyCake
       end
     end
 
-    def client(method)
-      self.class.clients(wsdl(version(method)))
+    def savon_client(method)
+      self.class.savon_client(wsdl_url(version(method)))
     end
 
-    def self.clients(url)
-      @clients ||= {}
-      @clients[url] ||= Savon.new(url)
+    def self.savon_client(url)
+      @savon_clients ||= {}
+      @savon_clients[url] ||= Savon.new(url)
     end
 
     def method_missing(method, opts = {})
       method = method.to_s
-      operation = client(method).operation(service, "#{service}Soap12", method.camelize)
+      operation = savon_client(method).operation(service, "#{service}Soap12", method.camelize)
       operation.body = { method.camelize.to_sym => { api_key: api_key }.merge(opts) }
       process_response(method, operation.call.body)
     end
@@ -73,13 +73,13 @@ module SoapyCake
     end
 
     def get_api_key(username, password)
-      operation = client(:get_api_key).operation('get', 'getSoap12', 'GetAPIKey')
+      operation = savon_client(:get_api_key).operation('get', 'getSoap12', 'GetAPIKey')
       operation.body = { GetAPIKey: { username: username, password: password }}
       response = operation.call.body
       response[:get_api_key_response][:get_api_key_result]
     end
 
-    def wsdl(version)
+    def wsdl_url(version)
       "https://#{domain}/api/#{version}/#{service}.asmx?WSDL"
     end
 

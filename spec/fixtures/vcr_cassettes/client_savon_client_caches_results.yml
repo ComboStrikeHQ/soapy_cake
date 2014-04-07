@@ -4,15 +4,15 @@ http_interactions:
     method: get
     uri: https://cake-partner-domain.com/api/1/get.asmx?WSDL
     body:
-      encoding: UTF-8
+      encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - HTTPClient/1.0 (2.3.4.1, ruby 2.1.1 (2014-02-24))
+      - HTTPClient/1.0 (2.3.4.1, ruby 1.9.3 (2014-02-24))
       Accept:
-      - "*/*"
+      - ! '*/*'
       Date:
-      - Thu, 03 Apr 2014 15:40:33 GMT
+      - Mon, 07 Apr 2014 07:25:46 GMT
   response:
     status:
       code: 200
@@ -29,12 +29,12 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 03 Apr 2014 15:40:33 GMT
+      - Mon, 07 Apr 2014 07:25:48 GMT
       Content-Length:
       - '87385'
     body:
-      encoding: UTF-8
-      string: "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<wsdl:definitions xmlns:soap=\"http://schemas.xmlsoap.org/wsdl/soap/\"
+      encoding: US-ASCII
+      string: ! "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<wsdl:definitions xmlns:soap=\"http://schemas.xmlsoap.org/wsdl/soap/\"
         xmlns:tm=\"http://microsoft.com/wsdl/mime/textMatching/\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\"
         xmlns:mime=\"http://schemas.xmlsoap.org/wsdl/mime/\" xmlns:tns=\"http://cakemarketing.com/api/1/\"
         xmlns:s1=\"API:id_name_store\" xmlns:s=\"http://www.w3.org/2001/XMLSchema\"
@@ -1132,69 +1132,14 @@ http_interactions:
         />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <mime:mimeXml
         part=\"Body\" />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n  </wsdl:binding>\r\n
         \ <wsdl:service name=\"get\">\r\n    <wsdl:port name=\"getSoap\" binding=\"tns:getSoap\">\r\n
-        \     <soap:address location=\"https://cake-partner-domain.com/api/1/get.asmx\" />\r\n
-        \   </wsdl:port>\r\n    <wsdl:port name=\"getSoap12\" binding=\"tns:getSoap12\">\r\n
-        \     <soap12:address location=\"https://cake-partner-domain.com/api/1/get.asmx\" />\r\n
-        \   </wsdl:port>\r\n    <wsdl:port name=\"getHttpGet\" binding=\"tns:getHttpGet\">\r\n
-        \     <http:address location=\"https://cake-partner-domain.com/api/1/get.asmx\" />\r\n
-        \   </wsdl:port>\r\n    <wsdl:port name=\"getHttpPost\" binding=\"tns:getHttpPost\">\r\n
-        \     <http:address location=\"https://cake-partner-domain.com/api/1/get.asmx\" />\r\n
-        \   </wsdl:port>\r\n  </wsdl:service>\r\n</wsdl:definitions>"
+        \     <soap:address location=\"https://cake-partner-domain.com/api/1/get.asmx\"
+        />\r\n    </wsdl:port>\r\n    <wsdl:port name=\"getSoap12\" binding=\"tns:getSoap12\">\r\n
+        \     <soap12:address location=\"https://cake-partner-domain.com/api/1/get.asmx\"
+        />\r\n    </wsdl:port>\r\n    <wsdl:port name=\"getHttpGet\" binding=\"tns:getHttpGet\">\r\n
+        \     <http:address location=\"https://cake-partner-domain.com/api/1/get.asmx\"
+        />\r\n    </wsdl:port>\r\n    <wsdl:port name=\"getHttpPost\" binding=\"tns:getHttpPost\">\r\n
+        \     <http:address location=\"https://cake-partner-domain.com/api/1/get.asmx\"
+        />\r\n    </wsdl:port>\r\n  </wsdl:service>\r\n</wsdl:definitions>"
     http_version: 
-  recorded_at: Thu, 03 Apr 2014 15:40:34 GMT
-- request:
-    method: post
-    uri: https://cake-partner-domain.com/api/1/get.asmx
-    body:
-      encoding: UTF-8
-      string: |
-        <env:Envelope xmlns:lol0="http://cakemarketing.com/api/1/" xmlns:env="http://www.w3.org/2003/05/soap-envelope">
-          <env:Header>
-          </env:Header>
-          <env:Body>
-            <lol0:ExchangeRates>
-              <lol0:api_key>cake-api-key</lol0:api_key>
-              <lol0:start_date>2013-01-01T00:00:00</lol0:start_date>
-              <lol0:end_date>2013-01-31T00:00:00</lol0:end_date>
-            </lol0:ExchangeRates>
-          </env:Body>
-        </env:Envelope>
-    headers:
-      User-Agent:
-      - HTTPClient/1.0 (2.3.4.1, ruby 2.1.1 (2014-02-24))
-      Accept:
-      - "*/*"
-      Date:
-      - Thu, 03 Apr 2014 15:40:34 GMT
-      Soapaction:
-      - '"http://cakemarketing.com/api/1/ExchangeRates"'
-      Content-Type:
-      - application/soap+xml;charset=UTF-8
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - private, max-age=0
-      Content-Type:
-      - application/soap+xml; charset=utf-8
-      Server:
-      - Microsoft-IIS/7.5
-      X-Aspnet-Version:
-      - 4.0.30319
-      X-Powered-By:
-      - ASP.NET
-      Date:
-      - Thu, 03 Apr 2014 15:40:34 GMT
-      Content-Length:
-      - '439'
-    body:
-      encoding: UTF-8
-      string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ExchangeRatesResponse
-        xmlns="http://cakemarketing.com/api/1/"><ExchangeRatesResult><success>true</success><row_count>0</row_count><exchange_rates
-        /></ExchangeRatesResult></ExchangeRatesResponse></soap:Body></soap:Envelope>
-    http_version: 
-  recorded_at: Thu, 03 Apr 2014 15:40:34 GMT
+  recorded_at: Mon, 07 Apr 2014 07:25:48 GMT
 recorded_with: VCR 2.9.0
