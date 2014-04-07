@@ -37,10 +37,14 @@ module SoapyCake
     end
 
     def method_missing(method, opts = {})
-      method = method.to_s
-      operation = savon_client(method).operation(service, "#{service}Soap12", method.camelize)
-      operation.body = { method.camelize.to_sym => { api_key: api_key }.merge(opts) }
-      process_response(method, operation.call.body)
+      if is_supported?(method)
+        method = method.to_s
+        operation = savon_client(method).operation(service, "#{service}Soap12", method.camelize)
+        operation.body = { method.camelize.to_sym => { api_key: api_key }.merge(opts) }
+        process_response(method, operation.call.body)
+      else
+        super
+      end
     end
 
     private
@@ -85,6 +89,10 @@ module SoapyCake
 
     def version(method)
       API_VERSIONS[service][method.to_sym]
+    end
+
+    def is_supported?(method)
+      API_VERSIONS[service].keys.include?(method)
     end
   end
 end

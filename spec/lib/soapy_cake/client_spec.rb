@@ -7,9 +7,10 @@ describe SoapyCake::Client do
     SoapyCake::Client.instance_variable_set(:@savon_clients, nil)
   end
 
-  describe '.new' do
-    subject { SoapyCake::Client.new(:get, opts) }
+  subject(:client) { SoapyCake::Client.new(:get, opts) }
+  let(:opts) { {} }
 
+  describe '.new' do
     context 'when passed api key' do
       let(:opts) {{ api_key: 'api-key' }}
 
@@ -55,7 +56,7 @@ describe SoapyCake::Client do
     verticals: { id: '-1', name: 'Global' },
   }.each do |name, exp_sample|
     describe "##{name}" do
-      subject { SoapyCake::Client.new(:get).public_send(name) }
+      subject { client.public_send(name) }
 
       around do |example|
         VCR.use_cassette(:"client_new_#{name}", &example)
@@ -67,9 +68,10 @@ describe SoapyCake::Client do
 
   describe 'an empty response' do
     subject do
-      SoapyCake::Client.new(:get).
-        exchange_rates(start_date: '2013-01-01T00:00:00',
-                       end_date: '2013-01-31T00:00:00')
+      client.exchange_rates(
+        start_date: '2013-01-01T00:00:00',
+        end_date: '2013-01-31T00:00:00'
+      )
     end
 
     around do |example|
@@ -82,15 +84,12 @@ describe SoapyCake::Client do
   describe '#remove_prefixes' do
     it 'removes prefix from hash keys' do
       expect(
-        SoapyCake::Client.new(:get).
-          send(:remove_prefix, 'foo', { foo_id: 'bar', foo_name: 'baz' })
+        client.send(:remove_prefix, 'foo', { foo_id: 'bar', foo_name: 'baz' })
       ).to eq({ id: 'bar', name: 'baz' })
     end
   end
 
   describe '#savon_client' do
-    let(:client) { SoapyCake::Client.new(:get) }
-
     around do |example|
       VCR.use_cassette(:"client_savon_client_caches_results", &example)
     end
@@ -108,6 +107,14 @@ describe SoapyCake::Client do
       it 'results are cached' do
         expect(client.savon_client('roles')).to equal(client.savon_client('advertisers'))
       end
+    end
+  end
+
+  describe '#not_a_valid_method' do
+    subject { -> { client.send('not_a_valid_method') } }
+
+    context 'when an unsupported method is called' do
+      it { should raise_error }
     end
   end
 end
