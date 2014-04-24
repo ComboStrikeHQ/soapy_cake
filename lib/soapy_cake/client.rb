@@ -2,11 +2,12 @@ require 'savon'
 
 module SoapyCake
   class Client
-    attr_reader :service, :api_key, :domain
+    attr_reader :service, :api_key, :domain, :role
 
     def initialize(service, opts = {})
       @service = service.to_sym
       @version = opts[:version]
+      @role = opts[:role]
 
       @domain = opts.fetch(:domain) do
         if ENV['CAKE_DOMAIN'].present?
@@ -73,7 +74,9 @@ module SoapyCake
     def process_response(method, response)
       raise response[:fault][:reason][:text] if response[:fault]
       node_name = { 'affiliate_tags' => 'tags' }.fetch(method, method)
-      extract_collection(node_name, response[:"#{method}_response"][:"#{method}_result"]).
+      result = response[:"#{method}_response"][:"#{method}_result"]
+      raise result[:message] if result[:success] == false
+      extract_collection(node_name, result).
         map { |hash| remove_prefix(node_name, hash) }
     end
 
@@ -105,7 +108,8 @@ module SoapyCake
     end
 
     def wsdl_url(version)
-      "https://#{domain}/api/#{version}/#{service}.asmx?WSDL"
+      role_path = role ? "/#{role}" : nil
+      "https://#{domain}#{role_path}/api/#{version}/#{service}.asmx?WSDL"
     end
 
     def version(method)
