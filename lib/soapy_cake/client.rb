@@ -74,7 +74,9 @@ module SoapyCake
     def process_response(method, response)
       raise response[:fault][:reason][:text] if response[:fault]
       node_name = { 'affiliate_tags' => 'tags' }.fetch(method, method)
-      extract_collection(node_name, response[:"#{method}_response"][:"#{method}_result"]).
+      result = response[:"#{method}_response"][:"#{method}_result"]
+      raise result[:message] unless result[:success]
+      extract_collection(node_name, result).
         map { |hash| remove_prefix(node_name, hash) }
     end
 
