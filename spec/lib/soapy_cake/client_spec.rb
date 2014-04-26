@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe SoapyCake::Client do
   before do
-    SoapyCake::Client.instance_variable_set(:@savon_clients, nil)
+    SoapyCake::Client.instance_variable_set(:@sekken_clients, nil)
   end
 
   subject(:client) { SoapyCake::Client.new(:get, opts) }
@@ -89,13 +89,13 @@ describe SoapyCake::Client do
     end
   end
 
-  describe '#savon_client' do
+  describe '#sekken_client' do
     around do |example|
-      VCR.use_cassette(:"client_savon_client_caches_results", &example)
+      VCR.use_cassette(:"client_sekken_client_caches_results", &example)
     end
 
     it 'results are cached' do
-      expect(client.savon_client('roles')).to equal(client.savon_client('roles'))
+      expect(client.sekken_client('roles')).to equal(client.sekken_client('roles'))
     end
 
     context 'for different methods with the same wsdl url' do
@@ -105,7 +105,7 @@ describe SoapyCake::Client do
       end
 
       it 'results are cached' do
-        expect(client.savon_client('roles')).to equal(client.savon_client('advertisers'))
+        expect(client.sekken_client('roles')).to equal(client.sekken_client('advertisers'))
       end
     end
   end

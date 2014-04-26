@@ -1,4 +1,4 @@
-require 'savon'
+require 'sekken'
 
 module SoapyCake
   class Client
@@ -28,19 +28,19 @@ module SoapyCake
       end
     end
 
-    def savon_client(method)
-      self.class.savon_client(wsdl_url(version(method)))
+    def sekken_client(method)
+      self.class.sekken_client(wsdl_url(version(method)))
     end
 
-    def self.savon_client(url)
-      @savon_clients ||= {}
-      @savon_clients[url] ||= Savon.new(url)
+    def self.sekken_client(url)
+      @sekken_clients ||= {}
+      @sekken_clients[url] ||= Sekken.new(url)
     end
 
     def method_missing(method, opts = {})
       if is_supported?(method)
         method = method.to_s
-        operation = savon_client(method).operation(service, "#{service}Soap12", method.camelize)
+        operation = sekken_client(method).operation(service, "#{service}Soap12", method.camelize)
         operation.body = build_body(method, opts)
         process_response(method, operation.call.body)
       else
@@ -101,7 +101,7 @@ module SoapyCake
     end
 
     def get_api_key(username, password)
-      operation = savon_client(:get_api_key).operation('get', 'getSoap12', 'GetAPIKey')
+      operation = sekken_client(:get_api_key).operation('get', 'getSoap12', 'GetAPIKey')
       operation.body = { GetAPIKey: { username: username, password: password }}
       response = operation.call.body
       response[:get_api_key_response][:get_api_key_result]
