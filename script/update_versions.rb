@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-SOURCE = "https://cakemarketing.zendesk.com/hc/en-us/articles/200704900-Admin-API-Version-Tracker"
+SOURCE = "https://support.getcake.com/hc/en-us/articles/200704900-Admin-API-Version-Tracker"
 
 require 'net/https'
 require 'bundler/setup'
