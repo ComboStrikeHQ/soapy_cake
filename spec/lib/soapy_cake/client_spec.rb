@@ -46,7 +46,6 @@ describe SoapyCake::Client do
     # have real API access.
     #exchange_rates: {},
     languages: { id: '1', name: 'ENGLISH', abbr: 'en' },
-    media_types: { id: '15', name: 'Adware' },
     offer_statuses: { id: '3', name: 'Apply To Run' },
     offer_types: { id: '3', name: '3rd Party' },
     payment_settings: { id: '1', name: 'Pay affiliate in system default currency' },

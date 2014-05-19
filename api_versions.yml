@@ -7,14 +7,17 @@
   :advertiser: 1
   :advertiser_credit_limit: 1
   :affiliate: 2
-  :campaign: 1
+  :apply_suppression_list_to_offer: 1
+  :campaign: 2
   :caps: 1
+  :contact: 1
   :creative: 1
   :creative_files: 1
   :exchange_rates: 1
-  :contact: 1
-  :offer: 2
+  :geo_targets: 1
+  :offer: 3
   :offer_contract: 1
+  :suppresion_list: 1
   :vertical: 1
 :auth:
   :login: 2
@@ -41,31 +44,30 @@
   :billing_cycles: 1
   :cap_intervals: 1
   :cap_types: 1
-  :client_new_media: 1
   :countries: 1
   :currencies: 1
   :departments: 1
   :exchange_rates: 1
   :get_api_key: 1
+  :inactive_reasons: 1
   :languages: 1
-  :media_types: 1
   :offer_statuses: 1
   :offer_types: 1
   :payment_settings: 1
   :payment_types: 1
   :price_formats: 1
   :roles: 1
+  :tracking_domains: 1
   :verticals: 2
 :reports:
   :advertiser_summary: 2
   :affiliate_summary: 2
-  :bills: 3
   :campaign_summary: 2
   :creative_summary: 2
   :caps: 3
   :clicks: 7
   :conversion_changes: 10
-  :conversions: 10
+  :conversions: 11
   :daily_summary_export: 1
   :leads_by_affiliate_export: 1
   :leads_by_buyer: 4
@@ -86,6 +88,7 @@
   :mass_conversion_adjustment: 2
   :mass_conversion_insert: 2
   :rejected_dispositions: 1
+  :update_conversion: 2
   :update_conversion_disposition: 2
   :update_conversion_price: 2
   :update_conversion_revenue: 1
