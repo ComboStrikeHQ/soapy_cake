@@ -12,7 +12,7 @@ http_interactions:
       Accept:
       - "*/*"
       Date:
-      - Tue, 20 May 2014 14:27:47 GMT
+      - Tue, 20 May 2014 15:09:55 GMT
   response:
     status:
       code: 200
@@ -29,7 +29,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Tue, 20 May 2014 14:27:26 GMT
+      - Tue, 20 May 2014 15:09:33 GMT
       Content-Length:
       - '58640'
     body:
@@ -808,7 +808,7 @@ http_interactions:
         \     <http:address location=\"https://cake-partner-domain.com/api/2/reports.asmx\"
         />\r\n    </wsdl:port>\r\n  </wsdl:service>\r\n</wsdl:definitions>"
     http_version: 
-  recorded_at: Tue, 20 May 2014 14:27:47 GMT
+  recorded_at: Tue, 20 May 2014 15:09:55 GMT
 - request:
     method: post
     uri: https://cake-partner-domain.com/api/2/reports.asmx
@@ -821,8 +821,8 @@ http_interactions:
           <env:Body>
             <lol0:OfferSummary>
               <lol0:api_key>cake-api-key</lol0:api_key>
-              <lol0:start_date>2012-12-31T23:00:00</lol0:start_date>
-              <lol0:end_date>2013-01-01T23:00:00</lol0:end_date>
+              <lol0:start_date>2013-01-01T00:00:00</lol0:start_date>
+              <lol0:end_date>2013-01-02T00:00:00</lol0:end_date>
             </lol0:OfferSummary>
           </env:Body>
         </env:Envelope>
@@ -832,7 +832,7 @@ http_interactions:
       Accept:
       - "*/*"
       Date:
-      - Tue, 20 May 2014 14:27:47 GMT
+      - Tue, 20 May 2014 15:09:55 GMT
       Content-Type:
       - application/soap+xml;charset=UTF-8;action="http://cakemarketing.com/api/2/OfferSummary"
   response:
@@ -851,7 +851,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Tue, 20 May 2014 14:27:26 GMT
+      - Tue, 20 May 2014 15:09:34 GMT
       Content-Length:
       - '427'
     body:
@@ -861,5 +861,5 @@ http_interactions:
         xmlns="http://cakemarketing.com/api/2/"><OfferSummaryResult><success>true</success><row_count>0</row_count><offers
         /></OfferSummaryResult></OfferSummaryResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Tue, 20 May 2014 14:27:48 GMT
+  recorded_at: Tue, 20 May 2014 15:09:55 GMT
 recorded_with: VCR 2.9.0

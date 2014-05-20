@@ -84,8 +84,8 @@ describe SoapyCake::Client do
     context 'for offer summary' do
       subject do
         SoapyCake::Client.new(:reports, opts).offer_summary(
-          start_date: Time.new(2013, 1, 1),
-          end_date: Time.new(2013, 1, 2)
+          start_date: Time.utc(2013, 1, 1),
+          end_date: Time.utc(2013, 1, 2)
         )
       end
 
