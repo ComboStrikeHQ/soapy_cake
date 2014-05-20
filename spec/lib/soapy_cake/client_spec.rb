@@ -115,11 +115,6 @@ describe SoapyCake::Client do
     end
 
     context 'for different methods with the same wsdl url' do
-      before do
-        expect(client).to receive(:wsdl_url).twice.
-          and_return("https://cake-partner-domain.com/api/1/get.asmx?WSDL")
-      end
-
       it 'results are cached' do
         expect(client.sekken_client('roles')).to equal(client.sekken_client('advertisers'))
       end
