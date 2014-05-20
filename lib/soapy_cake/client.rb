@@ -7,7 +7,7 @@ module SoapyCake
     def initialize(service, opts = {})
       @service = service.to_sym
       @version = opts[:version]
-      @role = opts[:role]
+      @role = opts[:role] || :admin
 
       @domain = opts.fetch(:domain) do
         if ENV['CAKE_DOMAIN'].present?
@@ -111,16 +111,16 @@ module SoapyCake
     end
 
     def wsdl_url(version)
-      role_path = role ? "/#{role}" : nil
+      role_path = (role && role != :admin) ? "/#{role}" : nil
       "https://#{domain}#{role_path}/api/#{version}/#{service}.asmx?WSDL"
     end
 
     def version(method)
-      API_VERSIONS[service][method.to_sym]
+      API_VERSIONS[role][service][method.to_sym]
     end
 
     def is_supported?(method)
-      API_VERSIONS[service].keys.include?(method)
+      API_VERSIONS[role][service].keys.include?(method)
     end
   end
 end
