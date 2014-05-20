@@ -73,7 +73,10 @@ module SoapyCake
 
     def process_response(method, response)
       raise response[:fault][:reason][:text] if response[:fault]
-      node_name = { 'affiliate_tags' => 'tags' }.fetch(method, method)
+      node_name = {
+        'affiliate_tags' => 'tags',
+        'offer_summary' => 'offers',
+      }.fetch(method, method)
       result = response[:"#{method}_response"][:"#{method}_result"]
       raise result[:message] if result[:success] == false
       extract_collection(node_name, result).

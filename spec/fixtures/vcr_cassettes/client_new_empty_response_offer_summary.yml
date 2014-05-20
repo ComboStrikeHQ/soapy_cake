@@ -1,0 +1,865 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://cake-partner-domain.com/api/2/reports.asmx?WSDL
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.3.4.1, ruby 2.1.2 (2014-05-08))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 20 May 2014 14:27:47 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - text/xml; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 20 May 2014 14:27:26 GMT
+      Content-Length:
+      - '58640'
+    body:
+      encoding: UTF-8
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<wsdl:definitions xmlns:tm=\"http://microsoft.com/wsdl/mime/textMatching/\"
+        xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:mime=\"http://schemas.xmlsoap.org/wsdl/mime/\"
+        xmlns:tns=\"http://cakemarketing.com/api/2/\" xmlns:soap=\"http://schemas.xmlsoap.org/wsdl/soap/\"
+        xmlns:s1=\"API:id_name_store\" xmlns:s=\"http://www.w3.org/2001/XMLSchema\"
+        xmlns:soap12=\"http://schemas.xmlsoap.org/wsdl/soap12/\" xmlns:http=\"http://schemas.xmlsoap.org/wsdl/http/\"
+        targetNamespace=\"http://cakemarketing.com/api/2/\" xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">\r\n
+        \ <wsdl:types>\r\n    <s:schema elementFormDefault=\"qualified\" targetNamespace=\"http://cakemarketing.com/api/2/\">\r\n
+        \     <s:import namespace=\"API:id_name_store\" />\r\n      <s:element name=\"ConversionExport\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"api_key\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"start_date\"
+        type=\"s:dateTime\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"end_date\" type=\"s:dateTime\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"affiliate_id\" type=\"s:int\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"offer_id\" type=\"s:int\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"include_tests\" type=\"s:boolean\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"ConversionExportResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ConversionExportResult\" type=\"tns:ArrayOfConversion\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:complexType name=\"ArrayOfConversion\">\r\n
+        \       <s:sequence>\r\n          <s:element minOccurs=\"0\" maxOccurs=\"unbounded\"
+        name=\"Conversion\" nillable=\"true\" type=\"tns:Conversion\" />\r\n        </s:sequence>\r\n
+        \     </s:complexType>\r\n      <s:complexType name=\"Conversion\">\r\n        <s:sequence>\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"conversion_id\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"request_session_id\" type=\"s:int\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"click_id\" nillable=\"true\" type=\"s:int\" />\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"conversion_date\"
+        type=\"s:dateTime\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"affiliate_id\" type=\"s:int\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"affiliate_name\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"offer_id\" type=\"s:int\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"offer_name\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"advertiser_id\"
+        type=\"s:int\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"advertiser_name\" type=\"s:string\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"campaign_id\" type=\"s:int\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"creative_id\" type=\"s:int\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"creative_name\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"subid_1\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"subid_2\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"subid_3\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"subid_4\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"subid_5\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"conversion_type\" type=\"s:string\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"price_paid\" type=\"s:decimal\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"price_received\" type=\"s:decimal\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"pixel_dropped\"
+        type=\"s:boolean\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"throttled\" type=\"s:boolean\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"returned\" type=\"s:boolean\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"test\" type=\"s:boolean\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"transaction_id\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ip_address\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"referrer_url\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"disposition\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"note\" type=\"s:string\" />\r\n        </s:sequence>\r\n
+        \     </s:complexType>\r\n      <s:element name=\"ClickExport\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"api_key\" type=\"s:string\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"start_date\" type=\"s:dateTime\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"end_date\" type=\"s:dateTime\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"affiliate_id\"
+        type=\"s:int\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"offer_id\" type=\"s:int\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"include_tests\" type=\"s:boolean\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"ClickExportResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ClickExportResult\" type=\"tns:ArrayOfClick\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:complexType name=\"ArrayOfClick\">\r\n        <s:sequence>\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"unbounded\" name=\"Click\" nillable=\"true\" type=\"tns:Click\"
+        />\r\n        </s:sequence>\r\n      </s:complexType>\r\n      <s:complexType
+        name=\"Click\">\r\n        <s:sequence>\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"click_id\" type=\"s:int\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"visitor_id\" type=\"s:int\" />\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"request_session_id\"
+        type=\"s:int\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"click_date\" type=\"s:dateTime\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"affiliate_id\" type=\"s:int\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"affiliate_name\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"offer_id\"
+        type=\"s:int\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"offer_name\" type=\"s:string\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"advertiser_id\" type=\"s:int\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"advertiser_name\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"campaign_id\"
+        type=\"s:int\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"creative_id\" type=\"s:int\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"creative_name\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"subid_1\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"subid_2\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"subid_3\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"subid_4\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"subid_5\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ip_address\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"country\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"user_agent\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"referrer_url\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"request_url\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"redirect_url\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"disposition\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"paid_action\" type=\"s:string\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"total_clicks\" type=\"s:int\" />\r\n        </s:sequence>\r\n
+        \     </s:complexType>\r\n      <s:element name=\"AdvertiserSummary\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"api_key\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"start_date\"
+        type=\"s:dateTime\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"end_date\" type=\"s:dateTime\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"advertiser_id\" type=\"s:int\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"advertiser_manager_id\" type=\"s:int\"
+        />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"advertiser_tag_id\"
+        type=\"s:short\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"event_id\" type=\"s:int\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"revenue_filter\" type=\"tns:revenue_filter_types\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:simpleType name=\"revenue_filter_types\">\r\n        <s:restriction
+        base=\"s:string\">\r\n          <s:enumeration value=\"conversions_and_events\"
+        />\r\n          <s:enumeration value=\"conversions\" />\r\n          <s:enumeration
+        value=\"events\" />\r\n        </s:restriction>\r\n      </s:simpleType>\r\n
+        \     <s:element name=\"AdvertiserSummaryResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"AdvertiserSummaryResult\" type=\"tns:advertiser_summary_response\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:complexType name=\"advertiser_summary_response\">\r\n        <s:complexContent
+        mixed=\"false\">\r\n          <s:extension base=\"tns:get_response\">\r\n
+        \           <s:sequence>\r\n              <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"advertisers\" type=\"tns:ArrayOfAdvertiser_summary\" />\r\n            </s:sequence>\r\n
+        \         </s:extension>\r\n        </s:complexContent>\r\n      </s:complexType>\r\n
+        \     <s:complexType name=\"get_response\">\r\n        <s:complexContent mixed=\"false\">\r\n
+        \         <s:extension base=\"tns:base_response\">\r\n            <s:sequence>\r\n
+        \             <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"row_count\"
+        type=\"s:int\" />\r\n            </s:sequence>\r\n          </s:extension>\r\n
+        \       </s:complexContent>\r\n      </s:complexType>\r\n      <s:complexType
+        name=\"base_response\">\r\n        <s:sequence>\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"success\" type=\"s:boolean\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"message\" type=\"s:string\" />\r\n
+        \       </s:sequence>\r\n      </s:complexType>\r\n      <s:complexType name=\"ArrayOfAdvertiser_summary\">\r\n
+        \       <s:sequence>\r\n          <s:element minOccurs=\"0\" maxOccurs=\"unbounded\"
+        name=\"advertiser_summary\" nillable=\"true\" type=\"tns:advertiser_summary\"
+        />\r\n        </s:sequence>\r\n      </s:complexType>\r\n      <s:complexType
+        name=\"advertiser_summary\">\r\n        <s:sequence>\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"advertiser\" type=\"s1:advertiser\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"account_manager\"
+        type=\"s1:account_manager\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"views\" type=\"s:int\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"clicks\" type=\"s:int\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"click_thru_percentage\" type=\"s:decimal\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"conversions\" type=\"s:int\" />\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"paid\" type=\"s:int\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"sellable\"
+        type=\"s:int\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"events\" type=\"s:int\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"conversion_percentage\" type=\"s:decimal\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"cost\" type=\"s:decimal\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"average_cost\" type=\"s:decimal\" />\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"epc\" type=\"s:decimal\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"revenue\"
+        type=\"s:decimal\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"revenue_per_transaction\" type=\"s:decimal\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"margin\" type=\"s:decimal\" />\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"profit\" type=\"s:decimal\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"pending\"
+        type=\"s:int\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"rejected\" type=\"s:int\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"approved\" type=\"s:int\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"returned\" type=\"s:int\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"orders\" nillable=\"true\" type=\"s:int\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"order_total\"
+        nillable=\"true\" type=\"s:decimal\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"average_order_value\" nillable=\"true\" type=\"s:decimal\"
+        />\r\n        </s:sequence>\r\n      </s:complexType>\r\n      <s:element
+        name=\"OfferSummary\">\r\n        <s:complexType>\r\n          <s:sequence>\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"api_key\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"start_date\"
+        type=\"s:dateTime\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"end_date\" type=\"s:dateTime\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"advertiser_id\" type=\"s:int\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"advertiser_manager_id\" type=\"s:int\"
+        />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"offer_id\"
+        type=\"s:int\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"offer_tag_id\" type=\"s:short\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"affiliate_tag_id\" type=\"s:short\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"event_id\" type=\"s:int\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"revenue_filter\" type=\"tns:revenue_filter_types\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"OfferSummaryResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"OfferSummaryResult\" type=\"tns:offer_summary_report_response\" />\r\n
+        \         </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:complexType name=\"offer_summary_report_response\">\r\n        <s:complexContent
+        mixed=\"false\">\r\n          <s:extension base=\"tns:get_response\">\r\n
+        \           <s:sequence>\r\n              <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"offers\" type=\"tns:ArrayOfOffer_summary\" />\r\n            </s:sequence>\r\n
+        \         </s:extension>\r\n        </s:complexContent>\r\n      </s:complexType>\r\n
+        \     <s:complexType name=\"ArrayOfOffer_summary\">\r\n        <s:sequence>\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"unbounded\" name=\"offer_summary\"
+        nillable=\"true\" type=\"tns:offer_summary\" />\r\n        </s:sequence>\r\n
+        \     </s:complexType>\r\n      <s:complexType name=\"offer_summary\">\r\n
+        \       <s:sequence>\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"offer\" type=\"s1:offer\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"advertiser\" type=\"s1:advertiser\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"account_manager\" type=\"s1:account_manager\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"views\"
+        type=\"s:int\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"clicks\" type=\"s:int\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"click_thru_percentage\" type=\"s:decimal\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"conversions\" type=\"s:int\" />\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"paid\" type=\"s:int\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"sellable\"
+        type=\"s:int\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"events\" type=\"s:int\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"conversion_percentage\" type=\"s:decimal\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"cost\" type=\"s:decimal\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"average_cost\" type=\"s:decimal\" />\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"epc\" type=\"s:decimal\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"revenue\"
+        type=\"s:decimal\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"revenue_per_transaction\" type=\"s:decimal\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"margin\" type=\"s:decimal\" />\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"profit\" type=\"s:decimal\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"pending\"
+        type=\"s:int\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"rejected\" type=\"s:int\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"approved\" type=\"s:int\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"returned\" type=\"s:int\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"orders\" nillable=\"true\" type=\"s:int\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"order_total\"
+        nillable=\"true\" type=\"s:decimal\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"average_order_value\" nillable=\"true\" type=\"s:decimal\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"average_conversion_score\"
+        nillable=\"true\" type=\"s:decimal\" />\r\n        </s:sequence>\r\n      </s:complexType>\r\n
+        \     <s:element name=\"AffiliateSummary\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"api_key\" type=\"s:string\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"start_date\" type=\"s:dateTime\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"end_date\" type=\"s:dateTime\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"affiliate_id\"
+        type=\"s:int\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"affiliate_manager_id\" type=\"s:int\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"affiliate_tag_id\" type=\"s:short\"
+        />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"offer_tag_id\"
+        type=\"s:short\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"event_id\" type=\"s:int\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"revenue_filter\" type=\"tns:revenue_filter_types\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"AffiliateSummaryResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"AffiliateSummaryResult\" type=\"tns:affiliate_summary_response\" />\r\n
+        \         </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:complexType name=\"affiliate_summary_response\">\r\n        <s:complexContent
+        mixed=\"false\">\r\n          <s:extension base=\"tns:get_response\">\r\n
+        \           <s:sequence>\r\n              <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"affiliates\" type=\"tns:ArrayOfAffiliate_summary\" />\r\n            </s:sequence>\r\n
+        \         </s:extension>\r\n        </s:complexContent>\r\n      </s:complexType>\r\n
+        \     <s:complexType name=\"ArrayOfAffiliate_summary\">\r\n        <s:sequence>\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"unbounded\" name=\"affiliate_summary\"
+        nillable=\"true\" type=\"tns:affiliate_summary\" />\r\n        </s:sequence>\r\n
+        \     </s:complexType>\r\n      <s:complexType name=\"affiliate_summary\">\r\n
+        \       <s:sequence>\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"affiliate\" type=\"s1:affiliate\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"account_manager\" type=\"s1:account_manager\" />\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"views\" type=\"s:int\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"clicks\"
+        type=\"s:int\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"click_thru_percentage\" type=\"s:decimal\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"conversions\" type=\"s:int\" />\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"paid\" type=\"s:int\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"sellable\"
+        type=\"s:int\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"events\" type=\"s:int\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"conversion_percentage\" type=\"s:decimal\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"cost\" type=\"s:decimal\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"average_cost\" type=\"s:decimal\" />\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"epc\" type=\"s:decimal\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"revenue\"
+        type=\"s:decimal\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"revenue_per_transaction\" type=\"s:decimal\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"margin\" type=\"s:decimal\" />\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"profit\" type=\"s:decimal\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"pending\"
+        type=\"s:int\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"rejected\" type=\"s:int\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"approved\" type=\"s:int\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"returned\" type=\"s:int\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"orders\" nillable=\"true\" type=\"s:int\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"order_total\"
+        nillable=\"true\" type=\"s:decimal\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"average_order_value\" nillable=\"true\" type=\"s:decimal\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"average_conversion_score\"
+        nillable=\"true\" type=\"s:decimal\" />\r\n        </s:sequence>\r\n      </s:complexType>\r\n
+        \     <s:element name=\"CreativeSummary\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"api_key\" type=\"s:string\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"start_date\" type=\"s:dateTime\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"end_date\" type=\"s:dateTime\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"offer_id\" type=\"s:int\"
+        />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"campaign_id\"
+        type=\"s:int\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"event_id\" type=\"s:int\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"revenue_filter\" type=\"tns:revenue_filter_types\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"CreativeSummaryResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"CreativeSummaryResult\" type=\"tns:creative_summary_response\" />\r\n
+        \         </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:complexType name=\"creative_summary_response\">\r\n        <s:complexContent
+        mixed=\"false\">\r\n          <s:extension base=\"tns:get_response\">\r\n
+        \           <s:sequence>\r\n              <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"creatives\" type=\"tns:ArrayOfCreative_summary\" />\r\n            </s:sequence>\r\n
+        \         </s:extension>\r\n        </s:complexContent>\r\n      </s:complexType>\r\n
+        \     <s:complexType name=\"ArrayOfCreative_summary\">\r\n        <s:sequence>\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"unbounded\" name=\"creative_summary\"
+        nillable=\"true\" type=\"tns:creative_summary\" />\r\n        </s:sequence>\r\n
+        \     </s:complexType>\r\n      <s:complexType name=\"creative_summary\">\r\n
+        \       <s:sequence>\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"creative\" type=\"s1:creative\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"creative_affiliate_id\" nillable=\"true\" type=\"s:int\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"type\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"views\"
+        type=\"s:int\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"clicks\" type=\"s:int\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"click_thru_percentage\" type=\"s:decimal\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"conversions\" type=\"s:int\" />\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"paid\" type=\"s:int\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"sellable\"
+        type=\"s:int\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"events\" type=\"s:int\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"conversion_percentage\" type=\"s:decimal\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"cost\" type=\"s:decimal\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"average_cost\" type=\"s:decimal\" />\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"epc\" type=\"s:decimal\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"revenue\"
+        type=\"s:decimal\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"revenue_per_transaction\" type=\"s:decimal\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"margin\" type=\"s:decimal\" />\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"profit\" type=\"s:decimal\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"pending\"
+        type=\"s:int\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"rejected\" type=\"s:int\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"approved\" type=\"s:int\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"returned\" type=\"s:int\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"orders\" nillable=\"true\" type=\"s:int\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"order_total\"
+        nillable=\"true\" type=\"s:decimal\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"average_order_value\" nillable=\"true\" type=\"s:decimal\"
+        />\r\n        </s:sequence>\r\n      </s:complexType>\r\n      <s:element
+        name=\"CampaignSummary\">\r\n        <s:complexType>\r\n          <s:sequence>\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"api_key\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"start_date\"
+        type=\"s:dateTime\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"end_date\" type=\"s:dateTime\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"affiliate_id\" type=\"s:int\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"affiliate_tag_id\" type=\"s:short\"
+        />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"offer_id\"
+        type=\"s:int\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"offer_tag_id\" type=\"s:short\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"campaign_id\" type=\"s:int\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"event_id\" type=\"s:int\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"revenue_filter\" type=\"tns:revenue_filter_types\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"CampaignSummaryResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"CampaignSummaryResult\" type=\"tns:campaign_summary_response\" />\r\n
+        \         </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:complexType name=\"campaign_summary_response\">\r\n        <s:complexContent
+        mixed=\"false\">\r\n          <s:extension base=\"tns:get_response\">\r\n
+        \           <s:sequence>\r\n              <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"campaigns\" type=\"tns:ArrayOfCampaign_summary\" />\r\n            </s:sequence>\r\n
+        \         </s:extension>\r\n        </s:complexContent>\r\n      </s:complexType>\r\n
+        \     <s:complexType name=\"ArrayOfCampaign_summary\">\r\n        <s:sequence>\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"unbounded\" name=\"campaign_summary\"
+        nillable=\"true\" type=\"tns:campaign_summary\" />\r\n        </s:sequence>\r\n
+        \     </s:complexType>\r\n      <s:complexType name=\"campaign_summary\">\r\n
+        \       <s:sequence>\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"campaign\" type=\"s1:campaign\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"affiliate\" type=\"s1:affiliate\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"offer\" type=\"s1:offer\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"account_manager\" type=\"s1:account_manager\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"advertiser\"
+        type=\"s1:advertiser\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"advertiser_manager\" type=\"s1:account_manager\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"price_format\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"media_type\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"views\"
+        type=\"s:int\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"clicks\" type=\"s:int\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"click_thru_percentage\" type=\"s:decimal\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"conversions\" type=\"s:int\" />\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"paid\" type=\"s:int\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"sellable\"
+        type=\"s:int\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"events\" type=\"s:int\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"conversion_percentage\" type=\"s:decimal\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"cost\" type=\"s:decimal\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"average_cost\" type=\"s:decimal\" />\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"epc\" type=\"s:decimal\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"revenue\"
+        type=\"s:decimal\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"revenue_per_transaction\" type=\"s:decimal\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"margin\" type=\"s:decimal\" />\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"profit\" type=\"s:decimal\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"pending\"
+        type=\"s:int\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"rejected\" type=\"s:int\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"approved\" type=\"s:int\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"returned\" type=\"s:int\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"orders\" nillable=\"true\" type=\"s:int\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"order_total\"
+        nillable=\"true\" type=\"s:decimal\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"average_order_value\" nillable=\"true\" type=\"s:decimal\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"average_conversion_score\"
+        nillable=\"true\" type=\"s:decimal\" />\r\n        </s:sequence>\r\n      </s:complexType>\r\n
+        \     <s:element name=\"ArrayOfConversion\" nillable=\"true\" type=\"tns:ArrayOfConversion\"
+        />\r\n      <s:element name=\"ArrayOfClick\" nillable=\"true\" type=\"tns:ArrayOfClick\"
+        />\r\n      <s:element name=\"advertiser_summary_response\" nillable=\"true\"
+        type=\"tns:advertiser_summary_response\" />\r\n      <s:element name=\"offer_summary_report_response\"
+        nillable=\"true\" type=\"tns:offer_summary_report_response\" />\r\n      <s:element
+        name=\"affiliate_summary_response\" nillable=\"true\" type=\"tns:affiliate_summary_response\"
+        />\r\n      <s:element name=\"creative_summary_response\" nillable=\"true\"
+        type=\"tns:creative_summary_response\" />\r\n      <s:element name=\"campaign_summary_response\"
+        nillable=\"true\" type=\"tns:campaign_summary_response\" />\r\n    </s:schema>\r\n
+        \   <s:schema elementFormDefault=\"qualified\" targetNamespace=\"API:id_name_store\">\r\n
+        \     <s:complexType name=\"advertiser\">\r\n        <s:sequence>\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"advertiser_id\" type=\"s:int\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"advertiser_name\"
+        type=\"s:string\" />\r\n        </s:sequence>\r\n      </s:complexType>\r\n
+        \     <s:complexType name=\"account_manager\">\r\n        <s:sequence>\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"account_manager_id\"
+        type=\"s:int\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"account_manager_name\" type=\"s:string\" />\r\n        </s:sequence>\r\n
+        \     </s:complexType>\r\n      <s:complexType name=\"offer\">\r\n        <s:sequence>\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"offer_id\" type=\"s:int\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"offer_name\"
+        type=\"s:string\" />\r\n        </s:sequence>\r\n      </s:complexType>\r\n
+        \     <s:complexType name=\"affiliate\">\r\n        <s:sequence>\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"affiliate_id\" type=\"s:int\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"affiliate_name\"
+        type=\"s:string\" />\r\n        </s:sequence>\r\n      </s:complexType>\r\n
+        \     <s:complexType name=\"creative\">\r\n        <s:sequence>\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"creative_id\" type=\"s:int\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"creative_name\"
+        type=\"s:string\" />\r\n        </s:sequence>\r\n      </s:complexType>\r\n
+        \     <s:complexType name=\"campaign\">\r\n        <s:sequence>\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"campaign_id\" type=\"s:int\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"campaign_name\"
+        type=\"s:string\" />\r\n        </s:sequence>\r\n      </s:complexType>\r\n
+        \   </s:schema>\r\n  </wsdl:types>\r\n  <wsdl:message name=\"ConversionExportSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:ConversionExport\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"ConversionExportSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:ConversionExportResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"ClickExportSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:ClickExport\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"ClickExportSoapOut\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:ClickExportResponse\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"AdvertiserSummarySoapIn\">\r\n    <wsdl:part name=\"parameters\" element=\"tns:AdvertiserSummary\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"AdvertiserSummarySoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:AdvertiserSummaryResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"OfferSummarySoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:OfferSummary\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"OfferSummarySoapOut\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:OfferSummaryResponse\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"AffiliateSummarySoapIn\">\r\n    <wsdl:part name=\"parameters\" element=\"tns:AffiliateSummary\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"AffiliateSummarySoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:AffiliateSummaryResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"CreativeSummarySoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:CreativeSummary\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"CreativeSummarySoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:CreativeSummaryResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"CampaignSummarySoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:CampaignSummary\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"CampaignSummarySoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:CampaignSummaryResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"ConversionExportHttpGetIn\">\r\n
+        \   <wsdl:part name=\"api_key\" type=\"s:string\" />\r\n    <wsdl:part name=\"start_date\"
+        type=\"s:string\" />\r\n    <wsdl:part name=\"end_date\" type=\"s:string\"
+        />\r\n    <wsdl:part name=\"affiliate_id\" type=\"s:string\" />\r\n    <wsdl:part
+        name=\"offer_id\" type=\"s:string\" />\r\n    <wsdl:part name=\"include_tests\"
+        type=\"s:string\" />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"ConversionExportHttpGetOut\">\r\n
+        \   <wsdl:part name=\"Body\" element=\"tns:ArrayOfConversion\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"ClickExportHttpGetIn\">\r\n    <wsdl:part name=\"api_key\"
+        type=\"s:string\" />\r\n    <wsdl:part name=\"start_date\" type=\"s:string\"
+        />\r\n    <wsdl:part name=\"end_date\" type=\"s:string\" />\r\n    <wsdl:part
+        name=\"affiliate_id\" type=\"s:string\" />\r\n    <wsdl:part name=\"offer_id\"
+        type=\"s:string\" />\r\n    <wsdl:part name=\"include_tests\" type=\"s:string\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"ClickExportHttpGetOut\">\r\n
+        \   <wsdl:part name=\"Body\" element=\"tns:ArrayOfClick\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"AdvertiserSummaryHttpGetIn\">\r\n    <wsdl:part name=\"api_key\"
+        type=\"s:string\" />\r\n    <wsdl:part name=\"start_date\" type=\"s:string\"
+        />\r\n    <wsdl:part name=\"end_date\" type=\"s:string\" />\r\n    <wsdl:part
+        name=\"advertiser_id\" type=\"s:string\" />\r\n    <wsdl:part name=\"advertiser_manager_id\"
+        type=\"s:string\" />\r\n    <wsdl:part name=\"advertiser_tag_id\" type=\"s:string\"
+        />\r\n    <wsdl:part name=\"event_id\" type=\"s:string\" />\r\n    <wsdl:part
+        name=\"revenue_filter\" type=\"s:string\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"AdvertiserSummaryHttpGetOut\">\r\n    <wsdl:part name=\"Body\" element=\"tns:advertiser_summary_response\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"OfferSummaryHttpGetIn\">\r\n
+        \   <wsdl:part name=\"api_key\" type=\"s:string\" />\r\n    <wsdl:part name=\"start_date\"
+        type=\"s:string\" />\r\n    <wsdl:part name=\"end_date\" type=\"s:string\"
+        />\r\n    <wsdl:part name=\"advertiser_id\" type=\"s:string\" />\r\n    <wsdl:part
+        name=\"advertiser_manager_id\" type=\"s:string\" />\r\n    <wsdl:part name=\"offer_id\"
+        type=\"s:string\" />\r\n    <wsdl:part name=\"offer_tag_id\" type=\"s:string\"
+        />\r\n    <wsdl:part name=\"affiliate_tag_id\" type=\"s:string\" />\r\n    <wsdl:part
+        name=\"event_id\" type=\"s:string\" />\r\n    <wsdl:part name=\"revenue_filter\"
+        type=\"s:string\" />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"OfferSummaryHttpGetOut\">\r\n
+        \   <wsdl:part name=\"Body\" element=\"tns:offer_summary_report_response\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"AffiliateSummaryHttpGetIn\">\r\n
+        \   <wsdl:part name=\"api_key\" type=\"s:string\" />\r\n    <wsdl:part name=\"start_date\"
+        type=\"s:string\" />\r\n    <wsdl:part name=\"end_date\" type=\"s:string\"
+        />\r\n    <wsdl:part name=\"affiliate_id\" type=\"s:string\" />\r\n    <wsdl:part
+        name=\"affiliate_manager_id\" type=\"s:string\" />\r\n    <wsdl:part name=\"affiliate_tag_id\"
+        type=\"s:string\" />\r\n    <wsdl:part name=\"offer_tag_id\" type=\"s:string\"
+        />\r\n    <wsdl:part name=\"event_id\" type=\"s:string\" />\r\n    <wsdl:part
+        name=\"revenue_filter\" type=\"s:string\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"AffiliateSummaryHttpGetOut\">\r\n    <wsdl:part name=\"Body\" element=\"tns:affiliate_summary_response\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"CreativeSummaryHttpGetIn\">\r\n
+        \   <wsdl:part name=\"api_key\" type=\"s:string\" />\r\n    <wsdl:part name=\"start_date\"
+        type=\"s:string\" />\r\n    <wsdl:part name=\"end_date\" type=\"s:string\"
+        />\r\n    <wsdl:part name=\"offer_id\" type=\"s:string\" />\r\n    <wsdl:part
+        name=\"campaign_id\" type=\"s:string\" />\r\n    <wsdl:part name=\"event_id\"
+        type=\"s:string\" />\r\n    <wsdl:part name=\"revenue_filter\" type=\"s:string\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"CreativeSummaryHttpGetOut\">\r\n
+        \   <wsdl:part name=\"Body\" element=\"tns:creative_summary_response\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"CampaignSummaryHttpGetIn\">\r\n
+        \   <wsdl:part name=\"api_key\" type=\"s:string\" />\r\n    <wsdl:part name=\"start_date\"
+        type=\"s:string\" />\r\n    <wsdl:part name=\"end_date\" type=\"s:string\"
+        />\r\n    <wsdl:part name=\"affiliate_id\" type=\"s:string\" />\r\n    <wsdl:part
+        name=\"affiliate_tag_id\" type=\"s:string\" />\r\n    <wsdl:part name=\"offer_id\"
+        type=\"s:string\" />\r\n    <wsdl:part name=\"offer_tag_id\" type=\"s:string\"
+        />\r\n    <wsdl:part name=\"campaign_id\" type=\"s:string\" />\r\n    <wsdl:part
+        name=\"event_id\" type=\"s:string\" />\r\n    <wsdl:part name=\"revenue_filter\"
+        type=\"s:string\" />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"CampaignSummaryHttpGetOut\">\r\n
+        \   <wsdl:part name=\"Body\" element=\"tns:campaign_summary_response\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"ConversionExportHttpPostIn\">\r\n
+        \   <wsdl:part name=\"api_key\" type=\"s:string\" />\r\n    <wsdl:part name=\"start_date\"
+        type=\"s:string\" />\r\n    <wsdl:part name=\"end_date\" type=\"s:string\"
+        />\r\n    <wsdl:part name=\"affiliate_id\" type=\"s:string\" />\r\n    <wsdl:part
+        name=\"offer_id\" type=\"s:string\" />\r\n    <wsdl:part name=\"include_tests\"
+        type=\"s:string\" />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"ConversionExportHttpPostOut\">\r\n
+        \   <wsdl:part name=\"Body\" element=\"tns:ArrayOfConversion\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"ClickExportHttpPostIn\">\r\n    <wsdl:part name=\"api_key\"
+        type=\"s:string\" />\r\n    <wsdl:part name=\"start_date\" type=\"s:string\"
+        />\r\n    <wsdl:part name=\"end_date\" type=\"s:string\" />\r\n    <wsdl:part
+        name=\"affiliate_id\" type=\"s:string\" />\r\n    <wsdl:part name=\"offer_id\"
+        type=\"s:string\" />\r\n    <wsdl:part name=\"include_tests\" type=\"s:string\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"ClickExportHttpPostOut\">\r\n
+        \   <wsdl:part name=\"Body\" element=\"tns:ArrayOfClick\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"AdvertiserSummaryHttpPostIn\">\r\n    <wsdl:part name=\"api_key\"
+        type=\"s:string\" />\r\n    <wsdl:part name=\"start_date\" type=\"s:string\"
+        />\r\n    <wsdl:part name=\"end_date\" type=\"s:string\" />\r\n    <wsdl:part
+        name=\"advertiser_id\" type=\"s:string\" />\r\n    <wsdl:part name=\"advertiser_manager_id\"
+        type=\"s:string\" />\r\n    <wsdl:part name=\"advertiser_tag_id\" type=\"s:string\"
+        />\r\n    <wsdl:part name=\"event_id\" type=\"s:string\" />\r\n    <wsdl:part
+        name=\"revenue_filter\" type=\"s:string\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"AdvertiserSummaryHttpPostOut\">\r\n    <wsdl:part name=\"Body\" element=\"tns:advertiser_summary_response\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"OfferSummaryHttpPostIn\">\r\n
+        \   <wsdl:part name=\"api_key\" type=\"s:string\" />\r\n    <wsdl:part name=\"start_date\"
+        type=\"s:string\" />\r\n    <wsdl:part name=\"end_date\" type=\"s:string\"
+        />\r\n    <wsdl:part name=\"advertiser_id\" type=\"s:string\" />\r\n    <wsdl:part
+        name=\"advertiser_manager_id\" type=\"s:string\" />\r\n    <wsdl:part name=\"offer_id\"
+        type=\"s:string\" />\r\n    <wsdl:part name=\"offer_tag_id\" type=\"s:string\"
+        />\r\n    <wsdl:part name=\"affiliate_tag_id\" type=\"s:string\" />\r\n    <wsdl:part
+        name=\"event_id\" type=\"s:string\" />\r\n    <wsdl:part name=\"revenue_filter\"
+        type=\"s:string\" />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"OfferSummaryHttpPostOut\">\r\n
+        \   <wsdl:part name=\"Body\" element=\"tns:offer_summary_report_response\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"AffiliateSummaryHttpPostIn\">\r\n
+        \   <wsdl:part name=\"api_key\" type=\"s:string\" />\r\n    <wsdl:part name=\"start_date\"
+        type=\"s:string\" />\r\n    <wsdl:part name=\"end_date\" type=\"s:string\"
+        />\r\n    <wsdl:part name=\"affiliate_id\" type=\"s:string\" />\r\n    <wsdl:part
+        name=\"affiliate_manager_id\" type=\"s:string\" />\r\n    <wsdl:part name=\"affiliate_tag_id\"
+        type=\"s:string\" />\r\n    <wsdl:part name=\"offer_tag_id\" type=\"s:string\"
+        />\r\n    <wsdl:part name=\"event_id\" type=\"s:string\" />\r\n    <wsdl:part
+        name=\"revenue_filter\" type=\"s:string\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"AffiliateSummaryHttpPostOut\">\r\n    <wsdl:part name=\"Body\" element=\"tns:affiliate_summary_response\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"CreativeSummaryHttpPostIn\">\r\n
+        \   <wsdl:part name=\"api_key\" type=\"s:string\" />\r\n    <wsdl:part name=\"start_date\"
+        type=\"s:string\" />\r\n    <wsdl:part name=\"end_date\" type=\"s:string\"
+        />\r\n    <wsdl:part name=\"offer_id\" type=\"s:string\" />\r\n    <wsdl:part
+        name=\"campaign_id\" type=\"s:string\" />\r\n    <wsdl:part name=\"event_id\"
+        type=\"s:string\" />\r\n    <wsdl:part name=\"revenue_filter\" type=\"s:string\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"CreativeSummaryHttpPostOut\">\r\n
+        \   <wsdl:part name=\"Body\" element=\"tns:creative_summary_response\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"CampaignSummaryHttpPostIn\">\r\n
+        \   <wsdl:part name=\"api_key\" type=\"s:string\" />\r\n    <wsdl:part name=\"start_date\"
+        type=\"s:string\" />\r\n    <wsdl:part name=\"end_date\" type=\"s:string\"
+        />\r\n    <wsdl:part name=\"affiliate_id\" type=\"s:string\" />\r\n    <wsdl:part
+        name=\"affiliate_tag_id\" type=\"s:string\" />\r\n    <wsdl:part name=\"offer_id\"
+        type=\"s:string\" />\r\n    <wsdl:part name=\"offer_tag_id\" type=\"s:string\"
+        />\r\n    <wsdl:part name=\"campaign_id\" type=\"s:string\" />\r\n    <wsdl:part
+        name=\"event_id\" type=\"s:string\" />\r\n    <wsdl:part name=\"revenue_filter\"
+        type=\"s:string\" />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"CampaignSummaryHttpPostOut\">\r\n
+        \   <wsdl:part name=\"Body\" element=\"tns:campaign_summary_response\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:portType name=\"reportsSoap\">\r\n    <wsdl:operation
+        name=\"ConversionExport\">\r\n      <wsdl:input message=\"tns:ConversionExportSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:ConversionExportSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"ClickExport\">\r\n      <wsdl:input message=\"tns:ClickExportSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:ClickExportSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"AdvertiserSummary\">\r\n      <wsdl:input message=\"tns:AdvertiserSummarySoapIn\"
+        />\r\n      <wsdl:output message=\"tns:AdvertiserSummarySoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"OfferSummary\">\r\n      <wsdl:input message=\"tns:OfferSummarySoapIn\"
+        />\r\n      <wsdl:output message=\"tns:OfferSummarySoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"AffiliateSummary\">\r\n      <wsdl:input message=\"tns:AffiliateSummarySoapIn\"
+        />\r\n      <wsdl:output message=\"tns:AffiliateSummarySoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"CreativeSummary\">\r\n      <wsdl:input message=\"tns:CreativeSummarySoapIn\"
+        />\r\n      <wsdl:output message=\"tns:CreativeSummarySoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"CampaignSummary\">\r\n      <wsdl:input message=\"tns:CampaignSummarySoapIn\"
+        />\r\n      <wsdl:output message=\"tns:CampaignSummarySoapOut\" />\r\n    </wsdl:operation>\r\n
+        \ </wsdl:portType>\r\n  <wsdl:portType name=\"reportsHttpGet\">\r\n    <wsdl:operation
+        name=\"ConversionExport\">\r\n      <wsdl:input message=\"tns:ConversionExportHttpGetIn\"
+        />\r\n      <wsdl:output message=\"tns:ConversionExportHttpGetOut\" />\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"ClickExport\">\r\n      <wsdl:input
+        message=\"tns:ClickExportHttpGetIn\" />\r\n      <wsdl:output message=\"tns:ClickExportHttpGetOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"AdvertiserSummary\">\r\n
+        \     <wsdl:input message=\"tns:AdvertiserSummaryHttpGetIn\" />\r\n      <wsdl:output
+        message=\"tns:AdvertiserSummaryHttpGetOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"OfferSummary\">\r\n      <wsdl:input message=\"tns:OfferSummaryHttpGetIn\"
+        />\r\n      <wsdl:output message=\"tns:OfferSummaryHttpGetOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"AffiliateSummary\">\r\n      <wsdl:input message=\"tns:AffiliateSummaryHttpGetIn\"
+        />\r\n      <wsdl:output message=\"tns:AffiliateSummaryHttpGetOut\" />\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"CreativeSummary\">\r\n
+        \     <wsdl:input message=\"tns:CreativeSummaryHttpGetIn\" />\r\n      <wsdl:output
+        message=\"tns:CreativeSummaryHttpGetOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"CampaignSummary\">\r\n      <wsdl:input message=\"tns:CampaignSummaryHttpGetIn\"
+        />\r\n      <wsdl:output message=\"tns:CampaignSummaryHttpGetOut\" />\r\n
+        \   </wsdl:operation>\r\n  </wsdl:portType>\r\n  <wsdl:portType name=\"reportsHttpPost\">\r\n
+        \   <wsdl:operation name=\"ConversionExport\">\r\n      <wsdl:input message=\"tns:ConversionExportHttpPostIn\"
+        />\r\n      <wsdl:output message=\"tns:ConversionExportHttpPostOut\" />\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"ClickExport\">\r\n      <wsdl:input
+        message=\"tns:ClickExportHttpPostIn\" />\r\n      <wsdl:output message=\"tns:ClickExportHttpPostOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"AdvertiserSummary\">\r\n
+        \     <wsdl:input message=\"tns:AdvertiserSummaryHttpPostIn\" />\r\n      <wsdl:output
+        message=\"tns:AdvertiserSummaryHttpPostOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"OfferSummary\">\r\n      <wsdl:input message=\"tns:OfferSummaryHttpPostIn\"
+        />\r\n      <wsdl:output message=\"tns:OfferSummaryHttpPostOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"AffiliateSummary\">\r\n      <wsdl:input message=\"tns:AffiliateSummaryHttpPostIn\"
+        />\r\n      <wsdl:output message=\"tns:AffiliateSummaryHttpPostOut\" />\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"CreativeSummary\">\r\n
+        \     <wsdl:input message=\"tns:CreativeSummaryHttpPostIn\" />\r\n      <wsdl:output
+        message=\"tns:CreativeSummaryHttpPostOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"CampaignSummary\">\r\n      <wsdl:input message=\"tns:CampaignSummaryHttpPostIn\"
+        />\r\n      <wsdl:output message=\"tns:CampaignSummaryHttpPostOut\" />\r\n
+        \   </wsdl:operation>\r\n  </wsdl:portType>\r\n  <wsdl:binding name=\"reportsSoap\"
+        type=\"tns:reportsSoap\">\r\n    <soap:binding transport=\"http://schemas.xmlsoap.org/soap/http\"
+        />\r\n    <wsdl:operation name=\"ConversionExport\">\r\n      <soap:operation
+        soapAction=\"http://cakemarketing.com/api/2/ConversionExport\" style=\"document\"
+        />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\" />\r\n      </wsdl:input>\r\n
+        \     <wsdl:output>\r\n        <soap:body use=\"literal\" />\r\n      </wsdl:output>\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"ClickExport\">\r\n      <soap:operation
+        soapAction=\"http://cakemarketing.com/api/2/ClickExport\" style=\"document\"
+        />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\" />\r\n      </wsdl:input>\r\n
+        \     <wsdl:output>\r\n        <soap:body use=\"literal\" />\r\n      </wsdl:output>\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"AdvertiserSummary\">\r\n
+        \     <soap:operation soapAction=\"http://cakemarketing.com/api/2/AdvertiserSummary\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"OfferSummary\">\r\n      <soap:operation soapAction=\"http://cakemarketing.com/api/2/OfferSummary\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"AffiliateSummary\">\r\n      <soap:operation soapAction=\"http://cakemarketing.com/api/2/AffiliateSummary\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"CreativeSummary\">\r\n      <soap:operation soapAction=\"http://cakemarketing.com/api/2/CreativeSummary\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"CampaignSummary\">\r\n      <soap:operation soapAction=\"http://cakemarketing.com/api/2/CampaignSummary\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n  </wsdl:binding>\r\n
+        \ <wsdl:binding name=\"reportsSoap12\" type=\"tns:reportsSoap\">\r\n    <soap12:binding
+        transport=\"http://schemas.xmlsoap.org/soap/http\" />\r\n    <wsdl:operation
+        name=\"ConversionExport\">\r\n      <soap12:operation soapAction=\"http://cakemarketing.com/api/2/ConversionExport\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"ClickExport\">\r\n      <soap12:operation soapAction=\"http://cakemarketing.com/api/2/ClickExport\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"AdvertiserSummary\">\r\n      <soap12:operation soapAction=\"http://cakemarketing.com/api/2/AdvertiserSummary\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"OfferSummary\">\r\n      <soap12:operation soapAction=\"http://cakemarketing.com/api/2/OfferSummary\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"AffiliateSummary\">\r\n      <soap12:operation soapAction=\"http://cakemarketing.com/api/2/AffiliateSummary\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"CreativeSummary\">\r\n      <soap12:operation soapAction=\"http://cakemarketing.com/api/2/CreativeSummary\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"CampaignSummary\">\r\n      <soap12:operation soapAction=\"http://cakemarketing.com/api/2/CampaignSummary\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n  </wsdl:binding>\r\n
+        \ <wsdl:binding name=\"reportsHttpGet\" type=\"tns:reportsHttpGet\">\r\n    <http:binding
+        verb=\"GET\" />\r\n    <wsdl:operation name=\"ConversionExport\">\r\n      <http:operation
+        location=\"/ConversionExport\" />\r\n      <wsdl:input>\r\n        <http:urlEncoded
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <mime:mimeXml
+        part=\"Body\" />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"ClickExport\">\r\n      <http:operation location=\"/ClickExport\" />\r\n
+        \     <wsdl:input>\r\n        <http:urlEncoded />\r\n      </wsdl:input>\r\n
+        \     <wsdl:output>\r\n        <mime:mimeXml part=\"Body\" />\r\n      </wsdl:output>\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"AdvertiserSummary\">\r\n
+        \     <http:operation location=\"/AdvertiserSummary\" />\r\n      <wsdl:input>\r\n
+        \       <http:urlEncoded />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n
+        \       <mime:mimeXml part=\"Body\" />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"OfferSummary\">\r\n      <http:operation location=\"/OfferSummary\"
+        />\r\n      <wsdl:input>\r\n        <http:urlEncoded />\r\n      </wsdl:input>\r\n
+        \     <wsdl:output>\r\n        <mime:mimeXml part=\"Body\" />\r\n      </wsdl:output>\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"AffiliateSummary\">\r\n
+        \     <http:operation location=\"/AffiliateSummary\" />\r\n      <wsdl:input>\r\n
+        \       <http:urlEncoded />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n
+        \       <mime:mimeXml part=\"Body\" />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"CreativeSummary\">\r\n      <http:operation location=\"/CreativeSummary\"
+        />\r\n      <wsdl:input>\r\n        <http:urlEncoded />\r\n      </wsdl:input>\r\n
+        \     <wsdl:output>\r\n        <mime:mimeXml part=\"Body\" />\r\n      </wsdl:output>\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"CampaignSummary\">\r\n
+        \     <http:operation location=\"/CampaignSummary\" />\r\n      <wsdl:input>\r\n
+        \       <http:urlEncoded />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n
+        \       <mime:mimeXml part=\"Body\" />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n
+        \ </wsdl:binding>\r\n  <wsdl:binding name=\"reportsHttpPost\" type=\"tns:reportsHttpPost\">\r\n
+        \   <http:binding verb=\"POST\" />\r\n    <wsdl:operation name=\"ConversionExport\">\r\n
+        \     <http:operation location=\"/ConversionExport\" />\r\n      <wsdl:input>\r\n
+        \       <mime:content type=\"application/x-www-form-urlencoded\" />\r\n      </wsdl:input>\r\n
+        \     <wsdl:output>\r\n        <mime:mimeXml part=\"Body\" />\r\n      </wsdl:output>\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"ClickExport\">\r\n      <http:operation
+        location=\"/ClickExport\" />\r\n      <wsdl:input>\r\n        <mime:content
+        type=\"application/x-www-form-urlencoded\" />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n
+        \       <mime:mimeXml part=\"Body\" />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"AdvertiserSummary\">\r\n      <http:operation location=\"/AdvertiserSummary\"
+        />\r\n      <wsdl:input>\r\n        <mime:content type=\"application/x-www-form-urlencoded\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <mime:mimeXml
+        part=\"Body\" />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"OfferSummary\">\r\n      <http:operation location=\"/OfferSummary\"
+        />\r\n      <wsdl:input>\r\n        <mime:content type=\"application/x-www-form-urlencoded\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <mime:mimeXml
+        part=\"Body\" />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"AffiliateSummary\">\r\n      <http:operation location=\"/AffiliateSummary\"
+        />\r\n      <wsdl:input>\r\n        <mime:content type=\"application/x-www-form-urlencoded\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <mime:mimeXml
+        part=\"Body\" />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"CreativeSummary\">\r\n      <http:operation location=\"/CreativeSummary\"
+        />\r\n      <wsdl:input>\r\n        <mime:content type=\"application/x-www-form-urlencoded\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <mime:mimeXml
+        part=\"Body\" />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"CampaignSummary\">\r\n      <http:operation location=\"/CampaignSummary\"
+        />\r\n      <wsdl:input>\r\n        <mime:content type=\"application/x-www-form-urlencoded\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <mime:mimeXml
+        part=\"Body\" />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n  </wsdl:binding>\r\n
+        \ <wsdl:service name=\"reports\">\r\n    <wsdl:port name=\"reportsSoap\" binding=\"tns:reportsSoap\">\r\n
+        \     <soap:address location=\"https://cake-partner-domain.com/api/2/reports.asmx\"
+        />\r\n    </wsdl:port>\r\n    <wsdl:port name=\"reportsSoap12\" binding=\"tns:reportsSoap12\">\r\n
+        \     <soap12:address location=\"https://cake-partner-domain.com/api/2/reports.asmx\"
+        />\r\n    </wsdl:port>\r\n    <wsdl:port name=\"reportsHttpGet\" binding=\"tns:reportsHttpGet\">\r\n
+        \     <http:address location=\"https://cake-partner-domain.com/api/2/reports.asmx\"
+        />\r\n    </wsdl:port>\r\n    <wsdl:port name=\"reportsHttpPost\" binding=\"tns:reportsHttpPost\">\r\n
+        \     <http:address location=\"https://cake-partner-domain.com/api/2/reports.asmx\"
+        />\r\n    </wsdl:port>\r\n  </wsdl:service>\r\n</wsdl:definitions>"
+    http_version: 
+  recorded_at: Tue, 20 May 2014 14:27:47 GMT
+- request:
+    method: post
+    uri: https://cake-partner-domain.com/api/2/reports.asmx
+    body:
+      encoding: UTF-8
+      string: |
+        <env:Envelope xmlns:lol0="http://cakemarketing.com/api/2/" xmlns:env="http://www.w3.org/2003/05/soap-envelope">
+          <env:Header>
+          </env:Header>
+          <env:Body>
+            <lol0:OfferSummary>
+              <lol0:api_key>cake-api-key</lol0:api_key>
+              <lol0:start_date>2012-12-31T23:00:00</lol0:start_date>
+              <lol0:end_date>2013-01-01T23:00:00</lol0:end_date>
+            </lol0:OfferSummary>
+          </env:Body>
+        </env:Envelope>
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.3.4.1, ruby 2.1.2 (2014-05-08))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 20 May 2014 14:27:47 GMT
+      Content-Type:
+      - application/soap+xml;charset=UTF-8;action="http://cakemarketing.com/api/2/OfferSummary"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - application/soap+xml; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 20 May 2014 14:27:26 GMT
+      Content-Length:
+      - '427'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><OfferSummaryResponse
+        xmlns="http://cakemarketing.com/api/2/"><OfferSummaryResult><success>true</success><row_count>0</row_count><offers
+        /></OfferSummaryResult></OfferSummaryResponse></soap:Body></soap:Envelope>
+    http_version: 
+  recorded_at: Tue, 20 May 2014 14:27:48 GMT
+recorded_with: VCR 2.9.0

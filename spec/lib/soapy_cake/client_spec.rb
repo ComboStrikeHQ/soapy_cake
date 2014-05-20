@@ -66,18 +66,35 @@ describe SoapyCake::Client do
   end
 
   describe 'an empty response' do
-    subject do
-      client.exchange_rates(
-        start_date: Time.parse('2013-01-01 00:00:00 +0000)'),
-        end_date: Date.parse('2013-01-31')
-      )
+    context 'for exchange rates' do
+      subject do
+        client.exchange_rates(
+          start_date: Time.parse('2013-01-01 00:00:00 +0000)'),
+          end_date: Date.parse('2013-01-31')
+        )
+      end
+
+      around do |example|
+        VCR.use_cassette(:client_new_empty_response, &example)
+      end
+
+      it { should eq([]) }
     end
 
-    around do |example|
-      VCR.use_cassette(:client_new_empty_response, &example)
-    end
+    context 'for offer summary' do
+      subject do
+        SoapyCake::Client.new(:reports, opts).offer_summary(
+          start_date: Time.new(2013, 1, 1),
+          end_date: Time.new(2013, 1, 2)
+        )
+      end
 
-    it { should eq([]) }
+      around do |example|
+        VCR.use_cassette(:client_new_empty_response_offer_summary, &example)
+      end
+
+      it { should eq([]) }
+    end
   end
 
   describe '#remove_prefixes' do
