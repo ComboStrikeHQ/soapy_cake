@@ -128,4 +128,24 @@ describe SoapyCake::Client do
       it { should raise_error }
     end
   end
+
+  describe '#process_response' do
+    let(:response) do
+      {
+        affiliate_response: {
+          affiliate_result: {
+            success: true,
+            message: "Affiliate Added Successfully",
+            affiliate_id: "16103",
+            tipalti_iframe_expiration_date: nil,
+          }
+        }
+      }
+    end
+
+    it 'handles responses with a message field as not having a collection' do
+      expect(client.send(:process_response, :affiliate, response)).to eq(
+        response[:affiliate_response][:affiliate_result])
+    end
+  end
 end

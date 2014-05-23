@@ -79,8 +79,13 @@ module SoapyCake
       }.fetch(method, method)
       result = response[:"#{method}_response"][:"#{method}_result"]
       raise result[:message] if result[:success] == false
+      return result unless result_has_collection?(result)
       extract_collection(node_name, result).
         map { |hash| remove_prefix(node_name, hash) }
+    end
+
+    def result_has_collection?(result)
+      !result.has_key?(:message)
     end
 
     def extract_collection(node_name, response)
