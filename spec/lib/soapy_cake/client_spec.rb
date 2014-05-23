@@ -143,7 +143,7 @@ describe SoapyCake::Client do
       }
     end
 
-    it 'should handle responses with a message field as not having a collection' do
+    it 'handles responses with a message field as not having a collection' do
       expect(client.send(:process_response, :affiliate, response)).to eq(
         response[:affiliate_response][:affiliate_result])
     end
