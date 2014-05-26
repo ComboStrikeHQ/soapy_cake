@@ -1,4 +1,5 @@
 require 'sekken'
+require 'active_support/core_ext/time/zones'
 
 module SoapyCake
   class Client
@@ -65,23 +66,27 @@ module SoapyCake
       when Time
         value.utc.strftime('%Y-%m-%dT%H:%M:%S')
       when Date
-        value.to_time.strftime('%Y-%m-%dT%H:%M:%S')
+        Time.use_zone('UTC') do
+          value.to_time.strftime('%Y-%m-%dT%H:%M:%S')
+        end
       else
         value
       end
     end
 
     def process_response(method, response)
-      raise response[:fault][:reason][:text] if response[:fault]
-      node_name = {
-        'affiliate_tags' => 'tags',
-        'offer_summary' => 'offers',
-      }.fetch(method, method)
-      result = response[:"#{method}_response"][:"#{method}_result"]
-      raise result[:message] if result[:success] == false
-      return result unless result_has_collection?(result)
-      extract_collection(node_name, result).
-        map { |hash| remove_prefix(node_name, hash) }
+      Time.use_zone('UTC') do
+        raise response[:fault][:reason][:text] if response[:fault]
+        node_name = {
+          'affiliate_tags' => 'tags',
+          'offer_summary' => 'offers',
+        }.fetch(method, method)
+        result = response[:"#{method}_response"][:"#{method}_result"]
+        raise result[:message] if result[:success] == false
+        return result unless result_has_collection?(result)
+        extract_collection(node_name, result).
+          map { |hash| remove_prefix(node_name, hash) }
+      end
     end
 
     def result_has_collection?(result)
