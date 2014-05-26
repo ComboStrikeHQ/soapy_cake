@@ -66,9 +66,7 @@ module SoapyCake
       when Time
         value.utc.strftime('%Y-%m-%dT%H:%M:%S')
       when Date
-        Time.use_zone('UTC') do
-          value.to_time.strftime('%Y-%m-%dT%H:%M:%S')
-        end
+        value.strftime('%Y-%m-%dT00:00:00')
       else
         value
       end
