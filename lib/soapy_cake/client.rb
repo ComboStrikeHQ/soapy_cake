@@ -29,6 +29,10 @@ module SoapyCake
       end
     end
 
+    def self.method_missing(method, opts={})
+      new(method, opts)
+    end
+
     def sekken_client(method)
       self.class.sekken_client(wsdl_url(version(method)))
     end
@@ -47,6 +51,12 @@ module SoapyCake
       else
         super
       end
+    end
+
+    def known_params_for(method)
+      method = method.to_s
+      operation = sekken_client(method).operation(service, "#{service}Soap12", method.camelize)
+      operation.example_body
     end
 
     private

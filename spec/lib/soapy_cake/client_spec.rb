@@ -148,4 +148,11 @@ describe SoapyCake::Client do
         response[:affiliate_response][:affiliate_result])
     end
   end
+
+  describe 'instantiating through class method' do
+    it 'creates an instance with the service set according to the method name used' do
+      instance = SoapyCake::Client.get
+      expect(instance.service).to eq(:get)
+    end
+  end
 end
