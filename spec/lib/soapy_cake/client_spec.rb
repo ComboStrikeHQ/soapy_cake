@@ -16,7 +16,10 @@ describe SoapyCake::Client do
 
       around {|example| VCR.use_cassette(:client_new_with_api_key, &example) }
 
-      its(:api_key) { should eq('api-key') }
+      describe '#api_key' do
+        subject { super().api_key }
+        it { is_expected.to eq('api-key') }
+      end
     end
 
     context 'when passed username and password' do
@@ -26,7 +29,10 @@ describe SoapyCake::Client do
         VCR.use_cassette(:client_new_with_username_and_password, &example)
       end
 
-      its(:api_key) { should eq('api-key') }
+      describe '#api_key' do
+        subject { super().api_key }
+        it { is_expected.to eq('api-key') }
+      end
     end
   end
 
@@ -61,7 +67,7 @@ describe SoapyCake::Client do
         VCR.use_cassette(:"client_new_#{name}", &example)
       end
 
-      it { should include(exp_sample) }
+      it { is_expected.to include(exp_sample) }
     end
   end
 
@@ -78,7 +84,7 @@ describe SoapyCake::Client do
         VCR.use_cassette(:client_new_empty_response, &example)
       end
 
-      it { should eq([]) }
+      it { is_expected.to eq([]) }
     end
 
     context 'for offer summary' do
@@ -93,7 +99,7 @@ describe SoapyCake::Client do
         VCR.use_cassette(:client_new_empty_response_offer_summary, &example)
       end
 
-      it { should eq([]) }
+      it { is_expected.to eq([]) }
     end
   end
 
@@ -125,7 +131,7 @@ describe SoapyCake::Client do
     subject { -> { client.send('not_a_valid_method') } }
 
     context 'when an unsupported method is called' do
-      it { should raise_error }
+      it { is_expected.to raise_error }
     end
   end
 
