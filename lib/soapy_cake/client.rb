@@ -86,6 +86,7 @@ module SoapyCake
       Time.use_zone('UTC') do
         raise response[:fault][:reason][:text] if response[:fault]
         node_name = {
+          'affiliate_summary' => 'affiliates',
           'affiliate_tags' => 'tags',
           'offer_summary' => 'offers',
         }.fetch(method, method)
