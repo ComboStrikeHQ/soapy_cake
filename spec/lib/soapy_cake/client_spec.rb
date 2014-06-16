@@ -12,9 +12,9 @@ describe SoapyCake::Client do
 
   describe '.new' do
     context 'when passed api key' do
-      let(:opts) {{ api_key: 'api-key' }}
+      let(:opts) { { api_key: 'api-key' } }
 
-      around {|example| VCR.use_cassette(:client_new_with_api_key, &example) }
+      around { |example| VCR.use_cassette(:client_new_with_api_key, &example) }
 
       describe '#api_key' do
         subject { super().api_key }
@@ -23,7 +23,7 @@ describe SoapyCake::Client do
     end
 
     context 'when passed username and password' do
-      let(:opts) {{ username: 'username', password: 'password' }}
+      let(:opts) { { username: 'username', password: 'password' } }
 
       around do |example|
         VCR.use_cassette(:client_new_with_username_and_password, &example)
@@ -39,18 +39,18 @@ describe SoapyCake::Client do
   {
     account_statuses: { id: '1', name: 'Active' },
     advertisers: { id: '1', name: 'ad2games GmbH' },
-    affiliate_tags: { id: '1', name: 'Suspicious'},
-    affiliate_tiers: { id: '1', name: 'Tier 1'},
-    billing_cycles: { id: '1', name: 'Weekly'},
-    cap_intervals: { id: '1', name: 'Daily'},
-    cap_types: { id: '1', name: 'Click'},
-    countries: { code: 'DE', name: 'Germany'},
+    affiliate_tags: { id: '1', name: 'Suspicious' },
+    affiliate_tiers: { id: '1', name: 'Tier 1' },
+    billing_cycles: { id: '1', name: 'Weekly' },
+    cap_intervals: { id: '1', name: 'Daily' },
+    cap_types: { id: '1', name: 'Click' },
+    countries: { code: 'DE', name: 'Germany' },
     currencies: { id: '1', symbol: '€', name: 'Euro', abbr: 'EUR' },
     # TODO: Let's test this when there is data.
-    #departments: [],
+    # departments: [],
     # TODO: We don't get any exchange rates from the test API. Fill in when we
     # have real API access.
-    #exchange_rates: {},
+    # exchange_rates: {},
     languages: { id: '1', name: 'ENGLISH', abbr: 'en' },
     offer_statuses: { id: '3', name: 'Apply To Run' },
     offer_types: { id: '3', name: '3rd Party' },
@@ -106,8 +106,8 @@ describe SoapyCake::Client do
   describe '#remove_prefixes' do
     it 'removes prefix from hash keys' do
       expect(
-        client.send(:remove_prefix, 'foo', { foo_id: 'bar', foo_name: 'baz' })
-      ).to eq({ id: 'bar', name: 'baz' })
+        client.send(:remove_prefix, 'foo', foo_id: 'bar', foo_name: 'baz')
+      ).to eq(id: 'bar', name: 'baz')
     end
   end
 
@@ -141,8 +141,8 @@ describe SoapyCake::Client do
         affiliate_response: {
           affiliate_result: {
             success: true,
-            message: "Affiliate Added Successfully",
-            affiliate_id: "16103",
+            message: 'Affiliate Added Successfully',
+            affiliate_id: '16103',
             tipalti_iframe_expiration_date: nil,
           }
         }

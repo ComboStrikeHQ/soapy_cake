@@ -24,12 +24,8 @@ RSpec.configure do |config|
   end
 end
 
-if ENV['CAKE_API_KEY'].blank?
-  ENV['CAKE_API_KEY'] = 'cake-api-key'
-end
-if ENV['CAKE_DOMAIN'].blank?
-  ENV['CAKE_DOMAIN'] = 'cake-partner-domain.com'
-end
+ENV['CAKE_API_KEY'] = 'cake-api-key' if ENV['CAKE_API_KEY'].blank?
+ENV['CAKE_DOMAIN'] = 'cake-partner-domain.com' if ENV['CAKE_DOMAIN'].blank?
 
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'

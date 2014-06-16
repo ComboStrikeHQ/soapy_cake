@@ -29,7 +29,7 @@ module SoapyCake
       end
     end
 
-    def self.method_missing(method, opts={})
+    def self.method_missing(method, opts = {})
       new(method, opts)
     end
 
@@ -43,7 +43,7 @@ module SoapyCake
     end
 
     def method_missing(method, opts = {})
-      if is_supported?(method)
+      if supported?(method)
         method = method.to_s
         operation = sekken_client(method).operation(service, "#{service}Soap12", method.camelize)
         operation.body = build_body(method, opts)
@@ -99,12 +99,12 @@ module SoapyCake
     end
 
     def result_has_collection?(result)
-      !result.has_key?(:message)
+      !result.key?(:message)
     end
 
     def extract_collection(node_name, response)
       node_name = node_name.to_sym
-      if response.has_key?(node_name)
+      if response.key?(node_name)
         return [] if response[node_name].nil?
         response = response[node_name]
       end
@@ -124,7 +124,7 @@ module SoapyCake
 
     def get_api_key(username, password)
       operation = sekken_client(:get_api_key).operation('get', 'getSoap12', 'GetAPIKey')
-      operation.body = { GetAPIKey: { username: username, password: password }}
+      operation.body = { GetAPIKey: { username: username, password: password } }
       response = operation.call.body
       response[:get_api_key_response][:get_api_key_result]
     end
@@ -138,7 +138,7 @@ module SoapyCake
       API_VERSIONS[role][service][method.to_sym]
     end
 
-    def is_supported?(method)
+    def supported?(method)
       API_VERSIONS[role][service].keys.include?(method)
     end
   end
