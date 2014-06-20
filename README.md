@@ -1,6 +1,6 @@
 # SoapyCake
 
-TODO: Write a gem description
+Simple client library for [cake](http://getcake.com).
 
 ## Installation
 
@@ -16,9 +16,28 @@ Or install it yourself as:
 
     $ gem install soapy_cake
 
-## Usage
+## Usage Examples
 
-TODO: Write usage instructions here
+First we assume that you set the `CAKE_DOMAIN` and `CAKE_API_KEY`
+environment variables.
+
+Export all advertisers:
+
+```ruby
+SoapyCake::Client.export.advertisers(opts)
+```
+
+Get report for specific date range:
+
+```ruby
+SoapyCake::Client.reports.affiliate_summary(
+  start_date: Date.beginning_of_month,
+  end_date: Date.today
+)
+```
+
+If you are interested in how we map methods to api endpoints take a look
+at [api_versions.yml](/ad2games/soapy_cake/blob/master/api_versions.yml).
 
 ## Contributing
 
