@@ -153,6 +153,23 @@ describe SoapyCake::Client do
       expect(client.send(:process_response, :affiliate, response)).to eq(
         response[:affiliate_response][:affiliate_result])
     end
+
+    it 'raises RequestUnsuccessful if response contains success: false' do
+      expect {
+        client.send(:process_response, :affiliate, {
+          affiliate_response: {
+            affiliate_result: { message: 'FAIL!', success: false }
+          }
+        })
+      }.to raise_error(SoapyCake::Client::RequestUnsuccessful, 'FAIL!')
+    end
+
+    it 'raises RequestUnsuccessful if response contains `:fault` key' do
+      expect {
+        client.send(:process_response, :affiliate,
+                    { fault: { reason: { text: 'FAIL!' }}})
+      }.to raise_error(SoapyCake::Client::RequestUnsuccessful, 'FAIL!')
+    end
   end
 
   describe 'instantiating through class method' do
