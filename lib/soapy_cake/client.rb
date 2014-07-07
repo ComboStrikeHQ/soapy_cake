@@ -84,7 +84,7 @@ module SoapyCake
 
     def process_response(method, response)
       Time.use_zone('UTC') do
-        raise response[:fault][:reason][:text] if response[:fault]
+        raise RequestUnsuccessful, response[:fault][:reason][:text] if response[:fault]
         node_name = {
           'affiliate_summary' => 'affiliates',
           'affiliate_tags' => 'tags',
@@ -92,7 +92,7 @@ module SoapyCake
           'campaign_summary' => 'campaigns',
         }.fetch(method, method)
         result = response[:"#{method}_response"][:"#{method}_result"]
-        raise result[:message] if result[:success] == false
+        raise RequestUnsuccessful, result[:message] if result[:success] == false
         return result unless result_has_collection?(result)
         extract_collection(node_name, result).
           map { |hash| remove_prefix(node_name, hash) }
@@ -142,5 +142,7 @@ module SoapyCake
     def supported?(method)
       API_VERSIONS[role][service].keys.include?(method)
     end
+
+    class RequestUnsuccessful < RuntimeError; end
   end
 end
