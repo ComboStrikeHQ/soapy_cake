@@ -90,6 +90,7 @@ module SoapyCake
           'affiliate_tags' => 'tags',
           'offer_summary' => 'offers',
           'campaign_summary' => 'campaigns',
+          'offer_feed' => 'offers',
         }.fetch(method, method)
         result = response[:"#{method}_response"][:"#{method}_result"]
         raise RequestUnsuccessful, result[:message] if result[:success] == false
