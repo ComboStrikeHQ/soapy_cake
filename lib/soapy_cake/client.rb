@@ -92,16 +92,17 @@ module SoapyCake
           'campaign_summary' => 'campaigns',
           'offer_feed' => 'offers',
         }.fetch(method, method)
+
         result = response[:"#{method}_response"][:"#{method}_result"]
         raise RequestUnsuccessful, result[:message] if result[:success] == false
-        return result unless result_has_collection?(result)
+        return result unless result_has_collection?(result, method)
         extract_collection(node_name, result).
           map { |hash| remove_prefix(node_name, hash) }
       end
     end
 
-    def result_has_collection?(result)
-      !result.key?(:message)
+    def result_has_collection?(result, method)
+      !result.key?(:message) && !method.to_s.starts_with?('get_')
     end
 
     def extract_collection(node_name, response)

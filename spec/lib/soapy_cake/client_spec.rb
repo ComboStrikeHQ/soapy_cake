@@ -149,9 +149,27 @@ describe SoapyCake::Client do
       }
     end
 
+    let(:get_response) do
+      {
+        get_campaign_response: {
+          get_campaign_result: {
+            success: true,
+            campaign: {
+              offer_id: '5129'
+            }
+          }
+        }
+      }
+    end
+
     it 'handles responses with a message field as not having a collection' do
       expect(client.send(:process_response, :affiliate, response)).to eq(
         response[:affiliate_response][:affiliate_result])
+    end
+
+    it 'handles get API responses as having no collection' do
+      expect(client.send(:process_response, :get_campaign, get_response)).to eq(
+        get_response[:get_campaign_response][:get_campaign_result])
     end
 
     it 'raises RequestUnsuccessful if response contains success: false' do
