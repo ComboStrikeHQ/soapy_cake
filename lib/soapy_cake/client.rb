@@ -91,6 +91,8 @@ module SoapyCake
           'offer_summary' => 'offers',
           'campaign_summary' => 'campaigns',
           'offer_feed' => 'offers',
+          'export_affiliate_bills' => 'affiliate_bills',
+          'export_advertiser_bills' => 'advertiser_bills',
         }.fetch(method, method)
 
         result = response[:"#{method}_response"][:"#{method}_result"]
