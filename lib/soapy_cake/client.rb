@@ -87,6 +87,7 @@ module SoapyCake
         raise RequestUnsuccessful, response[:fault][:reason][:text] if response[:fault]
         node_name = {
           'affiliate_summary' => 'affiliates',
+          'advertiser_summary' => 'advertisers',
           'affiliate_tags' => 'tags',
           'offer_summary' => 'offers',
           'campaign_summary' => 'campaigns',
