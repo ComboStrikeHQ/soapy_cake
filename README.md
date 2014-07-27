@@ -42,7 +42,7 @@ SoapyCake::Client.reports.affiliate_summary(
 ```
 
 If you are interested in how we map methods to api endpoints take a look
-at [api_versions.yml](/ad2games/soapy_cake/blob/master/api_versions.yml).
+at [api_versions.yml](api_versions.yml).
 
 ## Contributing
 
