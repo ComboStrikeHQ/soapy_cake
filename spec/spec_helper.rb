@@ -1,3 +1,5 @@
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
 require 'bundler/setup'
 Bundler.require(:default, :development)
 require 'soapy_cake'
@@ -33,4 +35,7 @@ VCR.configure do |c|
   c.filter_sensitive_data('cake-api-key') { ENV['CAKE_API_KEY'] }
   c.filter_sensitive_data('cake-partner-domain.com') { ENV['CAKE_DOMAIN'] }
   c.default_cassette_options = { match_requests_on: [:method, :uri, :body] }
+
+  # allow codeclimate-test-reporter to phone home
+  c.ignore_hosts 'codeclimate.com'
 end
