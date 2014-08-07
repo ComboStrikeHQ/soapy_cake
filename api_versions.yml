@@ -4,6 +4,7 @@
     :mark_affiliate_bill_as_received: 1
     :export_advertiser_bills: 1
     :export_affiliate_bills: 1
+    :mark_affiliate_bill_as_paid: 1
   :add:
     :advertiser_credit: 1
     :creative: 1
