@@ -1,5 +1,6 @@
 require 'sekken'
 require 'active_support/core_ext/time/zones'
+require 'local_copy'
 
 module SoapyCake
   class Client
@@ -38,8 +39,9 @@ module SoapyCake
     end
 
     def self.sekken_client(url)
+      path = LocalCopy.fetch(url)
       @sekken_clients ||= {}
-      @sekken_clients[url] ||= Sekken.new(url)
+      @sekken_clients[url] ||= Sekken.new(path)
     end
 
     def method_missing(method, opts = {})
