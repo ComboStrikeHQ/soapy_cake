@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = SoapyCake::VERSION
   spec.authors       = ['ad2games GmbH']
   spec.email         = ['developers@ad2games.com']
-  spec.summary       = %q{Simple client for the CAKE API}
-  spec.description   = %q{Simple client for the CAKE API (http://getcake.com)}
+  spec.summary       = 'Simple client for the CAKE API'
+  spec.description   = 'Simple client for the CAKE API (http://getcake.com)'
   spec.homepage      = 'http://ad2games.com'
   spec.license       = 'MIT'
 

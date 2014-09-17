@@ -1,4 +1,4 @@
-require "codeclimate-test-reporter"
+require 'codeclimate-test-reporter'
 CodeClimate::TestReporter.start
 require 'bundler/setup'
 Bundler.require(:default, :development)

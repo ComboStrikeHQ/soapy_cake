@@ -15,7 +15,7 @@ module SoapyCake
         if ENV['CAKE_DOMAIN'].present?
           ENV['CAKE_DOMAIN']
         else
-          raise 'We need a domain'
+          fail 'We need a domain'
         end
       end
 
@@ -25,7 +25,7 @@ module SoapyCake
         elsif ENV['CAKE_API_KEY']
           ENV['CAKE_API_KEY']
         else
-          raise 'We need an API key here!'
+          fail 'We need an API key here!'
         end
       end
     end
@@ -86,7 +86,7 @@ module SoapyCake
 
     def process_response(method, response)
       Time.use_zone('UTC') do
-        raise RequestUnsuccessful, response[:fault][:reason][:text] if response[:fault]
+        fail RequestUnsuccessful, response[:fault][:reason][:text] if response[:fault]
         node_name = {
           'affiliate_summary' => 'affiliates',
           'advertiser_summary' => 'advertisers',
@@ -99,10 +99,10 @@ module SoapyCake
         }.fetch(method, method)
 
         result = response[:"#{method}_response"][:"#{method}_result"]
-        raise RequestUnsuccessful, result[:message] if result[:success] == false
+        fail RequestUnsuccessful, result[:message] if result[:success] == false
         return result unless result_has_collection?(result, method)
-        extract_collection(node_name, result).
-          map { |hash| remove_prefix(node_name, hash) }
+        extract_collection(node_name, result)
+          .map { |hash| remove_prefix(node_name, hash) }
       end
     end
 

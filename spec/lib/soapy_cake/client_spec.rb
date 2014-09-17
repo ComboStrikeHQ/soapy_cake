@@ -173,20 +173,18 @@ describe SoapyCake::Client do
     end
 
     it 'raises RequestUnsuccessful if response contains success: false' do
-      expect {
-        client.send(:process_response, :affiliate, {
-          affiliate_response: {
-            affiliate_result: { message: 'FAIL!', success: false }
-          }
-        })
-      }.to raise_error(SoapyCake::Client::RequestUnsuccessful, 'FAIL!')
+      expect do
+        client.send(:process_response, :affiliate, affiliate_response: {
+                      affiliate_result: { message: 'FAIL!', success: false }
+                    })
+      end.to raise_error(SoapyCake::Client::RequestUnsuccessful, 'FAIL!')
     end
 
     it 'raises RequestUnsuccessful if response contains `:fault` key' do
-      expect {
+      expect do
         client.send(:process_response, :affiliate,
-                    { fault: { reason: { text: 'FAIL!' }}})
-      }.to raise_error(SoapyCake::Client::RequestUnsuccessful, 'FAIL!')
+                    fault: { reason: { text: 'FAIL!' } })
+      end.to raise_error(SoapyCake::Client::RequestUnsuccessful, 'FAIL!')
     end
   end
 
