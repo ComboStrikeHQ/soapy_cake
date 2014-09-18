@@ -3,7 +3,7 @@
 [![Test Coverage](https://codeclimate.com/github/ad2games/soapy_cake/coverage.png)](https://codeclimate.com/github/ad2games/soapy_cake)
 [![Gem Version](http://img.shields.io/gem/v/soapy_cake.svg)](http://rubygems.org/gems/soapy_cake)
 [![Dependency Status](http://img.shields.io/gemnasium/ad2games/soapy_cake.svg)](https://gemnasium.com/ad2games/soapy_cake)
-[![Build Status](https://circleci.com/gh/ad2games/soapy_cake.png?circle-token=aac691804f58acd8e96db632f8133e3c6155f123)](https://circleci.com/gh/ad2games/soapy_cake)
+[![Circle CI](https://circleci.com/gh/ad2games/soapy_cake.png?style=shield&circle-token=aac691804f58acd8e96db632f8133e3c6155f123)](https://circleci.com/gh/ad2games/soapy_cake)
 
 Simple client library for [cake](http://getcake.com).
 
