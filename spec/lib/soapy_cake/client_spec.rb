@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe SoapyCake::Client do
+RSpec.describe SoapyCake::Client do
   before do
     SoapyCake::Client.instance_variable_set(:@sekken_clients, nil)
   end
