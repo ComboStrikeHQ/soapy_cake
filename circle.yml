@@ -1,7 +1,0 @@
-deployment:
-  production:
-    branch: master
-    commands:
-      - gem install geminabox
-      - gem build soapy_cake.gemspec
-      - gem inabox soapy_cake-*.gem --host $GEMINABOX_URL
