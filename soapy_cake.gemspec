@@ -21,6 +21,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'activesupport'
   spec.add_dependency 'sekken'
   spec.add_dependency 'local_copy'
+  spec.add_dependency 'httparty'
 
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake'

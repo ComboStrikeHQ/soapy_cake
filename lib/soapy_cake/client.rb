@@ -41,7 +41,7 @@ module SoapyCake
     def self.sekken_client(url)
       path = LocalCopy.fetch(url)
       @sekken_clients ||= {}
-      @sekken_clients[url] ||= Sekken.new(path)
+      @sekken_clients[url] ||= Sekken.new(path, HTTPartySekken.new)
     end
 
     def method_missing(method, opts = {})
