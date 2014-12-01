@@ -29,13 +29,13 @@ environment variables.
 Export all advertisers:
 
 ```ruby
-SoapyCake::Client.export.advertisers(opts)
+SoapyCake::Client::CakeClient.export.advertisers(opts)
 ```
 
 Get report for specific date range:
 
 ```ruby
-SoapyCake::Client.reports.affiliate_summary(
+SoapyCake::Client::CakeClient.reports.affiliate_summary(
   start_date: Date.beginning_of_month,
   end_date: Date.today
 )

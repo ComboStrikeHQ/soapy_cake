@@ -2,12 +2,12 @@
 
 require 'spec_helper'
 
-RSpec.describe SoapyCake::Client do
+RSpec.describe SoapyCake::Client::CakeClient do
   before do
-    SoapyCake::Client.instance_variable_set(:@sekken_clients, nil)
+    described_class.instance_variable_set(:@sekken_clients, nil)
   end
 
-  subject(:client) { SoapyCake::Client.new(:get, opts) }
+  subject(:client) { described_class.new(:get, opts) }
   let(:opts) { {} }
 
   describe '.new' do
@@ -89,7 +89,7 @@ RSpec.describe SoapyCake::Client do
 
     context 'for offer summary' do
       subject do
-        SoapyCake::Client.new(:reports, opts).offer_summary(
+        described_class.new(:reports, opts).offer_summary(
           start_date: Time.utc(2013, 1, 1),
           end_date: Time.utc(2013, 1, 2)
         )
@@ -177,20 +177,20 @@ RSpec.describe SoapyCake::Client do
         client.send(:process_response, :affiliate, affiliate_response: {
                       affiliate_result: { message: 'FAIL!', success: false }
                     })
-      end.to raise_error(SoapyCake::Client::RequestUnsuccessful, 'FAIL!')
+      end.to raise_error(described_class::RequestUnsuccessful, 'FAIL!')
     end
 
     it 'raises RequestUnsuccessful if response contains `:fault` key' do
       expect do
         client.send(:process_response, :affiliate,
                     fault: { reason: { text: 'FAIL!' } })
-      end.to raise_error(SoapyCake::Client::RequestUnsuccessful, 'FAIL!')
+      end.to raise_error(described_class::RequestUnsuccessful, 'FAIL!')
     end
   end
 
   describe 'instantiating through class method' do
     it 'creates an instance with the service set according to the method name used' do
-      instance = SoapyCake::Client.get
+      instance = described_class.get
       expect(instance.service).to eq(:get)
     end
   end
