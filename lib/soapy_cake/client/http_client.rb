@@ -1,11 +1,14 @@
 require 'httparty'
 
 class HTTPartySekken
+  include HTTParty
+  read_timeout 3 * 60
+
   def get(url)
-    HTTParty.get(url).body
+    self.class.get(url).body
   end
 
   def post(url, headers, body)
-    HTTParty.post(url, headers: headers, body: body).body
+    self.class.post(url, headers: headers, body: body).body
   end
 end
