@@ -239,4 +239,13 @@ RSpec.describe SoapyCake::Admin do
       subject.traffic(start_date: start_date, end_date: end_date)
     end
   end
+
+  describe '#update_creative' do
+    it 'updates a creative' do
+      expect_any_instance_of(SoapyCake::Client::CakeClient).to receive(:creative)
+        .with(offer_id: 1, creative_status_id: 1)
+
+      subject.update_creative(offer_id: 1, creative_status_id: 1)
+    end
+  end
 end

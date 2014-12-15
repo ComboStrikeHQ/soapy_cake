@@ -67,6 +67,10 @@ module SoapyCake
       Client::CakeClient.export.creatives(opts)
     end
 
+    def update_creative(opts = {})
+      Client::CakeClient.addedit.creative(opts)
+    end
+
     def traffic(opts)
       Client::CakeClient.reports.traffic_export(opts_with_date_range(opts))
     end
