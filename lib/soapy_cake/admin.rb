@@ -47,6 +47,10 @@ module SoapyCake
       Client::CakeClient.reports.advertiser_summary(opts_with_date_range(opts))
     end
 
+    def clicks(opts)
+      Client::CakeClient.reports.conversions(opts)
+    end
+
     def conversions(opts)
       Client::CakeClient.reports.conversions(opts.merge(conversion_type: 'conversions'))
     end
