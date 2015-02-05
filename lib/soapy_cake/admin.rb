@@ -1,91 +1,79 @@
 module SoapyCake
-  class Admin
-    def initialize(_opts = {})
-    end
-
+  class Admin < Client
     def affiliate_bills(opts = {})
-      Client::CakeClient.accounting.export_affiliate_bills(opts)
+      run Request.new(:admin, :accounting, :export_affiliate_bills, opts)
     end
 
     def advertiser_bills(opts = {})
-      Client::CakeClient.accounting.export_advertiser_bills(opts)
+      run Request.new(:admin, :accounting, :export_advertiser_bills, opts)
     end
 
-    def affiliate_bill_received!(opts = {})
-      Client::CakeClient.accounting.mark_affiliate_bill_as_received(opts)
+    def mark_affiliate_bill_as_received(opts = {})
+      run Request.new(:admin, :accounting, :mark_affiliate_bill_as_received, opts)
+    end
+
+    def mark_affiliate_bill_as_paid(opts = {})
+      run Request.new(:admin, :accounting, :mark_affiliate_bill_as_paid, opts)
     end
 
     def advertisers(opts = {})
-      Client::CakeClient.export.advertisers(opts)
+      run Request.new(:admin, :export, :advertisers, opts)
     end
 
     def affiliates(opts = {})
-      Client::CakeClient.export.affiliates(opts)
+      run Request.new(:admin, :export, :affiliates, opts)
     end
 
     def campaigns(opts = {})
-      Client::CakeClient.export.campaigns(opts)
+      run Request.new(:admin, :export, :campaigns, opts)
     end
 
     def offers(opts = {})
-      Client::CakeClient.export.offers(opts)
-    end
-
-    def campaign_summary(opts)
-      Client::CakeClient.reports.campaign_summary(opts_with_date_range(opts))
-    end
-
-    def offer_summary(opts)
-      Client::CakeClient.reports.offer_summary(opts_with_date_range(opts))
-    end
-
-    def affiliate_summary(opts)
-      Client::CakeClient.reports.affiliate_summary(opts_with_date_range(opts))
-    end
-
-    def advertiser_summary(opts)
-      Client::CakeClient.reports.advertiser_summary(opts_with_date_range(opts))
-    end
-
-    def clicks(opts)
-      Client::CakeClient.reports.conversions(opts)
-    end
-
-    def conversions(opts)
-      Client::CakeClient.reports.conversions(opts.merge(conversion_type: 'conversions'))
-    end
-
-    def events(opts)
-      Client::CakeClient.reports.conversions(opts.merge(conversion_type: 'events'))
-    end
-
-    def currencies
-      Client::CakeClient.get.currencies
-    end
-
-    def mark_affiliate_bill_as_paid(opts)
-      Client::CakeClient.accounting.mark_affiliate_bill_as_paid(opts)
+      run Request.new(:admin, :export, :offers, opts)
     end
 
     def creatives(opts = {})
-      Client::CakeClient.export.creatives(opts)
+      run Request.new(:admin, :export, :creatives, opts)
+    end
+
+    def campaign_summary(opts = {})
+      run Request.new(:admin, :reports, :campaign_summary, opts)
+    end
+
+    def offer_summary(opts = {})
+      run Request.new(:admin, :reports, :offer_summary, opts)
+    end
+
+    def affiliate_summary(opts = {})
+      run Request.new(:admin, :reports, :affiliate_summary, opts)
+    end
+
+    def advertiser_summary(opts = {})
+      run Request.new(:admin, :reports, :advertiser_summary, opts)
+    end
+
+    def clicks(opts = {})
+      run Request.new(:admin, :reports, :clicks, opts)
+    end
+
+    def conversions(opts = {})
+      run Request.new(:admin, :reports, :conversions, opts.merge(conversion_type: 'conversions'))
+    end
+
+    def events(opts = {})
+      run Request.new(:admin, :reports, :conversions, opts.merge(conversion_type: 'events'))
+    end
+
+    def traffic(opts = {})
+      run Request.new(:admin, :reports, :traffic_export, opts)
+    end
+
+    def currencies(*)
+      run Request.new(:admin, :get, :currencies, {})
     end
 
     def update_creative(opts = {})
-      Client::CakeClient.addedit.creative(opts)
-    end
-
-    def traffic(opts)
-      Client::CakeClient.reports.traffic_export(opts_with_date_range(opts))
-    end
-
-    private
-
-    def opts_with_date_range(opts)
-      start_date = opts[:start_date].to_date
-      end_date = opts[:end_date] || start_date + 1
-
-      opts.merge(start_date: start_date, end_date: end_date)
+      run Request.new(:admin, :addedit, :creative, opts)
     end
   end
 end

@@ -37,8 +37,10 @@ end
 
 ENV['CAKE_API_KEY'] = 'cake-api-key' if ENV['CAKE_API_KEY'].blank?
 ENV['CAKE_DOMAIN'] = 'cake-partner-domain.com' if ENV['CAKE_DOMAIN'].blank?
+ENV['CAKE_TIME_OFFSET'] = '1' if ENV['CAKE_TIME_OFFSET'].blank?
 
 VCR.configure do |c|
+  c.configure_rspec_metadata!
   c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
   c.hook_into :webmock
   c.filter_sensitive_data('cake-api-key') { ENV['CAKE_API_KEY'] }

@@ -1,50 +1,30 @@
-require 'spec_helper'
-
 RSpec.describe SoapyCake::Affiliate do
-  subject { described_class.new(api_key: 'abc', affiliate_id: 1) }
+  let(:affiliate_id) { 42 }
+  let(:opts) { { a: 1 } }
+  let(:cake_opts) { opts.merge(affiliate_id: affiliate_id) }
 
-  let(:client) { double('soap client') }
+  subject { described_class.new(affiliate_id: affiliate_id) }
+
+  shared_examples_for 'a cake affiliate method' do
+    it 'runs the request' do
+      request = double('request')
+      expect(SoapyCake::Request).to receive(:new)
+        .with(:affiliate, service, method, cake_opts).and_return(request)
+      expect(subject).to receive(:run).with(request)
+
+      subject.public_send(method, opts)
+    end
+  end
 
   describe '#bills' do
-    it 'returns bills' do
-      expect(SoapyCake::Client::CakeClient).to receive(:reports)
-        .with(role: :affiliates)
-        .and_return(client)
-
-      expect(client).to receive(:bills).with(affiliate_id: 1, api_key: 'abc')
-
-      subject.bills
-    end
+    let(:service) { :reports }
+    let(:method) { :bills }
+    it_behaves_like 'a cake affiliate method'
   end
 
   describe '#offer_feed' do
-    let(:offers) { double('offers') }
-
-    it 'returns offers' do
-      expect(SoapyCake::Client::CakeClient).to receive(:offers)
-        .with(role: :affiliates)
-        .and_return(client)
-
-      expect(client).to receive(:offer_feed)
-        .with(affiliate_id: 1, api_key: 'abc', status_id: 3)
-        .and_return(offers)
-
-      expect(subject.offer_feed(status_id: 3)).to eq(offers)
-    end
-  end
-
-  describe '#campaign' do
-    let(:campaign) { double('campaign') }
-
-    it 'returns a campaign' do
-      expect(SoapyCake::Client::CakeClient).to receive(:offers)
-        .with(role: :affiliates)
-        .and_return(client)
-
-      expect(client).to receive(:get_campaign)
-        .with(affiliate_id: 1, api_key: 'abc', campaign_id: 12)
-        .and_return(campaign)
-      expect(subject.campaign(campaign_id: 12)).to eq(campaign)
-    end
+    let(:service) { :offers }
+    let(:method) { :offer_feed }
+    it_behaves_like 'a cake affiliate method'
   end
 end

@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://cake-partner-domain.com//api/5/export.asmx
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0"?>
+        <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:cake="http://cakemarketing.com/api/5/">
+          <env:Header/>
+          <env:Body>
+            <cake:Affiliates>
+              <cake:api_key>cake-api-key</cake:api_key>
+              <cake:affiliate_id>bloops</cake:affiliate_id>
+            </cake:Affiliates>
+          </env:Body>
+        </env:Envelope>
+    headers:
+      Content-Type:
+      - application/soap+xml;charset=UTF-8
+  response:
+    status:
+      code: 500
+      message: Internal Server Error
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - application/soap+xml; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 10 Feb 2015 13:00:42 GMT
+      Content-Length:
+      - '542'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><soap:Fault><soap:Code><soap:Value>soap:Sender</soap:Value></soap:Code><soap:Reason><soap:Text
+        xml:lang="en">Server was unable to read request. ---&gt; There is an error
+        in XML document (7, 52). ---&gt; Input string was not in a correct format.</soap:Text></soap:Reason><soap:Detail
+        /></soap:Fault></soap:Body></soap:Envelope>
+    http_version: 
+  recorded_at: Tue, 10 Feb 2015 13:00:44 GMT
+recorded_with: VCR 2.9.3
