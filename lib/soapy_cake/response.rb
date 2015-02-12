@@ -42,7 +42,10 @@ module SoapyCake
     def check_errors!
       fault = sax.for_tag(:fault).first
       fail RequestFailed, fault[:reason][:text] if fault
-      fail RequestFailed, sax.for_tag(:Text).first unless sax.for_tag(:success).first == 'true'
+      unless sax.for_tag(:success).first == 'true'
+        message = sax.for_tag(:message).first || sax.for_tag(:Text).first || 'Unknown error'
+        fail RequestFailed, message
+      end
     end
   end
 end
