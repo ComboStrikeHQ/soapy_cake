@@ -23,19 +23,19 @@ Or install it yourself as:
 
 ## Usage Examples
 
-First we assume that you set the `CAKE_DOMAIN` and `CAKE_API_KEY`
+First we assume that you set the `CAKE_DOMAIN`, `CAKE_API_KEY` and `CAKE_TIME_OFFSET`
 environment variables.
 
 Export all advertisers:
 
 ```ruby
-SoapyCake::Client::CakeClient.export.advertisers(opts)
+SoapyCake::Admin.new.advertisers(opts)
 ```
 
 Get report for specific date range:
 
 ```ruby
-SoapyCake::Client::CakeClient.reports.affiliate_summary(
+SoapyCake::Admin.new.affiliate_summary(
   start_date: Date.beginning_of_month,
   end_date: Date.today
 )
