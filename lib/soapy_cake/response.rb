@@ -19,7 +19,7 @@ module SoapyCake
 
     def typed_element(element)
       Helper.walk_tree(element) do |value, key|
-        next value.to_i if key.to_s.end_with?('_id')
+        next value.to_i if key.to_s.end_with?('_id') && !key.to_s.end_with?('tax_id')
 
         if /\A\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.?\d*\z/.match(value)
           next DateTime.parse(value + format('%+03d:00', time_offset.to_i))
