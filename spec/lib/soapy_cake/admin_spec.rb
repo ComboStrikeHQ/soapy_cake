@@ -115,6 +115,11 @@ RSpec.describe SoapyCake::Admin do
       let(:cake_method) { :traffic_export }
       it_behaves_like 'a cake admin method'
     end
+
+    describe '#caps' do
+      let(:method) { :caps }
+      it_behaves_like 'a cake admin method'
+    end
   end
 
   describe 'get service' do
@@ -133,6 +138,12 @@ RSpec.describe SoapyCake::Admin do
     describe '#update_creative' do
       let(:method) { :update_creative }
       let(:cake_method) { :creative }
+      it_behaves_like 'a cake admin method'
+    end
+
+    describe '#update_creative' do
+      let(:method) { :update_offer }
+      let(:cake_method) { :offer }
       it_behaves_like 'a cake admin method'
     end
   end

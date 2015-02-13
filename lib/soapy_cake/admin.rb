@@ -68,12 +68,20 @@ module SoapyCake
       run Request.new(:admin, :reports, :traffic_export, opts)
     end
 
+    def caps(opts = {})
+      run Request.new(:admin, :reports, :caps, opts)
+    end
+
     def currencies(*)
       run Request.new(:admin, :get, :currencies, {})
     end
 
     def update_creative(opts = {})
       run Request.new(:admin, :addedit, :creative, opts)
+    end
+
+    def update_offer(opts = {})
+      run Request.new(:admin, :addedit, :offer, opts)
     end
   end
 end
