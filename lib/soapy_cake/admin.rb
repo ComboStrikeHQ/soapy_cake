@@ -80,6 +80,10 @@ module SoapyCake
       run Request.new(:admin, :addedit, :creative, opts)
     end
 
+    def update_campaign(opts = {})
+      run Request.new(:admin, :addedit, :campaign, opts)
+    end
+
     def update_offer(opts = {})
       run Request.new(:admin, :addedit, :offer, opts)
     end

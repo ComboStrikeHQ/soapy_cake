@@ -141,6 +141,12 @@ RSpec.describe SoapyCake::Admin do
       it_behaves_like 'a cake admin method'
     end
 
+    describe '#update_campaign' do
+      let(:method) { :update_campaign }
+      let(:cake_method) { :campaign }
+      it_behaves_like 'a cake admin method'
+    end
+
     describe '#update_creative' do
       let(:method) { :update_offer }
       let(:cake_method) { :offer }
