@@ -11,7 +11,7 @@ module SoapyCake
     end
 
     def path
-      "/#{(role != 'admin') ? role.pluralize : ''}/api/#{version}/#{service}.asmx"
+      "#{api_path}/#{service}.asmx"
     end
 
     def xml
@@ -29,6 +29,10 @@ module SoapyCake
 
     private
 
+    def api_path
+      "#{(role != 'admin') ? "/#{role.pluralize}" : ''}/api/#{version}"
+    end
+
     def xml_params(xml)
       xml.api_key api_key
       opts.each do |k, v|
@@ -39,7 +43,7 @@ module SoapyCake
     def xml_namespaces
       {
         'xmlns:env' => 'http://www.w3.org/2003/05/soap-envelope',
-        'xmlns:cake' => "http://cakemarketing.com/api/#{version}/"
+        'xmlns:cake' => "http://cakemarketing.com#{api_path}/"
       }
     end
 
