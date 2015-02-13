@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://cake-partner-domain.com//api/5/export.asmx
+    uri: https://cake-partner-domain.com/api/5/export.asmx
     body:
       encoding: UTF-8
       string: |
@@ -35,7 +35,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 12 Feb 2015 12:17:12 GMT
+      - Fri, 13 Feb 2015 14:29:40 GMT
       Content-Length:
       - '542'
     body:
@@ -46,5 +46,5 @@ http_interactions:
         in XML document (7, 52). ---&gt; Input string was not in a correct format.</soap:Text></soap:Reason><soap:Detail
         /></soap:Fault></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Thu, 12 Feb 2015 12:17:18 GMT
+  recorded_at: Fri, 13 Feb 2015 14:29:52 GMT
 recorded_with: VCR 2.9.3

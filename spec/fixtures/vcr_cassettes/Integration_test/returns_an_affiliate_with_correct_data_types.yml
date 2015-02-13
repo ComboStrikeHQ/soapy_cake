@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://cake-partner-domain.com//api/5/export.asmx
+    uri: https://cake-partner-domain.com/api/5/export.asmx
     body:
       encoding: UTF-8
       string: |
@@ -35,7 +35,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 12 Feb 2015 12:17:13 GMT
+      - Fri, 13 Feb 2015 14:29:41 GMT
       Content-Length:
       - '4618'
     body:
@@ -145,5 +145,5 @@ http_interactions:
         YXRlcz48L0FmZmlsaWF0ZXNSZXN1bHQ+PC9BZmZpbGlhdGVzUmVzcG9uc2U+
         PC9zb2FwOkJvZHk+PC9zb2FwOkVudmVsb3BlPg==
     http_version: 
-  recorded_at: Thu, 12 Feb 2015 12:17:19 GMT
+  recorded_at: Fri, 13 Feb 2015 14:29:52 GMT
 recorded_with: VCR 2.9.3
