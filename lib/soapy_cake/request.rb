@@ -11,7 +11,7 @@ module SoapyCake
     end
 
     def path
-      "/#{(role != 'admin') ? role : ''}/api/#{version}/#{service}.asmx"
+      "/#{(role != 'admin') ? role.pluralize : ''}/api/#{version}/#{service}.asmx"
     end
 
     def xml

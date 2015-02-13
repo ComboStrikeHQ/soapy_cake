@@ -100,12 +100,8 @@ admin:
     update_conversion_revenue: 1
     update_lead_price: 2
     update_sale_revenue: 1
-advertisers:
-  reports:
-    bills: 1
-affiliates:
+affiliate:
   reports:
     bills: 3
   offers:
     offer_feed: 4
-    get_campaign: 2
