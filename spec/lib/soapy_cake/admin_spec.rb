@@ -153,4 +153,14 @@ RSpec.describe SoapyCake::Admin do
       it_behaves_like 'a cake admin method'
     end
   end
+
+  describe 'signup service' do
+    let(:service) { :signup }
+
+    describe '#affiliate_signup' do
+      let(:method) { :affiliate_signup }
+      let(:cake_method) { :affiliate }
+      it_behaves_like 'a cake admin method'
+    end
+  end
 end
