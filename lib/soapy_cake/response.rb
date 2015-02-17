@@ -1,14 +1,17 @@
 module SoapyCake
   class Response
     attr_accessor :time_offset
-    attr_reader :body
+    attr_reader :body, :addedit
 
-    def initialize(body)
+    def initialize(body, addedit)
       @body = body
+      @addedit = addedit
     end
 
     def collection
       check_errors!
+
+      return typed_element(sax.for_tag(:success_info).first) if addedit
 
       sax.at_depth(5).map do |element|
         typed_element(element)

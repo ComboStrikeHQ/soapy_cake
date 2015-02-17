@@ -84,10 +84,6 @@ module SoapyCake
       run Request.new(:admin, :addedit, :campaign, opts)
     end
 
-    def update_offer(opts = {})
-      run Request.new(:admin, :addedit, :offer, opts)
-    end
-
     def affiliate_signup(opts = {})
       run Request.new(:admin, :signup, :affiliate, opts)
     end
