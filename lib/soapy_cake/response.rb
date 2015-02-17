@@ -11,7 +11,7 @@ module SoapyCake
     def collection
       check_errors!
 
-      return typed_element(sax.for_tag(:success_info).first) if addedit
+      return typed_element(sax.at_depth(3).first) if addedit
 
       sax.at_depth(5).map do |element|
         typed_element(element)

@@ -19,6 +19,25 @@ module SoapyCake
       addedit_offer(opts)
     end
 
+    def add_offer_contract(opts = {})
+      addedit_offer_contract(opts.merge(offer_contract_id: 0))
+    end
+
+    def edit_offer_contract(opts = {})
+      require_params(opts, %i(offer_contract_id))
+      fail 'offer_contract_id must be > 0' if opts[:offer_contract_id].to_i < 1
+
+      addedit_offer_contract(opts)
+    end
+
+    def update_caps(opts = {})
+      require_params(opts, %i(cap_type_id cap_interval_id cap_amount send_alert_only))
+
+      opts[:cap_amount] = -1 if opts[:cap_interval_id] == Const::CAP_INTERVAL_DISABLED
+
+      run Request.new(:admin, :addedit, :caps, opts)
+    end
+
     private
 
     def addedit_offer(opts)
@@ -70,7 +89,16 @@ module SoapyCake
         subject_lines: ''
       )
 
-      run Request.new(:admin, :addedit, :offer, opts)
+      run(Request.new(:admin, :addedit, :offer, opts))[:success_info]
+    end
+
+    def addedit_offer_contract(opts)
+      require_params(opts, %i(
+        offer_id offer_contract_id offer_contract_name price_format_id payout received
+        received_percentage offer_link thankyou_link offer_contract_hidden
+        offer_contract_is_default use_fallback_targeting))
+
+      run Request.new(:admin, :addedit, :offer_contract, opts)
     end
 
     def require_params(opts, params)
