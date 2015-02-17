@@ -5,6 +5,7 @@ RSpec.describe 'ADDEDIT integration test' do
   let(:vertical_id) { 41 }
   let(:offer_id) { 8910 }
   let(:offer_contract_id) { 1456 }
+  let(:tier_id) { 4 }
 
   describe 'offers' do
     it 'creates an offer', :vcr do
@@ -44,7 +45,7 @@ RSpec.describe 'ADDEDIT integration test' do
         offer_description: 'TEST1',
         restrictions: 'TEST2',
         advertiser_extended_terms: 'TEST3',
-        testing_instructions: 'TEST4',
+        testing_instructions: 'TEST4'
       )
 
       expect(result).to include(
@@ -66,7 +67,7 @@ RSpec.describe 'ADDEDIT integration test' do
         received: 2.0,
         received_percentage: false,
         payout: 1.5,
-        tags: '',
+        tags: ''
       )
 
       expect(result).to include(offer_id: offer_id)
@@ -163,6 +164,20 @@ RSpec.describe 'ADDEDIT integration test' do
       )
 
       expect(result[:message]).to eq('Cap Updated')
+    end
+  end
+
+  describe 'offer tiers' do
+    it 'adds an offer tier', :vcr do
+      result = subject.add_offer_tier(
+        offer_id: offer_id,
+        offer_contract_id: offer_contract_id,
+        tier_id: tier_id,
+        price_format_id: SoapyCake::Const::PRICE_FORMAT_CPA,
+        status_id: SoapyCake::Const::OFFER_STATUS_PUBLIC
+      )
+
+      expect(result[:message]).to eq('Offer Tier Added')
     end
   end
 end

@@ -38,6 +38,17 @@ module SoapyCake
       run Request.new(:admin, :addedit, :caps, opts)
     end
 
+    def add_offer_tier(opts = {})
+      require_params(opts, %i(offer_id tier_id price_format_id offer_contract_id status_id))
+
+      opts.merge!(
+        redirect_offer_contract_id: -1,
+        add_edit_option: 'add'
+      )
+
+      run Request.new(:admin, :addedit, :offer_tiers, opts)
+    end
+
     private
 
     def addedit_offer(opts)
