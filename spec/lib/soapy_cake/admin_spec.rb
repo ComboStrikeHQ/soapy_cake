@@ -130,6 +130,13 @@ RSpec.describe SoapyCake::Admin do
       let(:cake_opts) { {} }
       it_behaves_like 'a cake admin method'
     end
+
+    describe '#tiers' do
+      let(:method) { :tiers }
+      let(:cake_method) { :affiliate_tiers }
+      let(:cake_opts) { {} }
+      it_behaves_like 'a cake admin method'
+    end
   end
 
   describe 'addedit service' do
