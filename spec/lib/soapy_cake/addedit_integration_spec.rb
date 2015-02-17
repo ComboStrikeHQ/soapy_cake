@@ -1,6 +1,8 @@
 RSpec.describe 'ADDEDIT integration test' do
   subject { SoapyCake::AdminAddedit.new }
 
+  around { |example| Timecop.freeze(Time.utc(2015, 2, 17, 12), &example) }
+
   let(:advertiser_id) { 15886 }
   let(:vertical_id) { 41 }
   let(:offer_id) { 8910 }
@@ -77,13 +79,13 @@ RSpec.describe 'ADDEDIT integration test' do
       it 'fails when not enough params are given' do
         expect do
           subject.edit_offer(offer_id: 123)
-        end.to raise_error(RuntimeError, "Parameter 'advertiser_id' missing!")
+        end.to raise_error(SoapyCake::Error, "Parameter 'advertiser_id' missing!")
       end
 
       it 'fails when invalid offer_id is given on edit' do
         expect do
           subject.edit_offer(offer_id: -1)
-        end.to raise_error(RuntimeError, 'offer_id must be > 0')
+        end.to raise_error(SoapyCake::Error, "Parameter 'offer_id' must be > 0!")
       end
     end
   end
@@ -130,13 +132,13 @@ RSpec.describe 'ADDEDIT integration test' do
       it 'fails when not enough params are given' do
         expect do
           subject.edit_offer_contract(offer_contract_id: 123)
-        end.to raise_error(RuntimeError, "Parameter 'offer_id' missing!")
+        end.to raise_error(SoapyCake::Error, "Parameter 'offer_id' missing!")
       end
 
       it 'fails when invalid offer_id is given on edit' do
         expect do
           subject.edit_offer_contract(offer_contract_id: -1)
-        end.to raise_error(RuntimeError, 'offer_contract_id must be > 0')
+        end.to raise_error(SoapyCake::Error, "Parameter 'offer_contract_id' must be > 0!")
       end
     end
   end

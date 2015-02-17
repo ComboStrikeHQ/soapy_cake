@@ -1,5 +1,7 @@
 module SoapyCake
   class Response
+    include Helper
+
     attr_accessor :time_offset
     attr_reader :body, :addedit
 
@@ -21,7 +23,7 @@ module SoapyCake
     private
 
     def typed_element(element)
-      Helper.walk_tree(element) do |value, key|
+      walk_tree(element) do |value, key|
         next value.to_i if key.to_s.end_with?('_id') && !key.to_s.end_with?('tax_id')
 
         if /\A\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.?\d*\z/.match(value)
@@ -45,10 +47,11 @@ module SoapyCake
     def check_errors!
       fault = sax.for_tag(:fault).first
       fail RequestFailed, fault[:reason][:text] if fault
-      unless sax.for_tag(:success).first == 'true'
-        message = sax.for_tag(:message).first || sax.for_tag(:Text).first || 'Unknown error'
-        fail RequestFailed, message
-      end
+      fail RequestFailed, error_message unless sax.for_tag(:success).first == 'true'
+    end
+
+    def error_message
+      sax.for_tag(:message).first || sax.for_tag(:Text).first || 'Unknown error'
     end
   end
 end

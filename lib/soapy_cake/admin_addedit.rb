@@ -1,5 +1,7 @@
 module SoapyCake
   class AdminAddedit < Client
+    include Helper
+
     def add_offer(opts = {})
       require_params(opts, %i(
         hidden offer_status_id offer_type_id currency_id ssl click_cookie_days
@@ -13,8 +15,7 @@ module SoapyCake
     end
 
     def edit_offer(opts = {})
-      require_params(opts, %i(offer_id))
-      fail 'offer_id must be > 0' if opts[:offer_id].to_i < 1
+      validate_id(opts, :offer_id)
 
       addedit_offer(opts)
     end
@@ -24,8 +25,7 @@ module SoapyCake
     end
 
     def edit_offer_contract(opts = {})
-      require_params(opts, %i(offer_contract_id))
-      fail 'offer_contract_id must be > 0' if opts[:offer_contract_id].to_i < 1
+      validate_id(opts, :offer_contract_id)
 
       addedit_offer_contract(opts)
     end
@@ -110,12 +110,6 @@ module SoapyCake
         offer_contract_is_default use_fallback_targeting))
 
       run Request.new(:admin, :addedit, :offer_contract, opts)
-    end
-
-    def require_params(opts, params)
-      params.each do |param|
-        fail "Parameter '#{param}' missing!" unless opts.key?(param)
-      end
     end
   end
 end
