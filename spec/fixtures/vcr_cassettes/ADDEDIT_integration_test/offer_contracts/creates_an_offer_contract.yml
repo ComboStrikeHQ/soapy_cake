@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://cake-partner-domain.com/api/1/addedit.asmx
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0"?>
+        <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:cake="http://cakemarketing.com/api/1/">
+          <env:Header/>
+          <env:Body>
+            <cake:OfferContract>
+              <cake:api_key>cake-api-key</cake:api_key>
+              <cake:offer_id>8910</cake:offer_id>
+              <cake:offer_contract_name>Test Contract</cake:offer_contract_name>
+              <cake:price_format_id>1</cake:price_format_id>
+              <cake:received>3.2</cake:received>
+              <cake:received_percentage>false</cake:received_percentage>
+              <cake:payout>2.5</cake:payout>
+              <cake:offer_link>http://oc.example.com</cake:offer_link>
+              <cake:thankyou_link>http://oc.example.com/thanks</cake:thankyou_link>
+              <cake:offer_contract_hidden>true</cake:offer_contract_hidden>
+              <cake:offer_contract_is_default>false</cake:offer_contract_is_default>
+              <cake:use_fallback_targeting>true</cake:use_fallback_targeting>
+              <cake:offer_contract_id>0</cake:offer_contract_id>
+            </cake:OfferContract>
+          </env:Body>
+        </env:Envelope>
+    headers:
+      Content-Type:
+      - application/soap+xml;charset=UTF-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - application/soap+xml; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 17 Feb 2015 13:19:10 GMT
+      Content-Length:
+      - '486'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><OfferContractResponse
+        xmlns="http://cakemarketing.com/api/1/"><OfferContractResult><success>true</success><message>Offer
+        Contract 1456 Created</message><offer_contract_id>1456</offer_contract_id></OfferContractResult></OfferContractResponse></soap:Body></soap:Envelope>
+    http_version: 
+  recorded_at: Tue, 17 Feb 2015 13:19:12 GMT
+recorded_with: VCR 2.9.3

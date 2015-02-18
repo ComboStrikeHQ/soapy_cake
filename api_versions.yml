@@ -23,6 +23,7 @@ admin:
     geo_targets: 1
     offer: 4
     offer_contract: 1
+    offer_tiers: 1
     suppresion_list: 1
     vertical: 1
   auth:

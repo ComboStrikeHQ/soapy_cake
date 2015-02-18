@@ -1,0 +1,96 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://cake-partner-domain.com/api/4/addedit.asmx
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0"?>
+        <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:cake="http://cakemarketing.com/api/4/">
+          <env:Header/>
+          <env:Body>
+            <cake:Offer>
+              <cake:api_key>cake-api-key</cake:api_key>
+              <cake:hidden>off</cake:hidden>
+              <cake:offer_status_id>1</cake:offer_status_id>
+              <cake:offer_type_id>3</cake:offer_type_id>
+              <cake:currency_id>2</cake:currency_id>
+              <cake:ssl>off</cake:ssl>
+              <cake:click_cookie_days>30</cake:click_cookie_days>
+              <cake:impression_cookie_days>30</cake:impression_cookie_days>
+              <cake:redirect_404>off</cake:redirect_404>
+              <cake:enable_view_thru_conversion>off</cake:enable_view_thru_conversion>
+              <cake:click_trumps_impression>off</cake:click_trumps_impression>
+              <cake:disable_click_deduplication>off</cake:disable_click_deduplication>
+              <cake:last_touch>off</cake:last_touch>
+              <cake:enable_transaction_id_deduplication>off</cake:enable_transaction_id_deduplication>
+              <cake:postbacks_only>off</cake:postbacks_only>
+              <cake:fire_global_pixel>on</cake:fire_global_pixel>
+              <cake:fire_pixel_on_nonpaid_conversions>off</cake:fire_pixel_on_nonpaid_conversions>
+              <cake:offer_link>http://www.example.com/</cake:offer_link>
+              <cake:thankyou_link>http://www.example.com/</cake:thankyou_link>
+              <cake:from_lines>from</cake:from_lines>
+              <cake:subject_lines>subject</cake:subject_lines>
+              <cake:advertiser_id>15886</cake:advertiser_id>
+              <cake:vertical_id>41</cake:vertical_id>
+              <cake:postback_url_ms_delay>60</cake:postback_url_ms_delay>
+              <cake:offer_contract_hidden>off</cake:offer_contract_hidden>
+              <cake:price_format_id>1</cake:price_format_id>
+              <cake:received>2.0</cake:received>
+              <cake:received_percentage>off</cake:received_percentage>
+              <cake:payout>1.5</cake:payout>
+              <cake:tags/>
+              <cake:offer_name>Test Offer</cake:offer_name>
+              <cake:offer_description>TEST1</cake:offer_description>
+              <cake:restrictions>TEST2</cake:restrictions>
+              <cake:advertiser_extended_terms>TEST3</cake:advertiser_extended_terms>
+              <cake:testing_instructions>TEST4</cake:testing_instructions>
+              <cake:offer_id>0</cake:offer_id>
+              <cake:third_party_name/>
+              <cake:redirect_offer_contract_id>0</cake:redirect_offer_contract_id>
+              <cake:pixel_html/>
+              <cake:postback_url/>
+              <cake:conversion_cap_behavior>0</cake:conversion_cap_behavior>
+              <cake:conversion_behavior_on_redirect>0</cake:conversion_behavior_on_redirect>
+              <cake:expiration_date>2115-01-24T01:00:00</cake:expiration_date>
+              <cake:expiration_date_modification_type>do_not_change</cake:expiration_date_modification_type>
+              <cake:offer_contract_name/>
+              <cake:preview_link/>
+              <cake:thumbnail_file_import_url/>
+              <cake:allow_affiliates_to_create_creatives>no_change</cake:allow_affiliates_to_create_creatives>
+              <cake:unsubscribe_link/>
+            </cake:Offer>
+          </env:Body>
+        </env:Envelope>
+    headers:
+      Content-Type:
+      - application/soap+xml;charset=UTF-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - application/soap+xml; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 17 Feb 2015 13:18:40 GMT
+      Content-Length:
+      - '562'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><OfferResponse
+        xmlns="http://cakemarketing.com/api/4/"><OfferResult><success>true</success><message>Offer
+        8910 Created</message><success_info><offer_id>8910</offer_id><offer_contract_id>1455</offer_contract_id><campaign_id>13301</campaign_id><creative_id>9431</creative_id></success_info></OfferResult></OfferResponse></soap:Body></soap:Envelope>
+    http_version: 
+  recorded_at: Tue, 17 Feb 2015 13:18:43 GMT
+recorded_with: VCR 2.9.3

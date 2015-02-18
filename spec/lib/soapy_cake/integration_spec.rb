@@ -13,11 +13,11 @@ RSpec.describe 'Integration test' do
       # dates
       date_created: DateTime.new(2014, 4, 28, 10, 52, 15.537),
       # floats
-      minimum_payment_threshold: '0.0000',
+      minimum_payment_threshold: '0.0000'
     )
 
     # arrays
-    expect(result.first[:contacts][:contact_info].map { |contact| contact[:contact_id]}).to \
+    expect(result.first[:contacts][:contact_info].map { |contact| contact[:contact_id] }).to \
       eq([8819, 8820])
   end
 

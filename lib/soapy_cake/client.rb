@@ -21,7 +21,7 @@ module SoapyCake
       url = "https://#{domain}#{request.path}"
       body = HTTParty.post(url, headers: headers, body: request.xml).body
 
-      response = Response.new(body)
+      response = Response.new(body, request.addedit?)
       response.time_offset = time_offset
       response.collection
     end
