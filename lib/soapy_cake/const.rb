@@ -1,39 +1,49 @@
 module SoapyCake
   module Const
-    OFFER_STATUS_PUBLIC = 1
-    OFFER_STATUS_PRIVATE = 2
-    OFFER_STATUS_APPLY_TO_RUN = 3
-    OFFER_STATUS_INACTIVE = 4
-
-    OFFER_TYPE_HOSTED = 1
-    OFFER_TYPE_HOST_N_POST = 2
-    OFFER_TYPE_3RD_PARTY = 3
-
-    CURRENCY_USD = 1
-    CURRENCY_EUR = 2
-    CURRENCY_GBD = 3
-    CURRENCY_AUD = 4
-    CURRENCY_CAD = 5
-
-    PRICE_FORMAT_CPA = 1
-    PRICE_FORMAT_CPC = 2
-    PRICE_FORMAT_CPM = 3
-    PRICE_FORMAT_FIXED = 4
-    PRICE_FORMAT_REVSHARE = 5
-
-    CONVERSION_BEHAVIOR_SYSTEM = 0
-    CONVERSION_BEHAVIOR_ADV_AFF = 1
-    CONVERSION_BEHAVIOR_ADV_NO_AFF = 2
-    CONVERSION_BEHAVIOR_IGNORE = 3
-    CONVERSION_BEHAVIOR_NO_ADV_AFF = 4
-    CONVERSION_BEHAVIOR_NO_ADV_NO_AFF = 5
-
-    CAP_TYPE_CLICK = 1
-    CAP_TYPE_CONVERSION = 2
-
-    CAP_INTERVAL_DISABLED = 0
-    CAP_INTERVAL_DAILY = 1
-    CAP_INTERVAL_WEEKLY = 2
-    CAP_INTERVAL_MONTHLY = 3
+    CONSTS = {
+      offer_status_id: {
+        public: 1,
+        private: 2,
+        apply_to_run: 3,
+        inactive: 4,
+      },
+      offer_type_id: {
+        hosted: 1,
+        host_n_post: 2,
+        third_party: 3,
+      },
+      currency_id: {
+        usd: 1,
+        eur: 2,
+        gbd: 3,
+        aud: 4,
+        cad: 5,
+      },
+      price_format_id: {
+        cpa: 1,
+        cpc: 2,
+        cpm: 3,
+        fixed: 4,
+        revshare: 5,
+      },
+      conversion_behaviour_id: {
+        system: 0,
+        adv_off: 1,
+        adv_no_aff: 2,
+        ignore: 3,
+        no_adv_aff: 4,
+        no_adv_no_aff: 5,
+      },
+      cap_type_id: {
+        click: 1,
+        conversion: 2,
+      },
+      cap_interval_id: {
+        disabled: 0,
+        daily: 1,
+        weekly: 2,
+        monthly: 3,
+      }
+    }
   end
 end

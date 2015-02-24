@@ -13,9 +13,9 @@ RSpec.describe 'ADDEDIT integration test' do
     it 'creates an offer', :vcr do
       result = subject.add_offer(
         hidden: false,
-        offer_status_id: SoapyCake::Const::OFFER_STATUS_PUBLIC,
-        offer_type_id: SoapyCake::Const::OFFER_TYPE_3RD_PARTY,
-        currency_id: SoapyCake::Const::CURRENCY_EUR,
+        offer_status_id: :public,
+        offer_type_id: :third_party,
+        currency_id: :eur,
         ssl: false,
         click_cookie_days: 30,
         impression_cookie_days: 30,
@@ -37,7 +37,7 @@ RSpec.describe 'ADDEDIT integration test' do
         vertical_id: vertical_id,
         postback_url_ms_delay: 60,
         offer_contract_hidden: false,
-        price_format_id: SoapyCake::Const::PRICE_FORMAT_CPA,
+        price_format_id: :cpa,
         received: 2.0,
         received_percentage: false,
         payout: 1.5,
@@ -65,7 +65,7 @@ RSpec.describe 'ADDEDIT integration test' do
         vertical_id: vertical_id,
         postback_url_ms_delay: 50,
         offer_contract_hidden: false,
-        price_format_id: SoapyCake::Const::PRICE_FORMAT_CPA,
+        price_format_id: :cpa,
         received: 2.0,
         received_percentage: false,
         payout: 1.5,
@@ -95,7 +95,7 @@ RSpec.describe 'ADDEDIT integration test' do
       result = subject.add_offer_contract(
         offer_id: offer_id,
         offer_contract_name: 'Test Contract',
-        price_format_id: SoapyCake::Const::PRICE_FORMAT_CPA,
+        price_format_id: :cpa,
         received: 3.2,
         received_percentage: false,
         payout: 2.5,
@@ -114,7 +114,7 @@ RSpec.describe 'ADDEDIT integration test' do
         offer_id: offer_id,
         offer_contract_id: offer_contract_id,
         offer_contract_name: 'Test Contract',
-        price_format_id: SoapyCake::Const::PRICE_FORMAT_CPA,
+        price_format_id: :cpa,
         received: 3.2,
         received_percentage: false,
         payout: 2.5,
@@ -147,8 +147,8 @@ RSpec.describe 'ADDEDIT integration test' do
     it 'updates a cap for an offer contract', :vcr do
       result = subject.update_caps(
         offer_contract_id: offer_contract_id,
-        cap_type_id: SoapyCake::Const::CAP_TYPE_CONVERSION,
-        cap_interval_id: SoapyCake::Const::CAP_INTERVAL_DAILY,
+        cap_type_id: :conversion,
+        cap_interval_id: :daily,
         cap_amount: 42,
         send_alert_only: false
       )
@@ -159,8 +159,8 @@ RSpec.describe 'ADDEDIT integration test' do
     it 'removes a cap for an offer contract', :vcr do
       result = subject.update_caps(
         offer_contract_id: offer_contract_id,
-        cap_type_id: SoapyCake::Const::CAP_TYPE_CONVERSION,
-        cap_interval_id: SoapyCake::Const::CAP_INTERVAL_DISABLED,
+        cap_type_id: :conversion,
+        cap_interval_id: :disabled,
         cap_amount: 42,
         send_alert_only: false
       )
@@ -175,8 +175,8 @@ RSpec.describe 'ADDEDIT integration test' do
         offer_id: offer_id,
         offer_contract_id: offer_contract_id,
         tier_id: tier_id,
-        price_format_id: SoapyCake::Const::PRICE_FORMAT_CPA,
-        status_id: SoapyCake::Const::OFFER_STATUS_PUBLIC
+        price_format_id: :cpa,
+        status_id: :public
       )
 
       expect(result[:message]).to eq('Offer Tier Added')
