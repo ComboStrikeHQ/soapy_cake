@@ -131,6 +131,12 @@ RSpec.describe SoapyCake::Admin do
       it_behaves_like 'a cake admin method'
     end
 
+    describe '#countries' do
+      let(:method) { :countries }
+      let(:cake_opts) { {} }
+      it_behaves_like 'a cake admin method'
+    end
+
     describe '#currencies' do
       let(:method) { :currencies }
       let(:cake_opts) { {} }

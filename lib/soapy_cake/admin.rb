@@ -95,5 +95,9 @@ module SoapyCake
     def verticals(*)
       run Request.new(:admin, :get, :verticals, {})
     end
+
+    def countries(*)
+      run Request.new(:admin, :get, :countries, {})
+    end
   end
 end
