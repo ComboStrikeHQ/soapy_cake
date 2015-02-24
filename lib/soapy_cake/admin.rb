@@ -91,5 +91,9 @@ module SoapyCake
     def affiliate_signup(opts = {})
       run Request.new(:admin, :signup, :affiliate, opts)
     end
+
+    def verticals(*)
+      run Request.new(:admin, :get, :verticals, {})
+    end
   end
 end
