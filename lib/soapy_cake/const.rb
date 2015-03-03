@@ -1,6 +1,11 @@
 module SoapyCake
   module Const
     CONSTS = {
+      account_status_id: {
+        active: 1,
+        inactive: 2,
+        pending: 3,
+      },
       offer_status_id: {
         public: 1,
         private: 2,
