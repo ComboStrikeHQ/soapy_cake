@@ -24,6 +24,11 @@ module SoapyCake
         aud: 4,
         cad: 5,
       },
+      payment_setting_id: {
+        system_default: 1,
+        offer_currency: 2,
+        affiliate_currency: 3,
+      },
       price_format_id: {
         cpa: 1,
         cpc: 2,
