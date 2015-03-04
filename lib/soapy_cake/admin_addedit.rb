@@ -20,6 +20,14 @@ module SoapyCake
       addedit_offer(opts)
     end
 
+    def add_geo_targets(opts = {})
+      require_params(opts, %i(offer_contract_id countries set_targeting_to_geo))
+
+      opts[:countries] = Array(opts[:countries]).join(',')
+
+      run Request.new(:admin, :addedit, :geo_targets, opts.merge(add_edit_option: 'add'))
+    end
+
     def add_offer_contract(opts = {})
       addedit_offer_contract(opts.merge(offer_contract_id: 0))
     end

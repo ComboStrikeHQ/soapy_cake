@@ -90,6 +90,18 @@ RSpec.describe 'ADDEDIT integration test' do
     end
   end
 
+  describe 'geo targeting' do
+    it 'creates geo targetings', :vcr do
+      result = subject.add_geo_targets(
+        offer_contract_id: offer_contract_id,
+        countries: %w(DE FR),
+        set_targeting_to_geo: true,
+      )
+
+      expect(result).to include(success: true)
+    end
+  end
+
   describe 'offer contracts' do
     it 'creates an offer contract', :vcr do
       result = subject.add_offer_contract(
