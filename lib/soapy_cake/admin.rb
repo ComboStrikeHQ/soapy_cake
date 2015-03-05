@@ -99,5 +99,9 @@ module SoapyCake
     def countries(*)
       run Request.new(:admin, :get, :countries, {})
     end
+
+    def payment_types
+      run Request.new(:admin, :get, :payment_types, {})
+    end
   end
 end
