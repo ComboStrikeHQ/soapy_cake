@@ -20,7 +20,7 @@ http_interactions:
               <cake:click_cookie_days>30</cake:click_cookie_days>
               <cake:impression_cookie_days>30</cake:impression_cookie_days>
               <cake:redirect_404>off</cake:redirect_404>
-              <cake:enable_view_thru_conversion>off</cake:enable_view_thru_conversion>
+              <cake:enable_view_thru_conversions>off</cake:enable_view_thru_conversions>
               <cake:click_trumps_impression>off</cake:click_trumps_impression>
               <cake:disable_click_deduplication>off</cake:disable_click_deduplication>
               <cake:last_touch>off</cake:last_touch>

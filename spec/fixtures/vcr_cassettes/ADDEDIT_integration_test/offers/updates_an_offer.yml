@@ -31,7 +31,7 @@ http_interactions:
               <cake:impression_cookie_days>-1</cake:impression_cookie_days>
               <cake:redirect_offer_contract_id>0</cake:redirect_offer_contract_id>
               <cake:redirect_404>no_change</cake:redirect_404>
-              <cake:enable_view_thru_conversion>no_change</cake:enable_view_thru_conversion>
+              <cake:enable_view_thru_conversions>no_change</cake:enable_view_thru_conversions>
               <cake:click_trumps_impression>no_change</cake:click_trumps_impression>
               <cake:disable_click_deduplication>no_change</cake:disable_click_deduplication>
               <cake:last_touch>no_change</cake:last_touch>

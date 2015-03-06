@@ -5,7 +5,7 @@ module SoapyCake
     def add_offer(opts = {})
       require_params(opts, %i(
         hidden offer_status_id offer_type_id currency_id ssl click_cookie_days
-        impression_cookie_days redirect_404 enable_view_thru_conversion
+        impression_cookie_days redirect_404 enable_view_thru_conversions
         click_trumps_impression disable_click_deduplication last_touch
         enable_transaction_id_deduplication postbacks_only fire_global_pixel
         fire_pixel_on_nonpaid_conversions offer_link thankyou_link from_lines
@@ -98,7 +98,7 @@ module SoapyCake
         impression_cookie_days: -1,
         redirect_offer_contract_id: 0,
         redirect_404: 'no_change',
-        enable_view_thru_conversion: 'no_change',
+        enable_view_thru_conversions: 'no_change',
         click_trumps_impression: 'no_change',
         disable_click_deduplication: 'no_change',
         last_touch: 'no_change',

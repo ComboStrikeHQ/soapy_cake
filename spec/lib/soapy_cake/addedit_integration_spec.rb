@@ -20,7 +20,7 @@ RSpec.describe 'ADDEDIT integration test' do
         click_cookie_days: 30,
         impression_cookie_days: 30,
         redirect_404: 'off',
-        enable_view_thru_conversion: 'off',
+        enable_view_thru_conversions: 'off',
         click_trumps_impression: 'off',
         disable_click_deduplication: 'off',
         last_touch: 'off',
