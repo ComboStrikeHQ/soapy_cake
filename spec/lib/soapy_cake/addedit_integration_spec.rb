@@ -42,7 +42,7 @@ RSpec.describe 'ADDEDIT integration test' do
         received_percentage: false,
         payout: 1.5,
 
-        tags: '',
+        tags: %w(some tags),
         offer_name: 'Test Offer',
         offer_description: 'TEST1',
         restrictions: 'TEST2',
@@ -51,9 +51,9 @@ RSpec.describe 'ADDEDIT integration test' do
       )
 
       expect(result).to include(
-        creative_id: 9431,
-        offer_contract_id: 1455,
-        offer_id: 8910
+        creative_id: 9619,
+        offer_contract_id: 2018,
+        offer_id: 9098,
       )
     end
 

@@ -81,6 +81,8 @@ module SoapyCake
         advertiser_id vertical_id postback_url_ms_delay offer_contract_hidden
         price_format_id received received_percentage payout tags))
 
+      opts[:tags] = Array(opts[:tags]).join(', ')
+
       opts.each do |k, v|
         opts[k] = 'on' if v == true
         opts[k] = 'off' if v == false
