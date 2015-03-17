@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in soapy_cake.gemspec
 gemspec
 
-group :test do
+group :development, :test do
+  gem 'rubocop-ci', github: 'ad2games/rubocop-ci'
   gem 'codeclimate-test-reporter', require: false
 end
