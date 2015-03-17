@@ -7,6 +7,7 @@ RSpec.describe 'ADDEDIT integration test' do
   let(:vertical_id) { 41 }
   let(:offer_id) { 8910 }
   let(:offer_contract_id) { 1456 }
+  let(:redirect_offer_contract_id) { 1392 }
   let(:tier_id) { 4 }
 
   describe 'offers' do
@@ -95,10 +96,33 @@ RSpec.describe 'ADDEDIT integration test' do
       result = subject.add_geo_targets(
         offer_contract_id: offer_contract_id,
         countries: %w(DE FR),
-        set_targeting_to_geo: true,
+        allow_countries: true
       )
+      expect(result).to include(success: true, row_count: '2')
 
-      expect(result).to include(success: true)
+      result = subject.add_geo_targets(
+        offer_contract_id: offer_contract_id,
+        countries: %w(AT CH),
+        redirects: {
+          'AT' => redirect_offer_contract_id,
+          'CH' => redirect_offer_contract_id,
+        },
+        allow_countries: false
+      )
+      expect(result).to include(success: true, row_count: '2')
+    end
+
+    it 'fails if it does not get a correct redirect hash' do
+      expect do
+        subject.add_geo_targets(
+          offer_contract_id: offer_contract_id,
+          redirects: {},
+          allow_countries: false
+        )
+      end.to raise_error(
+        SoapyCake::Error,
+        "Parameter 'redirects' must be a COUNTRY=>REDIRECT_OFFER_CONTRACT_ID hash!"
+      )
     end
   end
 

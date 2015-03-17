@@ -21,11 +21,29 @@ module SoapyCake
     end
 
     def add_geo_targets(opts = {})
-      require_params(opts, %i(offer_contract_id countries set_targeting_to_geo))
+      require_params(opts, %i(offer_contract_id allow_countries))
 
-      opts[:countries] = Array(opts[:countries]).join(',')
+      if opts[:allow_countries]
+        require_params(opts, %i(countries))
+        countries = Array(opts[:countries])
+        opts[:countries] = countries.join(',')
+        opts[:redirect_offer_contract_ids] = ([0] * countries.count).join(',')
+      else
+        unless opts[:redirects].is_a?(Hash) && opts[:redirects].keys.count > 0
+          fail Error, "Parameter 'redirects' must be a COUNTRY=>REDIRECT_OFFER_CONTRACT_ID hash!"
+        end
 
-      run Request.new(:admin, :addedit, :geo_targets, opts.merge(add_edit_option: 'add'))
+        opts[:countries] = opts[:redirects].keys.join(',')
+        opts[:redirect_offer_contract_ids] = opts[:redirects].values.join(',')
+        opts.delete(:redirects)
+      end
+
+      opts.merge!(
+        add_edit_option: 'add',
+        set_targeting_to_geo: true
+      )
+
+      run Request.new(:admin, :addedit, :geo_targets, opts)
     end
 
     def add_offer_contract(opts = {})
