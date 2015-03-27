@@ -34,6 +34,9 @@ RSpec.describe 'ADDEDIT integration test' do
         from_lines: 'from',
         subject_lines: 'subject',
 
+        conversion_cap_behavior: :ignore,
+        conversion_behavior_on_redirect: :ignore,
+
         advertiser_id: advertiser_id,
         vertical_id: vertical_id,
         postback_url_ms_delay: 60,
@@ -52,9 +55,9 @@ RSpec.describe 'ADDEDIT integration test' do
       )
 
       expect(result).to include(
-        creative_id: 9619,
-        offer_contract_id: 2018,
-        offer_id: 9098,
+        creative_id: 10018,
+        offer_contract_id: 3552,
+        offer_id: 9497,
       )
     end
 

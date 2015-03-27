@@ -32,6 +32,8 @@ http_interactions:
               <cake:thankyou_link>http://www.example.com/</cake:thankyou_link>
               <cake:from_lines>from</cake:from_lines>
               <cake:subject_lines>subject</cake:subject_lines>
+              <cake:conversion_cap_behavior>3</cake:conversion_cap_behavior>
+              <cake:conversion_behavior_on_redirect>3</cake:conversion_behavior_on_redirect>
               <cake:advertiser_id>15886</cake:advertiser_id>
               <cake:vertical_id>41</cake:vertical_id>
               <cake:postback_url_ms_delay>60</cake:postback_url_ms_delay>
@@ -51,8 +53,6 @@ http_interactions:
               <cake:redirect_offer_contract_id>0</cake:redirect_offer_contract_id>
               <cake:pixel_html/>
               <cake:postback_url/>
-              <cake:conversion_cap_behavior>0</cake:conversion_cap_behavior>
-              <cake:conversion_behavior_on_redirect>0</cake:conversion_behavior_on_redirect>
               <cake:expiration_date>2115-01-24T01:00:00</cake:expiration_date>
               <cake:expiration_date_modification_type>do_not_change</cake:expiration_date_modification_type>
               <cake:offer_contract_name/>
@@ -82,15 +82,15 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Fri, 06 Mar 2015 13:46:57 GMT
+      - Fri, 27 Mar 2015 10:53:05 GMT
       Content-Length:
-      - '562'
+      - '563'
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><OfferResponse
         xmlns="http://cakemarketing.com/api/4/"><OfferResult><success>true</success><message>Offer
-        9098 Created</message><success_info><offer_id>9098</offer_id><offer_contract_id>2018</offer_contract_id><campaign_id>13866</campaign_id><creative_id>9619</creative_id></success_info></OfferResult></OfferResponse></soap:Body></soap:Envelope>
+        9497 Created</message><success_info><offer_id>9497</offer_id><offer_contract_id>3552</offer_contract_id><campaign_id>15404</campaign_id><creative_id>10018</creative_id></success_info></OfferResult></OfferResponse></soap:Body></soap:Envelope>
     http_version: 
   recorded_at: Tue, 17 Feb 2015 12:00:00 GMT
 recorded_with: VCR 2.9.3

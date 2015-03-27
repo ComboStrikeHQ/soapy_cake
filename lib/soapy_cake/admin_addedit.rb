@@ -108,6 +108,11 @@ module SoapyCake
 
       translate_values!(opts, %i(currency_id offer_status_id offer_type_id price_format_id))
 
+      %i(conversion_cap_behavior conversion_behavior_on_redirect).each do |key|
+        next unless opts[key]
+        opts[key] = const_lookup(:conversion_behaviour_id, opts[key])
+      end
+
       opts.reverse_merge!(
         offer_name: '',
         third_party_name: '',
