@@ -57,7 +57,7 @@ RSpec.describe 'ADDEDIT integration test' do
       expect(result).to include(
         creative_id: 10018,
         offer_contract_id: 3552,
-        offer_id: 9497,
+        offer_id: 9497
       )
     end
 
@@ -108,7 +108,7 @@ RSpec.describe 'ADDEDIT integration test' do
         countries: %w(AT CH),
         redirects: {
           'AT' => redirect_offer_contract_id,
-          'CH' => redirect_offer_contract_id,
+          'CH' => redirect_offer_contract_id
         },
         allow_countries: false
       )
