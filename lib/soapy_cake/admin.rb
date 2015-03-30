@@ -92,6 +92,10 @@ module SoapyCake
       run Request.new(:admin, :signup, :affiliate, opts)
     end
 
+    def decrypt_affiliate_link(opts = {})
+      run Request.new(:admin, :track, :decrypt_affiliate_link, opts)
+    end
+
     def verticals(*)
       run Request.new(:admin, :get, :verticals, {})
     end

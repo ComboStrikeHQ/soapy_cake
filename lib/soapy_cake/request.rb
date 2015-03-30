@@ -27,10 +27,6 @@ module SoapyCake
       end.to_xml
     end
 
-    def addedit?
-      service == 'addedit'
-    end
-
     private
 
     def api_path

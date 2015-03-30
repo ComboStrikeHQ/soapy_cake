@@ -3,17 +3,17 @@ module SoapyCake
     include Helper
 
     attr_accessor :time_offset
-    attr_reader :body, :addedit
+    attr_reader :body, :short_response
 
-    def initialize(body, addedit)
+    def initialize(body, short_response)
       @body = body
-      @addedit = addedit
+      @short_response = short_response
     end
 
     def collection
       check_errors!
 
-      return typed_element(sax.at_depth(3).first) if addedit
+      return typed_element(sax.at_depth(3).first) if short_response
 
       sax.at_depth(5).map do |element|
         typed_element(element)

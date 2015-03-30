@@ -176,4 +176,13 @@ RSpec.describe SoapyCake::Admin do
       it_behaves_like 'a cake admin method'
     end
   end
+
+  describe 'track service' do
+    let(:service) { :track }
+
+    describe '#decrypt_affiliate_link' do
+      let(:method) { :decrypt_affiliate_link }
+      it_behaves_like 'a cake admin method'
+    end
+  end
 end
