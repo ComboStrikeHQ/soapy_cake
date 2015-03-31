@@ -56,6 +56,10 @@ module SoapyCake
       run Request.new(:admin, :reports, :clicks, opts)
     end
 
+    def conversion_changes(opts = {})
+      run Request.new(:admin, :reports, :conversion_changes, opts)
+    end
+
     def conversions(opts = {})
       run Request.new(:admin, :reports, :conversions, opts.merge(conversion_type: 'conversions'))
     end

@@ -103,6 +103,11 @@ RSpec.describe SoapyCake::Admin do
       it_behaves_like 'a cake admin method'
     end
 
+    describe '#conversion_changes' do
+      let(:method) { :conversion_changes }
+      it_behaves_like 'a cake admin method'
+    end
+
     describe '#events' do
       let(:method) { :events }
       let(:cake_method) { :conversions }
