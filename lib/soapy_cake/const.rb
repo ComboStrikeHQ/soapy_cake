@@ -36,13 +36,14 @@ module SoapyCake
         fixed: 4,
         revshare: 5
       },
+      # The ID mapping in the API docs is wrong, these values are taken from the UI.
       conversion_behaviour_id: {
         system: 0,
         adv_off: 1,
         adv_no_aff: 2,
-        ignore: 3,
-        no_adv_aff: 4,
-        no_adv_no_aff: 5
+        no_adv_aff: 3,
+        no_adv_no_aff: 4,
+        ignore: 5
       },
       cap_type_id: {
         click: 1,
