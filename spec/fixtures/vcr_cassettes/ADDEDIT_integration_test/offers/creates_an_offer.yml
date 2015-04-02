@@ -2,12 +2,12 @@
 http_interactions:
 - request:
     method: post
-    uri: https://cake-partner-domain.com/api/4/addedit.asmx
+    uri: https://cake-partner-domain.com/api/5/addedit.asmx
     body:
       encoding: UTF-8
       string: |
         <?xml version="1.0"?>
-        <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:cake="http://cakemarketing.com/api/4/">
+        <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:cake="http://cakemarketing.com/api/5/">
           <env:Header/>
           <env:Body>
             <cake:Offer>
@@ -42,24 +42,36 @@ http_interactions:
               <cake:received>2.0</cake:received>
               <cake:received_percentage>off</cake:received_percentage>
               <cake:payout>1.5</cake:payout>
-              <cake:tags>some, tags</cake:tags>
+              <cake:tags>some,tags</cake:tags>
               <cake:offer_name>Test Offer</cake:offer_name>
               <cake:offer_description>TEST1</cake:offer_description>
               <cake:restrictions>TEST2</cake:restrictions>
               <cake:advertiser_extended_terms>TEST3</cake:advertiser_extended_terms>
               <cake:testing_instructions>TEST4</cake:testing_instructions>
               <cake:offer_id>0</cake:offer_id>
+              <cake:tags_modification_type>add</cake:tags_modification_type>
               <cake:third_party_name/>
               <cake:redirect_offer_contract_id>0</cake:redirect_offer_contract_id>
               <cake:pixel_html/>
               <cake:postback_url/>
-              <cake:expiration_date>2115-01-24T01:00:00</cake:expiration_date>
               <cake:expiration_date_modification_type>do_not_change</cake:expiration_date_modification_type>
               <cake:offer_contract_name/>
               <cake:preview_link/>
               <cake:thumbnail_file_import_url/>
               <cake:allow_affiliates_to_create_creatives>no_change</cake:allow_affiliates_to_create_creatives>
               <cake:unsubscribe_link/>
+              <cake:conversions_from_whitelist_only>off</cake:conversions_from_whitelist_only>
+              <cake:allowed_media_type_modification_type>do_not_change</cake:allowed_media_type_modification_type>
+              <cake:track_search_terms_from_non_supported_search_engines>off</cake:track_search_terms_from_non_supported_search_engines>
+              <cake:auto_disposition_type>none</cake:auto_disposition_type>
+              <cake:auto_disposition_delay_hours>0</cake:auto_disposition_delay_hours>
+              <cake:session_regeneration_seconds>-1</cake:session_regeneration_seconds>
+              <cake:session_regeneration_type_id>0</cake:session_regeneration_type_id>
+              <cake:redirect_domain/>
+              <cake:cookie_domain/>
+              <cake:payout_modification_type>change</cake:payout_modification_type>
+              <cake:received_modification_type>change</cake:received_modification_type>
+              <cake:expiration_date>2115-01-24T01:00:00</cake:expiration_date>
             </cake:Offer>
           </env:Body>
         </env:Envelope>
@@ -82,15 +94,15 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Fri, 27 Mar 2015 10:53:05 GMT
+      - Thu, 02 Apr 2015 09:39:11 GMT
       Content-Length:
       - '563'
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><OfferResponse
-        xmlns="http://cakemarketing.com/api/4/"><OfferResult><success>true</success><message>Offer
-        9497 Created</message><success_info><offer_id>9497</offer_id><offer_contract_id>3552</offer_contract_id><campaign_id>15404</campaign_id><creative_id>10018</creative_id></success_info></OfferResult></OfferResponse></soap:Body></soap:Envelope>
+        xmlns="http://cakemarketing.com/api/5/"><OfferResult><success>true</success><message>Offer
+        9613 Created</message><success_info><offer_id>9613</offer_id><offer_contract_id>4000</offer_contract_id><campaign_id>15852</campaign_id><creative_id>10134</creative_id></success_info></OfferResult></OfferResponse></soap:Body></soap:Envelope>
     http_version: 
   recorded_at: Tue, 17 Feb 2015 12:00:00 GMT
 recorded_with: VCR 2.9.3

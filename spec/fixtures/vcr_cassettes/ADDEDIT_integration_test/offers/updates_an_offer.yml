@@ -2,12 +2,12 @@
 http_interactions:
 - request:
     method: post
-    uri: https://cake-partner-domain.com/api/4/addedit.asmx
+    uri: https://cake-partner-domain.com/api/5/addedit.asmx
     body:
       encoding: UTF-8
       string: |
         <?xml version="1.0"?>
-        <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:cake="http://cakemarketing.com/api/4/">
+        <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:cake="http://cakemarketing.com/api/5/">
           <env:Header/>
           <env:Body>
             <cake:Offer>
@@ -22,6 +22,7 @@ http_interactions:
               <cake:received_percentage>off</cake:received_percentage>
               <cake:payout>1.5</cake:payout>
               <cake:tags/>
+              <cake:tags_modification_type>remove_all</cake:tags_modification_type>
               <cake:offer_name/>
               <cake:third_party_name/>
               <cake:hidden>no_change</cake:hidden>
@@ -41,9 +42,6 @@ http_interactions:
               <cake:postback_url/>
               <cake:fire_global_pixel>no_change</cake:fire_global_pixel>
               <cake:fire_pixel_on_nonpaid_conversions>no_change</cake:fire_pixel_on_nonpaid_conversions>
-              <cake:conversion_cap_behavior>0</cake:conversion_cap_behavior>
-              <cake:conversion_behavior_on_redirect>0</cake:conversion_behavior_on_redirect>
-              <cake:expiration_date>2115-01-24T01:00:00</cake:expiration_date>
               <cake:expiration_date_modification_type>do_not_change</cake:expiration_date_modification_type>
               <cake:offer_contract_name/>
               <cake:offer_link/>
@@ -58,6 +56,20 @@ http_interactions:
               <cake:unsubscribe_link/>
               <cake:from_lines/>
               <cake:subject_lines/>
+              <cake:conversions_from_whitelist_only>off</cake:conversions_from_whitelist_only>
+              <cake:allowed_media_type_modification_type>do_not_change</cake:allowed_media_type_modification_type>
+              <cake:track_search_terms_from_non_supported_search_engines>off</cake:track_search_terms_from_non_supported_search_engines>
+              <cake:auto_disposition_type>none</cake:auto_disposition_type>
+              <cake:auto_disposition_delay_hours>0</cake:auto_disposition_delay_hours>
+              <cake:session_regeneration_seconds>-1</cake:session_regeneration_seconds>
+              <cake:session_regeneration_type_id>0</cake:session_regeneration_type_id>
+              <cake:redirect_domain/>
+              <cake:cookie_domain/>
+              <cake:payout_modification_type>change</cake:payout_modification_type>
+              <cake:received_modification_type>change</cake:received_modification_type>
+              <cake:conversion_cap_behavior>0</cake:conversion_cap_behavior>
+              <cake:conversion_behavior_on_redirect>0</cake:conversion_behavior_on_redirect>
+              <cake:expiration_date>2115-01-24T01:00:00</cake:expiration_date>
             </cake:Offer>
           </env:Body>
         </env:Envelope>
@@ -80,16 +92,16 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Tue, 17 Feb 2015 13:19:09 GMT
+      - Thu, 02 Apr 2015 09:39:11 GMT
       Content-Length:
       - '559'
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><OfferResponse
-        xmlns="http://cakemarketing.com/api/4/"><OfferResult><success>true</success><message>Offer
+        xmlns="http://cakemarketing.com/api/5/"><OfferResult><success>true</success><message>Offer
         8910 Updated</message><success_info><offer_id>8910</offer_id><offer_contract_id>1455</offer_contract_id><campaign_id
         xsi:nil="true" /><creative_id xsi:nil="true" /></success_info></OfferResult></OfferResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Tue, 17 Feb 2015 13:19:11 GMT
+  recorded_at: Tue, 17 Feb 2015 12:00:00 GMT
 recorded_with: VCR 2.9.3

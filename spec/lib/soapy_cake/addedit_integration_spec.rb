@@ -55,9 +55,9 @@ RSpec.describe 'ADDEDIT integration test' do
       )
 
       expect(result).to include(
-        creative_id: 10018,
-        offer_contract_id: 3552,
-        offer_id: 9497
+        creative_id: 10134,
+        offer_contract_id: 4000,
+        offer_id: 9613
       )
     end
 

@@ -2,6 +2,54 @@ module SoapyCake
   class AdminAddedit < Client
     include Helper
 
+    OFFER_DEFAULT_OPTIONS = {
+      offer_name: '',
+      third_party_name: '',
+      hidden: 'no_change',
+      offer_status_id: 0,
+      ssl: 'no_change',
+      click_cookie_days: -1,
+      impression_cookie_days: -1,
+      redirect_offer_contract_id: 0,
+      redirect_404: 'no_change',
+      enable_view_thru_conversions: 'no_change',
+      click_trumps_impression: 'no_change',
+      disable_click_deduplication: 'no_change',
+      last_touch: 'no_change',
+      enable_transaction_id_deduplication: 'no_change',
+      postbacks_only: 'no_change',
+      pixel_html: '',
+      postback_url: '',
+      fire_global_pixel: 'no_change',
+      fire_pixel_on_nonpaid_conversions: 'no_change',
+      expiration_date_modification_type: 'do_not_change',
+      offer_contract_name: '',
+      offer_link: '',
+      thankyou_link: '',
+      preview_link: '',
+      thumbnail_file_import_url: '',
+      offer_description: '',
+      restrictions: '',
+      advertiser_extended_terms: '',
+      testing_instructions: '',
+      allow_affiliates_to_create_creatives: 'no_change',
+      unsubscribe_link: '',
+      from_lines: '',
+      subject_lines: '',
+      conversions_from_whitelist_only: 'off',
+      allowed_media_type_modification_type: 'do_not_change',
+      track_search_terms_from_non_supported_search_engines: 'off',
+      auto_disposition_type: 'none',
+      auto_disposition_delay_hours: '0',
+      session_regeneration_seconds: -1,
+      session_regeneration_type_id: 0,
+      redirect_domain: '',
+      cookie_domain: '',
+      payout_modification_type: 'change',
+      received_modification_type: 'change',
+      tags_modification_type: 'do_not_change'
+    }
+
     def add_offer(opts = {})
       require_params(opts, %i(
         hidden offer_status_id offer_type_id currency_id ssl click_cookie_days
@@ -99,7 +147,15 @@ module SoapyCake
         advertiser_id vertical_id postback_url_ms_delay offer_contract_hidden
         price_format_id received received_percentage payout tags))
 
-      opts[:tags] = Array(opts[:tags]).join(', ')
+      if opts[:tags]
+        if opts[:tags].to_s == ''
+          opts[:tags_modification_type] = 'remove_all'
+          opts[:tags] = ''
+        else
+          opts[:tags_modification_type] = opts[:offer_id] ? 'add' : 'replace'
+          opts[:tags] = Array(opts[:tags]).join(',')
+        end
+      end
 
       opts.each do |k, v|
         opts[k] = 'on' if v == true
@@ -113,43 +169,11 @@ module SoapyCake
         opts[key] = const_lookup(:conversion_behaviour_id, opts[key])
       end
 
+      opts.reverse_merge!(OFFER_DEFAULT_OPTIONS)
       opts.reverse_merge!(
-        offer_name: '',
-        third_party_name: '',
-        hidden: 'no_change',
-        offer_status_id: 0,
-        ssl: 'no_change',
-        click_cookie_days: -1,
-        impression_cookie_days: -1,
-        redirect_offer_contract_id: 0,
-        redirect_404: 'no_change',
-        enable_view_thru_conversions: 'no_change',
-        click_trumps_impression: 'no_change',
-        disable_click_deduplication: 'no_change',
-        last_touch: 'no_change',
-        enable_transaction_id_deduplication: 'no_change',
-        postbacks_only: 'no_change',
-        pixel_html: '',
-        postback_url: '',
-        fire_global_pixel: 'no_change',
-        fire_pixel_on_nonpaid_conversions: 'no_change',
         conversion_cap_behavior: const_lookup(:conversion_behaviour_id, :system),
         conversion_behavior_on_redirect: const_lookup(:conversion_behaviour_id, :system),
-        expiration_date: Date.today + (365 * 100),
-        expiration_date_modification_type: 'do_not_change',
-        offer_contract_name: '',
-        offer_link: '',
-        thankyou_link: '',
-        preview_link: '',
-        thumbnail_file_import_url: '',
-        offer_description: '',
-        restrictions: '',
-        advertiser_extended_terms: '',
-        testing_instructions: '',
-        allow_affiliates_to_create_creatives: 'no_change',
-        unsubscribe_link: '',
-        from_lines: '',
-        subject_lines: ''
+        expiration_date: Date.today + (365 * 100)
       )
 
       run(Request.new(:admin, :addedit, :offer, opts))[:success_info]
