@@ -32,8 +32,8 @@ http_interactions:
               <cake:thankyou_link>http://www.example.com/</cake:thankyou_link>
               <cake:from_lines>from</cake:from_lines>
               <cake:subject_lines>subject</cake:subject_lines>
-              <cake:conversion_cap_behavior>3</cake:conversion_cap_behavior>
-              <cake:conversion_behavior_on_redirect>3</cake:conversion_behavior_on_redirect>
+              <cake:conversion_cap_behavior>5</cake:conversion_cap_behavior>
+              <cake:conversion_behavior_on_redirect>5</cake:conversion_behavior_on_redirect>
               <cake:advertiser_id>15886</cake:advertiser_id>
               <cake:vertical_id>41</cake:vertical_id>
               <cake:postback_url_ms_delay>60</cake:postback_url_ms_delay>
@@ -94,7 +94,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 02 Apr 2015 09:39:11 GMT
+      - Thu, 02 Apr 2015 11:05:58 GMT
       Content-Length:
       - '563'
     body:
@@ -102,7 +102,7 @@ http_interactions:
       string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><OfferResponse
         xmlns="http://cakemarketing.com/api/5/"><OfferResult><success>true</success><message>Offer
-        9613 Created</message><success_info><offer_id>9613</offer_id><offer_contract_id>4000</offer_contract_id><campaign_id>15852</campaign_id><creative_id>10134</creative_id></success_info></OfferResult></OfferResponse></soap:Body></soap:Envelope>
+        9655 Created</message><success_info><offer_id>9655</offer_id><offer_contract_id>4161</offer_contract_id><campaign_id>16013</campaign_id><creative_id>10175</creative_id></success_info></OfferResult></OfferResponse></soap:Body></soap:Envelope>
     http_version: 
   recorded_at: Tue, 17 Feb 2015 12:00:00 GMT
 recorded_with: VCR 2.9.3

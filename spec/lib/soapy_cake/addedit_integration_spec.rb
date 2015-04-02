@@ -54,11 +54,9 @@ RSpec.describe 'ADDEDIT integration test' do
         testing_instructions: 'TEST4'
       )
 
-      expect(result).to include(
-        creative_id: 10134,
-        offer_contract_id: 4000,
-        offer_id: 9613
-      )
+      %i(creative_id offer_contract_id offer_id).each do |key|
+        expect(result[key]).to be > 0
+      end
     end
 
     it 'updates an offer', :vcr do
