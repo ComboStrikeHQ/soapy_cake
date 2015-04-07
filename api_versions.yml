@@ -14,6 +14,7 @@ admin:
     advertiser_credit_limit: 1
     affiliate: 2
     apply_suppression_list_to_offer: 1
+    blacklist: 1
     campaign: 2
     caps: 1
     contact: 1
@@ -49,6 +50,7 @@ admin:
     affiliate_tags: 1
     affiliate_tiers: 1
     billing_cycles: 1
+    blacklist_reasons: 1
     cap_intervals: 1
     cap_types: 1
     countries: 1
