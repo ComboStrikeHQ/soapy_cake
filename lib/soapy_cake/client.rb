@@ -5,8 +5,8 @@ module SoapyCake
     def initialize(opts = {})
       @domain = opts.fetch(:domain, ENV['CAKE_DOMAIN']) || fail(Error, 'Cake domain missing')
       @api_key = opts.fetch(:api_key, ENV['CAKE_API_KEY']) || fail(Error, 'Cake API key missing')
-      @time_offset = opts.fetch(:time_offset, ENV['CAKE_TIME_OFFSET']) \
-        || fail(Error, 'Cake time offset missing')
+      @time_offset = opts.fetch(:time_offset, ENV['CAKE_TIME_OFFSET']) ||
+        fail(Error, 'Cake time offset missing')
       @opts = opts
     end
 
