@@ -154,6 +154,12 @@ RSpec.describe SoapyCake::Admin do
       let(:cake_opts) { {} }
       it_behaves_like 'a cake admin method'
     end
+
+    describe '#blacklist_reasons' do
+      let(:method) { :blacklist_reasons }
+      let(:cake_opts) { {} }
+      it_behaves_like 'a cake admin method'
+    end
   end
 
   describe 'addedit service' do
@@ -168,6 +174,12 @@ RSpec.describe SoapyCake::Admin do
     describe '#update_campaign' do
       let(:method) { :update_campaign }
       let(:cake_method) { :campaign }
+      it_behaves_like 'a cake admin method'
+    end
+
+    describe '#add_blacklist' do
+      let(:method) { :add_blacklist }
+      let(:cake_method) { :blacklist }
       it_behaves_like 'a cake admin method'
     end
   end

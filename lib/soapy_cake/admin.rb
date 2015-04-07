@@ -92,6 +92,10 @@ module SoapyCake
       run Request.new(:admin, :addedit, :campaign, opts)
     end
 
+    def add_blacklist(opts = {})
+      run Request.new(:admin, :addedit, :blacklist, opts)
+    end
+
     def affiliate_signup(opts = {})
       run Request.new(:admin, :signup, :affiliate, opts)
     end
@@ -110,6 +114,10 @@ module SoapyCake
 
     def payment_types
       run Request.new(:admin, :get, :payment_types, {})
+    end
+
+    def blacklist_reasons(*)
+      run Request.new(:admin, :get, :blacklist_reasons, {})
     end
   end
 end
