@@ -16,6 +16,9 @@ RSpec.describe 'Integration test' do
       minimum_payment_threshold: '0.0000'
     )
 
+    # strings should be actual Strings, not some Saxerator element class
+    expect(result.first[:affiliate_name].class).to eq(String)
+
     # arrays
     expect(result.first[:contacts][:contact_info].map { |contact| contact[:contact_id] }).to \
       eq([8819, 8820])

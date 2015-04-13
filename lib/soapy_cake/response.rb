@@ -33,7 +33,8 @@ module SoapyCake
         next false if value == 'false'
         next true if value == 'true'
 
-        value
+        # cast to primitive string to get rid of Saxerator string class
+        value.to_s
       end
     end
 
