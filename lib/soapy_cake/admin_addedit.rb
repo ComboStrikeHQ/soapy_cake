@@ -128,6 +128,12 @@ module SoapyCake
       run Request.new(:admin, :addedit, :offer_tiers, opts)
     end
 
+    def edit_affiliate(opts)
+      require_params(opts, %i(affiliate_id))
+
+      run Request.new(:admin, :addedit, :affiliate, opts)
+    end
+
     private
 
     def translate_values!(opts, params)

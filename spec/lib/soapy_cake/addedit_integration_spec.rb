@@ -10,6 +10,16 @@ RSpec.describe 'ADDEDIT integration test' do
   let(:redirect_offer_contract_id) { 1392 }
   let(:tier_id) { 4 }
 
+  describe 'affiliates', :vcr do
+    it 'edits affiliates' do
+      result = subject.edit_affiliate(
+        affiliate_id: 1
+      )
+
+      expect(result).to include(affiliate_id: 1)
+    end
+  end
+
   describe 'offers' do
     it 'creates an offer', :vcr do
       result = subject.add_offer(
