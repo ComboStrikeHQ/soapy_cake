@@ -19,7 +19,7 @@ module SoapyCake
       request.time_offset = time_offset
 
       url = "https://#{domain}#{request.path}"
-      body = HTTParty.post(url, headers: headers, body: request.xml).body
+      body = HTTParty.post(url, headers: headers, body: request.xml, timeout: NET_TIMEOUT).body
 
       response = Response.new(body, %w(addedit track).include?(request.service))
       response.time_offset = time_offset
