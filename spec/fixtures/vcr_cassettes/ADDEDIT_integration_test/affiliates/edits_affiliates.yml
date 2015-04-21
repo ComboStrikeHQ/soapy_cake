@@ -13,6 +13,7 @@ http_interactions:
             <cake:Affiliate>
               <cake:api_key>cake-api-key</cake:api_key>
               <cake:affiliate_id>1</cake:affiliate_id>
+              <cake:vat_tax_required>false</cake:vat_tax_required>
             </cake:Affiliate>
           </env:Body>
         </env:Envelope>

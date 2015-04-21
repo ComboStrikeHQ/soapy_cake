@@ -129,7 +129,7 @@ module SoapyCake
     end
 
     def edit_affiliate(opts)
-      require_params(opts, %i(affiliate_id))
+      require_params(opts, %i(affiliate_id vat_tax_required))
 
       run Request.new(:admin, :addedit, :affiliate, opts)
     end

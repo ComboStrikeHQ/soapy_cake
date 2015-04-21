@@ -13,7 +13,8 @@ RSpec.describe 'ADDEDIT integration test' do
   describe 'affiliates', :vcr do
     it 'edits affiliates' do
       result = subject.edit_affiliate(
-        affiliate_id: 1
+        affiliate_id: 1,
+        vat_tax_required: false
       )
 
       expect(result).to include(affiliate_id: 1)
