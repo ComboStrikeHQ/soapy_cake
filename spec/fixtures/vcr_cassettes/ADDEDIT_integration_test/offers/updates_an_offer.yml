@@ -2,6 +2,54 @@
 http_interactions:
 - request:
     method: post
+    uri: https://cake-partner-domain.com/api/2/auth.asmx
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0"?>
+        <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:cake="http://cakemarketing.com/api/2/">
+          <env:Header/>
+          <env:Body>
+            <cake:Login>
+              <cake:api_key>cake-api-key</cake:api_key>
+              <cake:username>cake-username</cake:username>
+              <cake:password>cake-password</cake:password>
+            </cake:Login>
+          </env:Body>
+        </env:Envelope>
+    headers:
+      Content-Type:
+      - application/soap+xml;charset=UTF-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - application/soap+xml; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Wed, 22 Apr 2015 14:04:33 GMT
+      Content-Length:
+      - '769'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><LoginResponse
+        xmlns="http://cakemarketing.com/api/2/"><LoginResult><success>true</success><row_count>1</row_count><login_info><contact_id>8623</contact_id><contact_first_name>Software</contact_first_name><contact_last_name>Developers</contact_last_name><role_id>1</role_id><role_name>Administrator</role_name><company_id>1</company_id><company_name>ad2games
+        GmbH</company_name><server_time>2015-04-22T16:04:34.2298974</server_time><server_timezone>GMT
+        Daylight Time</server_timezone></login_info></LoginResult></LoginResponse></soap:Body></soap:Envelope>
+    http_version: 
+  recorded_at: Tue, 17 Feb 2015 12:00:00 GMT
+- request:
+    method: post
     uri: https://cake-partner-domain.com/api/5/addedit.asmx
     body:
       encoding: UTF-8
@@ -92,7 +140,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 02 Apr 2015 09:39:11 GMT
+      - Wed, 22 Apr 2015 14:04:34 GMT
       Content-Length:
       - '559'
     body:

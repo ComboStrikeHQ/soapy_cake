@@ -5,8 +5,11 @@ module SoapyCake
     def initialize(opts = {})
       @domain = opts.fetch(:domain, ENV['CAKE_DOMAIN']) || fail(Error, 'Cake domain missing')
       @api_key = opts.fetch(:api_key, ENV['CAKE_API_KEY']) || fail(Error, 'Cake API key missing')
-      @time_offset = opts.fetch(:time_offset, ENV['CAKE_TIME_OFFSET']) ||
-        fail(Error, 'Cake time offset missing')
+
+      username = opts.delete(:username) || ENV['CAKE_USERNAME'] || fail(Error, 'Cake username missing')
+      password = opts.delete(:password) || ENV['CAKE_PASSWORD'] || fail(Error, 'Cake password missing')
+      @time_offset = instance_time_offset(username, password)
+
       @opts = opts
     end
 
@@ -27,6 +30,14 @@ module SoapyCake
     end
 
     private
+
+    def instance_time_offset(username, password)
+      auth_info = run(Request.new(:admin, :auth, :login, username: username, password: password))
+      timezone = auth_info.last
+      dst = timezone.slice!(' Daylight Time')
+
+      (TZInfo::Timezone.get(timezone).current_period.utc_offset + (dst ? 1.hour : 0)) / 1.hour
+    end
 
     def headers
       { 'Content-Type' => 'application/soap+xml;charset=UTF-8' }
