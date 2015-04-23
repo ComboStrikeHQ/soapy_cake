@@ -1,4 +1,4 @@
-RSpec.describe 'ADDEDIT integration test' do
+RSpec.describe 'ADDEDIT integration test', :vcr do
   subject { SoapyCake::AdminAddedit.new }
 
   around { |example| Timecop.freeze(Time.utc(2015, 2, 17, 12), &example) }
@@ -10,7 +10,7 @@ RSpec.describe 'ADDEDIT integration test' do
   let(:redirect_offer_contract_id) { 1392 }
   let(:tier_id) { 4 }
 
-  describe 'affiliates', :vcr do
+  describe 'affiliates' do
     it 'edits affiliates' do
       result = subject.edit_affiliate(
         affiliate_id: 1,
@@ -22,7 +22,7 @@ RSpec.describe 'ADDEDIT integration test' do
   end
 
   describe 'offers' do
-    it 'creates an offer', :vcr do
+    it 'creates an offer' do
       result = subject.add_offer(
         hidden: false,
         offer_status_id: :public,
@@ -70,7 +70,7 @@ RSpec.describe 'ADDEDIT integration test' do
       end
     end
 
-    it 'updates an offer', :vcr do
+    it 'updates an offer' do
       result = subject.edit_offer(
         offer_id: offer_id,
 
@@ -104,7 +104,7 @@ RSpec.describe 'ADDEDIT integration test' do
   end
 
   describe 'geo targeting' do
-    it 'creates geo targetings', :vcr do
+    it 'creates geo targetings' do
       result = subject.add_geo_targets(
         offer_contract_id: offer_contract_id,
         countries: %w(DE FR),
@@ -139,7 +139,7 @@ RSpec.describe 'ADDEDIT integration test' do
   end
 
   describe 'offer contracts' do
-    it 'creates an offer contract', :vcr do
+    it 'creates an offer contract' do
       result = subject.add_offer_contract(
         offer_id: offer_id,
         offer_contract_name: 'Test Contract',
@@ -154,10 +154,10 @@ RSpec.describe 'ADDEDIT integration test' do
         use_fallback_targeting: true
       )
 
-      expect(result).to include(offer_contract_id: 1456)
+      expect(result).to include(offer_contract_id: 5662)
     end
 
-    it 'updates an offer contract', :vcr do
+    it 'updates an offer contract' do
       result = subject.edit_offer_contract(
         offer_id: offer_id,
         offer_contract_id: offer_contract_id,
@@ -173,7 +173,7 @@ RSpec.describe 'ADDEDIT integration test' do
         use_fallback_targeting: true
       )
 
-      expect(result).to include(offer_contract_id: 1456)
+      expect(result).to include(offer_contract_id: offer_contract_id)
     end
 
     context 'errors' do
@@ -192,7 +192,7 @@ RSpec.describe 'ADDEDIT integration test' do
   end
 
   describe 'offer / offer contract caps' do
-    it 'updates a cap for an offer contract', :vcr do
+    it 'updates a cap for an offer contract' do
       result = subject.update_caps(
         offer_contract_id: offer_contract_id,
         cap_type_id: :conversion,
@@ -204,7 +204,7 @@ RSpec.describe 'ADDEDIT integration test' do
       expect(result[:message]).to eq('Cap Updated')
     end
 
-    it 'removes a cap for an offer contract', :vcr do
+    it 'removes a cap for an offer contract' do
       result = subject.update_caps(
         offer_contract_id: offer_contract_id,
         cap_type_id: :conversion,
@@ -218,7 +218,7 @@ RSpec.describe 'ADDEDIT integration test' do
   end
 
   describe 'offer tiers' do
-    it 'adds an offer tier', :vcr do
+    it 'adds an offer tier' do
       result = subject.add_offer_tier(
         offer_id: offer_id,
         offer_contract_id: offer_contract_id,

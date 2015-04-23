@@ -36,6 +36,7 @@ RSpec.describe 'Integration test' do
       click_id: 1275452,
       visitor_id: 1208222
     )
+    expect(result.first[:click_date].to_s).to eq('2014-06-30T19:31:35+01:00')
   end
 
   it 'raises if there is an error', :vcr do

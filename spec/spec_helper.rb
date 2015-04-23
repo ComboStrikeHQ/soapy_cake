@@ -37,13 +37,16 @@ end
 
 ENV['CAKE_API_KEY'] = 'cake-api-key' if ENV['CAKE_API_KEY'].blank?
 ENV['CAKE_DOMAIN'] = 'cake-partner-domain.com' if ENV['CAKE_DOMAIN'].blank?
-ENV['CAKE_TIME_OFFSET'] = '1' if ENV['CAKE_TIME_OFFSET'].blank?
+ENV['CAKE_USERNAME'] = 'cake-username' if ENV['CAKE_USERNAME'].blank?
+ENV['CAKE_PASSWORD'] = 'cake-password' if ENV['CAKE_PASSWORD'].blank?
 
 VCR.configure do |c|
   c.configure_rspec_metadata!
   c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
   c.hook_into :webmock
   c.filter_sensitive_data('cake-api-key') { ENV['CAKE_API_KEY'] }
+  c.filter_sensitive_data('cake-username') { ENV['CAKE_USERNAME'] }
+  c.filter_sensitive_data('cake-password') { ENV['CAKE_PASSWORD'] }
   c.filter_sensitive_data('cake-partner-domain.com') { ENV['CAKE_DOMAIN'] }
   c.default_cassette_options = { match_requests_on: [:method, :uri, :body] }
 

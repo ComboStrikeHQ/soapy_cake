@@ -7,6 +7,9 @@ RSpec.describe SoapyCake::Affiliate do
 
   shared_examples_for 'a cake affiliate method' do
     it 'runs the request' do
+      expect_any_instance_of(described_class).to receive(:instance_time_offset)
+        .and_return(1)
+
       request = double('request')
       expect(SoapyCake::Request).to receive(:new)
         .with(:affiliate, service, method, cake_opts).and_return(request)
