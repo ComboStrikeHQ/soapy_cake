@@ -43,8 +43,6 @@ module SoapyCake
       auto_disposition_delay_hours: '0',
       session_regeneration_seconds: -1,
       session_regeneration_type_id: 0,
-      redirect_domain: '',
-      cookie_domain: '',
       payout_modification_type: 'change',
       received_modification_type: 'change',
       tags_modification_type: 'do_not_change'

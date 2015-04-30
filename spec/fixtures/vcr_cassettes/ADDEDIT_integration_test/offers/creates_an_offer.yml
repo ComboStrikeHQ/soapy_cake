@@ -67,8 +67,6 @@ http_interactions:
               <cake:auto_disposition_delay_hours>0</cake:auto_disposition_delay_hours>
               <cake:session_regeneration_seconds>-1</cake:session_regeneration_seconds>
               <cake:session_regeneration_type_id>0</cake:session_regeneration_type_id>
-              <cake:redirect_domain/>
-              <cake:cookie_domain/>
               <cake:payout_modification_type>change</cake:payout_modification_type>
               <cake:received_modification_type>change</cake:received_modification_type>
               <cake:expiration_date>2115-01-24T01:00:00</cake:expiration_date>
@@ -94,15 +92,15 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 02 Apr 2015 11:05:58 GMT
+      - Thu, 30 Apr 2015 08:50:28 GMT
       Content-Length:
-      - '563'
+      - '565'
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><OfferResponse
         xmlns="http://cakemarketing.com/api/5/"><OfferResult><success>true</success><message>Offer
-        9655 Created</message><success_info><offer_id>9655</offer_id><offer_contract_id>4161</offer_contract_id><campaign_id>16013</campaign_id><creative_id>10175</creative_id></success_info></OfferResult></OfferResponse></soap:Body></soap:Envelope>
+        10078 Created</message><success_info><offer_id>10078</offer_id><offer_contract_id>5767</offer_contract_id><campaign_id>17628</campaign_id><creative_id>10599</creative_id></success_info></OfferResult></OfferResponse></soap:Body></soap:Envelope>
     http_version: 
   recorded_at: Tue, 17 Feb 2015 12:00:00 GMT
 recorded_with: VCR 2.9.3

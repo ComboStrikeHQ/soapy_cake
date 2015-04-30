@@ -63,8 +63,6 @@ http_interactions:
               <cake:auto_disposition_delay_hours>0</cake:auto_disposition_delay_hours>
               <cake:session_regeneration_seconds>-1</cake:session_regeneration_seconds>
               <cake:session_regeneration_type_id>0</cake:session_regeneration_type_id>
-              <cake:redirect_domain/>
-              <cake:cookie_domain/>
               <cake:payout_modification_type>change</cake:payout_modification_type>
               <cake:received_modification_type>change</cake:received_modification_type>
               <cake:conversion_cap_behavior>0</cake:conversion_cap_behavior>
@@ -92,7 +90,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 02 Apr 2015 09:39:11 GMT
+      - Thu, 30 Apr 2015 08:50:29 GMT
       Content-Length:
       - '559'
     body:
