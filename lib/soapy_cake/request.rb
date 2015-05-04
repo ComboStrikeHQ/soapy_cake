@@ -27,6 +27,10 @@ module SoapyCake
       end.to_xml
     end
 
+    def short_response?
+      %w(addedit track).include?(service)
+    end
+
     private
 
     def api_path

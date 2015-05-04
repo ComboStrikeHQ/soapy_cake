@@ -18,15 +18,17 @@ module SoapyCake
       request.api_key = api_key
       request.time_offset = time_offset
 
-      url = "https://#{domain}#{request.path}"
-      body = HTTParty.post(url, headers: headers, body: request.xml, timeout: NET_TIMEOUT).body
-
-      response = Response.new(body, %w(addedit track).include?(request.service))
+      response = Response.new(http_response(request), request.short_response?)
       response.time_offset = time_offset
       response.collection
     end
 
     private
+
+    def http_response(request)
+      url = "https://#{domain}#{request.path}"
+      HTTParty.post(url, headers: headers, body: request.xml, timeout: NET_TIMEOUT).body
+    end
 
     def headers
       { 'Content-Type' => 'application/soap+xml;charset=UTF-8' }
