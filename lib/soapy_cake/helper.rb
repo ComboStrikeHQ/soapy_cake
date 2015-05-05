@@ -22,5 +22,24 @@ module SoapyCake
         fail Error, "Parameter '#{param}' missing!" unless opts.key?(param)
       end
     end
+
+    def translate_booleans!(opts)
+      opts.each do |k, v|
+        opts[k] = 'on' if v == true
+        opts[k] = 'off' if v == false
+      end
+    end
+
+    def translate_values!(opts, params)
+      params.each do |type|
+        opts[type] = const_lookup(type, opts[type]) if opts.key?(type)
+      end
+    end
+
+    def const_lookup(type, key)
+      Const::CONSTS[type].fetch(key) do
+        fail ArgumentError, "#{key} is not a valid value for #{type}"
+      end
+    end
   end
 end

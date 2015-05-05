@@ -37,7 +37,7 @@ module SoapyCake
         revshare: 5
       },
       # The ID mapping in the API docs is wrong, these values are taken from the UI.
-      conversion_behaviour_id: {
+      conversion_behavior_id: {
         system: 0,
         adv_off: 1,
         adv_no_aff: 2,
@@ -56,5 +56,11 @@ module SoapyCake
         monthly: 3
       }
     }
+
+    CONSTS.merge!(
+      conversion_cap_behavior: CONSTS[:conversion_behavior_id],
+      conversion_behavior_on_redirect: CONSTS[:conversion_behavior_id],
+      status_id: CONSTS[:offer_status_id]
+    )
   end
 end
