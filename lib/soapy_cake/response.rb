@@ -5,6 +5,8 @@ module SoapyCake
     attr_accessor :time_offset
     attr_reader :body, :short_response
 
+    STRING_IDS = %w(tax_id transaction_id)
+
     def initialize(body, short_response)
       @body = body
       @short_response = short_response
@@ -29,7 +31,7 @@ module SoapyCake
     end
 
     def parse_element(key, value)
-      return value.to_i if key.to_s.end_with?('_id') && !key.to_s.end_with?('tax_id')
+      return value.to_i if key.to_s.end_with?('_id') && !string_id?(key.to_s)
       return false if value == 'false'
       return true if value == 'true'
       return parse_date(value) if /\A\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.?\d*\z/.match(value)
@@ -40,6 +42,10 @@ module SoapyCake
 
     def parse_date(value)
       DateTime.parse(value + format('%+03d:00', time_offset.to_i))
+    end
+
+    def string_id?(key)
+      STRING_IDS.any? { |id| key.end_with?(id) }
     end
 
     def sax
