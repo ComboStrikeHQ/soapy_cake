@@ -3,17 +3,6 @@ RSpec.describe SoapyCake::Admin do
   let(:cake_opts) { opts }
   let(:cake_method) { method }
 
-  shared_examples_for 'a cake admin method' do
-    it 'runs the request' do
-      request = double('request')
-      expect(SoapyCake::Request).to receive(:new)
-        .with(:admin, service, cake_method, cake_opts).and_return(request)
-      expect(subject).to receive(:run).with(request)
-
-      subject.public_send(method, opts)
-    end
-  end
-
   describe 'accounting service' do
     let(:service) { :accounting }
 
@@ -191,30 +180,6 @@ RSpec.describe SoapyCake::Admin do
       let(:method) { :affiliate_signup }
       let(:cake_method) { :affiliate }
       it_behaves_like 'a cake admin method'
-    end
-  end
-
-  describe 'track service' do
-    let(:service) { :track }
-
-    describe '#decrypt_affiliate_link' do
-      let(:method) { :decrypt_affiliate_link }
-      it_behaves_like 'a cake admin method'
-    end
-
-    describe '#mass_conversion_insert', :vcr do
-      it 'insers conversions' do
-        result = subject.mass_conversion_insert(
-          conversion_date: Date.new(2015, 5, 6),
-          affiliate_id: 16059,
-          campaign_id: 13268,
-          sub_affiliate: '',
-          creative_id: 5521,
-          total_to_insert: 12
-        )
-
-        expect(result).to eq(success: true, message: 'Conversions Inserted')
-      end
     end
   end
 end
