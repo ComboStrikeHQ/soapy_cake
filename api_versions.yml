@@ -95,7 +95,7 @@ admin:
     conversion_dispositions: 2
     decrypt_affiliate_link: 1
     mass_conversion_adjustment: 2
-    mass_conversion_insert: 2
+    mass_conversion_insert: 1
     rejected_dispositions: 1
     update_conversion: 2
     update_conversion_disposition: 2

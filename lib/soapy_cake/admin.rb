@@ -1,5 +1,7 @@
 module SoapyCake
   class Admin < Client
+    include Helper
+
     def affiliate_bills(opts = {})
       run Request.new(:admin, :accounting, :export_affiliate_bills, opts)
     end
@@ -98,6 +100,18 @@ module SoapyCake
 
     def affiliate_signup(opts = {})
       run Request.new(:admin, :signup, :affiliate, opts)
+    end
+
+    def mass_conversion_insert(opts)
+      require_params(
+        opts,
+        %i(
+          conversion_date affiliate_id sub_affiliate
+          campaign_id creative_id total_to_insert
+        )
+      )
+
+      run Request.new(:admin, :track, :mass_conversion_insert, opts)
     end
 
     def decrypt_affiliate_link(opts = {})
