@@ -39,14 +39,14 @@ RSpec.describe SoapyCake::Admin do
   end
 
   it 'does not parse a transaction_id as an integer', :vcr do
-    result = SoapyCake::Admin.new.conversions(
+    result = subject.conversions(
       start_date: Date.new(2015, 4, 11),
       end_date: Date.new(2015, 4, 12),
       row_limit: 1
     )
 
     expect(result.count).to eq(1)
-    expect(result.first[:transaction_id]).to be_a(String)
+    expect(result.first[:transaction_id]).to eq('TRANSACTION_ID')
   end
 
   it 'raises if there is an error', :vcr do
