@@ -95,6 +95,7 @@ admin:
     conversion_dispositions: 2
     decrypt_affiliate_link: 1
     mass_conversion_adjustment: 2
+    # Version 2 returns an error about an invalid action, so using version 1
     mass_conversion_insert: 1
     rejected_dispositions: 1
     update_conversion: 2
