@@ -1,6 +1,6 @@
-RSpec.describe 'Integration test' do
+RSpec.describe SoapyCake::Admin do
   it 'returns an affiliate with correct data types', :vcr do
-    result = SoapyCake::Admin.new.affiliates(affiliate_id: 16027)
+    result = subject.affiliates(affiliate_id: 16027)
     expect(result.count).to eq(1)
     expect(result.first).to include(
       affiliate_id: 16027,
@@ -25,7 +25,7 @@ RSpec.describe 'Integration test' do
   end
 
   it 'returns a clicks report with a defined time range', :vcr do
-    result = SoapyCake::Admin.new.clicks(
+    result = subject.clicks(
       start_date: Date.new(2014, 6, 30),
       end_date: Date.new(2014, 7, 1),
       row_limit: 1
@@ -40,7 +40,7 @@ RSpec.describe 'Integration test' do
 
   it 'raises if there is an error', :vcr do
     expect do
-      SoapyCake::Admin.new.affiliates(affiliate_id: 'bloops')
+      subject.affiliates(affiliate_id: 'bloops')
     end.to raise_error(SoapyCake::RequestFailed)
   end
 end
