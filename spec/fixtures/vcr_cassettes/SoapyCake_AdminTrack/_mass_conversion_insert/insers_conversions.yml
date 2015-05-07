@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://cake-partner-domain.com/api/1/track.asmx
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0"?>
+        <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:cake="http://cakemarketing.com/api/1/">
+          <env:Header/>
+          <env:Body>
+            <cake:MassConversionInsert>
+              <cake:api_key>cake-api-key</cake:api_key>
+              <cake:conversion_date>2015-05-06T01:00:00</cake:conversion_date>
+              <cake:affiliate_id>16059</cake:affiliate_id>
+              <cake:campaign_id>13268</cake:campaign_id>
+              <cake:sub_affiliate/>
+              <cake:creative_id>5521</cake:creative_id>
+              <cake:total_to_insert>12</cake:total_to_insert>
+            </cake:MassConversionInsert>
+          </env:Body>
+        </env:Envelope>
+    headers:
+      Content-Type:
+      - application/soap+xml;charset=UTF-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - application/soap+xml; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Wed, 06 May 2015 12:35:51 GMT
+      Content-Length:
+      - '464'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><MassConversionInsertResponse
+        xmlns="http://cakemarketing.com/api/1/"><MassConversionInsertResult><success>true</success><message>Conversions
+        Inserted</message></MassConversionInsertResult></MassConversionInsertResponse></soap:Body></soap:Envelope>
+    http_version: 
+  recorded_at: Wed, 06 May 2015 12:35:53 GMT
+recorded_with: VCR 2.9.3

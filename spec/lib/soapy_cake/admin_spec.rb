@@ -3,17 +3,6 @@ RSpec.describe SoapyCake::Admin do
   let(:cake_opts) { opts }
   let(:cake_method) { method }
 
-  shared_examples_for 'a cake admin method' do
-    it 'runs the request' do
-      request = double('request')
-      expect(SoapyCake::Request).to receive(:new)
-        .with(:admin, service, cake_method, cake_opts).and_return(request)
-      expect(subject).to receive(:run).with(request)
-
-      subject.public_send(method, opts)
-    end
-  end
-
   describe 'accounting service' do
     let(:service) { :accounting }
 
@@ -190,15 +179,6 @@ RSpec.describe SoapyCake::Admin do
     describe '#affiliate_signup' do
       let(:method) { :affiliate_signup }
       let(:cake_method) { :affiliate }
-      it_behaves_like 'a cake admin method'
-    end
-  end
-
-  describe 'track service' do
-    let(:service) { :track }
-
-    describe '#decrypt_affiliate_link' do
-      let(:method) { :decrypt_affiliate_link }
       it_behaves_like 'a cake admin method'
     end
   end

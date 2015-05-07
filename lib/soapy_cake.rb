@@ -15,6 +15,7 @@ require 'soapy_cake/response'
 require 'soapy_cake/client'
 require 'soapy_cake/admin'
 require 'soapy_cake/admin_addedit'
+require 'soapy_cake/admin_track'
 require 'soapy_cake/affiliate'
 
 module SoapyCake

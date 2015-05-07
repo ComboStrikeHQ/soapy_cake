@@ -1,6 +1,4 @@
-RSpec.describe 'ADDEDIT integration test' do
-  subject { SoapyCake::AdminAddedit.new }
-
+RSpec.describe SoapyCake::AdminAddedit do
   around { |example| Timecop.freeze(Time.utc(2015, 2, 17, 12), &example) }
 
   let(:advertiser_id) { 15886 }

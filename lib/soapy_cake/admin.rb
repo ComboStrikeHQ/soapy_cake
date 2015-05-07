@@ -1,5 +1,7 @@
 module SoapyCake
   class Admin < Client
+    include Helper
+
     def affiliate_bills(opts = {})
       run Request.new(:admin, :accounting, :export_affiliate_bills, opts)
     end
@@ -98,10 +100,6 @@ module SoapyCake
 
     def affiliate_signup(opts = {})
       run Request.new(:admin, :signup, :affiliate, opts)
-    end
-
-    def decrypt_affiliate_link(opts = {})
-      run Request.new(:admin, :track, :decrypt_affiliate_link, opts)
     end
 
     def verticals(*)
