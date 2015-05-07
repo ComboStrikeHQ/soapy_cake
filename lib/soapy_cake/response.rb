@@ -24,22 +24,8 @@ module SoapyCake
 
     def typed_element(element)
       walk_tree(element) do |value, key|
-        parse_element(key, value)
+        ResponseValue.new(key, value, time_offset: time_offset).parse
       end
-    end
-
-    def parse_element(key, value)
-      return value.to_i if key.to_s.end_with?('_id') && !key.to_s.end_with?('tax_id')
-      return false if value == 'false'
-      return true if value == 'true'
-      return parse_date(value) if /\A\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.?\d*\z/.match(value)
-
-      # cast to primitive string to get rid of Saxerator string class
-      value.to_s
-    end
-
-    def parse_date(value)
-      DateTime.parse(value + format('%+03d:00', time_offset.to_i))
     end
 
     def sax
