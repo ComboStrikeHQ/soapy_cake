@@ -1,7 +1,5 @@
 module SoapyCake
   class ResponseValue
-    include Helper
-
     attr_reader :value
     attr_reader :key
 
