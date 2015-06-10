@@ -217,18 +217,6 @@ RSpec.describe SoapyCake::AdminAddedit do
 
       expect(result[:message]).to eq('Cap Updated')
     end
-
-    it 'removes a cap for an offer contract', :vcr do
-      result = subject.update_caps(
-        offer_contract_id: offer_contract_id,
-        cap_type_id: :conversion,
-        cap_interval_id: :disabled,
-        cap_amount: 42,
-        send_alert_only: false
-      )
-
-      expect(result[:message]).to eq('Cap Updated')
-    end
   end
 
   describe 'offer tiers' do

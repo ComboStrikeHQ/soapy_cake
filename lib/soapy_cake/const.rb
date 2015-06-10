@@ -50,7 +50,7 @@ module SoapyCake
         conversion: 2
       },
       cap_interval_id: {
-        disabled: 0,
+        indefinite: 0,
         daily: 1,
         weekly: 2,
         monthly: 3

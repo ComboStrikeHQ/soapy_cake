@@ -132,7 +132,6 @@ module SoapyCake
       require_params(opts, %i(cap_type_id cap_interval_id cap_amount send_alert_only))
 
       translate_values!(opts, %i(cap_type_id cap_interval_id))
-      opts[:cap_amount] = -1 if opts[:cap_interval_id] == const_lookup(:cap_interval_id, :disabled)
 
       run Request.new(:admin, :addedit, :caps, opts)
     end
