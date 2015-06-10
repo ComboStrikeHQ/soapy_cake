@@ -2,6 +2,7 @@ RSpec.describe SoapyCake::AdminAddedit do
   around { |example| Timecop.freeze(Time.utc(2015, 2, 17, 12), &example) }
 
   let(:advertiser_id) { 15886 }
+  let(:contact_id) { 8814 }
   let(:vertical_id) { 41 }
   let(:offer_id) { 8910 }
   let(:offer_contract_id) { 1456 }
@@ -16,6 +17,21 @@ RSpec.describe SoapyCake::AdminAddedit do
       )
 
       expect(result).to include(affiliate_id: 1)
+    end
+  end
+
+  describe 'contacts', :vcr do
+    it 'edits a contact' do
+      result = subject.edit_contact(
+        entity_id: advertiser_id,
+        contact_id: contact_id,
+        contact_email_address: 'fox@rabbit.com'
+      )
+
+      expect(result).to include(
+        success: true,
+        contact_id: contact_id
+      )
     end
   end
 

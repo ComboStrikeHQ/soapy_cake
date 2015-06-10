@@ -81,6 +81,12 @@ module SoapyCake
       addedit_offer(opts)
     end
 
+    def edit_contact(opts)
+      require_params(opts, %i(entity_id contact_id contact_email_address))
+
+      run Request.new(:admin, :addedit, :contact, opts)
+    end
+
     def add_geo_targets(opts = {})
       require_params(opts, %i(offer_contract_id allow_countries))
 
