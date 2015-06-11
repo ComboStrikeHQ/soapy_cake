@@ -54,4 +54,31 @@ RSpec.describe SoapyCake::Admin do
       subject.affiliates(affiliate_id: 'bloops')
     end.to raise_error(SoapyCake::RequestFailed)
   end
+
+  it 'creates an affiliate and returns the ID', :vcr do
+    result = subject.affiliate_signup(
+      contact_timezone: 'CET',
+      contact_phone_work: 'n/a',
+      address_country: 'n/a',
+      ssn_tax_id: 'n/a',
+      tax_class: 'n/a',
+      address_street: 'n/a',
+      address_city: 'n/a',
+      address_state: 'n/a',
+      address_zip_code: 'n/a',
+      account_status_id: SoapyCake::Const::CONSTS[:account_status_id][:active],
+      affiliate_name: 'Foxy Fox',
+      contact_first_name: 'Foxy',
+      contact_last_name: 'Fox',
+      contact_email_address: 'foxy@forrest.com',
+      date_added: Date.today
+    )
+
+    expect(result).to eq(
+      success: true,
+      message: 'Affiliate Added Successfully',
+      affiliate_id: 16173,
+      tipalti_iframe_expiration_date: nil
+    )
+  end
 end
