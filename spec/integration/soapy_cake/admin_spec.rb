@@ -81,4 +81,13 @@ RSpec.describe SoapyCake::Admin do
       tipalti_iframe_expiration_date: nil
     )
   end
+
+  it 'returns media types', :vcr do
+    result = subject.media_types
+
+    expect(result.first).to eq(
+      media_type_id: 15,
+      type_name: 'Adware'
+    )
+  end
 end

@@ -57,7 +57,7 @@ http_interactions:
               <cake:tags_modification_type>add</cake:tags_modification_type>
               <cake:conversion_cap_behavior>5</cake:conversion_cap_behavior>
               <cake:conversion_behavior_on_redirect>5</cake:conversion_behavior_on_redirect>
-              <cake:expiration_date>2115-01-24T01:00:00</cake:expiration_date>
+              <cake:expiration_date>2045-02-09T01:00:00</cake:expiration_date>
               <cake:offer_type_id>3</cake:offer_type_id>
               <cake:currency_id>2</cake:currency_id>
               <cake:advertiser_id>15886</cake:advertiser_id>

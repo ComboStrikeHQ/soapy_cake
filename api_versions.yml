@@ -15,7 +15,7 @@ admin:
     affiliate: 2
     apply_suppression_list_to_offer: 1
     blacklist: 1
-    campaign: 2
+    campaign: 3
     caps: 1
     contact: 2
     creative: 1

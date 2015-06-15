@@ -102,6 +102,10 @@ module SoapyCake
       run Request.new(:admin, :signup, :affiliate, opts)
     end
 
+    def media_types(*)
+      run(Request.new(:admin, :signup, :get_media_types, {}))[:MediaType]
+    end
+
     def verticals(*)
       run Request.new(:admin, :get, :verticals, {})
     end

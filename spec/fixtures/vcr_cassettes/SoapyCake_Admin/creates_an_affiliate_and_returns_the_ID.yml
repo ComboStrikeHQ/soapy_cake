@@ -26,7 +26,7 @@ http_interactions:
               <cake:contact_first_name>Foxy</cake:contact_first_name>
               <cake:contact_last_name>Fox</cake:contact_last_name>
               <cake:contact_email_address>foxy@forrest.com</cake:contact_email_address>
-              <cake:date_added>2015-06-11T01:00:00</cake:date_added>
+              <cake:date_added>2015-06-15T01:00:00</cake:date_added>
             </cake:Affiliate>
           </env:Body>
         </env:Envelope>

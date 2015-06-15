@@ -41,5 +41,13 @@ module SoapyCake
         fail ArgumentError, "#{key} is not a valid value for #{type}"
       end
     end
+
+    # Some API calls require expiration dates.
+    # The default is to not expire campaigns/offers/etc., so we set this to far in the future.
+    # It cannot be *that* far in the future though because it causes a datetime overflow
+    # in the steam powered rusty black box they call a database server.
+    def future_expiration_date
+      Date.today + (365 * 30)
+    end
   end
 end
