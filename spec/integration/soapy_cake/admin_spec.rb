@@ -1,4 +1,6 @@
 RSpec.describe SoapyCake::Admin do
+  around { |example| Timecop.freeze(Time.utc(2015, 6, 15, 12), &example) }
+
   it 'returns an affiliate with correct data types', :vcr do
     result = subject.affiliates(affiliate_id: 16027)
     expect(result.count).to eq(1)
