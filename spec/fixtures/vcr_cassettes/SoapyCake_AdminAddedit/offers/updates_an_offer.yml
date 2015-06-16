@@ -57,7 +57,7 @@ http_interactions:
               <cake:tags_modification_type>remove_all</cake:tags_modification_type>
               <cake:conversion_cap_behavior>0</cake:conversion_cap_behavior>
               <cake:conversion_behavior_on_redirect>0</cake:conversion_behavior_on_redirect>
-              <cake:expiration_date>2115-01-24T01:00:00</cake:expiration_date>
+              <cake:expiration_date>2045-02-09T01:00:00</cake:expiration_date>
               <cake:offer_id>8910</cake:offer_id>
               <cake:advertiser_id>15886</cake:advertiser_id>
               <cake:vertical_id>41</cake:vertical_id>

@@ -121,32 +121,32 @@ RSpec.describe SoapyCake::Admin do
 
     describe '#verticals' do
       let(:method) { :verticals }
-      let(:cake_opts) { {} }
+      let(:cake_opts) { nil }
       it_behaves_like 'a cake admin method'
     end
 
     describe '#countries' do
       let(:method) { :countries }
-      let(:cake_opts) { {} }
+      let(:cake_opts) { nil }
       it_behaves_like 'a cake admin method'
     end
 
     describe '#currencies' do
       let(:method) { :currencies }
-      let(:cake_opts) { {} }
+      let(:cake_opts) { nil }
       it_behaves_like 'a cake admin method'
     end
 
     describe '#tiers' do
       let(:method) { :tiers }
       let(:cake_method) { :affiliate_tiers }
-      let(:cake_opts) { {} }
+      let(:cake_opts) { nil }
       it_behaves_like 'a cake admin method'
     end
 
     describe '#blacklist_reasons' do
       let(:method) { :blacklist_reasons }
-      let(:cake_opts) { {} }
+      let(:cake_opts) { nil }
       it_behaves_like 'a cake admin method'
     end
   end

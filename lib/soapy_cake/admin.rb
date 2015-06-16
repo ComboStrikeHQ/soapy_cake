@@ -78,11 +78,11 @@ module SoapyCake
       run Request.new(:admin, :reports, :caps, opts)
     end
 
-    def currencies(*)
+    def currencies
       run Request.new(:admin, :get, :currencies, {})
     end
 
-    def tiers(*)
+    def tiers
       run Request.new(:admin, :get, :affiliate_tiers, {})
     end
 
@@ -102,11 +102,15 @@ module SoapyCake
       run Request.new(:admin, :signup, :affiliate, opts)
     end
 
-    def verticals(*)
+    def media_types
+      run(Request.new(:admin, :signup, :get_media_types, {}))[:MediaType]
+    end
+
+    def verticals
       run Request.new(:admin, :get, :verticals, {})
     end
 
-    def countries(*)
+    def countries
       run Request.new(:admin, :get, :countries, {})
     end
 
@@ -114,7 +118,7 @@ module SoapyCake
       run Request.new(:admin, :get, :payment_types, {})
     end
 
-    def blacklist_reasons(*)
+    def blacklist_reasons
       run Request.new(:admin, :get, :blacklist_reasons, {})
     end
   end

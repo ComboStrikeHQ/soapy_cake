@@ -151,6 +151,17 @@ module SoapyCake
       run Request.new(:admin, :addedit, :affiliate, opts)
     end
 
+    def add_campaign(opts)
+      addedit_campaign(opts.merge(campaign_id: 0))
+    end
+
+    def edit_campaign(opts)
+      require_params(opts, %i(campaign_id))
+      validate_id(opts, :campaign_id)
+
+      addedit_campaign(opts)
+    end
+
     private
 
     def apply_tag_opts!(opts)
@@ -169,7 +180,7 @@ module SoapyCake
       OFFER_DEFAULT_OPTIONS.merge(
         conversion_cap_behavior: const_lookup(:conversion_behavior_id, :system),
         conversion_behavior_on_redirect: const_lookup(:conversion_behavior_id, :system),
-        expiration_date: Date.today + (365 * 100)
+        expiration_date: future_expiration_date
       )
     end
 
@@ -192,6 +203,19 @@ module SoapyCake
       translate_values!(opts, %i(price_format_id))
 
       run Request.new(:admin, :addedit, :offer_contract, opts)
+    end
+
+    def addedit_campaign(opts)
+      require_params(opts, %i(affiliate_id offer_id media_type_id account_status_id payout))
+
+      translate_values!(opts, %i(account_status_id))
+
+      opts.reverse_merge!(
+        display_link_type_id: 1,
+        expiration_date: future_expiration_date
+      )
+
+      run Request.new(:admin, :addedit, :campaign, opts)
     end
   end
 end

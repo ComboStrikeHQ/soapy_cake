@@ -38,7 +38,21 @@ module SoapyCake
     def check_errors!
       fault = sax.for_tag(:fault).first
       fail RequestFailed, fault[:reason][:text] if fault
+
+      return if error_check_special_case?
+
       fail RequestFailed, error_message unless sax.for_tag(:success).first == 'true'
+    end
+
+    def error_check_special_case?
+      # Don't ask...
+      # As you might imagine, CAKE simply does not return the success element
+      # for this specific request. Also, this is the only request with a tag depth
+      # of 4, not 3 or 5 like ALL OTHER requests.
+      # BTW: There is a 10$ reward if anyone can find a worse designed API.
+      return true if sax.for_tag(:MediaType).count > 0
+
+      false
     end
 
     def error_message
