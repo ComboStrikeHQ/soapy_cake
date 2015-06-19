@@ -78,6 +78,12 @@ module SoapyCake
       run Request.new(:admin, :reports, :caps, opts)
     end
 
+    def exchange_rates(opts)
+      require_params(opts, %i(start_date end_date))
+
+      run Request.new(:admin, :get, :exchange_rates, opts)
+    end
+
     def currencies
       run Request.new(:admin, :get, :currencies, {})
     end
