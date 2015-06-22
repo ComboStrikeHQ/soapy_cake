@@ -69,7 +69,7 @@ module SoapyCake
       offer_contract_is_default use_fallback_targeting
     )
 
-    def add_offer(opts = {})
+    def add_offer(opts)
       require_params(opts, REQUIRED_NEW_OFFER_PARAMS)
 
       addedit_offer(opts.merge(offer_id: 0))
@@ -87,7 +87,7 @@ module SoapyCake
       run Request.new(:admin, :addedit, :contact, opts)
     end
 
-    def add_geo_targets(opts = {})
+    def add_geo_targets(opts)
       require_params(opts, %i(offer_contract_id allow_countries))
 
       if opts[:allow_countries]
@@ -128,7 +128,7 @@ module SoapyCake
       addedit_offer_contract(opts)
     end
 
-    def update_caps(opts = {})
+    def update_caps(opts)
       require_params(opts, %i(cap_type_id cap_interval_id cap_amount send_alert_only))
 
       translate_values!(opts, %i(cap_type_id cap_interval_id))
@@ -136,7 +136,7 @@ module SoapyCake
       run Request.new(:admin, :addedit, :caps, opts)
     end
 
-    def add_offer_tier(opts = {})
+    def add_offer_tier(opts)
       require_params(opts, %i(offer_id tier_id price_format_id offer_contract_id status_id))
 
       opts.merge!(redirect_offer_contract_id: -1, add_edit_option: 'add')

@@ -137,6 +137,12 @@ RSpec.describe SoapyCake::Admin do
       it_behaves_like 'a cake admin method'
     end
 
+    describe '#exchange_rates' do
+      let(:method) { :exchange_rates }
+      let(:cake_opts) { { start_date: '2015-07-01', end_date: '2015-07-07' } }
+      it_behaves_like 'a cake admin method'
+    end
+
     describe '#tiers' do
       let(:method) { :tiers }
       let(:cake_method) { :affiliate_tiers }
