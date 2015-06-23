@@ -35,6 +35,8 @@ module SoapyCake
     end
 
     def creatives(opts = {})
+      translate_values!(opts, %i(creative_type_id creative_status_id))
+
       run Request.new(:admin, :export, :creatives, opts)
     end
 

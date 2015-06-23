@@ -54,6 +54,17 @@ module SoapyCake
         daily: 1,
         weekly: 2,
         monthly: 3
+      },
+      creative_type_id: {
+        link: 1,
+        email: 2,
+        image: 3,
+        flash: 4
+      },
+      creative_status_id: {
+        active: 1,
+        inactive: 2,
+        hidden: 3
       }
     }
 
