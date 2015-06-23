@@ -112,6 +112,7 @@ RSpec.describe SoapyCake::Admin do
 
     describe '#caps' do
       let(:method) { :caps }
+      let(:cake_opts) { { start_date: '2015-07-01', end_date: '2015-07-07' } }
       it_behaves_like 'a cake admin method'
     end
   end
