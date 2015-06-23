@@ -76,7 +76,10 @@ module SoapyCake
       run Request.new(:admin, :reports, :traffic_export, opts)
     end
 
-    def caps(opts = {})
+    def caps(opts)
+      require_params(opts, %i(start_date end_date))
+      translate_values!(opts, %i(cap_type_id))
+
       run Request.new(:admin, :reports, :caps, opts)
     end
 
