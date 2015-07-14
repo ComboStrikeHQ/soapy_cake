@@ -51,11 +51,3 @@ at [api_versions.yml](api_versions.yml).
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
-
-## Actual Soapy Cakes
-
-If you are looking for actual soap cakes...
-
-![Soapy Cake](http://soapycakes.co/wp-content/uploads/2012/05/blogpics17-310x205.jpg)
-
-you should head to [soapycakes.co](http://soapycakes.co).
