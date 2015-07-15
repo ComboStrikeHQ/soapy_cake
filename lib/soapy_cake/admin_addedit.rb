@@ -167,13 +167,20 @@ module SoapyCake
     def apply_tag_opts!(opts)
       return unless opts[:tags]
 
-      if opts[:tags].to_s == ''
-        opts[:tags_modification_type] = 'remove_all'
-        opts[:tags] = ''
-      else
-        opts[:tags_modification_type] = opts[:offer_id] ? 'add' : 'replace'
-        opts[:tags] = Array(opts[:tags]).join(',')
-      end
+      apply_tag_modification_type!(opts)
+
+      opts[:tags] = Array(opts[:tags]).join(',')
+    end
+
+    def apply_tag_modification_type!(opts)
+      opts[:tags_modification_type] =
+        if opts[:tags].to_s == ''
+          'remove_all'
+        elsif opts.delete(:tags_replace) && opts[:offer_id] != 0
+          'replace'
+        else
+          'add'
+        end
     end
 
     def default_offer_options
