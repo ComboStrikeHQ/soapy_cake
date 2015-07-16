@@ -21,5 +21,5 @@ require 'soapy_cake/affiliate'
 
 module SoapyCake
   API_VERSIONS = YAML.load(File.read(File.expand_path('../../api_versions.yml', __FILE__)))
-  NET_TIMEOUT = 180
+  NET_TIMEOUT = 600
 end
