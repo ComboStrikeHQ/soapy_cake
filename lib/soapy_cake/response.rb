@@ -10,13 +10,15 @@ module SoapyCake
       @short_response = short_response
     end
 
-    def collection
+    def to_enum
       check_errors!
 
       return typed_element(sax.at_depth(3).first) if short_response
 
-      sax.at_depth(5).map do |element|
-        typed_element(element)
+      Enumerator.new do |y|
+        sax.at_depth(5).each do |element|
+          y << typed_element(element)
+        end
       end
     end
 

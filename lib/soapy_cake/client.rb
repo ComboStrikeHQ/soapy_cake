@@ -20,7 +20,7 @@ module SoapyCake
 
       response = Response.new(http_response(request), request.short_response?)
       response.time_offset = time_offset
-      response.collection
+      response.to_enum
     end
 
     private
