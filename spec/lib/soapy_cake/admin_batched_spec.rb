@@ -21,7 +21,7 @@ RSpec.describe SoapyCake::AdminBatched do
 
   context 'errors' do
     it 'fails with an invalid method' do
-      expect { subject.clicks }.to raise_error(/Invalid method clicks/)
+      expect { subject.something }.to raise_error(/Invalid method something/)
     end
 
     it 'fails when row_limit is set' do

@@ -39,7 +39,7 @@ module SoapyCake
       end
     end
 
-    ALLOWED_METHODS = %i(advertisers affiliates campaigns offers creatives)
+    ALLOWED_METHODS = %i(advertisers affiliates campaigns offers creatives clicks conversions)
 
     def method_missing(name, opts = {})
       fail Error, "Invalid method #{name}" unless ALLOWED_METHODS.include?(name)
