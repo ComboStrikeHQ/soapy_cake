@@ -19,6 +19,13 @@ RSpec.describe SoapyCake::AdminBatched do
     expect(result.to_a).to eq(%i(a b c))
   end
 
+  it 'can use a custom limit' do
+    expect(admin).to receive(:offers)
+      .with(advertiser: 1, start_at_row: 1, row_limit: 100).and_return(%i(a b))
+
+    expect(subject.offers({ advertiser: 1 }, 100).to_a).to eq(%i(a b))
+  end
+
   context 'errors' do
     it 'fails with an invalid method' do
       expect { subject.something }.to raise_error(/Invalid method something/)

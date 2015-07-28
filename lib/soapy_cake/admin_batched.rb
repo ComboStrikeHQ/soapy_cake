@@ -9,7 +9,7 @@ module SoapyCake
       # When all offers have a lot of info (e.g. geotargeting) we probably need to decrease this.
       LIMIT = 500
 
-      def initialize(admin, method, opts)
+      def initialize(admin, method, opts, limit)
         if opts.key?(:row_limit) || opts.key?(:start_at_row)
           fail Error, 'Cannot set row_limit/start_at_row in batched mode!'
         end
@@ -18,6 +18,7 @@ module SoapyCake
         @method = method
         @opts = opts
         @offset = INITIAL_OFFSET
+        @limit = limit || LIMIT
         @finished = false
       end
 
@@ -29,22 +30,22 @@ module SoapyCake
 
       private
 
-      attr_reader :admin, :method, :opts, :finished, :offset
+      attr_reader :admin, :method, :opts, :finished, :offset, :limit
 
       def next_batch
-        result = admin.public_send(method, opts.merge(row_limit: LIMIT, start_at_row: offset))
-        @finished = true if result.count < LIMIT
-        @offset += LIMIT
+        result = admin.public_send(method, opts.merge(row_limit: limit, start_at_row: offset))
+        @finished = true if result.count < limit
+        @offset += limit
         result
       end
     end
 
     ALLOWED_METHODS = %i(advertisers affiliates campaigns offers creatives clicks conversions)
 
-    def method_missing(name, opts = {})
+    def method_missing(name, opts = {}, limit = nil)
       fail Error, "Invalid method #{name}" unless ALLOWED_METHODS.include?(name)
 
-      BatchedRequest.new(admin, name, opts).to_enum
+      BatchedRequest.new(admin, name, opts, limit).to_enum
     end
 
     private
