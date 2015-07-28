@@ -1,5 +1,9 @@
 module SoapyCake
   class AdminBatched
+    ALLOWED_METHODS = %i(
+      advertisers affiliates campaigns offers creatives clicks conversions events
+    )
+
     class BatchedRequest
       # Both 0 and 1 return the first element. We need to set it to 1,
       # otherwise we get an overlap in the next call. This is not documented in the API spec.
@@ -39,8 +43,6 @@ module SoapyCake
         result
       end
     end
-
-    ALLOWED_METHODS = %i(advertisers affiliates campaigns offers creatives clicks conversions)
 
     def method_missing(name, opts = {}, limit = nil)
       fail Error, "Invalid method #{name}" unless ALLOWED_METHODS.include?(name)
