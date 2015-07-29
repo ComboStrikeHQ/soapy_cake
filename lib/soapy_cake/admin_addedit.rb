@@ -136,6 +136,15 @@ module SoapyCake
       run Request.new(:admin, :addedit, :caps, opts)
     end
 
+    def remove_caps(opts)
+      require_params(opts, %i(cap_type_id))
+
+      translate_values!(opts, %i(cap_type_id))
+
+      opts.merge!(cap_interval_id: 0, cap_amount: -1, send_alert_only: false)
+      run Request.new(:admin, :addedit, :caps, opts)
+    end
+
     def add_offer_tier(opts)
       require_params(opts, %i(offer_id tier_id price_format_id offer_contract_id status_id))
 
