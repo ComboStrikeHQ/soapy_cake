@@ -105,7 +105,7 @@ module SoapyCake
       require_params(opts, %i(countries))
       countries = Array(opts[:countries])
       opts[:countries] = countries.join(',')
-      opts[:redirect_offer_contract_ids] = ([0] * countries.count).join(',')
+      opts[:redirect_offer_contract_ids] = ([-1] * countries.count).join(',')
     end
 
     def geo_targets_redirect_options!(opts)
