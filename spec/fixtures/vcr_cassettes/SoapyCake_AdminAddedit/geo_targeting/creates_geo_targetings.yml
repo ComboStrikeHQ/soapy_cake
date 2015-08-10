@@ -15,7 +15,7 @@ http_interactions:
               <cake:offer_contract_id>1456</cake:offer_contract_id>
               <cake:countries>DE,FR</cake:countries>
               <cake:allow_countries>true</cake:allow_countries>
-              <cake:redirect_offer_contract_ids>0,0</cake:redirect_offer_contract_ids>
+              <cake:redirect_offer_contract_ids>-1,-1</cake:redirect_offer_contract_ids>
               <cake:add_edit_option>add</cake:add_edit_option>
               <cake:set_targeting_to_geo>true</cake:set_targeting_to_geo>
             </cake:GeoTargets>
@@ -40,7 +40,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Tue, 17 Mar 2015 10:22:54 GMT
+      - Fri, 07 Aug 2015 13:45:43 GMT
       Content-Length:
       - '446'
     body:
@@ -91,7 +91,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Tue, 17 Mar 2015 10:22:55 GMT
+      - Fri, 07 Aug 2015 13:45:48 GMT
       Content-Length:
       - '446'
     body:
