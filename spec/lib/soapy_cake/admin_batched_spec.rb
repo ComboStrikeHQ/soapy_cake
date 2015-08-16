@@ -9,9 +9,9 @@ RSpec.describe SoapyCake::AdminBatched do
 
   it 'returns an enumerator and uses batched CAKE calls' do
     expect(admin).to receive(:offers)
-      .with(advertiser: 1, start_at_row: 1, row_limit: 2).and_return(%i(a b))
+      .with(advertiser: 1, start_at_row: 1, row_limit: 2).and_return(%i(a b).to_enum)
     expect(admin).to receive(:offers)
-      .with(advertiser: 1, start_at_row: 3, row_limit: 2).and_return(%i(c))
+      .with(advertiser: 1, start_at_row: 3, row_limit: 2).and_return(%i(c).to_enum)
 
     result = subject.offers(advertiser: 1)
 
@@ -21,7 +21,7 @@ RSpec.describe SoapyCake::AdminBatched do
 
   it 'can use a custom limit' do
     expect(admin).to receive(:offers)
-      .with(advertiser: 1, start_at_row: 1, row_limit: 100).and_return(%i(a b))
+      .with(advertiser: 1, start_at_row: 1, row_limit: 100).and_return(%i(a b).to_enum)
 
     expect(subject.offers({ advertiser: 1 }, 100).to_a).to eq(%i(a b))
   end

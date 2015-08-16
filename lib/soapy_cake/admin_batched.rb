@@ -23,25 +23,24 @@ module SoapyCake
         @opts = opts
         @offset = INITIAL_OFFSET
         @limit = limit || LIMIT
-        @finished = false
       end
 
       def to_enum
         Enumerator.new do |y|
-          next_batch.each { |row| y << row } until finished
+          loop do
+            result = admin.public_send(method, opts.merge(row_limit: limit, start_at_row: offset))
+            @offset += limit
+            limit.times { y << result.next }
+          end
         end
+        # we know we received less than limit objects when we see a stop iteration exception from
+        # the underlying result enumerator and therefore know that we're done.
+      rescue StopIteration # rubocop:disable Lint/HandleExceptions
       end
 
       private
 
-      attr_reader :admin, :method, :opts, :finished, :offset, :limit
-
-      def next_batch
-        result = admin.public_send(method, opts.merge(row_limit: limit, start_at_row: offset))
-        @finished = true if result.count < limit
-        @offset += limit
-        result
-      end
+      attr_reader :admin, :method, :opts, :offset, :limit
     end
 
     def method_missing(name, opts = {}, limit = nil)
