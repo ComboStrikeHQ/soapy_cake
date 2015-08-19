@@ -146,12 +146,11 @@ module SoapyCake
     end
 
     def add_offer_tier(opts)
-      require_params(opts, %i(offer_id tier_id price_format_id offer_contract_id status_id))
+      addedit_offer_tier('add', opts)
+    end
 
-      opts.merge!(redirect_offer_contract_id: -1, add_edit_option: 'add')
-      translate_values!(opts, %i(status_id price_format_id))
-
-      run Request.new(:admin, :addedit, :offer_tiers, opts)
+    def edit_offer_tier(opts)
+      addedit_offer_tier('replace', opts)
     end
 
     def edit_affiliate(opts)
@@ -172,6 +171,15 @@ module SoapyCake
     end
 
     private
+
+    def addedit_offer_tier(add_edit_option, opts)
+      require_params(opts, %i(offer_id tier_id price_format_id offer_contract_id status_id))
+
+      opts = opts.merge(redirect_offer_contract_id: -1, add_edit_option: add_edit_option)
+      translate_values!(opts, %i(status_id price_format_id))
+
+      run Request.new(:admin, :addedit, :offer_tiers, opts)
+    end
 
     def apply_tag_opts!(opts)
       return unless opts[:tags]

@@ -241,6 +241,18 @@ RSpec.describe SoapyCake::AdminAddedit do
 
       expect(result[:message]).to eq('Offer Tier Added')
     end
+
+    it 'edits an offer tier', :vcr do
+      result = subject.edit_offer_tier(
+        offer_id: offer_id,
+        offer_contract_id: offer_contract_id,
+        tier_id: tier_id,
+        price_format_id: :cpa,
+        status_id: :public
+      )
+
+      expect(result[:message]).to eq('Offer Tier Replaced')
+    end
   end
 
   describe 'campaigns' do

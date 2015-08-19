@@ -28,7 +28,7 @@ module SoapyCake
       def to_enum
         Enumerator.new do |y|
           loop do
-            result = admin.public_send(method, opts.merge(row_limit: limit, start_at_row: offset))
+            result = next_batch
             @offset += limit
             limit.times { y << result.next }
           end
@@ -39,6 +39,10 @@ module SoapyCake
       end
 
       private
+
+      def next_batch
+        admin.public_send(method, opts.merge(row_limit: limit, start_at_row: offset))
+      end
 
       attr_reader :admin, :method, :opts, :offset, :limit
     end
