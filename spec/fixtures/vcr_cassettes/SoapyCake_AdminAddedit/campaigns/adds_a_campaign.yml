@@ -12,14 +12,14 @@ http_interactions:
           <env:Body>
             <cake:Campaign>
               <cake:api_key>cake-api-key</cake:api_key>
+              <cake:display_link_type_id>1</cake:display_link_type_id>
+              <cake:expiration_date>2045-02-09T01:00:00</cake:expiration_date>
               <cake:affiliate_id>1</cake:affiliate_id>
               <cake:offer_id>8910</cake:offer_id>
               <cake:media_type_id>1</cake:media_type_id>
               <cake:account_status_id>1</cake:account_status_id>
               <cake:payout>1.23</cake:payout>
               <cake:campaign_id>0</cake:campaign_id>
-              <cake:display_link_type_id>1</cake:display_link_type_id>
-              <cake:expiration_date>2045-02-09T01:00:00</cake:expiration_date>
             </cake:Campaign>
           </env:Body>
         </env:Envelope>

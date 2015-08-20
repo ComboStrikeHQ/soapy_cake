@@ -5,6 +5,7 @@ require 'active_support/core_ext/hash/reverse_merge'
 require 'active_support/core_ext/date'
 require 'active_support/core_ext/numeric/time'
 require 'active_support/core_ext/time/zones'
+require 'active_support/core_ext/hash/transform_values'
 
 require 'soapy_cake/version'
 require 'soapy_cake/const'

@@ -35,7 +35,7 @@ module SoapyCake
     end
 
     def creatives(opts = {})
-      translate_values!(opts, %i(creative_type_id creative_status_id))
+      opts = translate_values(opts, %i(creative_type_id creative_status_id))
 
       run Request.new(:admin, :export, :creatives, opts)
     end
@@ -78,7 +78,7 @@ module SoapyCake
 
     def caps(opts)
       require_params(opts, %i(start_date end_date))
-      translate_values!(opts, %i(cap_type_id))
+      opts = translate_values(opts, %i(cap_type_id))
 
       run Request.new(:admin, :reports, :caps, opts)
     end

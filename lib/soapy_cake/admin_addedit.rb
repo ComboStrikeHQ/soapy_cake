@@ -91,24 +91,27 @@ module SoapyCake
       require_params(opts, %i(offer_contract_id allow_countries))
 
       if opts[:allow_countries]
-        geo_targets_allow_options!(opts)
+        opts = geo_targets_allow_options(opts)
       else
-        geo_targets_redirect_options!(opts)
+        opts = geo_targets_redirect_options(opts)
       end
 
-      opts.merge!(add_edit_option: 'add', set_targeting_to_geo: true)
+      opts = opts.merge(add_edit_option: 'add', set_targeting_to_geo: true)
 
       run Request.new(:admin, :addedit, :geo_targets, opts)
     end
 
-    def geo_targets_allow_options!(opts)
+    def geo_targets_allow_options(opts)
       require_params(opts, %i(countries))
+      opts = opts.dup
       countries = Array(opts[:countries])
       opts[:countries] = countries.join(',')
       opts[:redirect_offer_contract_ids] = ([-1] * countries.count).join(',')
+      opts
     end
 
-    def geo_targets_redirect_options!(opts)
+    def geo_targets_redirect_options(opts)
+      opts = opts.dup
       redirects = opts.delete(:redirects)
       unless redirects.is_a?(Hash) && redirects.keys.count > 0
         fail Error, "Parameter 'redirects' must be a COUNTRY=>REDIRECT_OFFER_CONTRACT_ID hash!"
@@ -116,6 +119,7 @@ module SoapyCake
 
       opts[:countries] = redirects.keys.join(',')
       opts[:redirect_offer_contract_ids] = redirects.values.join(',')
+      opts
     end
 
     def add_offer_contract(opts = {})
@@ -131,7 +135,7 @@ module SoapyCake
     def update_caps(opts)
       require_params(opts, %i(cap_type_id cap_interval_id cap_amount send_alert_only))
 
-      translate_values!(opts, %i(cap_type_id cap_interval_id))
+      opts = translate_values(opts, %i(cap_type_id cap_interval_id))
 
       run Request.new(:admin, :addedit, :caps, opts)
     end
@@ -139,9 +143,9 @@ module SoapyCake
     def remove_caps(opts)
       require_params(opts, %i(cap_type_id))
 
-      translate_values!(opts, %i(cap_type_id))
+      opts = translate_values(opts, %i(cap_type_id))
 
-      opts.merge!(cap_interval_id: 0, cap_amount: -1, send_alert_only: false)
+      opts = opts.merge(cap_interval_id: 0, cap_amount: -1, send_alert_only: false)
       run Request.new(:admin, :addedit, :caps, opts)
     end
 
@@ -176,20 +180,20 @@ module SoapyCake
       require_params(opts, %i(offer_id tier_id price_format_id offer_contract_id status_id))
 
       opts = opts.merge(redirect_offer_contract_id: -1, add_edit_option: add_edit_option)
-      translate_values!(opts, %i(status_id price_format_id))
+      opts = translate_values(opts, %i(status_id price_format_id))
 
       run Request.new(:admin, :addedit, :offer_tiers, opts)
     end
 
-    def apply_tag_opts!(opts)
-      return unless opts[:tags]
-
-      apply_tag_modification_type!(opts)
-
+    def apply_tag_opts(opts)
+      return opts unless opts[:tags]
+      opts = apply_tag_modification_type(opts)
       opts[:tags] = Array(opts[:tags]).join(',')
+      opts
     end
 
-    def apply_tag_modification_type!(opts)
+    def apply_tag_modification_type(opts)
+      opts = opts.dup
       opts[:tags_modification_type] =
         if opts[:tags].to_s == ''
           'remove_all'
@@ -198,6 +202,7 @@ module SoapyCake
         else
           'add'
         end
+      opts
     end
 
     def default_offer_options
@@ -211,10 +216,9 @@ module SoapyCake
     def addedit_offer(opts)
       require_params(opts, REQUIRED_OFFER_PARAMS)
 
-      translate_booleans!(opts)
-      apply_tag_opts!(opts)
-
-      translate_values!(opts, %i(
+      opts = translate_booleans(opts)
+      opts = apply_tag_opts(opts)
+      opts = translate_values(opts, %i(
         currency_id offer_status_id offer_type_id price_format_id
         conversion_cap_behavior conversion_behavior_on_redirect
       ))
@@ -224,7 +228,7 @@ module SoapyCake
 
     def addedit_offer_contract(opts)
       require_params(opts, REQUIRED_OFFER_CONTRACT_PARAMS)
-      translate_values!(opts, %i(price_format_id))
+      opts = translate_values(opts, %i(price_format_id))
 
       run Request.new(:admin, :addedit, :offer_contract, opts)
     end
@@ -232,9 +236,9 @@ module SoapyCake
     def addedit_campaign(opts)
       require_params(opts, %i(affiliate_id offer_id media_type_id account_status_id payout))
 
-      translate_values!(opts, %i(account_status_id))
+      opts = translate_values(opts, %i(account_status_id))
 
-      opts.reverse_merge!(
+      opts = opts.reverse_merge(
         display_link_type_id: 1,
         expiration_date: future_expiration_date
       )
