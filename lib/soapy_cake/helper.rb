@@ -23,17 +23,23 @@ module SoapyCake
       end
     end
 
-    def translate_booleans!(opts)
-      opts.each do |k, v|
-        opts[k] = 'on' if v == true
-        opts[k] = 'off' if v == false
+    def translate_booleans(opts)
+      opts.transform_values do |v|
+        case v
+        when true then 'on'
+        when false then 'off'
+        else v
+        end
       end
     end
 
-    def translate_values!(opts, params)
-      params.each do |type|
-        opts[type] = const_lookup(type, opts[type]) if opts.key?(type)
-      end
+    def translate_values(opts, params)
+      opts.map do |k, v|
+        [
+          k,
+          params.include?(k) ? const_lookup(k, v) : v
+        ]
+      end.to_h
     end
 
     def const_lookup(type, key)
