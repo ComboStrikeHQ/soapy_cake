@@ -19,7 +19,7 @@ module SoapyCake
         xml['env'].Envelope(xml_namespaces) do
           xml.Header
           xml.Body do
-            xml['cake'].send(method.camelize.to_sym) do
+            xml['cake'].public_send(method.camelize.to_sym) do
               xml_params(xml)
             end
           end
@@ -40,7 +40,7 @@ module SoapyCake
     def xml_params(xml)
       xml.api_key api_key
       opts.each do |k, v|
-        xml.send(k.to_sym, format_param(v))
+        xml.public_send(k.to_sym, format_param(v))
       end
     end
 
