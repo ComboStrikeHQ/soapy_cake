@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://cake-partner-domain.com/api/1/signup.asmx
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0"?>
+        <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:cake="http://cakemarketing.com/api/1/">
+          <env:Header/>
+          <env:Body>
+            <cake:GetMediaTypes>
+              <cake:api_key>cake-api-key</cake:api_key>
+            </cake:GetMediaTypes>
+          </env:Body>
+        </env:Envelope>
+    headers:
+      Content-Type:
+      - application/soap+xml;charset=UTF-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - application/soap+xml; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Mon, 24 Aug 2015 12:29:10 GMT
+      Content-Length:
+      - '1736'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><GetMediaTypesResponse
+        xmlns="http://cakemarketing.com/api/1/"><GetMediaTypesResult><MediaType><media_type_id>15</media_type_id><type_name>Adware</type_name></MediaType><MediaType><media_type_id>7</media_type_id><type_name>Banner</type_name></MediaType><MediaType><media_type_id>17</media_type_id><type_name>Content</type_name></MediaType><MediaType><media_type_id>6</media_type_id><type_name>Co-Reg</type_name></MediaType><MediaType><media_type_id>3</media_type_id><type_name>Email</type_name></MediaType><MediaType><media_type_id>12</media_type_id><type_name>Incentivized</type_name></MediaType><MediaType><media_type_id>2</media_type_id><type_name>Network</type_name></MediaType><MediaType><media_type_id>13</media_type_id><type_name>Other</type_name></MediaType><MediaType><media_type_id>8</media_type_id><type_name>PopUnder</type_name></MediaType><MediaType><media_type_id>4</media_type_id><type_name>PPC</type_name></MediaType><MediaType><media_type_id>9</media_type_id><type_name>Radio</type_name></MediaType><MediaType><media_type_id>5</media_type_id><type_name>SEO</type_name></MediaType><MediaType><media_type_id>16</media_type_id><type_name>Social
+        Media</type_name></MediaType><MediaType><media_type_id>10</media_type_id><type_name>TV</type_name></MediaType><MediaType><media_type_id>11</media_type_id><type_name>Upsell</type_name></MediaType><MediaType><media_type_id>1</media_type_id><type_name>YouTube_Twitch</type_name></MediaType></GetMediaTypesResult></GetMediaTypesResponse></soap:Body></soap:Envelope>
+    http_version: 
+  recorded_at: Mon, 15 Jun 2015 12:00:00 GMT
+recorded_with: VCR 2.9.3

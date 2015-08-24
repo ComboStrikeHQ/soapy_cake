@@ -18,10 +18,14 @@ module SoapyCake
       request.api_key = api_key
       request.time_offset = time_offset
 
-      http_response(request).to_enum
+      http_response(request).public_send(:"to_#{xml_response? ? 'xml' : 'enum'}")
     end
 
     private
+
+    def xml_response?
+      opts[:xml_response] == true
+    end
 
     def http_response(request)
       url = "https://#{domain}#{request.path}"

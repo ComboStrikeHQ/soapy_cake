@@ -92,4 +92,14 @@ RSpec.describe SoapyCake::Admin do
       type_name: 'Adware'
     )
   end
+
+  context 'XML responses' do
+    subject { described_class.new(xml_response: true) }
+
+    it 'returns an XML string', :vcr do
+      result = subject.media_types
+
+      expect(result).to eq(File.read('spec/fixtures/raw_response.xml').strip)
+    end
+  end
 end

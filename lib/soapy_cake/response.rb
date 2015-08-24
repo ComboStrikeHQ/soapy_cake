@@ -22,6 +22,14 @@ module SoapyCake
       end
     end
 
+    def to_xml
+      if to_enum.count == 0
+        []
+      else
+        [body.to_s]
+      end.to_enum
+    end
+
     private
 
     def typed_element(element)
