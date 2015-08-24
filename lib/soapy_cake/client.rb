@@ -18,16 +18,20 @@ module SoapyCake
       request.api_key = api_key
       request.time_offset = time_offset
 
-      response = Response.new(http_response(request), request.short_response?)
-      response.time_offset = time_offset
-      response.to_enum
+      http_response(request).to_enum
     end
 
     private
 
     def http_response(request)
       url = "https://#{domain}#{request.path}"
-      HTTParty.post(url, headers: headers, body: request.xml, timeout: NET_TIMEOUT).body
+      http_response = HTTParty.post(url, headers: headers, body: request.xml, timeout: NET_TIMEOUT)
+
+      fail RequestFailed, "Request failed with HTTP #{http_response.code}: " \
+        "#{http_response.body}" unless http_response.success?
+      response = Response.new(http_response, request.short_response?)
+      response.time_offset = time_offset
+      response
     end
 
     def headers
