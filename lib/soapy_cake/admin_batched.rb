@@ -4,6 +4,10 @@ module SoapyCake
       advertisers affiliates campaigns offers creatives clicks conversions events
     )
 
+    def initialize(opts = {})
+      @opts = opts
+    end
+
     class BatchedRequest
       # Both 0 and 1 return the first element. We need to set it to 1,
       # otherwise we get an overlap in the next call. This is not documented in the API spec.
@@ -46,16 +50,18 @@ module SoapyCake
       attr_reader :admin, :method, :opts, :offset, :limit
     end
 
-    def method_missing(name, opts = {}, limit = nil)
+    def method_missing(name, method_opts = {}, limit = nil)
       fail Error, "Invalid method #{name}" unless ALLOWED_METHODS.include?(name)
 
-      BatchedRequest.new(admin, name, opts, limit).to_enum
+      BatchedRequest.new(admin, name, method_opts, limit).to_enum
     end
 
     private
 
+    attr_reader :opts
+
     def admin
-      @admin ||= Admin.new
+      @admin ||= Admin.new(opts)
     end
   end
 end
