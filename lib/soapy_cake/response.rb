@@ -38,12 +38,23 @@ module SoapyCake
     end
 
     def check_errors!
+      # If we get a lot of data in our response, we can assume there was no error.
+      # This saves a lot of time because we don't have to scan the whole XML tree for errors.
+      return if body.length > 8192
+
+      error_check_fault!
+      return if error_check_special_case?
+      error_check_success!
+    end
+
+    def error_check_fault!
       fault = sax.for_tag(:fault).first
       fail RequestFailed, fault[:reason][:text] if fault
+    end
 
-      return if error_check_special_case?
-
-      fail RequestFailed, error_message unless sax.for_tag(:success).first == 'true'
+    def error_check_success!
+      return if sax.for_tag(:success).first == 'true'
+      fail RequestFailed, error_message
     end
 
     def error_check_special_case?
