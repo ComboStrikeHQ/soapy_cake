@@ -1,3 +1,3 @@
 module SoapyCake
-  VERSION = '1.11.6'
+  VERSION = '1.13.0'
 end
