@@ -99,7 +99,7 @@ RSpec.describe SoapyCake::Admin do
     it 'returns an XML string', :vcr do
       result = subject.media_types
 
-      expect(result).to eq(File.read('spec/fixtures/raw_response.xml').strip)
+      expect(result.next).to eq(File.read('spec/fixtures/raw_response.xml').strip)
     end
   end
 end

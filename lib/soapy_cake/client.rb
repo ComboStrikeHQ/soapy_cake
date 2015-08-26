@@ -18,7 +18,9 @@ module SoapyCake
       request.api_key = api_key
       request.time_offset = time_offset
 
-      http_response(request).public_send(:"to_#{xml_response? ? 'xml' : 'enum'}")
+      Response
+        .new(response_body(request), request.short_response?, time_offset)
+        .public_send(:"to_#{xml_response? ? 'xml' : 'enum'}")
     end
 
     private
@@ -27,15 +29,22 @@ module SoapyCake
       opts[:xml_response] == true
     end
 
+    def response_body(request)
+      if request.opts[:response].present?
+        request.opts[:response]
+      else
+        http_response(request)
+      end
+    end
+
     def http_response(request)
       url = "https://#{domain}#{request.path}"
       http_response = HTTParty.post(url, headers: headers, body: request.xml, timeout: NET_TIMEOUT)
 
       fail RequestFailed, "Request failed with HTTP #{http_response.code}: " \
         "#{http_response.body}" unless http_response.success?
-      response = Response.new(http_response, request.short_response?)
-      response.time_offset = time_offset
-      response
+
+      http_response
     end
 
     def headers

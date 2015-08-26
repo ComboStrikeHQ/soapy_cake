@@ -23,7 +23,7 @@ RSpec.describe SoapyCake::Response do
     EOD
   end
 
-  subject { described_class.new(xml.strip, false) }
+  subject { described_class.new(xml.strip, false, 0) }
 
   it 'returns an enumerator' do
     expect(subject.to_enum).to be_a(Enumerator)
