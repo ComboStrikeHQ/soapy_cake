@@ -29,13 +29,12 @@ module SoapyCake
         Enumerator.new do |y|
           loop do
             result = next_batch
-            @offset += limit
+            # raises StopIteration when less than `limit` elements are present
+            # which is then rescued by `loop`
             limit.times { y << result.next }
+            @offset += limit
           end
         end
-        # we know we received less than limit objects when we see a stop iteration exception from
-        # the underlying result enumerator and therefore know that we're done.
-      rescue StopIteration # rubocop:disable Lint/HandleExceptions
       end
 
       private
