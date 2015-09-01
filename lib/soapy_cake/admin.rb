@@ -113,8 +113,9 @@ module SoapyCake
       run Request.new(:admin, :signup, :affiliate, opts)
     end
 
-    def media_types
-      run(Request.new(:admin, :signup, :get_media_types, {}))[:MediaType]
+    def media_types(opts = {})
+      result = run(Request.new(:admin, :signup, :get_media_types, opts))
+      xml_response? ? result : result.try(:[], :MediaType)
     end
 
     def verticals

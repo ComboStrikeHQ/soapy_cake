@@ -2,27 +2,38 @@ module SoapyCake
   class Response
     include Helper
 
-    attr_accessor :time_offset
-    attr_reader :body, :short_response
+    SHORT_ELEMENT_DEPTH = 3
+    ELEMENTS_DEPTH = 5
 
-    def initialize(body, short_response)
+    attr_reader :body, :short_response, :time_offset
+
+    def initialize(body, short_response, time_offset)
       @body = body
       @short_response = short_response
+      @time_offset = time_offset
     end
 
     def to_enum
       check_errors!
 
-      return typed_element(sax.at_depth(3).first) if short_response
+      return typed_element(sax.at_depth(SHORT_ELEMENT_DEPTH).first) if short_response
 
       Enumerator.new do |y|
-        sax.at_depth(5).each do |element|
+        sax.at_depth(ELEMENTS_DEPTH).each do |element|
           y << typed_element(element)
         end
       end
     end
 
+    def to_xml
+      (empty? ? [] : [body.to_s]).to_enum
+    end
+
     private
+
+    def empty?
+      sax.at_depth(ELEMENTS_DEPTH).first.nil?
+    end
 
     def typed_element(element)
       walk_tree(element) do |value, key|

@@ -188,5 +188,34 @@ RSpec.describe SoapyCake::Admin do
       let(:cake_method) { :affiliate }
       it_behaves_like 'a cake admin method'
     end
+
+    describe '#media_types' do
+      let(:method) { :media_types }
+      let(:cake_method) { :get_media_types }
+      it_behaves_like 'a cake admin method'
+
+      it 'uses a local response' do
+        expect(subject.media_types(response: File.read('spec/fixtures/raw_response.xml'))).to eq(
+          [
+            { media_type_id: 15, type_name: 'Adware' },
+            { media_type_id: 7, type_name: 'Banner' },
+            { media_type_id: 17, type_name: 'Content' },
+            { media_type_id: 6, type_name: 'Co-Reg' },
+            { media_type_id: 3, type_name: 'Email' },
+            { media_type_id: 12, type_name: 'Incentivized' },
+            { media_type_id: 2, type_name: 'Network' },
+            { media_type_id: 13, type_name: 'Other' },
+            { media_type_id: 8, type_name: 'PopUnder' },
+            { media_type_id: 4, type_name: 'PPC' },
+            { media_type_id: 9, type_name: 'Radio' },
+            { media_type_id: 5, type_name: 'SEO' },
+            { media_type_id: 16, type_name: 'Social Media' },
+            { media_type_id: 10, type_name: 'TV' },
+            { media_type_id: 11, type_name: 'Upsell' },
+            { media_type_id: 1, type_name: 'YouTube_Twitch' }
+          ]
+        )
+      end
+    end
   end
 end
