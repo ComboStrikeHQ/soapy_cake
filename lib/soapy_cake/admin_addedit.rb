@@ -47,7 +47,7 @@ module SoapyCake
       payout_modification_type: 'change',
       received_modification_type: 'change',
       tags_modification_type: 'do_not_change'
-    }
+    }.freeze
 
     REQUIRED_NEW_OFFER_PARAMS = %i(
       hidden offer_status_id offer_type_id currency_id ssl click_cookie_days
@@ -56,18 +56,18 @@ module SoapyCake
       enable_transaction_id_deduplication postbacks_only fire_global_pixel
       fire_pixel_on_nonpaid_conversions offer_link thankyou_link from_lines
       subject_lines
-    )
+    ).freeze
 
     REQUIRED_OFFER_PARAMS = %i(
       advertiser_id vertical_id postback_url_ms_delay offer_contract_hidden
       price_format_id received received_percentage payout tags
-    )
+    ).freeze
 
     REQUIRED_OFFER_CONTRACT_PARAMS = %i(
       offer_id offer_contract_id offer_contract_name price_format_id payout received
       received_percentage offer_link thankyou_link offer_contract_hidden
       offer_contract_is_default use_fallback_targeting
-    )
+    ).freeze
 
     def add_offer(opts)
       require_params(opts, REQUIRED_NEW_OFFER_PARAMS)

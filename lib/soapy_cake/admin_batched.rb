@@ -2,7 +2,7 @@ module SoapyCake
   class AdminBatched
     ALLOWED_METHODS = %i(
       advertisers affiliates campaigns offers creatives clicks conversions events
-    )
+    ).freeze
 
     def initialize(opts = {})
       @opts = opts

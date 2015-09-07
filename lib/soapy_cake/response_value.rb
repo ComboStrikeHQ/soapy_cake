@@ -4,7 +4,7 @@ module SoapyCake
     attr_reader :key
 
     # Known string ids that should not be parsed as integers
-    STRING_IDS = %w(tax_id transaction_id)
+    STRING_IDS = %w(tax_id transaction_id).freeze
 
     def initialize(key, value, opts = {})
       @key = key.to_s
