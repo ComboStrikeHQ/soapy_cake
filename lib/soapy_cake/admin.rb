@@ -1,4 +1,5 @@
 module SoapyCake
+  # rubocop:disable Metrics/ClassLength
   class Admin < Client
     include Helper
 
@@ -105,8 +106,15 @@ module SoapyCake
       run Request.new(:admin, :addedit, :campaign, opts)
     end
 
-    def add_blacklist(opts = {})
-      run Request.new(:admin, :addedit, :blacklist, opts)
+    def add_blacklist(opts)
+      require_params(opts, %i(blacklist_date))
+
+      run Request.new(
+        :admin,
+        :addedit,
+        :blacklist,
+        opts.merge(blacklist_date: (opts[:blacklist_date] + 1.day).to_s)
+      )
     end
 
     def affiliate_signup(opts = {})
