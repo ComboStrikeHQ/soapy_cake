@@ -1,5 +1,5 @@
 RSpec.describe SoapyCake::Admin do
-  let(:opts) { { a: 1 } }
+  let(:opts) { nil }
   let(:cake_opts) { opts }
   let(:cake_method) { method }
 
@@ -88,7 +88,7 @@ RSpec.describe SoapyCake::Admin do
 
     describe '#conversions' do
       let(:method) { :conversions }
-      let(:cake_opts) { opts.merge(conversion_type: 'conversions') }
+      let(:cake_opts) {  { conversion_type: 'conversions' } }
       it_behaves_like 'a cake admin method'
     end
 
@@ -100,7 +100,7 @@ RSpec.describe SoapyCake::Admin do
     describe '#events' do
       let(:method) { :events }
       let(:cake_method) { :conversions }
-      let(:cake_opts) { opts.merge(conversion_type: 'events') }
+      let(:cake_opts) { { conversion_type: 'events' } }
       it_behaves_like 'a cake admin method'
     end
 
@@ -176,6 +176,10 @@ RSpec.describe SoapyCake::Admin do
     describe '#add_blacklist' do
       let(:method) { :add_blacklist }
       let(:cake_method) { :blacklist }
+      let(:date) { Date.new(2015, 9, 3) }
+      let(:request) { double('request') }
+      let(:opts) { { blacklist_date: date } }
+      let(:cake_opts) { { blacklist_date: (date + 1.day).to_s } }
       it_behaves_like 'a cake admin method'
     end
   end

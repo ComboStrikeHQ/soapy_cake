@@ -6,6 +6,7 @@ RSpec.describe SoapyCake::AdminTrack do
     let(:cake_method) { :decrypt_affiliate_link }
     let(:method) { :decrypt_affiliate_link }
     let(:cake_opts) { { a: 1 } }
+    let(:opts) { nil }
 
     it_behaves_like 'a cake admin method'
   end
