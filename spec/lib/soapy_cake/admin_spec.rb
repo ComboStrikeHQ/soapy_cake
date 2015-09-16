@@ -174,13 +174,26 @@ RSpec.describe SoapyCake::Admin do
     end
 
     describe '#add_blacklist' do
+      around { |example| Timecop.freeze(Time.utc(2015, 2, 17), &example) }
+
       let(:method) { :add_blacklist }
       let(:cake_method) { :blacklist }
-      let(:date) { Date.new(2015, 9, 3) }
       let(:request) { double('request') }
       let(:opts) { { blacklist_date: date } }
-      let(:cake_opts) { { blacklist_date: (date + 1.day).to_s } }
-      it_behaves_like 'a cake admin method'
+
+      context 'immediate blacklisting for current date' do
+        let(:date) { Date.today }
+        let(:cake_opts) { { blacklist_date: date.to_s } }
+
+        it_behaves_like 'a cake admin method'
+      end
+
+      context 'scheduled blacklisting in the future' do
+        let(:date) { Date.new(2015, 9, 3) }
+        let(:cake_opts) { { blacklist_date: (date + 1.day).to_s } }
+
+        it_behaves_like 'a cake admin method'
+      end
     end
   end
 

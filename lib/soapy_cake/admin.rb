@@ -109,11 +109,16 @@ module SoapyCake
     def add_blacklist(opts)
       require_params(opts, %i(blacklist_date))
 
+      blacklist_date = opts[:blacklist_date].to_date
+      # CAKE applies the blacklisting at 00:00 of the specified day, so add one more day.
+      # Unless it is the current day, then blacklisting should take effect immediately.
+      blacklist_date += 1.day if blacklist_date > Date.today
+
       run Request.new(
         :admin,
         :addedit,
         :blacklist,
-        opts.merge(blacklist_date: (opts[:blacklist_date] + 1.day).to_s)
+        opts.merge(blacklist_date: blacklist_date.to_s)
       )
     end
 
