@@ -1,5 +1,5 @@
 RSpec.describe SoapyCake::AdminBatched do
-  let(:admin) { double('admin') }
+  let(:admin) { double('admin', xml_response?: false) }
 
   before :each do
     allow(SoapyCake::Admin).to receive(:new).and_return(admin)
@@ -24,6 +24,28 @@ RSpec.describe SoapyCake::AdminBatched do
       .with(advertiser: 1, start_at_row: 1, row_limit: 100).and_return(%i(a b).to_enum)
 
     expect(subject.offers({ advertiser: 1 }, 100).to_a).to eq(%i(a b))
+  end
+
+  context 'SoapyCake Batched with XMLResponse set' do
+    subject { described_class.new(xml_response: true) }
+
+    before do
+      allow(admin).to receive(:xml_response?).and_return(true)
+    end
+
+    it 'returns all affiliates in batched mode' do
+      expect(admin).to receive(:affiliates)
+        .with(start_at_row: 1, row_limit: 10).and_return(%i(a).to_enum)
+      expect(admin).to receive(:affiliates)
+        .with(start_at_row: 11, row_limit: 10).and_return(%i(b).to_enum)
+      expect(admin).to receive(:affiliates)
+        .with(start_at_row: 21, row_limit: 10).and_return([].to_enum)
+
+      result = subject.affiliates({}, 10)
+
+      expect(result).to be_a(Enumerator)
+      expect(result.to_a).to eq(%i(a b))
+    end
   end
 
   context 'errors' do
