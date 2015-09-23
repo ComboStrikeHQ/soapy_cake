@@ -32,10 +32,7 @@ module SoapyCake
       def to_enum
         Enumerator.new do |y|
           loop do
-            result = next_batch
-            # raises StopIteration when less than `limit` elements are present
-            # which is then rescued by `loop`
-            limit.times { y << result.next }
+            fetch_elements(y)
             @offset += limit
           end
         end
@@ -43,7 +40,18 @@ module SoapyCake
 
       private
 
-      def next_batch
+      def fetch_elements(enumerator)
+        result = fetch_batch
+        # raises StopIteration when less than `limit` elements are present
+        # which is then rescued by `loop`
+        if admin.xml_response?
+          enumerator << result.next
+        else
+          limit.times { enumerator << result.next }
+        end
+      end
+
+      def fetch_batch
         admin.public_send(method, opts.merge(row_limit: limit, start_at_row: offset))
       end
 

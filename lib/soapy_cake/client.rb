@@ -10,6 +10,10 @@ module SoapyCake
       @opts = opts
     end
 
+    def xml_response?
+      opts[:xml_response] == true
+    end
+
     protected
 
     attr_reader :opts
@@ -24,10 +28,6 @@ module SoapyCake
     end
 
     private
-
-    def xml_response?
-      opts[:xml_response] == true
-    end
 
     def response_body(request)
       if request.opts[:response].present?
