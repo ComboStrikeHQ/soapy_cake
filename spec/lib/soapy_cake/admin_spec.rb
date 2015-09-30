@@ -128,7 +128,6 @@ RSpec.describe SoapyCake::Admin do
 
     describe '#countries' do
       let(:method) { :countries }
-      let(:cake_opts) { nil }
       it_behaves_like 'a cake admin method'
     end
 
