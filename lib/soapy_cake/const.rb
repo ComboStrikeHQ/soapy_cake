@@ -52,6 +52,12 @@ module SoapyCake
       conversion_behavior_id: CONVERSION_BEHAVIOUR_ID,
       conversion_cap_behavior: CONVERSION_BEHAVIOUR_ID,
       conversion_behavior_on_redirect: CONVERSION_BEHAVIOUR_ID,
+      conversion_disposition_id: {
+        pending: 1,
+        rejected: 2,
+        approved: 3,
+        returned: 4
+      },
       cap_type_id: {
         click: 1,
         conversion: 2

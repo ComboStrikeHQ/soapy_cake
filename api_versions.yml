@@ -98,7 +98,7 @@ admin:
     # Version 2 returns an error about an invalid action, so using version 1
     mass_conversion_insert: 1
     rejected_dispositions: 1
-    update_conversion: 2
+    update_conversion: 4
     update_conversion_disposition: 2
     update_conversion_price: 2
     update_conversion_revenue: 1

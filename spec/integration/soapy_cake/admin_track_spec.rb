@@ -1,18 +1,8 @@
 require 'spec_helper'
 
 RSpec.describe SoapyCake::AdminTrack do
-  describe '#decrypt_affiliate_link' do
-    let(:service) { :track }
-    let(:cake_method) { :decrypt_affiliate_link }
-    let(:method) { :decrypt_affiliate_link }
-    let(:cake_opts) { { a: 1 } }
-    let(:opts) { nil }
-
-    it_behaves_like 'a cake admin method'
-  end
-
   describe '#mass_conversion_insert', :vcr do
-    it 'insers conversions' do
+    it 'inserts conversions' do
       result = subject.mass_conversion_insert(
         conversion_date: Date.new(2015, 5, 6),
         affiliate_id: 16059,
@@ -23,6 +13,19 @@ RSpec.describe SoapyCake::AdminTrack do
       )
 
       expect(result).to eq(success: true, message: 'Conversions Inserted')
+    end
+  end
+
+  describe '#update_conversion', :vcr do
+    it 'updates a conversion' do
+      result = subject.update_conversion(
+        conversion_id: 145211,
+        offer_id: 5032,
+        payout: 0.75,
+        received: 1.75
+      )
+
+      expect(result).to eq(success: true, message: 'Conversion Updated')
     end
   end
 end
