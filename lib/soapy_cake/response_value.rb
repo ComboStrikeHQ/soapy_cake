@@ -6,23 +6,25 @@ module SoapyCake
     # Known string ids that should not be parsed as integers
     STRING_IDS = %w(tax_id transaction_id).freeze
 
-    def initialize(key, value, opts = {})
+    def initialize(key, value, time_converter)
       @key = key.to_s
       @value = value
-      @opts = opts
+      @time_converter = time_converter
     end
 
     def parse
       return parse_int if id? && !string_id?
       return false if false?
       return true if true?
-      return parse_date if date?
+      return time_converter.from_cake(value) if date?
 
       # cast to primitive string to get rid of Saxerator string class
       value.to_s
     end
 
     private
+
+    attr_reader :time_converter
 
     def false?
       value == 'false'
@@ -53,10 +55,6 @@ module SoapyCake
         fail Error, "'#{key}' contains non-digit chars but was to be parsed as an integer id"
       end
       value.to_i
-    end
-
-    def parse_date
-      DateTime.parse(value + format('%+03d:00', @opts[:time_offset].to_i))
     end
   end
 end

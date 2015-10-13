@@ -1,6 +1,6 @@
 module SoapyCake
   class Request
-    attr_accessor :api_key, :time_offset
+    attr_accessor :api_key, :time_converter
     attr_reader :role, :service, :method, :opts
 
     def initialize(role, service, method, opts = {})
@@ -54,7 +54,7 @@ module SoapyCake
     def format_param(value)
       case value
       when Time, DateTime, Date
-        (value.to_datetime.utc + time_offset.to_i.hours).strftime('%Y-%m-%dT%H:%M:%S')
+        time_converter.to_cake(value)
       else
         value
       end

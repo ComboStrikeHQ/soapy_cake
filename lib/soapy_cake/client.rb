@@ -1,12 +1,15 @@
 module SoapyCake
   class Client
-    attr_reader :domain, :api_key, :time_offset
+    attr_reader :domain, :api_key, :time_converter
 
     def initialize(opts = {})
       @domain = opts.fetch(:domain, ENV['CAKE_DOMAIN']) || fail(Error, 'Cake domain missing')
       @api_key = opts.fetch(:api_key, ENV['CAKE_API_KEY']) || fail(Error, 'Cake API key missing')
-      @time_offset = opts.fetch(:time_offset, ENV['CAKE_TIME_OFFSET']) ||
-        fail(Error, 'Cake time offset missing')
+
+      time_offset = opts.fetch(:time_offset, ENV['CAKE_TIME_OFFSET'])
+      time_zone = opts.fetch(:time_zone, ENV['CAKE_TIME_ZONE'])
+      @time_converter = TimeConverter.new(time_zone, time_offset)
+
       @opts = opts
     end
 
@@ -20,11 +23,10 @@ module SoapyCake
 
     def run(request)
       request.api_key = api_key
-      request.time_offset = time_offset
+      request.time_converter = time_converter
 
-      Response
-        .new(response_body(request), request.short_response?, time_offset)
-        .public_send(:"to_#{xml_response? ? 'xml' : 'enum'}")
+      response = Response.new(response_body(request), request.short_response?, time_converter)
+      xml_response? ? response.to_xml : response.to_enum
     end
 
     private

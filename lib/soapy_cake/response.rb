@@ -5,12 +5,12 @@ module SoapyCake
     SHORT_ELEMENT_DEPTH = 3
     ELEMENTS_DEPTH = 5
 
-    attr_reader :body, :short_response, :time_offset
+    attr_reader :body, :short_response, :time_converter
 
-    def initialize(body, short_response, time_offset)
+    def initialize(body, short_response, time_converter)
       @body = body
       @short_response = short_response
-      @time_offset = time_offset
+      @time_converter = time_converter
     end
 
     def to_enum
@@ -37,7 +37,7 @@ module SoapyCake
 
     def typed_element(element)
       walk_tree(element) do |value, key|
-        ResponseValue.new(key, value, time_offset: time_offset).parse
+        ResponseValue.new(key, value, time_converter).parse
       end
     end
 

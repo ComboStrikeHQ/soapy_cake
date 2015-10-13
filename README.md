@@ -23,7 +23,7 @@ Or install it yourself as:
 
 ## Usage Examples
 
-First we assume that you set the `CAKE_DOMAIN`, `CAKE_API_KEY` and `CAKE_TIME_OFFSET`
+First we assume that you set the `CAKE_DOMAIN`, `CAKE_API_KEY` and `CAKE_TIME_ZONE`
 environment variables.
 
 Export all advertisers:
