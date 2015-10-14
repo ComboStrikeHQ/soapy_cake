@@ -18,7 +18,7 @@ module SoapyCake
     end
 
     def from_cake(value)
-      zone.parse(value)
+      zone.parse(value).utc
     end
 
     private

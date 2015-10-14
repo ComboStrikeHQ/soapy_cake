@@ -17,9 +17,9 @@ RSpec.describe SoapyCake::Admin do
     )
 
     # dates
-    expect(result.first[:date_created]).to be_a(ActiveSupport::TimeWithZone)
+    expect(result.first[:date_created]).to be_a(Time)
     expect(result.first[:date_created].to_s)
-      .to eq(Time.new(2014, 4, 28, 10, 52, 15.537, '+02:00').to_s)
+      .to eq(Time.utc(2014, 4, 28, 8, 52, 15.537).to_s)
 
     # strings should be actual Strings, not some Saxerator element class
     expect(result.first[:affiliate_name].class).to eq(String)
