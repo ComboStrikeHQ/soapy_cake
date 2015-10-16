@@ -6,7 +6,7 @@ module SoapyCake
     ).freeze
 
     def initialize(opts = {})
-      @opts = opts
+      @opts = opts.merge(batch_mode: true)
     end
 
     class BatchedRequest
@@ -28,6 +28,7 @@ module SoapyCake
         @opts = opts
         @offset = INITIAL_OFFSET
         @limit = limit || LIMIT
+        @fetched_rows = 0
       end
 
       def to_enum
@@ -36,6 +37,7 @@ module SoapyCake
             fetch_elements(y)
             @offset += limit
           end
+          fail Error, 'Error not all rows fetched in batch mode' if @total_rows > @fetched_rows
         end
       end
 
@@ -53,7 +55,12 @@ module SoapyCake
       end
 
       def fetch_batch
-        admin.public_send(method, opts.merge(row_limit: limit, start_at_row: offset))
+        content, total, fetched = admin.public_send(method,
+          opts.merge(row_limit: limit, start_at_row: offset))
+
+        @total_rows ||= total
+        @fetched_rows += fetched
+        content
       end
 
       attr_reader :admin, :method, :opts, :offset, :limit
@@ -61,7 +68,6 @@ module SoapyCake
 
     def method_missing(name, method_opts = {}, limit = nil)
       fail Error, "Invalid method #{name}" unless ALLOWED_METHODS.include?(name)
-
       BatchedRequest.new(admin, name, method_opts, limit).to_enum
     end
 
