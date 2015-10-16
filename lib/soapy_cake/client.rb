@@ -22,9 +22,13 @@ module SoapyCake
       request.api_key = api_key
       request.time_offset = time_offset
 
-      Response
+      r = Response
         .new(response_body(request), request.short_response?, time_offset)
-        .public_send(:"to_#{xml_response? ? 'xml' : 'enum'}")
+      content = r.public_send(:"to_#{xml_response? ? 'xml' : 'enum'}")
+
+      return content, r.total_rows, r.number_of_elements if opts[:batch_mode]
+
+      content
     end
 
     private

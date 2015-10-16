@@ -9,19 +9,18 @@ RSpec.describe SoapyCake::AdminBatched do
 
   it 'returns an enumerator and uses batched CAKE calls' do
     expect(admin).to receive(:offers)
-      .with(advertiser: 1, start_at_row: 1, row_limit: 2).and_return(%i(a b).to_enum)
+      .with(advertiser: 1, start_at_row: 1, row_limit: 2).and_return([%i(a b).to_enum, 3, 2])
     expect(admin).to receive(:offers)
-      .with(advertiser: 1, start_at_row: 3, row_limit: 2).and_return(%i(c).to_enum)
+      .with(advertiser: 1, start_at_row: 3, row_limit: 2).and_return([%i(c).to_enum, 3, 1])
 
     result = subject.offers(advertiser: 1)
-
     expect(result).to be_a(Enumerator)
     expect(result.to_a).to eq(%i(a b c))
   end
 
   it 'can use a custom limit' do
     expect(admin).to receive(:offers)
-      .with(advertiser: 1, start_at_row: 1, row_limit: 100).and_return(%i(a b).to_enum)
+      .with(advertiser: 1, start_at_row: 1, row_limit: 100).and_return([%i(a b).to_enum, 1, 1])
 
     expect(subject.offers({ advertiser: 1 }, 100).to_a).to eq(%i(a b))
   end
@@ -35,11 +34,11 @@ RSpec.describe SoapyCake::AdminBatched do
 
     it 'returns all affiliates in batched mode' do
       expect(admin).to receive(:affiliates)
-        .with(start_at_row: 1, row_limit: 10).and_return(%i(a).to_enum)
+        .with(start_at_row: 1, row_limit: 10).and_return([%i(a).to_enum, 1, 1])
       expect(admin).to receive(:affiliates)
-        .with(start_at_row: 11, row_limit: 10).and_return(%i(b).to_enum)
+        .with(start_at_row: 11, row_limit: 10).and_return([%i(b).to_enum, 1, 1])
       expect(admin).to receive(:affiliates)
-        .with(start_at_row: 21, row_limit: 10).and_return([].to_enum)
+        .with(start_at_row: 21, row_limit: 10).and_return([[].to_enum, 1, 1])
 
       result = subject.affiliates({}, 10)
 
@@ -59,6 +58,17 @@ RSpec.describe SoapyCake::AdminBatched do
 
     it 'fails when start_at_row is set' do
       expect { subject.offers(start_at_row: 123) }.to raise_error(/Cannot set .* in batched mode/)
+    end
+
+    it 'fails when number of returned rows does not match total count' do
+      expect(admin).to receive(:caps)
+        .with(start_at_row: 1, row_limit: 2).and_return([%i(a b).to_enum, 4, 2])
+      expect(admin).to receive(:caps)
+        .with(start_at_row: 3, row_limit: 2).and_return([%i(c).to_enum, 4, 1])
+
+      result = subject.caps({}, 2)
+      expect(result).to be_a(Enumerator)
+      expect { result.to_a }.to raise_error(/Error not all rows fetched in batch mode/)
     end
   end
 end

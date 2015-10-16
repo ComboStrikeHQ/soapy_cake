@@ -29,6 +29,15 @@ module SoapyCake
       (empty? ? [] : [body.to_s]).to_enum
     end
 
+    def total_rows
+      body.to_s.scan(%r{<row_count>(\d+)<\/row_count>}).flatten.first.to_i
+    end
+
+    def number_of_elements
+      depth = short_response ? SHORT_ELEMENT_DEPTH : ELEMENTS_DEPTH
+      sax.at_depth(depth).count
+    end
+
     private
 
     def empty?
