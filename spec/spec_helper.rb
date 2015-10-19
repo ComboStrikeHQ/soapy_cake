@@ -41,7 +41,7 @@ end
 
 ENV['CAKE_API_KEY'] = 'cake-api-key' if ENV['CAKE_API_KEY'].blank?
 ENV['CAKE_DOMAIN'] = 'cake-partner-domain.com' if ENV['CAKE_DOMAIN'].blank?
-ENV['CAKE_TIME_OFFSET'] = '1' if ENV['CAKE_TIME_OFFSET'].blank?
+ENV['CAKE_TIME_ZONE'] = 'Europe/Berlin' if ENV['CAKE_TIME_ZONE'].blank?
 
 VCR.configure do |c|
   c.configure_rspec_metadata!

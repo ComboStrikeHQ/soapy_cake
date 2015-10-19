@@ -23,7 +23,7 @@ Or install it yourself as:
 
 ## Usage Examples
 
-First we assume that you set the `CAKE_DOMAIN`, `CAKE_API_KEY` and `CAKE_TIME_OFFSET`
+First we assume that you set the `CAKE_DOMAIN`, `CAKE_API_KEY` and `CAKE_TIME_ZONE`
 environment variables.
 
 Export all advertisers:
@@ -43,6 +43,12 @@ SoapyCake::Admin.new.affiliate_summary(
 
 If you are interested in how we map methods to api endpoints take a look
 at [api_versions.yml](api_versions.yml).
+
+## Time/Date Handling
+- Define `CAKE_TIME_ZONE`
+- Specify dates with any timezone in requests (will be converted to the correct CAKE timezone)
+- `Date` objects in requests will be treated as UTC (just like `.to_datetime` would do)
+- Responses contain UTC dates which can be converted however you like
 
 ## Contributing
 

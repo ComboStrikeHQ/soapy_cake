@@ -12,11 +12,14 @@ RSpec.describe SoapyCake::Admin do
       hide_offers: false,
       # hashes and id-params
       billing_cycle: { billing_cycle_id: 1, billing_cycle_name: 'Weekly' },
-      # dates
-      date_created: DateTime.new(2014, 4, 28, 10, 52, 15.537),
       # floats
       minimum_payment_threshold: '0.0000'
     )
+
+    # dates
+    expect(result.first[:date_created]).to be_a(Time)
+    expect(result.first[:date_created].to_s)
+      .to eq(Time.utc(2014, 4, 28, 8, 52, 15.537).to_s)
 
     # strings should be actual Strings, not some Saxerator element class
     expect(result.first[:affiliate_name].class).to eq(String)

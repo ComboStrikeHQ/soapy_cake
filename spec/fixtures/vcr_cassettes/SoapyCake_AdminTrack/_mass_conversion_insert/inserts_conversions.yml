@@ -12,7 +12,7 @@ http_interactions:
           <env:Body>
             <cake:MassConversionInsert>
               <cake:api_key>cake-api-key</cake:api_key>
-              <cake:conversion_date>2015-05-06T01:00:00</cake:conversion_date>
+              <cake:conversion_date>2015-05-06T02:00:00</cake:conversion_date>
               <cake:affiliate_id>16059</cake:affiliate_id>
               <cake:campaign_id>13268</cake:campaign_id>
               <cake:sub_affiliate/>
