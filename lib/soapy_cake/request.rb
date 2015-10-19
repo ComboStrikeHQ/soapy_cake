@@ -1,5 +1,7 @@
 module SoapyCake
   class Request
+    DATE_CLASSES = [Date, Time, DateTime].freeze
+
     attr_accessor :api_key, :time_converter
     attr_reader :role, :service, :method, :opts
 
@@ -40,7 +42,7 @@ module SoapyCake
     def xml_params(xml)
       xml.api_key api_key
       opts.each do |k, v|
-        xml.public_send(k.to_sym, format_param(v))
+        xml.public_send(k.to_sym, format_param(k, v))
       end
     end
 
@@ -51,13 +53,14 @@ module SoapyCake
       }
     end
 
-    def format_param(value)
-      case value
-      when Time, DateTime, Date
-        time_converter.to_cake(value)
-      else
-        value
+    def format_param(key, value)
+      return time_converter.to_cake(value) if DATE_CLASSES.include?(value.class)
+
+      if key.to_s.end_with?('_date')
+        fail Error, "You need to use a Time/DateTime/Date object for '#{key}'"
       end
+
+      value
     end
 
     def version
