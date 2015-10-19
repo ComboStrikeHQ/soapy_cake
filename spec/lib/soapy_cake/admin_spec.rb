@@ -182,14 +182,14 @@ RSpec.describe SoapyCake::Admin do
 
       context 'immediate blacklisting for current date' do
         let(:date) { Date.today }
-        let(:cake_opts) { { blacklist_date: date.to_s } }
+        let(:cake_opts) { { blacklist_date: date } }
 
         it_behaves_like 'a cake admin method'
       end
 
       context 'scheduled blacklisting in the future' do
         let(:date) { Date.new(2015, 9, 3) }
-        let(:cake_opts) { { blacklist_date: (date + 1.day).to_s } }
+        let(:cake_opts) { { blacklist_date: (date + 1.day) } }
 
         it_behaves_like 'a cake admin method'
       end

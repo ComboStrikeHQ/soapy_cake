@@ -118,7 +118,7 @@ module SoapyCake
         :admin,
         :addedit,
         :blacklist,
-        opts.merge(blacklist_date: blacklist_date.to_s)
+        opts.merge(blacklist_date: blacklist_date)
       )
     end
 
