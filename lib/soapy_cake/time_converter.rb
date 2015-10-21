@@ -14,7 +14,7 @@ module SoapyCake
 
     def to_cake(date)
       date = date.to_datetime if date.is_a?(Date)
-      date.in_time_zone(zone).strftime('%Y-%m-%dT%H:%M:%S')
+      date.in_time_zone(zone).strftime('%Y-%m-%dT%H:%M:%S'.freeze)
     end
 
     def from_cake(value)

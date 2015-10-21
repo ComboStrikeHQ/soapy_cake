@@ -1,6 +1,6 @@
 module SoapyCake
   class Client
-    attr_reader :domain, :api_key, :time_converter
+    HEADERS = { 'Content-Type' => 'application/soap+xml;charset=UTF-8' }.freeze
 
     def initialize(opts = {})
       @domain = opts.fetch(:domain, ENV['CAKE_DOMAIN']) || fail(Error, 'Cake domain missing')
@@ -19,7 +19,7 @@ module SoapyCake
 
     protected
 
-    attr_reader :opts
+    attr_reader :domain, :api_key, :time_converter, :opts
 
     def run(request)
       request.api_key = api_key
@@ -32,25 +32,17 @@ module SoapyCake
     private
 
     def response_body(request)
-      if request.opts[:response].present?
-        request.opts[:response]
-      else
-        http_response(request)
-      end
+      request.opts[:response].presence || http_response(request)
     end
 
     def http_response(request)
       url = "https://#{domain}#{request.path}"
-      http_response = HTTParty.post(url, headers: headers, body: request.xml, timeout: NET_TIMEOUT)
+      http_response = HTTParty.post(url, headers: HEADERS, body: request.xml, timeout: NET_TIMEOUT)
 
       fail RequestFailed, "Request failed with HTTP #{http_response.code}: " \
         "#{http_response.body}" unless http_response.success?
 
       http_response
-    end
-
-    def headers
-      { 'Content-Type' => 'application/soap+xml;charset=UTF-8' }
     end
   end
 end

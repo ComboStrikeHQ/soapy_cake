@@ -1,7 +1,6 @@
 module SoapyCake
   class ResponseValue
-    attr_reader :value
-    attr_reader :key
+    attr_reader :key, :value
 
     # Known string ids that should not be parsed as integers
     STRING_IDS = %w(tax_id transaction_id).freeze
@@ -27,11 +26,11 @@ module SoapyCake
     attr_reader :time_converter
 
     def false?
-      value == 'false'
+      value == 'false'.freeze
     end
 
     def true?
-      value == 'true'
+      value == 'true'.freeze
     end
 
     def date?
@@ -39,7 +38,7 @@ module SoapyCake
     end
 
     def id?
-      key.to_s.end_with?('_id')
+      key.end_with?('_id'.freeze)
     end
 
     def string_id?

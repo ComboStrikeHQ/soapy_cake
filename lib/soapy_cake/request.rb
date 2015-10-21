@@ -40,9 +40,9 @@ module SoapyCake
     end
 
     def xml_params(xml)
-      xml.api_key api_key
+      xml.api_key(api_key)
       opts.each do |k, v|
-        xml.public_send(k.to_sym, format_param(k, v))
+        xml.public_send(k, format_param(k, v))
       end
     end
 
@@ -56,7 +56,7 @@ module SoapyCake
     def format_param(key, value)
       return time_converter.to_cake(value) if DATE_CLASSES.include?(value.class)
 
-      if key.to_s.end_with?('_date')
+      if key.to_s.end_with?('_date'.freeze)
         fail Error, "You need to use a Time/DateTime/Date object for '#{key}'"
       end
 

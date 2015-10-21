@@ -64,7 +64,7 @@ module SoapyCake
     end
 
     def error_check_success!
-      return if sax.for_tag(:success).first == 'true'
+      return if sax.for_tag(:success).first == 'true'.freeze
       fail RequestFailed, error_message
     end
 
