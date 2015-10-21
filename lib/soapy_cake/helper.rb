@@ -26,8 +26,8 @@ module SoapyCake
     def translate_booleans(opts)
       opts.transform_values do |v|
         case v
-        when true then 'on'
-        when false then 'off'
+        when true then 'on'.freeze
+        when false then 'off'.freeze
         else v
         end
       end
