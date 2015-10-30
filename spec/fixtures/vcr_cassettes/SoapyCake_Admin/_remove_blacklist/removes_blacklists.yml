@@ -1,0 +1,154 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://cake-partner-domain.com/api/1/export.asmx
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0"?>
+        <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:cake="http://cakemarketing.com/api/1/">
+          <env:Header/>
+          <env:Body>
+            <cake:Blacklists>
+              <cake:api_key>cake-api-key</cake:api_key>
+              <cake:advertiser_id>14407</cake:advertiser_id>
+              <cake:offer_id>9738</cake:offer_id>
+              <cake:affiliate_id>15623</cake:affiliate_id>
+              <cake:sub_id>119960714</cake:sub_id>
+            </cake:Blacklists>
+          </env:Body>
+        </env:Envelope>
+    headers:
+      Content-Type:
+      - application/soap+xml;charset=UTF-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - application/soap+xml; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Fri, 30 Oct 2015 10:10:41 GMT
+      Content-Length:
+      - '1402'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><BlacklistsResponse
+        xmlns="http://cakemarketing.com/api/1/"><BlacklistsResult><success>true</success><row_count>1</row_count><blacklists><blacklist><blacklist_id>28</blacklist_id><advertiser><advertiser_id
+        xmlns="API:id_name_store">14407</advertiser_id><advertiser_name xmlns="API:id_name_store">2RealLife</advertiser_name></advertiser><offer><offer_id
+        xmlns="API:id_name_store">9738</offer_id><offer_name xmlns="API:id_name_store">Gametest
+        (DacH CPC)</offer_name></offer><affiliate><affiliate_id xmlns="API:id_name_store">15623</affiliate_id><affiliate_name
+        xmlns="API:id_name_store">clit games ltd</affiliate_name></affiliate><sub_id>119960714</sub_id><blacklist_reason><blacklist_reason_id
+        xmlns="API:id_name_store">5</blacklist_reason_id><blacklist_reason_name xmlns="API:id_name_store">Fraud
+        - suspicious user-data</blacklist_reason_name></blacklist_reason><blacklist_type><blacklist_type_id
+        xmlns="API:id_name_store">1</blacklist_type_id><blacklist_type_name xmlns="API:id_name_store">Global
+        Redirect</blacklist_type_name></blacklist_type><date_created>2015-04-08T00:00:00</date_created></blacklist></blacklists></BlacklistsResult></BlacklistsResponse></soap:Body></soap:Envelope>
+    http_version: 
+  recorded_at: Mon, 15 Jun 2015 12:00:00 GMT
+- request:
+    method: post
+    uri: https://cake-partner-domain.com/api/1/addedit.asmx
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0"?>
+        <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:cake="http://cakemarketing.com/api/1/">
+          <env:Header/>
+          <env:Body>
+            <cake:RemoveBlacklist>
+              <cake:api_key>cake-api-key</cake:api_key>
+              <cake:blacklist_id>28</cake:blacklist_id>
+            </cake:RemoveBlacklist>
+          </env:Body>
+        </env:Envelope>
+    headers:
+      Content-Type:
+      - application/soap+xml;charset=UTF-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - application/soap+xml; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Fri, 30 Oct 2015 10:10:41 GMT
+      Content-Length:
+      - '446'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><RemoveBlacklistResponse
+        xmlns="http://cakemarketing.com/api/1/"><RemoveBlacklistResult><success>true</success><message>Blacklist
+        (28) Removed</message></RemoveBlacklistResult></RemoveBlacklistResponse></soap:Body></soap:Envelope>
+    http_version: 
+  recorded_at: Mon, 15 Jun 2015 12:00:00 GMT
+- request:
+    method: post
+    uri: https://cake-partner-domain.com/api/1/export.asmx
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0"?>
+        <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:cake="http://cakemarketing.com/api/1/">
+          <env:Header/>
+          <env:Body>
+            <cake:Blacklists>
+              <cake:api_key>cake-api-key</cake:api_key>
+              <cake:advertiser_id>14407</cake:advertiser_id>
+              <cake:offer_id>9738</cake:offer_id>
+              <cake:affiliate_id>15623</cake:affiliate_id>
+              <cake:sub_id>119960714</cake:sub_id>
+            </cake:Blacklists>
+          </env:Body>
+        </env:Envelope>
+    headers:
+      Content-Type:
+      - application/soap+xml;charset=UTF-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - application/soap+xml; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Fri, 30 Oct 2015 10:10:41 GMT
+      Content-Length:
+      - '423'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><BlacklistsResponse
+        xmlns="http://cakemarketing.com/api/1/"><BlacklistsResult><success>true</success><row_count>0</row_count><blacklists
+        /></BlacklistsResult></BlacklistsResponse></soap:Body></soap:Envelope>
+    http_version: 
+  recorded_at: Mon, 15 Jun 2015 12:00:00 GMT
+recorded_with: VCR 2.9.3

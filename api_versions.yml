@@ -25,6 +25,7 @@ admin:
     offer: 5
     offer_contract: 1
     offer_tiers: 1
+    remove_blacklist: 1
     suppresion_list: 1
     vertical: 1
   auth:
@@ -37,6 +38,7 @@ admin:
     advertisers: 5
     affiliate_referrals: 1
     affiliates: 5
+    blacklists: 1
     buyer_contracts: 1
     buyers: 1
     campaigns: 6

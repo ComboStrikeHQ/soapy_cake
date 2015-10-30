@@ -122,6 +122,15 @@ module SoapyCake
       )
     end
 
+    def blacklists(opts = {})
+      run Request.new(:admin, :export, :blacklists, opts)
+    end
+
+    def remove_blacklist(opts = {})
+      require_params(opts, %i(blacklist_id))
+      run Request.new(:admin, :addedit, :remove_blacklist, opts)
+    end
+
     def affiliate_signup(opts = {})
       run Request.new(:admin, :signup, :affiliate, opts)
     end

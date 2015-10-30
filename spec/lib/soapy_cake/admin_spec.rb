@@ -234,4 +234,26 @@ RSpec.describe SoapyCake::Admin do
       end
     end
   end
+
+  describe '#blacklists' do
+    let(:method) { :blacklists }
+    let(:cake_method) { :blacklists }
+    let(:service) { :export }
+
+    it_behaves_like 'a cake admin method'
+  end
+
+  describe '#remove_blacklist' do
+    let(:method) { :remove_blacklist }
+    let(:cake_method) { :remove_blacklist }
+    let(:service) { :addedit }
+    let(:cake_opts) { { blacklist_id: 1 } }
+
+    it_behaves_like 'a cake admin method'
+
+    it 'fails if no blacklist_id is passed' do
+      expect { subject.remove_blacklist }
+        .to raise_error(SoapyCake::Error, "Parameter 'blacklist_id' missing!")
+    end
+  end
 end
