@@ -104,6 +104,12 @@ RSpec.describe SoapyCake::Admin do
 
       expect(result.next).to eq(File.read('spec/fixtures/raw_response.xml').strip)
     end
+
+    it 'fails on error', :vcr do
+      expect do
+        subject.affiliates(affiliate_id: -2).next
+      end.to raise_error(SoapyCake::RequestFailed)
+    end
   end
 
   describe '#blacklists' do

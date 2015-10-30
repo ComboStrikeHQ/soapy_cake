@@ -26,6 +26,8 @@ module SoapyCake
     end
 
     def to_xml
+      check_errors!
+
       (empty? ? [] : [body.to_s]).to_enum
     end
 
