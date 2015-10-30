@@ -1,6 +1,6 @@
 module SoapyCake
   class Request
-    DATE_CLASSES = [Date, Time, DateTime].freeze
+    DATE_CLASSES = [Date, Time, DateTime, ActiveSupport::TimeWithZone].freeze
 
     attr_accessor :api_key, :time_converter
     attr_reader :role, :service, :method, :opts
