@@ -105,4 +105,46 @@ RSpec.describe SoapyCake::Admin do
       expect(result.next).to eq(File.read('spec/fixtures/raw_response.xml').strip)
     end
   end
+
+  describe '#blacklists' do
+    it 'returns blacklists', :vcr do
+      expect(
+        subject.blacklists(
+          advertiser_id: 15882,
+          offer_id: 10551,
+          affiliate_id: 16187,
+          sub_id: 'somesub'
+        ).first
+      ).to eq(
+        advertiser: { advertiser_id: 15882, advertiser_name: ' NetDragon Websoft Inc. ' },
+        affiliate: { affiliate_id: 16187, affiliate_name: 'Illuminati Corp.' },
+        blacklist_id: 202,
+        blacklist_reason: { blacklist_reason_id: 5,
+                            blacklist_reason_name: 'Fraud - suspicious user-data' },
+        blacklist_type: { blacklist_type_id: 1, blacklist_type_name: 'Global Redirect' },
+        date_created: Time.utc(2015, 9, 22, 22),
+        offer: { offer_id: 10551, offer_name: 'DO NOT USE: Foxy Test 42 (AD DOI)' },
+        sub_id: 'somesub'
+      )
+    end
+  end
+
+  describe '#remove_blacklist' do
+    let(:blacklist_params) do
+      {
+        advertiser_id: 14407,
+        offer_id: 9738,
+        affiliate_id: 15623,
+        sub_id: '119960714'
+      }
+    end
+
+    it 'removes blacklists', :vcr do
+      expect(subject.blacklists(blacklist_params).to_a).to be_present
+
+      subject.remove_blacklist(blacklist_id: 28)
+
+      expect(subject.blacklists(blacklist_params).to_a).to be_empty
+    end
+  end
 end
