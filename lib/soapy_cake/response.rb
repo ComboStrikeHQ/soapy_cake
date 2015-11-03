@@ -67,6 +67,7 @@ module SoapyCake
 
     def error_check_success!
       return if sax.for_tag(:success).first == 'true'.freeze
+      fail RateLimitError if error_message == 'Restricted'.freeze
       fail RequestFailed, error_message
     end
 
@@ -82,7 +83,7 @@ module SoapyCake
     end
 
     def error_message
-      sax.for_tag(:message).first || sax.for_tag(:Text).first || 'Unknown error'
+      @error_message ||= sax.for_tag(:message).first || sax.for_tag(:Text).first || 'Unknown error'
     end
   end
 end

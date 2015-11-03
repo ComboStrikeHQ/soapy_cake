@@ -25,8 +25,10 @@ module SoapyCake
       request.api_key = api_key
       request.time_converter = time_converter
 
-      response = Response.new(response_body(request), request.short_response?, time_converter)
-      xml_response? ? response.to_xml : response.to_enum
+      Retryable.retryable(tries: 5, on: RateLimitError, sleep: -> (n) { 3**n }) do
+        response = Response.new(response_body(request), request.short_response?, time_converter)
+        xml_response? ? response.to_xml : response.to_enum
+      end
     end
 
     private

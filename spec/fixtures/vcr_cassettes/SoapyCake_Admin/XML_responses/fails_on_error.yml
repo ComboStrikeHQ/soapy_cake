@@ -42,7 +42,7 @@ http_interactions:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><AffiliatesResponse
-        xmlns="http://cakemarketing.com/api/5/"><AffiliatesResult><success>false</success><message>Restricted</message><row_count>0</row_count></AffiliatesResult></AffiliatesResponse></soap:Body></soap:Envelope>
-    http_version: 
+        xmlns="http://cakemarketing.com/api/5/"><AffiliatesResult><success>false</success><message>Something Broken</message><row_count>0</row_count></AffiliatesResult></AffiliatesResponse></soap:Body></soap:Envelope>
+    http_version:
   recorded_at: Mon, 15 Jun 2015 12:00:00 GMT
 recorded_with: VCR 2.9.3
