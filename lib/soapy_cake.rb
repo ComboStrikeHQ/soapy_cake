@@ -1,3 +1,4 @@
+require 'logger'
 require 'nokogiri'
 require 'saxerator'
 require 'httparty'

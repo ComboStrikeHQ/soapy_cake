@@ -1,7 +1,15 @@
 RSpec.describe SoapyCake::Admin do
   around { |example| Timecop.freeze(Time.utc(2015, 6, 15, 12), &example) }
 
+  let(:logger) { double('logger') }
+  before { allow(logger).to receive(:info) }
+
+  subject { described_class.new(logger: logger) }
+
   it 'returns an affiliate with correct data types', :vcr do
+    expect(logger).to receive(:info)
+      .with('soapy_cake:request admin:export:affiliates:5 {"affiliate_id":16027}')
+
     result = subject.affiliates(affiliate_id: 16027)
     expect(result.count).to eq(1)
     expect(result.first).to include(
@@ -125,8 +133,10 @@ RSpec.describe SoapyCake::Admin do
         advertiser: { advertiser_id: 15882, advertiser_name: ' NetDragon Websoft Inc. ' },
         affiliate: { affiliate_id: 16187, affiliate_name: 'Illuminati Corp.' },
         blacklist_id: 202,
-        blacklist_reason: { blacklist_reason_id: 5,
-                            blacklist_reason_name: 'Fraud - suspicious user-data' },
+        blacklist_reason: {
+          blacklist_reason_id: 5,
+          blacklist_reason_name: 'Fraud - suspicious user-data'
+        },
         blacklist_type: { blacklist_type_id: 1, blacklist_type_name: 'Global Redirect' },
         date_created: Time.utc(2015, 9, 22, 22),
         offer: { offer_id: 10551, offer_name: 'DO NOT USE: Foxy Test 42 (AD DOI)' },

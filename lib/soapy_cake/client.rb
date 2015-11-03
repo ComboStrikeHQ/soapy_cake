@@ -19,7 +19,7 @@ module SoapyCake
 
     protected
 
-    attr_reader :domain, :api_key, :time_converter, :opts
+    attr_reader :domain, :api_key, :time_converter, :opts, :logger
 
     def run(request)
       request.api_key = api_key
@@ -31,11 +31,17 @@ module SoapyCake
 
     private
 
+    def logger
+      @logger ||= opts[:logger] || (defined?(::Rails) && ::Rails.logger)
+    end
+
     def response_body(request)
       request.opts[:response].presence || http_response(request)
     end
 
     def http_response(request)
+      logger.info("soapy_cake:request #{request}") if logger
+
       url = "https://#{domain}#{request.path}"
       http_response = HTTParty.post(url, headers: HEADERS, body: request.xml, timeout: NET_TIMEOUT)
 

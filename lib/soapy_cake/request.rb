@@ -33,6 +33,10 @@ module SoapyCake
       %w(addedit track signup).include?(service)
     end
 
+    def to_s
+      "#{role}:#{service}:#{method}:#{version} #{opts.to_json}"
+    end
+
     private
 
     def api_path
