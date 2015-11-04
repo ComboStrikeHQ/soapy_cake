@@ -22,13 +22,13 @@ module SoapyCake
     attr_reader :domain, :api_key, :time_converter, :opts, :logger
 
     def run(request)
-      logger.info("soapy_cake:request #{request}") if logger
       sleep 30 if request.service.to_sym == :export && Rails.env.production?
 
       request.api_key = api_key
       request.time_converter = time_converter
 
-      Retryable.retryable(tries: 5, on: RateLimitError, sleep: -> (n) { 3**n }) do
+      Retryable.retryable(tries: 5, on: RateLimitError, sleep: -> (n) { 3**n }) do |try, _ex|
+        logger.info("soapy_cake:request try:#{try} #{request}") if logger
         response = Response.new(response_body(request), request.short_response?, time_converter)
         xml_response? ? response.to_xml : response.to_enum
       end
