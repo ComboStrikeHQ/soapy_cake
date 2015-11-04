@@ -57,7 +57,6 @@ module SoapyCake
       end
 
       def fetch_batch
-        sleep 30 if SLEEP_METHODS.include?(method.to_sym) && Rails.env.production?
         admin.public_send(method, opts.merge(row_limit: limit, start_at_row: offset))
       end
 

@@ -23,6 +23,7 @@ module SoapyCake
 
     def run(request)
       logger.info("soapy_cake:request #{request}") if logger
+      sleep 30 if request.service.to_sym == :export && Rails.env.production?
 
       request.api_key = api_key
       request.time_converter = time_converter
