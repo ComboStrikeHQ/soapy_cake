@@ -34,7 +34,7 @@ module SoapyCake
     end
 
     def to_s
-      "#{role}:#{service}:#{method}:#{version} #{opts.to_json}"
+      "#{role}:#{service}:#{method}:#{version} #{opts.except(:response).to_json}"
     end
 
     private
