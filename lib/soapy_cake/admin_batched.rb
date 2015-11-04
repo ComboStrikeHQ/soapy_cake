@@ -5,6 +5,10 @@ module SoapyCake
       conversions events caps exchange_rates
     ).freeze
 
+    SLEEP_METHODS = %i(
+      advertisers affiliates campaigns offers creatives exchange_rates
+    )
+
     def initialize(opts = {})
       @opts = opts
     end
@@ -16,7 +20,7 @@ module SoapyCake
 
       # This value depends on the entity size.
       # When all offers have a lot of info (e.g. geotargeting) we probably need to decrease this.
-      LIMIT = 500
+      LIMIT = 5000
 
       def initialize(admin, method, opts, limit)
         if opts.key?(:row_limit) || opts.key?(:start_at_row)
@@ -53,6 +57,7 @@ module SoapyCake
       end
 
       def fetch_batch
+        sleep 30 if SLEEP_METHODS.include?(method.to_sym) && Rails.env.production?
         admin.public_send(method, opts.merge(row_limit: limit, start_at_row: offset))
       end
 

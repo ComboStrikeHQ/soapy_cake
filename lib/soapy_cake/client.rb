@@ -22,6 +22,8 @@ module SoapyCake
     attr_reader :domain, :api_key, :time_converter, :opts, :logger
 
     def run(request)
+      logger.info("soapy_cake:request #{request}") if logger
+
       request.api_key = api_key
       request.time_converter = time_converter
 
@@ -42,8 +44,6 @@ module SoapyCake
     end
 
     def http_response(request)
-      logger.info("soapy_cake:request #{request}") if logger
-
       url = "https://#{domain}#{request.path}"
       http_response = HTTParty.post(url, headers: HEADERS, body: request.xml, timeout: NET_TIMEOUT)
 
