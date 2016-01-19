@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module SoapyCake
   class TimeConverter
     def initialize(time_zone, time_offset = nil)
@@ -21,15 +22,15 @@ module SoapyCake
       zone.parse(value).utc
     end
 
-    private
-
-    attr_reader :zone
-
     def self.print_deprecation_warning
       return if @deprecation_warning_printed
       @deprecation_warning_printed = true
 
       STDERR.puts 'SoapyCake - DEPRECATED: Please use time_zone instead of time_offset.'
     end
+
+    private
+
+    attr_reader :zone
   end
 end

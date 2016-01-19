@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module SoapyCake
   class Response
     include Helper
