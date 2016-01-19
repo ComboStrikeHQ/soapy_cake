@@ -90,11 +90,11 @@ module SoapyCake
     def add_geo_targets(opts)
       require_params(opts, %i(offer_contract_id allow_countries))
 
-      if opts[:allow_countries]
-        opts = geo_targets_allow_options(opts)
-      else
-        opts = geo_targets_redirect_options(opts)
-      end
+      opts = if opts[:allow_countries]
+               geo_targets_allow_options(opts)
+             else
+               geo_targets_redirect_options(opts)
+             end
 
       opts = opts.merge(add_edit_option: 'add', set_targeting_to_geo: true)
 
@@ -219,9 +219,9 @@ module SoapyCake
       opts = translate_booleans(opts)
       opts = apply_tag_opts(opts)
       opts = translate_values(opts, %i(
-        currency_id offer_status_id offer_type_id price_format_id
-        conversion_cap_behavior conversion_behavior_on_redirect
-      ))
+                                currency_id offer_status_id offer_type_id price_format_id
+                                conversion_cap_behavior conversion_behavior_on_redirect
+                              ))
 
       run(Request.new(:admin, :addedit, :offer, default_offer_options.merge(opts)))[:success_info]
     end

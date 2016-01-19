@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module SoapyCake
   class Request
     DATE_CLASSES = [Date, Time, DateTime, ActiveSupport::TimeWithZone].freeze

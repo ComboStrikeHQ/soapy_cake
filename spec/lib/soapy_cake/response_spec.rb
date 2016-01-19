@@ -31,8 +31,8 @@ RSpec.describe SoapyCake::Response do
 
   it 'parses the CAKE XML structure properly' do
     expect(subject.to_enum.to_a).to eq([
-      { id: '123' },
-      { id: '312' }
-    ])
+                                         { id: '123' },
+                                         { id: '312' }
+                                       ])
   end
 end
