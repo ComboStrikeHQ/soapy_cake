@@ -7,7 +7,7 @@ module SoapyCake
 
     SLEEP_METHODS = %i(
       advertisers affiliates campaigns offers creatives exchange_rates
-    )
+    ).freeze
 
     def initialize(opts = {})
       @opts = opts

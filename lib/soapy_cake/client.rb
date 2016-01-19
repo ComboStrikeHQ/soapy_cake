@@ -22,7 +22,7 @@ module SoapyCake
     attr_reader :domain, :api_key, :time_converter, :opts, :logger
 
     def run(request)
-      sleep 30 if request.service.to_sym == :export && Rails.env.production?
+      sleep 30 if request.service.to_sym == :export && ::Rails.env.production?
       logger.info("soapy_cake:request #{request}") if logger
 
       request.api_key = api_key
