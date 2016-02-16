@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 if ENV['CODECLIMATE_REPO_TOKEN']
   require 'codeclimate-test-reporter'
   CodeClimate::TestReporter.start
@@ -42,6 +43,7 @@ end
 ENV['CAKE_API_KEY'] = 'cake-api-key' if ENV['CAKE_API_KEY'].blank?
 ENV['CAKE_DOMAIN'] = 'cake-partner-domain.com' if ENV['CAKE_DOMAIN'].blank?
 ENV['CAKE_TIME_ZONE'] = 'Europe/Berlin' if ENV['CAKE_TIME_ZONE'].blank?
+ENV['CAKE_WRITE_ENABLED'] = 'yes' if ENV['CAKE_WRITE_ENABLED'].blank?
 
 VCR.configure do |c|
   c.configure_rspec_metadata!

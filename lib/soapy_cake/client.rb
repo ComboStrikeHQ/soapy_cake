@@ -1,18 +1,15 @@
+# frozen_string_literal: true
 module SoapyCake
   class Client
     HEADERS = { 'Content-Type' => 'application/soap+xml;charset=UTF-8' }.freeze
 
     def initialize(opts = {})
-      @domain = opts.fetch(:domain, ENV['CAKE_DOMAIN']) || fail(Error, 'Cake domain missing')
-      @api_key = opts.fetch(:api_key, ENV['CAKE_API_KEY']) || fail(Error, 'Cake API key missing')
-      @retry_count = opts.fetch(:retry_count, ENV['CAKE_RETRY_COUNT']) || 4
-
-      @time_converter = TimeConverter.new(
-        opts.fetch(:time_zone, ENV['CAKE_TIME_ZONE']),
-        opts.fetch(:time_offset, ENV['CAKE_TIME_OFFSET'])
-      )
-
       @opts = opts
+      @domain = fetch_opt(:domain) || raise(Error, 'Cake domain missing')
+      @api_key = fetch_opt(:api_key) || raise(Error, 'Cake API key missing')
+      @retry_count = fetch_opt(:retry_count, 4)
+      @write_enabled = ['yes', true].include?(fetch_opt(:write_enabled))
+      @time_converter = TimeConverter.new(fetch_opt(:time_zone), fetch_opt(:time_offset))
     end
 
     def xml_response?
@@ -21,23 +18,35 @@ module SoapyCake
 
     protected
 
-    attr_reader :domain, :api_key, :time_converter, :opts, :logger, :retry_count
+    attr_reader :domain, :api_key, :time_converter, :opts, :logger, :retry_count, :write_enabled
 
     def run(request)
+      check_write_enabled!(request)
       request.api_key = api_key
       request.time_converter = time_converter
 
-      Retryable.retryable(
-        tries: retry_count + 1,
-        on: [RateLimitError, SocketError],
-        sleep: -> (n) { 3**n }
-      ) do
+      with_retries do
         response = Response.new(response_body(request), request.short_response?, time_converter)
         xml_response? ? response.to_xml : response.to_enum
       end
     end
 
     private
+
+    def fetch_opt(key, fallback = nil)
+      opts.fetch(key, ENV.fetch("CAKE_#{key.to_s.upcase}", fallback))
+    end
+
+    def check_write_enabled!(request)
+      unless request.read_only? || write_enabled
+        raise Error, 'Writes not enabled (pass write_enabled: true or set CAKE_WRITE_ENABLED=yes)'
+      end
+    end
+
+    def with_retries(&block)
+      opts = { tries: retry_count + 1, on: [RateLimitError, SocketError], sleep: -> (n) { 3**n } }
+      Retryable.retryable(opts, &block)
+    end
 
     def logger
       @logger ||= opts[:logger] || (defined?(::Rails) && ::Rails.logger)
@@ -51,12 +60,9 @@ module SoapyCake
       logger.info("soapy_cake:request #{request}") if logger
 
       url = "https://#{domain}#{request.path}"
-      http_response = HTTParty.post(url, headers: HEADERS, body: request.xml, timeout: NET_TIMEOUT)
-
-      fail RequestFailed, "Request failed with HTTP #{http_response.code}: " \
-        "#{http_response.body}" unless http_response.success?
-
-      http_response
+      HTTParty.post(url, headers: HEADERS, body: request.xml, timeout: NET_TIMEOUT).tap do |res|
+        raise RequestFailed, "Request failed with HTTP #{res.code}: #{res.body}" unless res.success?
+      end
     end
   end
 end

@@ -63,13 +63,13 @@ module SoapyCake
 
     def error_check_fault!
       fault = sax.for_tag(:fault).first
-      fail RequestFailed, fault[:reason][:text] if fault
+      raise RequestFailed, fault[:reason][:text] if fault
     end
 
     def error_check_success!
-      return if sax.for_tag(:success).first == 'true'.freeze
-      fail RateLimitError if error_message == 'Restricted'.freeze
-      fail RequestFailed, error_message
+      return if sax.for_tag(:success).first == 'true'
+      raise RateLimitError if error_message == 'Restricted'
+      raise RequestFailed, error_message
     end
 
     def error_check_special_case?

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 RSpec.describe SoapyCake::AdminAddedit do
   around { |example| Timecop.freeze(Time.utc(2015, 2, 17, 12), &example) }
 
@@ -37,6 +38,21 @@ RSpec.describe SoapyCake::AdminAddedit do
   end
 
   describe 'offers' do
+    let(:update_params) do
+      {
+        offer_id: offer_id,
+        advertiser_id: advertiser_id,
+        vertical_id: vertical_id,
+        postback_url_ms_delay: 50,
+        offer_contract_hidden: false,
+        price_format_id: :cpa,
+        received: 2.0,
+        received_percentage: false,
+        payout: 1.5,
+        tags: ''
+      }
+    end
+
     it 'creates an offer', :vcr do
       result = subject.add_offer(
         hidden: false,
@@ -86,20 +102,7 @@ RSpec.describe SoapyCake::AdminAddedit do
     end
 
     it 'updates an offer', :vcr do
-      result = subject.edit_offer(
-        offer_id: offer_id,
-
-        advertiser_id: advertiser_id,
-        vertical_id: vertical_id,
-        postback_url_ms_delay: 50,
-        offer_contract_hidden: false,
-        price_format_id: :cpa,
-        received: 2.0,
-        received_percentage: false,
-        payout: 1.5,
-        tags: ''
-      )
-
+      result = subject.edit_offer(update_params)
       expect(result).to include(offer_id: offer_id)
     end
 
@@ -114,6 +117,19 @@ RSpec.describe SoapyCake::AdminAddedit do
         expect do
           subject.edit_offer(offer_id: -1)
         end.to raise_error(SoapyCake::Error, "Parameter 'offer_id' must be > 0!")
+      end
+
+      context 'when writes not enabled' do
+        before do
+          allow(ENV).to receive(:fetch).and_call_original
+          allow(ENV).to receive(:fetch).with('CAKE_WRITE_ENABLED', nil).and_return('no')
+        end
+
+        it 'fails with error' do
+          expect do
+            subject.edit_offer(update_params)
+          end.to raise_error(SoapyCake::Error, /Writes not enabled/)
+        end
       end
     end
   end

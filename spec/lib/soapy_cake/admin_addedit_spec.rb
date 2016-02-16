@@ -1,6 +1,8 @@
+# frozen_string_literal: true
 RSpec.describe SoapyCake::AdminAddedit do
   before do
-    allow_any_instance_of(SoapyCake::Client).to receive(:run).and_return({})
+    allow_any_instance_of(SoapyCake::Client) # rubocop:disable RSpec/AnyInstance
+      .to receive(:run).and_return({})
   end
 
   describe '#edit_offer' do

@@ -15,20 +15,20 @@ module SoapyCake
     end
 
     def validate_id(opts, key)
-      fail Error, "Parameter '#{key}' must be > 0!" if opts[key].to_i < 1
+      raise Error, "Parameter '#{key}' must be > 0!" if opts[key].to_i < 1
     end
 
     def require_params(opts, params)
       params.each do |param|
-        fail Error, "Parameter '#{param}' missing!" unless opts.key?(param)
+        raise Error, "Parameter '#{param}' missing!" unless opts.key?(param)
       end
     end
 
     def translate_booleans(opts)
       opts.transform_values do |v|
         case v
-        when true then 'on'.freeze
-        when false then 'off'.freeze
+        when true then 'on'
+        when false then 'off'
         else v
         end
       end
@@ -45,7 +45,7 @@ module SoapyCake
 
     def const_lookup(type, key)
       Const::CONSTS[type].fetch(key) do
-        fail ArgumentError, "#{key} is not a valid value for #{type}"
+        raise ArgumentError, "#{key} is not a valid value for #{type}"
       end
     end
 

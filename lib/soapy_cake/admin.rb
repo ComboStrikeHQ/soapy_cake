@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module SoapyCake
   # rubocop:disable Metrics/ClassLength
   class Admin < Client

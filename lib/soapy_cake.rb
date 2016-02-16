@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'logger'
 require 'nokogiri'
 require 'saxerator'
@@ -23,6 +24,6 @@ require 'soapy_cake/admin_track'
 require 'soapy_cake/affiliate'
 
 module SoapyCake
-  API_VERSIONS = YAML.load(File.read(File.expand_path('../../api_versions.yml', __FILE__)))
+  API_CONFIG = YAML.load(File.read(File.expand_path('../../api.yml', __FILE__)))
   NET_TIMEOUT = 600
 end

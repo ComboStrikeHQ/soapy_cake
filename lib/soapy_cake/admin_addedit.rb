@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module SoapyCake
   # rubocop:disable Metrics/ClassLength
   class AdminAddedit < Client
@@ -114,7 +115,7 @@ module SoapyCake
       opts = opts.dup
       redirects = opts.delete(:redirects)
       unless redirects.is_a?(Hash) && redirects.keys.count > 0
-        fail Error, "Parameter 'redirects' must be a COUNTRY=>REDIRECT_OFFER_CONTRACT_ID hash!"
+        raise Error, "Parameter 'redirects' must be a COUNTRY=>REDIRECT_OFFER_CONTRACT_ID hash!"
       end
 
       opts[:countries] = redirects.keys.join(',')

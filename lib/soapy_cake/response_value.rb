@@ -27,11 +27,11 @@ module SoapyCake
     attr_reader :time_converter
 
     def false?
-      value == 'false'.freeze
+      value == 'false'
     end
 
     def true?
-      value == 'true'.freeze
+      value == 'true'
     end
 
     def date?
@@ -39,7 +39,7 @@ module SoapyCake
     end
 
     def id?
-      key.end_with?('_id'.freeze)
+      key.end_with?('_id')
     end
 
     def string_id?
@@ -52,7 +52,7 @@ module SoapyCake
 
     def parse_int
       unless value.nil? || numeric?
-        fail Error, "'#{key}' contains non-digit chars but was to be parsed as an integer id"
+        raise Error, "'#{key}' contains non-digit chars but was to be parsed as an integer id"
       end
       value.to_i
     end

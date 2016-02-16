@@ -9,13 +9,13 @@ module SoapyCake
         time_zone = format('Etc/GMT%+d', -time_offset.to_i)
       end
 
-      fail Error, 'Cake time zone missing' if time_zone.blank?
+      raise Error, 'Cake time zone missing' if time_zone.blank?
       @zone = ActiveSupport::TimeZone[time_zone]
     end
 
     def to_cake(date)
       date = date.to_datetime if date.is_a?(Date)
-      date.in_time_zone(zone).strftime('%Y-%m-%dT%H:%M:%S'.freeze)
+      date.in_time_zone(zone).strftime('%Y-%m-%dT%H:%M:%S')
     end
 
     def from_cake(value)

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 RSpec.describe SoapyCake::ResponseValue do
   let(:time_converter) { double('date converter') }
 

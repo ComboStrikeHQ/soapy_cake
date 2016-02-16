@@ -38,6 +38,10 @@ module SoapyCake
       "#{role}:#{service}:#{method}:#{version} #{opts.to_json}"
     end
 
+    def read_only?
+      (API_CONFIG.dig('read_only', role, service) || []).include?(method)
+    end
+
     private
 
     def api_path
@@ -61,17 +65,16 @@ module SoapyCake
     def format_param(key, value)
       return time_converter.to_cake(value) if DATE_CLASSES.include?(value.class)
 
-      if key.to_s.end_with?('_date'.freeze)
-        fail Error, "You need to use a Time/DateTime/Date object for '#{key}'"
+      if key.to_s.end_with?('_date')
+        raise Error, "You need to use a Time/DateTime/Date object for '#{key}'"
       end
 
       value
     end
 
     def version
-      API_VERSIONS[role][service][method] || fail
-    rescue
-      raise(Error, "Unknown API call #{role}::#{service}::#{method}")
+      API_CONFIG.dig('versions', role, service, method) ||
+        raise(Error, "Unknown API call #{role}::#{service}::#{method}")
     end
   end
 end

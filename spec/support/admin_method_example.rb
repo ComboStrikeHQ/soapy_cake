@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 RSpec.shared_examples_for 'a cake admin method' do
   let(:request) { double('request') }
 
