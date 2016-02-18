@@ -23,8 +23,9 @@ Or install it yourself as:
 
 ## Usage Examples
 
-First we assume that you set the `CAKE_DOMAIN`, `CAKE_API_KEY` and `CAKE_TIME_ZONE`
-environment variables.
+First we assume that you set the `CAKE_DOMAIN`, `CAKE_API_KEY` and
+`CAKE_TIME_ZONE` environment variables. To enable the ADD, EDIT and ADDEDIT API
+endpoints, `CAKE_WRITE_ENABLED=yes` should also be set.
 
 Export all advertisers:
 
@@ -41,8 +42,8 @@ SoapyCake::Admin.new.affiliate_summary(
 )
 ```
 
-If you are interested in how we map methods to api endpoints take a look
-at [api_versions.yml](api_versions.yml).
+If you are interested in how we map methods to api endpoints take a look at
+[api.yml](api.yml).
 
 ## Time/Date Handling
 - Define `CAKE_TIME_ZONE`
