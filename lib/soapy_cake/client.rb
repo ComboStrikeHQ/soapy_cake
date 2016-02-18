@@ -16,6 +16,10 @@ module SoapyCake
       opts[:xml_response] == true
     end
 
+    def read_only?
+      !write_enabled
+    end
+
     protected
 
     attr_reader :domain, :api_key, :time_converter, :opts, :logger, :retry_count, :write_enabled
