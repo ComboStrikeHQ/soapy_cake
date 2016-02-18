@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 RSpec.describe SoapyCake::AdminBatched do
   let(:admin) { double('admin', xml_response?: false) }
 

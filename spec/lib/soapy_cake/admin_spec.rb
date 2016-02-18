@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 RSpec.describe SoapyCake::Admin do
   let(:opts) { nil }
   let(:cake_opts) { opts }

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 RSpec.describe SoapyCake::Affiliate do
   let(:affiliate_id) { 42 }
   let(:opts) { { a: 1 } }

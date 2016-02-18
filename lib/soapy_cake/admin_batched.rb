@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module SoapyCake
   class AdminBatched
     ALLOWED_METHODS = %i(
@@ -20,7 +21,7 @@ module SoapyCake
 
       def initialize(admin, method, opts, limit)
         if opts.key?(:row_limit) || opts.key?(:start_at_row)
-          fail Error, 'Cannot set row_limit/start_at_row in batched mode!'
+          raise Error, 'Cannot set row_limit/start_at_row in batched mode!'
         end
 
         @admin = admin
@@ -60,7 +61,7 @@ module SoapyCake
     end
 
     def method_missing(name, method_opts = {}, limit = nil)
-      fail Error, "Invalid method #{name}" unless ALLOWED_METHODS.include?(name)
+      raise Error, "Invalid method #{name}" unless ALLOWED_METHODS.include?(name)
 
       BatchedRequest.new(admin, name, method_opts, limit).to_enum
     end

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module SoapyCake
   module Const
     # The ID mapping in the API docs is wrong, these values are taken from the UI.

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 RSpec.describe SoapyCake::Request do
   it 'raises if there is no api version stored' do
     expect do
