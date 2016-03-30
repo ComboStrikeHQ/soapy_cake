@@ -79,12 +79,14 @@ module SoapyCake
       # of 4, not 3 or 5 like ALL OTHER requests.
       # BTW: There is a 10$ reward if anyone can find a worse designed API.
       return true if sax.for_tag(:MediaType).count > 0
+      return true if sax.for_tag(:AdvertiserResult).first == 'Advertiser Added Successfully'
 
       false
     end
 
     def error_message
-      @error_message ||= sax.for_tag(:message).first || sax.for_tag(:Text).first || 'Unknown error'
+      @error_message ||= sax.for_tag(:message).first || sax.for_tag(:Text).first ||
+        sax.for_tag(:AdvertiserResult).first || 'Unknown error'
     end
   end
 end

@@ -96,6 +96,23 @@ RSpec.describe SoapyCake::Admin do
     )
   end
 
+  it 'creates an advertiser', :vcr do
+    result = subject.advertiser_signup(
+      company_name: 'Foxy Fox',
+      first_name: 'Foxy',
+      last_name: 'Fox',
+      email_address: 'foxy@forrest.com',
+      address_street: 'n/a',
+      address_city: 'n/a',
+      address_state: 'n/a',
+      address_zip_code: 'n/a',
+      address_country: 'n/a',
+      contact_phone_work: 'n/a'
+    )
+
+    expect(result).to eq('Advertiser Added Successfully')
+  end
+
   it 'returns media types', :vcr do
     result = subject.media_types
 
