@@ -22,6 +22,17 @@ RSpec.describe SoapyCake::AdminAddedit do
     end
   end
 
+  describe 'advertisers', :vcr do
+    it 'creates advertisers' do
+      result = subject.create_advertiser(
+        advertiser_name: 'Foxy Fox',
+        account_status_id: 1
+      )
+
+      expect(result).to include(advertiser_id: 15908)
+    end
+  end
+
   describe 'contacts', :vcr do
     it 'edits a contact' do
       result = subject.edit_contact(

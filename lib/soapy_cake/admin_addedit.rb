@@ -164,6 +164,10 @@ module SoapyCake
       run Request.new(:admin, :addedit, :affiliate, opts)
     end
 
+    def create_advertiser(opts)
+      run Request.new(:admin, :addedit, :advertiser, opts.merge(advertiser_id: 0))
+    end
+
     def add_campaign(opts)
       addedit_campaign(opts.merge(campaign_id: 0))
     end
