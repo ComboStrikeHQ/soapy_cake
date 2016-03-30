@@ -136,6 +136,10 @@ module SoapyCake
       run Request.new(:admin, :signup, :affiliate, opts)
     end
 
+    def advertiser_signup(opts = {})
+      run Request.new(:admin, :signup, :advertiser, opts)
+    end
+
     def media_types(opts = {})
       result = run(Request.new(:admin, :signup, :get_media_types, opts))
       xml_response? ? result : result.try(:[], :MediaType)
