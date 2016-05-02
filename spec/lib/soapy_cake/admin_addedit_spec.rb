@@ -84,10 +84,7 @@ RSpec.describe SoapyCake::AdminAddedit do
   describe '#edit_campaign' do
     let(:required_params) do
       {
-        affiliate_id: 1,
-        campaign_id: 2,
-        offer_id: 3,
-        account_status_id: :active
+        campaign_id: 2
       }
     end
 

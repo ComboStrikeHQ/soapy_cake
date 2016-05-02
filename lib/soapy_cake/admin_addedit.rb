@@ -71,15 +71,20 @@ module SoapyCake
     ).freeze
 
     CAMPAIGN_UPDATE_DEFAULT_OPTIONS = {
-      media_type_id: 0,
-      postback_delay_ms: -1,
-      review: 'no_change',
-      redirect_404: 'no_change',
+      account_status_id: :no_change,
       auto_disposition_delay_hours: 0,
-      paid_upsells: 'no_change',
       clear_session_on_conversion: 'no_change',
-      account_status_id: 0
-    }
+      currency_id: 0,
+      media_type_id: 0,
+      paid: 'no_change',
+      paid_redirects: 'no_change',
+      paid_upsells: 'no_change',
+      postback_delay_ms: -1,
+      redirect_404: 'no_change',
+      redirect_offer_contract_id: 0,
+      review: 'no_change',
+      use_offer_contract_payout: 'no_change'
+    }.freeze
 
     def add_offer(opts)
       require_params(opts, REQUIRED_NEW_OFFER_PARAMS)
@@ -180,7 +185,7 @@ module SoapyCake
     end
 
     def add_campaign(opts)
-      require_params(opts, [:account_status_id, :payout])
+      require_params(opts, %i(affiliate_id offer_id account_status_id payout))
       addedit_campaign(opts.merge(campaign_id: 0))
     end
 
@@ -265,8 +270,6 @@ module SoapyCake
     end
 
     def addedit_campaign(opts)
-      require_params(opts, %i(affiliate_id offer_id media_type_id))
-
       opts = translate_values(opts, %i(account_status_id))
 
       opts = opts.reverse_merge(

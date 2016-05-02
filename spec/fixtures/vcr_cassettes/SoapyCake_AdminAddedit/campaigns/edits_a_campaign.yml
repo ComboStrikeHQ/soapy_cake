@@ -14,14 +14,19 @@ http_interactions:
               <cake:api_key>cake-api-key</cake:api_key>
               <cake:display_link_type_id>1</cake:display_link_type_id>
               <cake:expiration_date>2045-02-09T01:00:00</cake:expiration_date>
-              <cake:media_type_id>1</cake:media_type_id>
-              <cake:postback_delay_ms>-1</cake:postback_delay_ms>
-              <cake:review>no_change</cake:review>
-              <cake:redirect_404>no_change</cake:redirect_404>
-              <cake:auto_disposition_delay_hours>0</cake:auto_disposition_delay_hours>
-              <cake:paid_upsells>no_change</cake:paid_upsells>
-              <cake:clear_session_on_conversion>no_change</cake:clear_session_on_conversion>
               <cake:account_status_id>1</cake:account_status_id>
+              <cake:auto_disposition_delay_hours>0</cake:auto_disposition_delay_hours>
+              <cake:clear_session_on_conversion>no_change</cake:clear_session_on_conversion>
+              <cake:currency_id>0</cake:currency_id>
+              <cake:media_type_id>1</cake:media_type_id>
+              <cake:paid>no_change</cake:paid>
+              <cake:paid_redirects>no_change</cake:paid_redirects>
+              <cake:paid_upsells>no_change</cake:paid_upsells>
+              <cake:postback_delay_ms>-1</cake:postback_delay_ms>
+              <cake:redirect_404>no_change</cake:redirect_404>
+              <cake:redirect_offer_contract_id>0</cake:redirect_offer_contract_id>
+              <cake:review>no_change</cake:review>
+              <cake:use_offer_contract_payout>no_change</cake:use_offer_contract_payout>
               <cake:campaign_id>123</cake:campaign_id>
               <cake:affiliate_id>1</cake:affiliate_id>
               <cake:offer_id>8910</cake:offer_id>
@@ -49,7 +54,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Tue, 26 Apr 2016 15:07:44 GMT
+      - Mon, 02 May 2016 14:51:34 GMT
       Content-Length:
       - '626'
     body:
