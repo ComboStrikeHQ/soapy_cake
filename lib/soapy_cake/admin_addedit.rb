@@ -84,7 +84,8 @@ module SoapyCake
       redirect_404: 'no_change',
       redirect_offer_contract_id: 0,
       review: 'no_change',
-      use_offer_contract_payout: 'no_change'
+      use_offer_contract_payout: 'no_change',
+      payout_update_option: 'do_not_change'
     }.freeze
 
     def add_offer(opts)
@@ -194,24 +195,10 @@ module SoapyCake
       require_params(opts, %i(campaign_id))
       validate_id(opts, :campaign_id)
 
-      addedit_campaign(
-        CAMPAIGN_UPDATE_DEFAULT_OPTIONS
-          .merge(opts)
-          .merge(campaign_payout_update_options(opts))
-      )
+      addedit_campaign(CAMPAIGN_UPDATE_DEFAULT_OPTIONS.merge(opts))
     end
 
     private
-
-    def campaign_payout_update_options(opts)
-      if opts.key?(:payout) && opts[:payout].nil?
-        { payout_update_option: 'remove' }
-      elsif opts.key?(:payout)
-        { payout_update_option: 'change' }
-      else
-        { payout_update_option: 'do_not_change' }
-      end
-    end
 
     def addedit_offer_tier(add_edit_option, opts)
       require_params(opts, %i(offer_id tier_id price_format_id offer_contract_id status_id))

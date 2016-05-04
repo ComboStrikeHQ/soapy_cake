@@ -27,11 +27,11 @@ http_interactions:
               <cake:redirect_offer_contract_id>0</cake:redirect_offer_contract_id>
               <cake:review>no_change</cake:review>
               <cake:use_offer_contract_payout>no_change</cake:use_offer_contract_payout>
+              <cake:payout_update_option>do_not_change</cake:payout_update_option>
               <cake:campaign_id>123</cake:campaign_id>
               <cake:affiliate_id>1</cake:affiliate_id>
               <cake:offer_id>8910</cake:offer_id>
               <cake:payout>1.23</cake:payout>
-              <cake:payout_update_option>change</cake:payout_update_option>
             </cake:Campaign>
           </env:Body>
         </env:Envelope>
@@ -54,7 +54,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Wed, 04 May 2016 09:22:20 GMT
+      - Wed, 04 May 2016 09:44:11 GMT
       Content-Length:
       - '626'
     body:

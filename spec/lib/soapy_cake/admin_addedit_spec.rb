@@ -80,47 +80,4 @@ RSpec.describe SoapyCake::AdminAddedit do
       subject.add_offer(offer_params.merge(tags: 'tag', tags_replace: true))
     end
   end
-
-  describe '#edit_campaign' do
-    let(:required_params) do
-      {
-        campaign_id: 2
-      }
-    end
-
-    before do
-      expect(SoapyCake::Request).to receive(:new)
-        .with(:admin, :addedit, :campaign, hash_including(expected_params))
-    end
-
-    context 'a payout is passed' do
-      let(:expected_params) do
-        { payout: 1.23, payout_update_option: 'change' }
-      end
-
-      it 'updates the payout if a payout is passed' do
-        subject.edit_campaign(required_params.merge(payout: 1.23))
-      end
-    end
-
-    context 'no payout is passed' do
-      let(:expected_params) do
-        { payout_update_option: 'do_not_change' }
-      end
-
-      it 'updates the payout if a payout is passed' do
-        subject.edit_campaign(required_params)
-      end
-    end
-
-    context 'a payout is passed but the value is nil' do
-      let(:expected_params) do
-        { payout_update_option: 'remove' }
-      end
-
-      it 'updates the payout if a payout is passed' do
-        subject.edit_campaign(required_params.merge(payout: nil))
-      end
-    end
-  end
 end
