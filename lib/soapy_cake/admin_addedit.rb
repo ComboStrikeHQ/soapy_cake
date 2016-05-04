@@ -75,6 +75,7 @@ module SoapyCake
       auto_disposition_delay_hours: 0,
       clear_session_on_conversion: 'no_change',
       currency_id: 0,
+      expiration_date_modification_type: 'do_not_change',
       media_type_id: 0,
       paid: 'no_change',
       paid_redirects: 'no_change',
@@ -186,7 +187,7 @@ module SoapyCake
 
     def add_campaign(opts)
       require_params(opts, %i(affiliate_id offer_id account_status_id payout))
-      addedit_campaign(opts.merge(campaign_id: 0))
+      addedit_campaign(opts.merge(campaign_id: 0, expiration_date: future_expiration_date))
     end
 
     def edit_campaign(opts)
@@ -271,12 +272,7 @@ module SoapyCake
 
     def addedit_campaign(opts)
       opts = translate_values(opts, %i(account_status_id))
-
-      opts = opts.reverse_merge(
-        display_link_type_id: 1,
-        expiration_date: future_expiration_date
-      )
-
+      opts = opts.reverse_merge(display_link_type_id: 1)
       run Request.new(:admin, :addedit, :campaign, opts)
     end
   end

@@ -13,11 +13,11 @@ http_interactions:
             <cake:Campaign>
               <cake:api_key>cake-api-key</cake:api_key>
               <cake:display_link_type_id>1</cake:display_link_type_id>
-              <cake:expiration_date>2045-02-09T01:00:00</cake:expiration_date>
               <cake:account_status_id>1</cake:account_status_id>
               <cake:auto_disposition_delay_hours>0</cake:auto_disposition_delay_hours>
               <cake:clear_session_on_conversion>no_change</cake:clear_session_on_conversion>
               <cake:currency_id>0</cake:currency_id>
+              <cake:expiration_date_modification_type>do_not_change</cake:expiration_date_modification_type>
               <cake:media_type_id>1</cake:media_type_id>
               <cake:paid>no_change</cake:paid>
               <cake:paid_redirects>no_change</cake:paid_redirects>
@@ -54,7 +54,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Mon, 02 May 2016 14:51:34 GMT
+      - Wed, 04 May 2016 09:22:20 GMT
       Content-Length:
       - '626'
     body:
@@ -65,4 +65,4 @@ http_interactions:
         Updated</message><success_info><campaign_id>123</campaign_id><affiliate_id>-1</affiliate_id><offer_id>5078</offer_id><offer_contract_id>123</offer_contract_id><media_type_id>1</media_type_id><original>true</original></success_info></CampaignResult></CampaignResponse></soap:Body></soap:Envelope>
     http_version: 
   recorded_at: Tue, 17 Feb 2015 12:00:00 GMT
-recorded_with: VCR 2.9.3
+recorded_with: VCR 3.0.1
