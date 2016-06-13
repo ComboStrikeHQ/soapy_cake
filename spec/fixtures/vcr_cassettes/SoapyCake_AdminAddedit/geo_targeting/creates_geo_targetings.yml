@@ -2,12 +2,12 @@
 http_interactions:
 - request:
     method: post
-    uri: https://cake-partner-domain.com/api/2/addedit.asmx
+    uri: https://cake-partner-domain.com/api/3/addedit.asmx
     body:
       encoding: UTF-8
       string: |
         <?xml version="1.0"?>
-        <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:cake="http://cakemarketing.com/api/2/">
+        <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:cake="http://cakemarketing.com/api/3/">
           <env:Header/>
           <env:Body>
             <cake:GeoTargets>
@@ -15,7 +15,7 @@ http_interactions:
               <cake:offer_contract_id>1456</cake:offer_contract_id>
               <cake:countries>DE,FR</cake:countries>
               <cake:allow_countries>true</cake:allow_countries>
-              <cake:redirect_offer_contract_ids>-1,-1</cake:redirect_offer_contract_ids>
+              <cake:redirect_site_offer_contract_ids>-1,-1</cake:redirect_site_offer_contract_ids>
               <cake:add_edit_option>add</cake:add_edit_option>
               <cake:set_targeting_to_geo>true</cake:set_targeting_to_geo>
             </cake:GeoTargets>
@@ -47,18 +47,18 @@ http_interactions:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><GeoTargetsResponse
-        xmlns="http://cakemarketing.com/api/2/"><GeoTargetsResult><success>true</success><message>Geotarget(s)
+        xmlns="http://cakemarketing.com/api/3/"><GeoTargetsResult><success>true</success><message>Geotarget(s)
         Added</message><row_count>2</row_count></GeoTargetsResult></GeoTargetsResponse></soap:Body></soap:Envelope>
     http_version: 
   recorded_at: Tue, 17 Feb 2015 12:00:00 GMT
 - request:
     method: post
-    uri: https://cake-partner-domain.com/api/2/addedit.asmx
+    uri: https://cake-partner-domain.com/api/3/addedit.asmx
     body:
       encoding: UTF-8
       string: |
         <?xml version="1.0"?>
-        <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:cake="http://cakemarketing.com/api/2/">
+        <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:cake="http://cakemarketing.com/api/3/">
           <env:Header/>
           <env:Body>
             <cake:GeoTargets>
@@ -66,7 +66,7 @@ http_interactions:
               <cake:offer_contract_id>1456</cake:offer_contract_id>
               <cake:countries>AT,CH</cake:countries>
               <cake:allow_countries>false</cake:allow_countries>
-              <cake:redirect_offer_contract_ids>1392,1392</cake:redirect_offer_contract_ids>
+              <cake:redirect_site_offer_contract_ids>1392,1392</cake:redirect_site_offer_contract_ids>
               <cake:add_edit_option>add</cake:add_edit_option>
               <cake:set_targeting_to_geo>true</cake:set_targeting_to_geo>
             </cake:GeoTargets>
@@ -98,7 +98,7 @@ http_interactions:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><GeoTargetsResponse
-        xmlns="http://cakemarketing.com/api/2/"><GeoTargetsResult><success>true</success><message>Geotarget(s)
+        xmlns="http://cakemarketing.com/api/3/"><GeoTargetsResult><success>true</success><message>Geotarget(s)
         Added</message><row_count>2</row_count></GeoTargetsResult></GeoTargetsResponse></soap:Body></soap:Envelope>
     http_version: 
   recorded_at: Tue, 17 Feb 2015 12:00:00 GMT

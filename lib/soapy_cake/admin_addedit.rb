@@ -107,7 +107,7 @@ module SoapyCake
       opts = opts.dup
       countries = Array(opts[:countries])
       opts[:countries] = countries.join(',')
-      opts[:redirect_offer_contract_ids] = ([-1] * countries.count).join(',')
+      opts[:redirect_site_offer_contract_ids] = ([-1] * countries.count).join(',')
       opts
     end
 
@@ -119,7 +119,7 @@ module SoapyCake
       end
 
       opts[:countries] = redirects.keys.join(',')
-      opts[:redirect_offer_contract_ids] = redirects.values.join(',')
+      opts[:redirect_site_offer_contract_ids] = redirects.values.join(',')
       opts
     end
 
