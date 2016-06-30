@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+require 'net/http'
+
 module SoapyCake
   class Client
     HEADERS = { 'Content-Type' => 'application/soap+xml;charset=UTF-8' }.freeze
@@ -63,9 +65,21 @@ module SoapyCake
     def http_response(request)
       logger.info("soapy_cake:request #{request}") if logger
 
-      uri = URI::HTTPS.build(host: domain, path: request.path)
-      HTTParty.post(uri, headers: HEADERS, body: request.xml, timeout: NET_TIMEOUT).tap do |res|
-        raise RequestFailed, "Request failed with HTTP #{res.code}: #{res.body}" unless res.success?
+      http_request = Net::HTTP::Post.new(request.path, HEADERS)
+      http_request.body = request.xml
+      response = perform_http_request(http_request)
+
+      unless response.is_a?(Net::HTTPSuccess)
+        raise RequestFailed, "Request failed with HTTP #{response.code}: #{response.body}"
+      end
+
+      response.body
+    end
+
+    def perform_http_request(http_request)
+      Net::HTTP.start(domain,
+        use_ssl: true, open_timeout: NET_TIMEOUT, read_timeout: NET_TIMEOUT) do |http|
+        http.request(http_request)
       end
     end
   end

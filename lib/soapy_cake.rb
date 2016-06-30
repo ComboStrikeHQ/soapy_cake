@@ -1,8 +1,8 @@
 # frozen_string_literal: true
+require 'yaml'
 require 'logger'
 require 'nokogiri'
 require 'saxerator'
-require 'httparty'
 require 'retryable'
 require 'active_support/core_ext/hash/reverse_merge'
 require 'active_support/core_ext/hash/transform_values'
