@@ -63,8 +63,8 @@ module SoapyCake
     def http_response(request)
       logger.info("soapy_cake:request #{request}") if logger
 
-      url = "https://#{domain}#{request.path}"
-      HTTParty.post(url, headers: HEADERS, body: request.xml, timeout: NET_TIMEOUT).tap do |res|
+      uri = URI::HTTPS.build(host: domain, path: request.path)
+      HTTParty.post(uri, headers: HEADERS, body: request.xml, timeout: NET_TIMEOUT).tap do |res|
         raise RequestFailed, "Request failed with HTTP #{res.code}: #{res.body}" unless res.success?
       end
     end
