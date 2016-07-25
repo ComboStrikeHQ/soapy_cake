@@ -20,6 +20,7 @@ module SoapyCake
 
     CONSTS = {
       account_status_id: {
+        no_change: 0,
         active: 1,
         inactive: 2,
         pending: 3

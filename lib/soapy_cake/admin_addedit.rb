@@ -70,6 +70,24 @@ module SoapyCake
       offer_contract_is_default use_fallback_targeting
     ).freeze
 
+    CAMPAIGN_UPDATE_DEFAULT_OPTIONS = {
+      account_status_id: :no_change,
+      auto_disposition_delay_hours: 0,
+      clear_session_on_conversion: 'no_change',
+      currency_id: 0,
+      expiration_date_modification_type: 'do_not_change',
+      media_type_id: 0,
+      paid: 'no_change',
+      paid_redirects: 'no_change',
+      paid_upsells: 'no_change',
+      postback_delay_ms: -1,
+      redirect_404: 'no_change',
+      redirect_offer_contract_id: 0,
+      review: 'no_change',
+      use_offer_contract_payout: 'no_change',
+      payout_update_option: 'do_not_change'
+    }.freeze
+
     def add_offer(opts)
       require_params(opts, REQUIRED_NEW_OFFER_PARAMS)
 
@@ -169,14 +187,15 @@ module SoapyCake
     end
 
     def add_campaign(opts)
-      addedit_campaign(opts.merge(campaign_id: 0))
+      require_params(opts, %i(affiliate_id offer_id account_status_id payout))
+      addedit_campaign(opts.merge(campaign_id: 0, expiration_date: future_expiration_date))
     end
 
     def edit_campaign(opts)
       require_params(opts, %i(campaign_id))
       validate_id(opts, :campaign_id)
 
-      addedit_campaign(opts)
+      addedit_campaign(CAMPAIGN_UPDATE_DEFAULT_OPTIONS.merge(opts))
     end
 
     private
@@ -239,15 +258,8 @@ module SoapyCake
     end
 
     def addedit_campaign(opts)
-      require_params(opts, %i(affiliate_id offer_id media_type_id account_status_id payout))
-
       opts = translate_values(opts, %i(account_status_id))
-
-      opts = opts.reverse_merge(
-        display_link_type_id: 1,
-        expiration_date: future_expiration_date
-      )
-
+      opts = opts.reverse_merge(display_link_type_id: 1)
       run Request.new(:admin, :addedit, :campaign, opts)
     end
   end

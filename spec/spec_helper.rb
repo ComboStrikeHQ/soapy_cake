@@ -6,6 +6,7 @@ end
 require 'bundler/setup'
 Bundler.require(:default, :development)
 require 'soapy_cake'
+require 'webmock/rspec'
 
 Dir['./spec/support/**/*.rb'].sort.each { |f| require f }
 
