@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 RSpec.describe SoapyCake::ResponseValue do
-  let(:time_converter) { double('date converter') }
+  let(:time_converter) { instance_double(SoapyCake::TimeConverter) }
 
   def parse(key, value)
     described_class.new(key, value, time_converter).parse

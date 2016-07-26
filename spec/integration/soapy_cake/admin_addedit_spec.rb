@@ -108,7 +108,7 @@ RSpec.describe SoapyCake::AdminAddedit do
       )
 
       %i(creative_id offer_contract_id offer_id).each do |key|
-        expect(result[key]).to be > 0
+        expect(result[key]).to be_positive
       end
     end
 

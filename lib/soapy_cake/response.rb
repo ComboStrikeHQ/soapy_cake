@@ -78,7 +78,7 @@ module SoapyCake
       # for this specific request. Also, this is the only request with a tag depth
       # of 4, not 3 or 5 like ALL OTHER requests.
       # BTW: There is a 10$ reward if anyone can find a worse designed API.
-      return true if sax.for_tag(:MediaType).count > 0
+      return true if sax.for_tag(:MediaType).count.positive?
 
       false
     end

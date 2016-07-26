@@ -60,10 +60,16 @@ module SoapyCake
       attr_reader :admin, :method, :opts, :offset, :limit
     end
 
-    def method_missing(name, method_opts = {}, limit = nil)
-      raise Error, "Invalid method #{name}" unless ALLOWED_METHODS.include?(name)
+    def respond_to_missing?(name)
+      ALLOWED_METHODS.include?(name)
+    end
 
-      BatchedRequest.new(admin, name, method_opts, limit).to_enum
+    def method_missing(name, method_opts = {}, limit = nil)
+      if respond_to_missing?(name)
+        BatchedRequest.new(admin, name, method_opts, limit).to_enum
+      else
+        super
+      end
     end
 
     private

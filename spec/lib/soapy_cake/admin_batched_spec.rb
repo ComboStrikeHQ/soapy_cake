@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 RSpec.describe SoapyCake::AdminBatched do
-  let(:admin) { double('admin', xml_response?: false) }
+  let(:admin) { instance_double(SoapyCake::Admin, xml_response?: false) }
 
   before :each do
     allow(SoapyCake::Admin).to receive(:new).and_return(admin)
@@ -51,7 +51,7 @@ RSpec.describe SoapyCake::AdminBatched do
 
   context 'errors' do
     it 'fails with an invalid method' do
-      expect { subject.something }.to raise_error(/Invalid method something/)
+      expect { subject.something }.to raise_error(NoMethodError)
     end
 
     it 'fails when row_limit is set' do

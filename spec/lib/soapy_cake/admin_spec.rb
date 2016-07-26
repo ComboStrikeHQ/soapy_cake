@@ -178,7 +178,7 @@ RSpec.describe SoapyCake::Admin do
 
       let(:method) { :add_blacklist }
       let(:cake_method) { :blacklist }
-      let(:request) { double('request') }
+      let(:request) { instance_double(SoapyCake::Request) }
       let(:opts) { { blacklist_date: date } }
 
       context 'immediate blacklisting for current date' do

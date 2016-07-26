@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 RSpec.shared_examples_for 'a cake admin method' do
-  let(:request) { double('request') }
+  let(:request) { instance_double(SoapyCake::Request) }
 
   it 'runs the request' do
     expect(SoapyCake::Request).to receive(:new)

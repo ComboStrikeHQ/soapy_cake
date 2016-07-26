@@ -2,7 +2,7 @@
 RSpec.describe SoapyCake::Admin do
   around { |example| Timecop.freeze(Time.utc(2015, 6, 15, 12), &example) }
 
-  let(:logger) { double('logger') }
+  let(:logger) { instance_double(Logger) }
   before { allow(logger).to receive(:info) }
 
   subject { described_class.new(logger: logger) }

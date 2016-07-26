@@ -45,7 +45,7 @@ module SoapyCake
     private
 
     def api_path
-      "#{(role == 'admin') ? '' : "/#{role.pluralize}"}/api/#{version}"
+      "#{role == 'admin' ? '' : "/#{role.pluralize}"}/api/#{version}"
     end
 
     def xml_params(xml)

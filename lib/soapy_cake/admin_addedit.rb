@@ -132,7 +132,7 @@ module SoapyCake
     def geo_targets_redirect_options(opts)
       opts = opts.dup
       redirects = opts.delete(:redirects)
-      unless redirects.is_a?(Hash) && redirects.keys.count > 0
+      unless redirects.is_a?(Hash) && redirects.keys.count.positive?
         raise Error, "Parameter 'redirects' must be a COUNTRY=>REDIRECT_OFFER_CONTRACT_ID hash!"
       end
 
@@ -221,7 +221,7 @@ module SoapyCake
       opts[:tags_modification_type] =
         if opts[:tags].to_s == ''
           'remove_all'
-        elsif opts.delete(:tags_replace) && opts[:offer_id] != 0
+        elsif opts.delete(:tags_replace) && opts[:offer_id].nonzero?
           'replace'
         else
           'add'
