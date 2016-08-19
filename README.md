@@ -38,7 +38,7 @@ Get report for specific date range:
 ```ruby
 SoapyCake::Admin.new.affiliate_summary(
   start_date: Date.beginning_of_month,
-  end_date: Date.today
+  end_date: Date.current
 )
 ```
 

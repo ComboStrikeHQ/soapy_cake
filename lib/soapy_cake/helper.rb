@@ -54,7 +54,7 @@ module SoapyCake
     # It cannot be *that* far in the future though because it causes a datetime overflow
     # in the steam powered rusty black box they call a database server.
     def future_expiration_date
-      Date.today + (365 * 30)
+      Date.current + (365 * 30)
     end
   end
 end

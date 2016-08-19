@@ -182,7 +182,7 @@ RSpec.describe SoapyCake::Admin do
       let(:opts) { { blacklist_date: date } }
 
       context 'immediate blacklisting for current date' do
-        let(:date) { Date.today }
+        let(:date) { Date.current }
         let(:cake_opts) { { blacklist_date: date } }
 
         it_behaves_like 'a cake admin method'
