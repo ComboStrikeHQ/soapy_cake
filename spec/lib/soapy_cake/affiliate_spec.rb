@@ -4,16 +4,16 @@ RSpec.describe SoapyCake::Affiliate do
   let(:opts) { { a: 1 } }
   let(:cake_opts) { opts.merge(affiliate_id: affiliate_id) }
 
-  subject { described_class.new(affiliate_id: affiliate_id) }
+  subject(:affiliate) { described_class.new(affiliate_id: affiliate_id) }
 
   shared_examples_for 'a cake affiliate method' do
     it 'runs the request' do
       request = instance_double(SoapyCake::Request)
       expect(SoapyCake::Request).to receive(:new)
         .with(:affiliate, service, method, cake_opts).and_return(request)
-      expect(subject).to receive(:run).with(request)
+      expect(affiliate).to receive(:run).with(request)
 
-      subject.public_send(method, opts)
+      affiliate.public_send(method, opts)
     end
   end
 

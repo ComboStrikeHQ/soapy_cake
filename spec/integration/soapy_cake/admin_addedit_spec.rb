@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 RSpec.describe SoapyCake::AdminAddedit do
+  subject(:admin_addedit) { described_class.new }
+
   around { |example| Timecop.freeze(Time.utc(2015, 2, 17, 12), &example) }
 
   let(:affiliate_id) { 1 }
@@ -13,7 +15,7 @@ RSpec.describe SoapyCake::AdminAddedit do
 
   describe 'affiliates', :vcr do
     it 'edits affiliates' do
-      result = subject.edit_affiliate(
+      result = admin_addedit.edit_affiliate(
         affiliate_id: 1,
         vat_tax_required: false
       )
@@ -24,7 +26,7 @@ RSpec.describe SoapyCake::AdminAddedit do
 
   describe 'advertisers', :vcr do
     it 'creates advertisers' do
-      result = subject.create_advertiser(
+      result = admin_addedit.create_advertiser(
         advertiser_name: 'Foxy Fox',
         account_status_id: 1
       )
@@ -35,7 +37,7 @@ RSpec.describe SoapyCake::AdminAddedit do
 
   describe 'contacts', :vcr do
     it 'edits a contact' do
-      result = subject.edit_contact(
+      result = admin_addedit.edit_contact(
         entity_id: advertiser_id,
         contact_id: contact_id,
         contact_email_address: 'fox@rabbit.com'
@@ -65,7 +67,7 @@ RSpec.describe SoapyCake::AdminAddedit do
     end
 
     it 'creates an offer', :vcr do
-      result = subject.add_offer(
+      result = admin_addedit.add_offer(
         hidden: false,
         offer_status_id: :public,
         offer_type_id: :third_party,
@@ -113,20 +115,20 @@ RSpec.describe SoapyCake::AdminAddedit do
     end
 
     it 'updates an offer', :vcr do
-      result = subject.edit_offer(update_params)
+      result = admin_addedit.edit_offer(update_params)
       expect(result).to include(offer_id: offer_id)
     end
 
     context 'errors' do
       it 'fails when not enough params are given' do
         expect do
-          subject.edit_offer(offer_id: 123)
+          admin_addedit.edit_offer(offer_id: 123)
         end.to raise_error(SoapyCake::Error, "Parameter 'advertiser_id' missing!")
       end
 
       it 'fails when invalid offer_id is given on edit' do
         expect do
-          subject.edit_offer(offer_id: -1)
+          admin_addedit.edit_offer(offer_id: -1)
         end.to raise_error(SoapyCake::Error, "Parameter 'offer_id' must be > 0!")
       end
 
@@ -138,7 +140,7 @@ RSpec.describe SoapyCake::AdminAddedit do
 
         it 'fails with error' do
           expect do
-            subject.edit_offer(update_params)
+            admin_addedit.edit_offer(update_params)
           end.to raise_error(SoapyCake::Error, /Writes not enabled/)
         end
       end
@@ -147,14 +149,14 @@ RSpec.describe SoapyCake::AdminAddedit do
 
   describe 'geo targeting' do
     it 'creates geo targetings', :vcr do
-      result = subject.add_geo_targets(
+      result = admin_addedit.add_geo_targets(
         offer_contract_id: offer_contract_id,
         countries: %w(DE FR),
         allow_countries: true
       )
       expect(result).to include(success: true, row_count: '2')
 
-      result = subject.add_geo_targets(
+      result = admin_addedit.add_geo_targets(
         offer_contract_id: offer_contract_id,
         countries: %w(AT CH),
         redirects: {
@@ -168,7 +170,7 @@ RSpec.describe SoapyCake::AdminAddedit do
 
     it 'fails if it does not get a correct redirect hash' do
       expect do
-        subject.add_geo_targets(
+        admin_addedit.add_geo_targets(
           offer_contract_id: offer_contract_id,
           redirects: {},
           allow_countries: false
@@ -182,7 +184,7 @@ RSpec.describe SoapyCake::AdminAddedit do
 
   describe 'offer contracts' do
     it 'creates an offer contract', :vcr do
-      result = subject.add_offer_contract(
+      result = admin_addedit.add_offer_contract(
         offer_id: offer_id,
         offer_contract_name: 'Test Contract',
         price_format_id: :cpa,
@@ -200,7 +202,7 @@ RSpec.describe SoapyCake::AdminAddedit do
     end
 
     it 'updates an offer contract', :vcr do
-      result = subject.edit_offer_contract(
+      result = admin_addedit.edit_offer_contract(
         offer_id: offer_id,
         offer_contract_id: offer_contract_id,
         offer_contract_name: 'Test Contract',
@@ -221,13 +223,13 @@ RSpec.describe SoapyCake::AdminAddedit do
     context 'errors' do
       it 'fails when not enough params are given' do
         expect do
-          subject.edit_offer_contract(offer_contract_id: 123)
+          admin_addedit.edit_offer_contract(offer_contract_id: 123)
         end.to raise_error(SoapyCake::Error, "Parameter 'offer_id' missing!")
       end
 
       it 'fails when invalid offer_id is given on edit' do
         expect do
-          subject.edit_offer_contract(offer_contract_id: -1)
+          admin_addedit.edit_offer_contract(offer_contract_id: -1)
         end.to raise_error(SoapyCake::Error, "Parameter 'offer_contract_id' must be > 0!")
       end
     end
@@ -235,7 +237,7 @@ RSpec.describe SoapyCake::AdminAddedit do
 
   describe 'offer / offer contract caps' do
     it 'updates a cap for an offer contract', :vcr do
-      result = subject.update_caps(
+      result = admin_addedit.update_caps(
         offer_contract_id: offer_contract_id,
         cap_type_id: :conversion,
         cap_interval_id: :daily,
@@ -247,7 +249,7 @@ RSpec.describe SoapyCake::AdminAddedit do
     end
 
     it 'removes a cap for an offer contract', :vcr do
-      result = subject.remove_caps(
+      result = admin_addedit.remove_caps(
         offer_contract_id: offer_contract_id,
         cap_type_id: :conversion
       )
@@ -258,7 +260,7 @@ RSpec.describe SoapyCake::AdminAddedit do
 
   describe 'offer tiers' do
     it 'adds an offer tier', :vcr do
-      result = subject.add_offer_tier(
+      result = admin_addedit.add_offer_tier(
         offer_id: offer_id,
         offer_contract_id: offer_contract_id,
         tier_id: tier_id,
@@ -270,7 +272,7 @@ RSpec.describe SoapyCake::AdminAddedit do
     end
 
     it 'edits an offer tier', :vcr do
-      result = subject.edit_offer_tier(
+      result = admin_addedit.edit_offer_tier(
         offer_id: offer_id,
         offer_contract_id: offer_contract_id,
         tier_id: tier_id,
@@ -284,7 +286,7 @@ RSpec.describe SoapyCake::AdminAddedit do
 
   describe 'campaigns' do
     it 'adds a campaign', :vcr do
-      result = subject.add_campaign(
+      result = admin_addedit.add_campaign(
         affiliate_id: affiliate_id,
         offer_id: offer_id,
         media_type_id: 1,
@@ -296,7 +298,7 @@ RSpec.describe SoapyCake::AdminAddedit do
     end
 
     it 'edits a campaign', :vcr do
-      result = subject.edit_campaign(
+      result = admin_addedit.edit_campaign(
         campaign_id: 123,
         affiliate_id: affiliate_id,
         offer_id: offer_id,

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 RSpec.describe SoapyCake::Admin do
+  subject(:admin) { described_class.new }
   let(:opts) { nil }
   let(:cake_opts) { opts }
   let(:cake_method) { method }
@@ -212,7 +213,7 @@ RSpec.describe SoapyCake::Admin do
       it_behaves_like 'a cake admin method'
 
       it 'uses a local response' do
-        expect(subject.media_types(response: File.read('spec/fixtures/raw_response.xml'))).to eq(
+        expect(admin.media_types(response: File.read('spec/fixtures/raw_response.xml'))).to eq(
           [
             { media_type_id: 15, type_name: 'Adware' },
             { media_type_id: 7, type_name: 'Banner' },
@@ -253,7 +254,7 @@ RSpec.describe SoapyCake::Admin do
     it_behaves_like 'a cake admin method'
 
     it 'fails if no blacklist_id is passed' do
-      expect { subject.remove_blacklist }
+      expect { admin.remove_blacklist }
         .to raise_error(SoapyCake::Error, "Parameter 'blacklist_id' missing!")
     end
   end
