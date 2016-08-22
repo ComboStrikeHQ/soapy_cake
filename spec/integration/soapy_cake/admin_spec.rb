@@ -5,13 +5,13 @@ RSpec.describe SoapyCake::Admin do
   let(:logger) { instance_double(Logger) }
   before { allow(logger).to receive(:info) }
 
-  subject { described_class.new(logger: logger) }
+  subject(:admin) { described_class.new(logger: logger) }
 
   it 'returns an affiliate with correct data types', :vcr do
     expect(logger).to receive(:info)
       .with('soapy_cake:request admin:export:affiliates:5 {"affiliate_id":16027}')
 
-    result = subject.affiliates(affiliate_id: 16027)
+    result = admin.affiliates(affiliate_id: 16027)
     expect(result.count).to eq(1)
     expect(result.first).to include(
       affiliate_id: 16027,
@@ -39,7 +39,7 @@ RSpec.describe SoapyCake::Admin do
   end
 
   it 'returns a clicks report with a defined time range', :vcr do
-    result = subject.clicks(
+    result = admin.clicks(
       start_date: Date.new(2014, 6, 30),
       end_date: Date.new(2014, 7, 1),
       row_limit: 1
@@ -53,7 +53,7 @@ RSpec.describe SoapyCake::Admin do
   end
 
   it 'does not parse a transaction_id as an integer', :vcr do
-    result = subject.conversions(
+    result = admin.conversions(
       start_date: Date.new(2015, 4, 11),
       end_date: Date.new(2015, 4, 12),
       row_limit: 1
@@ -65,12 +65,12 @@ RSpec.describe SoapyCake::Admin do
 
   it 'raises if there is an error', :vcr do
     expect do
-      subject.affiliates(affiliate_id: 'bloops')
+      admin.affiliates(affiliate_id: 'bloops')
     end.to raise_error(SoapyCake::RequestFailed)
   end
 
   it 'creates an affiliate and returns the ID', :vcr do
-    result = subject.affiliate_signup(
+    result = admin.affiliate_signup(
       contact_timezone: 'CET',
       contact_phone_work: 'n/a',
       address_country: 'n/a',
@@ -97,7 +97,7 @@ RSpec.describe SoapyCake::Admin do
   end
 
   it 'returns media types', :vcr do
-    result = subject.media_types
+    result = admin.media_types
 
     expect(result.first).to eq(
       media_type_id: 15,
@@ -106,17 +106,17 @@ RSpec.describe SoapyCake::Admin do
   end
 
   context 'XML responses' do
-    subject { described_class.new(xml_response: true) }
+    subject(:admin) { described_class.new(xml_response: true) }
 
     it 'returns an XML string', :vcr do
-      result = subject.media_types
+      result = admin.media_types
 
       expect(result.next).to eq(File.read('spec/fixtures/raw_response.xml').strip)
     end
 
     it 'fails on error', :vcr do
       expect do
-        subject.affiliates(affiliate_id: -2).next
+        admin.affiliates(affiliate_id: -2).next
       end.to raise_error(SoapyCake::RequestFailed)
     end
   end
@@ -124,7 +124,7 @@ RSpec.describe SoapyCake::Admin do
   describe '#blacklists' do
     it 'returns blacklists', :vcr do
       expect(
-        subject.blacklists(
+        admin.blacklists(
           advertiser_id: 15882,
           offer_id: 10551,
           affiliate_id: 16187,
@@ -157,11 +157,11 @@ RSpec.describe SoapyCake::Admin do
     end
 
     it 'removes blacklists', :vcr do
-      expect(subject.blacklists(blacklist_params).to_a).to be_present
+      expect(admin.blacklists(blacklist_params).to_a).to be_present
 
-      subject.remove_blacklist(blacklist_id: 28)
+      admin.remove_blacklist(blacklist_id: 28)
 
-      expect(subject.blacklists(blacklist_params).to_a).to be_empty
+      expect(admin.blacklists(blacklist_params).to_a).to be_empty
     end
   end
 end

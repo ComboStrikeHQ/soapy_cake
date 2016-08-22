@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 RSpec.describe SoapyCake::AdminAddedit do
+  subject(:admin_addedit) { described_class.new }
+
   before do
-    allow(subject).to receive(:run).and_return({})
+    allow(admin_addedit).to receive(:run).and_return({})
   end
 
   describe '#edit_offer' do
@@ -25,7 +27,7 @@ RSpec.describe SoapyCake::AdminAddedit do
         .with(:admin, :addedit, :offer,
           hash_including(tags: 'new-tag', tags_modification_type: 'add'))
 
-      subject.edit_offer(offer_params)
+      admin_addedit.edit_offer(offer_params)
     end
 
     it 'allows replacing tags' do
@@ -33,7 +35,7 @@ RSpec.describe SoapyCake::AdminAddedit do
         .with(:admin, :addedit, :offer,
           hash_including(tags: 'new-tag', tags_modification_type: 'replace'))
 
-      subject.edit_offer(offer_params.merge(tags_replace: true))
+      admin_addedit.edit_offer(offer_params.merge(tags_replace: true))
     end
   end
 
@@ -77,7 +79,7 @@ RSpec.describe SoapyCake::AdminAddedit do
         .with(:admin, :addedit, :offer,
           hash_including(tags: 'tag', tags_modification_type: 'add'))
 
-      subject.add_offer(offer_params.merge(tags: 'tag', tags_replace: true))
+      admin_addedit.add_offer(offer_params.merge(tags: 'tag', tags_replace: true))
     end
   end
 end

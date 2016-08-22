@@ -2,9 +2,11 @@
 require 'spec_helper'
 
 RSpec.describe SoapyCake::AdminTrack do
+  subject(:admin_track) { described_class.new }
+
   describe '#mass_conversion_insert', :vcr do
     it 'inserts conversions' do
-      result = subject.mass_conversion_insert(
+      result = admin_track.mass_conversion_insert(
         conversion_date: Date.new(2015, 5, 6),
         affiliate_id: 16059,
         campaign_id: 13268,
@@ -19,7 +21,7 @@ RSpec.describe SoapyCake::AdminTrack do
 
   describe '#update_conversion', :vcr do
     it 'updates a conversion' do
-      result = subject.update_conversion(
+      result = admin_track.update_conversion(
         conversion_id: 145211,
         offer_id: 5032,
         payout: 0.75,

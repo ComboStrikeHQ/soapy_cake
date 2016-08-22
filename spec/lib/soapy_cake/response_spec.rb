@@ -24,16 +24,16 @@ RSpec.describe SoapyCake::Response do
     EOD
   end
 
-  subject { described_class.new(xml.strip, false, 0) }
+  subject(:response) { described_class.new(xml.strip, false, 0) }
 
   it 'returns an enumerator' do
-    expect(subject.to_enum).to be_a(Enumerator)
+    expect(response.to_enum).to be_a(Enumerator)
   end
 
   it 'parses the CAKE XML structure properly' do
-    expect(subject.to_enum.to_a).to eq([
-                                         { id: '123' },
-                                         { id: '312' }
-                                       ])
+    expect(response.to_enum.to_a).to eq([
+                                          { id: '123' },
+                                          { id: '312' }
+                                        ])
   end
 end

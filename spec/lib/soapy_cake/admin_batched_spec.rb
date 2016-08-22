@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 RSpec.describe SoapyCake::AdminBatched do
+  subject(:admin_batched) { described_class.new }
   let(:admin) { instance_double(SoapyCake::Admin, xml_response?: false) }
 
   before :each do
@@ -14,7 +15,7 @@ RSpec.describe SoapyCake::AdminBatched do
     expect(admin).to receive(:offers)
       .with(advertiser: 1, start_at_row: 3, row_limit: 2).and_return(%i(c).to_enum)
 
-    result = subject.offers(advertiser: 1)
+    result = admin_batched.offers(advertiser: 1)
 
     expect(result).to be_a(Enumerator)
     expect(result.to_a).to eq(%i(a b c))
@@ -24,11 +25,11 @@ RSpec.describe SoapyCake::AdminBatched do
     expect(admin).to receive(:offers)
       .with(advertiser: 1, start_at_row: 1, row_limit: 100).and_return(%i(a b).to_enum)
 
-    expect(subject.offers({ advertiser: 1 }, 100).to_a).to eq(%i(a b))
+    expect(admin_batched.offers({ advertiser: 1 }, 100).to_a).to eq(%i(a b))
   end
 
   context 'SoapyCake Batched with XMLResponse set' do
-    subject { described_class.new(xml_response: true) }
+    subject(:admin_batched) { described_class.new(xml_response: true) }
 
     before do
       allow(admin).to receive(:xml_response?).and_return(true)
@@ -42,7 +43,7 @@ RSpec.describe SoapyCake::AdminBatched do
       expect(admin).to receive(:affiliates)
         .with(start_at_row: 21, row_limit: 10).and_return([].to_enum)
 
-      result = subject.affiliates({}, 10)
+      result = admin_batched.affiliates({}, 10)
 
       expect(result).to be_a(Enumerator)
       expect(result.to_a).to eq(%i(a b))
@@ -51,15 +52,19 @@ RSpec.describe SoapyCake::AdminBatched do
 
   context 'errors' do
     it 'fails with an invalid method' do
-      expect { subject.something }.to raise_error(NoMethodError)
+      expect { admin_batched.something }.to raise_error(NoMethodError)
     end
 
     it 'fails when row_limit is set' do
-      expect { subject.offers(row_limit: 123) }.to raise_error(/Cannot set .* in batched mode/)
+      expect { admin_batched.offers(row_limit: 123) }.to(
+        raise_error(/Cannot set .* in batched mode/)
+      )
     end
 
     it 'fails when start_at_row is set' do
-      expect { subject.offers(start_at_row: 123) }.to raise_error(/Cannot set .* in batched mode/)
+      expect { admin_batched.offers(start_at_row: 123) }.to(
+        raise_error(/Cannot set .* in batched mode/)
+      )
     end
   end
 end
