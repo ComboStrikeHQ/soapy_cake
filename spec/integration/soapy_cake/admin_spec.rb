@@ -85,7 +85,7 @@ RSpec.describe SoapyCake::Admin do
       contact_first_name: 'Foxy',
       contact_last_name: 'Fox',
       contact_email_address: 'foxy@forrest.com',
-      date_added: Date.today
+      date_added: Date.current
     )
 
     expect(result).to eq(

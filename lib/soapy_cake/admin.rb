@@ -113,7 +113,7 @@ module SoapyCake
       blacklist_date = opts[:blacklist_date].to_date
       # CAKE applies the blacklisting at 00:00 of the specified day, so add one more day.
       # Unless it is the current day, then blacklisting should take effect immediately.
-      blacklist_date += 1.day if blacklist_date > Date.today
+      blacklist_date += 1.day if blacklist_date > Date.current
 
       run Request.new(
         :admin,
