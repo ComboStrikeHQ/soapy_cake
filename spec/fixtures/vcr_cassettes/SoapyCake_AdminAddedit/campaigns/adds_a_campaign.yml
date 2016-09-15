@@ -18,6 +18,9 @@ http_interactions:
               <cake:media_type_id>1</cake:media_type_id>
               <cake:account_status_id>1</cake:account_status_id>
               <cake:payout>1.23</cake:payout>
+              <cake:redirect_404>off</cake:redirect_404>
+              <cake:clear_session_on_conversion>off</cake:clear_session_on_conversion>
+              <cake:paid_upsells>off</cake:paid_upsells>
               <cake:campaign_id>0</cake:campaign_id>
               <cake:expiration_date>2045-02-09T01:00:00</cake:expiration_date>
             </cake:Campaign>
@@ -26,6 +29,12 @@ http_interactions:
     headers:
       Content-Type:
       - application/soap+xml;charset=UTF-8
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
   response:
     status:
       code: 200
@@ -42,7 +51,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Wed, 04 May 2016 09:44:12 GMT
+      - Thu, 15 Sep 2016 14:26:47 GMT
       Content-Length:
       - '629'
     body:
@@ -50,7 +59,7 @@ http_interactions:
       string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CampaignResponse
         xmlns="http://cakemarketing.com/api/3/"><CampaignResult><success>true</success><message>Campaign
-        Created</message><success_info><campaign_id>22081</campaign_id><affiliate_id>1</affiliate_id><offer_id>8910</offer_id><offer_contract_id>1455</offer_contract_id><media_type_id>1</media_type_id><original>false</original></success_info></CampaignResult></CampaignResponse></soap:Body></soap:Envelope>
+        Created</message><success_info><campaign_id>23305</campaign_id><affiliate_id>1</affiliate_id><offer_id>8910</offer_id><offer_contract_id>1455</offer_contract_id><media_type_id>1</media_type_id><original>false</original></success_info></CampaignResult></CampaignResponse></soap:Body></soap:Envelope>
     http_version: 
   recorded_at: Tue, 17 Feb 2015 12:00:00 GMT
-recorded_with: VCR 3.0.1
+recorded_with: VCR 3.0.3
