@@ -70,6 +70,11 @@ module SoapyCake
       offer_contract_is_default use_fallback_targeting
     ).freeze
 
+    REQUIRED_NEW_CAMPAIGN_PARAMS = %i(
+      affiliate_id offer_id account_status_id payout
+      redirect_404 clear_session_on_conversion paid_upsells
+    ).freeze
+
     CAMPAIGN_UPDATE_DEFAULT_OPTIONS = {
       account_status_id: :no_change,
       auto_disposition_delay_hours: 0,
@@ -187,7 +192,7 @@ module SoapyCake
     end
 
     def add_campaign(opts)
-      require_params(opts, %i(affiliate_id offer_id account_status_id payout))
+      require_params(opts, REQUIRED_NEW_CAMPAIGN_PARAMS)
       addedit_campaign(opts.merge(campaign_id: 0, expiration_date: future_expiration_date))
     end
 
@@ -258,6 +263,7 @@ module SoapyCake
     end
 
     def addedit_campaign(opts)
+      opts = translate_booleans(opts)
       opts = translate_values(opts, %i(account_status_id))
       opts = opts.reverse_merge(display_link_type_id: 1)
       run Request.new(:admin, :addedit, :campaign, opts)

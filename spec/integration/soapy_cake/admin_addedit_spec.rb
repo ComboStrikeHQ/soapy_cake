@@ -291,7 +291,10 @@ RSpec.describe SoapyCake::AdminAddedit do
         offer_id: offer_id,
         media_type_id: 1,
         account_status_id: :active,
-        payout: '1.23'
+        payout: '1.23',
+        redirect_404: false,
+        clear_session_on_conversion: false,
+        paid_upsells: false
       )
 
       expect(result[:message]).to eq('Campaign Created')
