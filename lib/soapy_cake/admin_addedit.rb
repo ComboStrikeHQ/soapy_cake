@@ -111,7 +111,7 @@ module SoapyCake
       run Request.new(:admin, :addedit, :contact, opts)
     end
 
-    def add_geo_targets(opts)
+    def edit_geo_targets(opts)
       require_params(opts, %i(offer_contract_id allow_countries))
 
       opts = if opts[:allow_countries]
@@ -120,7 +120,7 @@ module SoapyCake
                geo_targets_redirect_options(opts)
              end
 
-      opts = opts.merge(add_edit_option: 'add', set_targeting_to_geo: true)
+      opts = opts.merge(add_edit_option: 'replace', set_targeting_to_geo: true)
 
       run Request.new(:admin, :addedit, :geo_targets, opts)
     end

@@ -149,14 +149,14 @@ RSpec.describe SoapyCake::AdminAddedit do
 
   describe 'geo targeting' do
     it 'creates geo targetings', :vcr do
-      result = admin_addedit.add_geo_targets(
+      result = admin_addedit.edit_geo_targets(
         offer_contract_id: offer_contract_id,
         countries: %w(DE FR),
         allow_countries: true
       )
       expect(result).to include(success: true, row_count: '2')
 
-      result = admin_addedit.add_geo_targets(
+      result = admin_addedit.edit_geo_targets(
         offer_contract_id: offer_contract_id,
         countries: %w(AT CH),
         redirects: {
@@ -170,7 +170,7 @@ RSpec.describe SoapyCake::AdminAddedit do
 
     it 'fails if it does not get a correct redirect hash' do
       expect do
-        admin_addedit.add_geo_targets(
+        admin_addedit.edit_geo_targets(
           offer_contract_id: offer_contract_id,
           redirects: {},
           allow_countries: false
