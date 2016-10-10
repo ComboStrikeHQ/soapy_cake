@@ -44,9 +44,8 @@ module SoapyCake
     end
 
     def check_write_enabled!(request)
-      unless request.read_only? || write_enabled
-        raise Error, 'Writes not enabled (pass write_enabled: true or set CAKE_WRITE_ENABLED=yes)'
-      end
+      return if request.read_only? || write_enabled
+      raise Error, 'Writes not enabled (pass write_enabled: true or set CAKE_WRITE_ENABLED=yes)'
     end
 
     def with_retries(&block)
@@ -63,7 +62,7 @@ module SoapyCake
     end
 
     def http_response(request)
-      logger.info("soapy_cake:request #{request}") if logger
+      logger&.info("soapy_cake:request #{request}")
 
       http_request = Net::HTTP::Post.new(request.path, HEADERS)
       http_request.body = request.xml
