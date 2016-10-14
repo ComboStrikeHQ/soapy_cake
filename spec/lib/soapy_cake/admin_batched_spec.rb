@@ -3,7 +3,7 @@ RSpec.describe SoapyCake::AdminBatched do
   subject(:admin_batched) { described_class.new }
   let(:admin) { instance_double(SoapyCake::Admin, xml_response?: false) }
 
-  before :each do
+  before do
     allow(SoapyCake::Admin).to receive(:new).and_return(admin)
 
     stub_const('SoapyCake::AdminBatched::BatchedRequest::LIMIT', 2)

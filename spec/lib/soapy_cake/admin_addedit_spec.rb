@@ -3,6 +3,7 @@ RSpec.describe SoapyCake::AdminAddedit do
   subject(:admin_addedit) { described_class.new }
 
   before do
+    # rubocop:disable RSpec/SubjectStub
     allow(admin_addedit).to receive(:run).and_return({})
   end
 
