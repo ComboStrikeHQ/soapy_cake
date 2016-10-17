@@ -83,4 +83,56 @@ RSpec.describe SoapyCake::AdminAddedit do
       admin_addedit.add_offer(offer_params.merge(tags: 'tag', tags_replace: true))
     end
   end
+
+  describe '#edit_geo_targets' do
+    let(:base_opts) do
+      {
+        offer_contract_id: 1,
+        allow_countries: true,
+        countries: %w(DE)
+      }
+    end
+
+    it 'replaces the existing config by default' do
+      expect(SoapyCake::Request).to receive(:new)
+        .with(:admin, :addedit, :geo_targets,
+          hash_including(add_edit_option: 'replace'))
+
+      admin_addedit.edit_geo_targets(base_opts)
+    end
+
+    it 'allows to override the add_edit_option' do
+      expect(SoapyCake::Request).to receive(:new)
+        .with(:admin, :addedit, :geo_targets,
+          hash_including(add_edit_option: 'add'))
+
+      admin_addedit.edit_geo_targets(base_opts.merge(add_edit_option: 'add'))
+    end
+
+    it 'does not mutate the passed options' do
+      allow(SoapyCake::Request).to receive(:new)
+
+      opts_before = base_opts.dup
+      admin_addedit.edit_geo_targets(base_opts)
+      expect(base_opts).to eq(opts_before)
+    end
+  end
+
+  describe '#add_geo_targets' do
+    let(:base_opts) do
+      {
+        offer_contract_id: 1,
+        allow_countries: true,
+        countries: %w(DE)
+      }
+    end
+
+    it 'adds geo targets' do
+      expect(SoapyCake::Request).to receive(:new)
+        .with(:admin, :addedit, :geo_targets,
+          hash_including(add_edit_option: 'add'))
+
+      admin_addedit.add_geo_targets(base_opts)
+    end
+  end
 end
