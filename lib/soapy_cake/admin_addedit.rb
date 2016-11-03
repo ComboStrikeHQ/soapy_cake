@@ -75,11 +75,44 @@ module SoapyCake
       redirect_404 clear_session_on_conversion paid_upsells
     ).freeze
 
+    REQUIRED_CAMPAIGN_PARAMS = [
+      :account_status_id,
+      :affiliate_id,
+      :auto_disposition_delay_hours,
+      :campaign_id,
+      :clear_session_on_conversion,
+      :currency_id,
+      :display_link_type_id,
+      :expiration_date,
+      :expiration_date_modification_type,
+      :media_type_id,
+      :offer_contract_id,
+      :offer_id,
+      :paid,
+      :paid_redirects,
+      :paid_upsells,
+      :payout,
+      :payout_update_option,
+      :pixel_html,
+      :postback_delay_ms,
+      :postback_url,
+      :redirect_404,
+      :redirect_domain,
+      :redirect_offer_contract_id,
+      :review,
+      # :static_suppression, # "Required, only used if global setting is enabled"
+      :test_link,
+      # :third_party_name, # ?
+      :unique_key_hash,
+      :use_offer_contract_payout
+    ].freeze
+
     CAMPAIGN_UPDATE_DEFAULT_OPTIONS = {
       account_status_id: :no_change,
       auto_disposition_delay_hours: 0,
       clear_session_on_conversion: 'no_change',
       currency_id: 0,
+      expiration_date: Date.new(1970, 1, 1),
       expiration_date_modification_type: 'do_not_change',
       media_type_id: 0,
       paid: 'no_change',
@@ -202,10 +235,10 @@ module SoapyCake
     end
 
     def edit_campaign(opts)
-      require_params(opts, %i(campaign_id))
+      opts = CAMPAIGN_UPDATE_DEFAULT_OPTIONS.merge(opts)
+      require_params(opts, REQUIRED_CAMPAIGN_PARAMS)
       validate_id(opts, :campaign_id)
-
-      addedit_campaign(CAMPAIGN_UPDATE_DEFAULT_OPTIONS.merge(opts))
+      addedit_campaign(opts)
     end
 
     private

@@ -303,12 +303,19 @@ RSpec.describe SoapyCake::AdminAddedit do
 
     it 'edits a campaign', :vcr do
       result = admin_addedit.edit_campaign(
-        campaign_id: 123,
+        campaign_id: 23727,
         affiliate_id: affiliate_id,
         offer_id: offer_id,
         media_type_id: 1,
         account_status_id: :active,
-        payout: '1.23'
+        payout: '1.23',
+        display_link_type_id: 1,
+        offer_contract_id: 767,
+        pixel_html: '<>',
+        postback_url: 'http://examle.com/postback',
+        redirect_domain: 'trk_ad2games.cakemarketing.net',
+        test_link: 'http://example.com/test',
+        unique_key_hash: 'none'
       )
 
       expect(result[:message]).to eq('Campaign Updated')
