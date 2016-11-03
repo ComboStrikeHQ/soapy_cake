@@ -22,10 +22,6 @@ module SoapyCake
       !write_enabled
     end
 
-    protected
-
-    attr_reader :domain, :api_key, :time_converter, :opts, :logger, :retry_count, :write_enabled
-
     def run(request)
       check_write_enabled!(request)
       request.api_key = api_key
@@ -36,6 +32,10 @@ module SoapyCake
         xml_response? ? response.to_xml : response.to_enum
       end
     end
+
+    protected
+
+    attr_reader :domain, :api_key, :time_converter, :opts, :logger, :retry_count, :write_enabled
 
     private
 

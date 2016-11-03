@@ -12,33 +12,33 @@ http_interactions:
           <env:Body>
             <cake:Campaign>
               <cake:api_key>cake-api-key</cake:api_key>
-              <cake:display_link_type_id>1</cake:display_link_type_id>
-              <cake:account_status_id>1</cake:account_status_id>
-              <cake:auto_disposition_delay_hours>0</cake:auto_disposition_delay_hours>
-              <cake:clear_session_on_conversion>no_change</cake:clear_session_on_conversion>
-              <cake:currency_id>0</cake:currency_id>
-              <cake:expiration_date>1970-01-01T01:00:00</cake:expiration_date>
+              <cake:account_status_id>0</cake:account_status_id>
               <cake:expiration_date_modification_type>do_not_change</cake:expiration_date_modification_type>
-              <cake:media_type_id>1</cake:media_type_id>
+              <cake:currency_id>0</cake:currency_id>
+              <cake:use_offer_contract_payout>no_change</cake:use_offer_contract_payout>
+              <cake:payout_update_option>do_not_change</cake:payout_update_option>
               <cake:paid>no_change</cake:paid>
               <cake:paid_redirects>no_change</cake:paid_redirects>
               <cake:paid_upsells>no_change</cake:paid_upsells>
-              <cake:postback_delay_ms>-1</cake:postback_delay_ms>
-              <cake:redirect_404>no_change</cake:redirect_404>
-              <cake:redirect_offer_contract_id>0</cake:redirect_offer_contract_id>
               <cake:review>no_change</cake:review>
-              <cake:use_offer_contract_payout>no_change</cake:use_offer_contract_payout>
-              <cake:payout_update_option>do_not_change</cake:payout_update_option>
-              <cake:campaign_id>23727</cake:campaign_id>
-              <cake:affiliate_id>1</cake:affiliate_id>
-              <cake:offer_id>8910</cake:offer_id>
+              <cake:auto_disposition_delay_hours>0</cake:auto_disposition_delay_hours>
+              <cake:redirect_offer_contract_id>0</cake:redirect_offer_contract_id>
+              <cake:redirect_404>no_change</cake:redirect_404>
+              <cake:clear_session_on_conversion>no_change</cake:clear_session_on_conversion>
+              <cake:postback_delay_ms>-1</cake:postback_delay_ms>
+              <cake:affiliate_id>9643</cake:affiliate_id>
+              <cake:display_link_type_id>1</cake:display_link_type_id>
+              <cake:media_type_id>1</cake:media_type_id>
+              <cake:offer_contract_id>10338</cake:offer_contract_id>
+              <cake:offer_id>11390</cake:offer_id>
               <cake:payout>1.23</cake:payout>
-              <cake:offer_contract_id>767</cake:offer_contract_id>
-              <cake:pixel_html>&lt;&gt;</cake:pixel_html>
-              <cake:postback_url>http://examle.com/postback</cake:postback_url>
+              <cake:pixel_html>&lt;img src="https://example.com/pixel.png"&gt;</cake:pixel_html>
+              <cake:postback_url>http://example.com/postback</cake:postback_url>
               <cake:redirect_domain>trk_ad2games.cakemarketing.net</cake:redirect_domain>
               <cake:test_link>http://example.com/test</cake:test_link>
-              <cake:unique_key_hash>none</cake:unique_key_hash>
+              <cake:unique_key_hash>sha1</cake:unique_key_hash>
+              <cake:campaign_id>23602</cake:campaign_id>
+              <cake:expiration_date>1970-01-01T01:00:00</cake:expiration_date>
             </cake:Campaign>
           </env:Body>
         </env:Envelope>
@@ -67,15 +67,15 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 03 Nov 2016 16:08:18 GMT
+      - Fri, 04 Nov 2016 16:07:49 GMT
       Content-Length:
-      - '631'
+      - '633'
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CampaignResponse
         xmlns="http://cakemarketing.com/api/3/"><CampaignResult><success>true</success><message>Campaign
-        Updated</message><success_info><campaign_id>23727</campaign_id><affiliate_id>13978</affiliate_id><offer_id>7704</offer_id><offer_contract_id>767</offer_contract_id><media_type_id>1</media_type_id><original>true</original></success_info></CampaignResult></CampaignResponse></soap:Body></soap:Envelope>
+        Updated</message><success_info><campaign_id>23602</campaign_id><affiliate_id>9643</affiliate_id><offer_id>11390</offer_id><offer_contract_id>10338</offer_contract_id><media_type_id>1</media_type_id><original>true</original></success_info></CampaignResult></CampaignResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Tue, 17 Feb 2015 12:00:00 GMT
+  recorded_at: Fri, 04 Nov 2016 16:08:11 GMT
 recorded_with: VCR 3.0.3

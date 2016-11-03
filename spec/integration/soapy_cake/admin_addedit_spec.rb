@@ -284,34 +284,4 @@ RSpec.describe SoapyCake::AdminAddedit do
       expect(result[:message]).to eq('Offer Tier Replaced')
     end
   end
-
-  describe 'campaigns' do
-    it 'adds a campaign', :vcr do
-      result = admin_addedit.add_campaign(
-        affiliate_id: affiliate_id,
-        offer_id: offer_id,
-        media_type_id: 1,
-        account_status_id: :active,
-        payout: '1.23',
-        redirect_404: false,
-        clear_session_on_conversion: false,
-        paid_upsells: false
-      )
-
-      expect(result[:message]).to eq('Campaign Created')
-    end
-
-    it 'edits a campaign', :vcr do
-      result = admin_addedit.edit_campaign(
-        campaign_id: 123,
-        affiliate_id: affiliate_id,
-        offer_id: offer_id,
-        media_type_id: 1,
-        account_status_id: :active,
-        payout: '1.23'
-      )
-
-      expect(result[:message]).to eq('Campaign Updated')
-    end
-  end
 end
