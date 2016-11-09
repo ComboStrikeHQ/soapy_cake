@@ -5,7 +5,6 @@ require 'rubocop-ci'
 require 'generative/rake_task'
 
 RSpec::Core::RakeTask.new(:spec)
+Generative::RakeTask.new
 
 task default: :spec
-
-Generative::RakeTask.new
