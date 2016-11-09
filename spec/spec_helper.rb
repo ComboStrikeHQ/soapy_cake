@@ -39,6 +39,12 @@ RSpec.configure do |config|
   #
   # https://relishapp.com/rspec/rspec-core/v/3-0/docs/configuration/global-namespace-dsl
   config.expose_dsl_globally = false
+
+  config.around(:example, generative: true) do |e|
+    WebMock.allow_net_connect!
+    VCR.turned_off(ignore_cassettes: true, &e)
+    WebMock.disable_net_connect!
+  end
 end
 
 ENV['CAKE_API_KEY'] = 'cake-api-key' if ENV['CAKE_API_KEY'].blank?

@@ -85,5 +85,52 @@ RSpec.describe SoapyCake::Campaigns, :vcr do
     it 'updates a campaign without params provided' do
       client.patch(23733)
     end
+
+    generative do
+      data(:params) do
+        {
+          account_status_id: admin.account_statuses.map { |s| s.fetch(:account_status_id) }.sample,
+          affiliate_id: affiliate_id,
+          auto_disposition_delay_hours: rand(24),
+          campaign_id: campaign_id,
+          clear_session_on_conversion: %w(on off).sample,
+          currency_id: admin.currencies.map { |s| s.fetch(:currency_id) }.sample,
+          display_link_type_id: 1,
+          expiration_date: Time.current,
+          expiration_date_modification_type: %w(change remove).sample,
+          media_type_id: admin.media_types.map { |s| s.fetch(:media_type_id) }.sample,
+          offer_contract_id: [10338, 10342, 10343, 10344].sample,
+          offer_id: offer_id,
+          paid: %w(on off).sample,
+          paid_redirects: %w(on off).sample,
+          paid_upsells: %w(on off).sample,
+          payout: rand * 3,
+          payout_update_option: %w(change remove).sample,
+          pixel_html: ['', 'pixel'].sample,
+          postback_delay_ms: [-1, rand(1000)].sample,
+          postback_url: ['', 'https://example.com/postback'].sample,
+          redirect_404: %w(on off).sample,
+          redirect_domain: redirect_domain,
+          redirect_offer_contract_id: [10337, 10339, 10340, 10341].sample,
+          review: %w(on off).sample,
+          test_link: ['', 'https://example.com/test'].sample,
+          unique_key_hash: %w(none sha1 md5 sha1_with_base64 md5_with_base64).sample,
+          use_offer_contract_payout: %w(on off).sample,
+          third_party_name: ['', 'Max', 'Peter', 'Oleg'].sample
+        }
+      end
+
+      let(:campaign_id) { 23733 }
+
+      it 'does not change anything unintentionally' do
+        client.update(campaign_id, params)
+
+        campaign_before = client.get(campaign_id: campaign_id).first
+        client.patch(campaign_id)
+        campaign_after = client.get(campaign_id: campaign_id).first
+
+        expect(campaign_after).to eq(campaign_before)
+      end
+    end
   end
 end
