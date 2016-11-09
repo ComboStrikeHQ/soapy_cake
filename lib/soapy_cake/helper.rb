@@ -20,7 +20,7 @@ module SoapyCake
 
     def require_params(opts, params)
       params.each do |param|
-        raise Error, "Parameter '#{param}' missing!" unless opts.key?(param)
+        raise Error, "Parameter '#{param}' missing!" if opts[param].nil?
       end
     end
 

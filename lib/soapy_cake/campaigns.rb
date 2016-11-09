@@ -3,37 +3,17 @@ module SoapyCake
   class Campaigns
     include Helper
 
-    REQUIRED = [
-      :account_status_id,
-      :affiliate_id,
-      :auto_disposition_delay_hours,
-      :campaign_id,
-      :clear_session_on_conversion,
-      :currency_id,
-      :display_link_type_id,
-      :expiration_date,
-      :expiration_date_modification_type,
-      :media_type_id,
-      :offer_contract_id,
-      :offer_id,
-      :paid,
-      :paid_redirects,
-      :paid_upsells,
-      :payout,
-      :payout_update_option,
-      :pixel_html,
-      :postback_delay_ms,
-      :postback_url,
-      :redirect_404,
-      :redirect_domain,
-      :redirect_offer_contract_id,
-      :review,
-      # :static_suppression, # "Required, only used if global setting is enabled"
-      :test_link,
-      # :third_party_name, # ?
-      :unique_key_hash,
-      :use_offer_contract_payout
-    ].freeze
+    # TODO: Figure out what `static_suppression` is for and whether it needs to
+    # be in the list.
+    ALL_PARAMS = %i(
+      account_status_id affiliate_id auto_disposition_delay_hours campaign_id
+      clear_session_on_conversion currency_id display_link_type_id
+      expiration_date expiration_date_modification_type media_type_id
+      offer_contract_id offer_id paid paid_redirects paid_upsells payout
+      payout_update_option pixel_html postback_delay_ms postback_url
+      redirect_404 redirect_domain redirect_offer_contract_id review test_link
+      third_party_name unique_key_hash use_offer_contract_payout
+    ).freeze
 
     DEFAULTS_FOR_CREATION = {
       campaign_id: 0, # Create a new campaign
@@ -41,6 +21,7 @@ module SoapyCake
       auto_disposition_delay_hours: 0, # Skip
       payout_update_option: 'change', # Needed?
       postback_delay_ms: -1, # Skip
+      third_party_name: ''
     }.freeze
 
     NO_CHANGE_VALUES = {
@@ -75,8 +56,33 @@ module SoapyCake
 
     def update(campaign_id, opts = {})
       opts = opts.merge(campaign_id: campaign_id)
+      opts = expiration_date_params(opts)
+      opts = translate_booleans(opts)
       opts = NO_CHANGE_VALUES.merge(opts)
+      require_params(opts, ALL_PARAMS)
       addedit_campaign(opts)
+      nil
+    end
+
+    def patch(campaign_id, opts = {})
+      campaign = get(campaign_id: campaign_id).first
+      opts = NO_CHANGE_VALUES.merge(
+        affiliate_id: campaign.fetch(:affiliate).fetch(:affiliate_id),
+        # Only present inproduction:
+        display_link_type_id: campaign.dig(:link_display_type, :link_display_type_id) || 1,
+        media_type_id: campaign.fetch(:media_type).fetch(:media_type_id),
+        offer_contract_id: campaign.fetch(:offer_contract).fetch(:offer_contract_id),
+        offer_id: campaign.fetch(:offer).fetch(:offer_id),
+        payout: campaign.fetch(:payout).fetch(:amount),
+        payout_update_option: 'change',
+        pixel_html: campaign.fetch(:pixel_info).fetch(:pixel_html),
+        postback_url: campaign.fetch(:pixel_info).fetch(:postback_url),
+        redirect_domain: campaign.fetch(:redirect_domain),
+        test_link: campaign.fetch(:test_link),
+        unique_key_hash: campaign.fetch(:pixel_info).fetch(:hash_type).fetch(:hash_type_id),
+        third_party_name: campaign.fetch(:third_party_name, '')
+      )
+      update(campaign_id, opts)
       nil
     end
 
@@ -111,9 +117,6 @@ module SoapyCake
     end
 
     def addedit_campaign(opts)
-      opts = expiration_date_params(opts)
-      require_params(opts, REQUIRED)
-      opts = translate_booleans(opts)
       client.run Request.new(:admin, :addedit, :campaign, opts)
     end
 

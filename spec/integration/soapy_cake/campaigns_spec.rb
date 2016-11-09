@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 RSpec.describe SoapyCake::Campaigns, :vcr do
   let(:offer_id) { 11390 }
+  let(:affiliate_id) { 9643 }
+  let(:redirect_domain) { 'trk_ad2games.cakemarketing.net' }
 
   subject(:client) { described_class.new }
 
@@ -15,26 +17,10 @@ RSpec.describe SoapyCake::Campaigns, :vcr do
     it 'creates campaigns' do
       campaign_id = client.create(
         account_status_id: 1,
-        affiliate_id: 9643,
-        offer_id: offer_id,
-        clear_session_on_conversion: 'on',
-        currency_id: 1,
+        affiliate_id: affiliate_id,
         display_link_type_id: 1,
-        expiration_date: Date.new(1970, 1, 1),
         media_type_id: 1,
-        paid: 'on',
-        paid_redirects: 'off',
-        paid_upsells: 'on',
-        payout: 1.23,
-        pixel_html: '<img src="https://example.com/pixel.png">',
-        postback_url: 'http://example.com/postback',
-        redirect_404: 'off',
-        redirect_domain: 'trk_ad2games.cakemarketing.net',
-        review: 'off',
-        test_link: 'http://example.com/test',
-        unique_key_hash: 'sha1',
-        redirect_offer_contract_id: 0,
-        use_offer_contract_payout: 'on'
+        offer_id: offer_id
       )
       expect(campaign_id).to be_a(Integer)
     end
@@ -44,25 +30,9 @@ RSpec.describe SoapyCake::Campaigns, :vcr do
         client.create(
           account_status_id: 1,
           affiliate_id: 0,
-          offer_id: offer_id,
-          clear_session_on_conversion: 'on',
-          currency_id: 1,
           display_link_type_id: 1,
-          expiration_date: Date.new(1970, 1, 1),
           media_type_id: 1,
-          paid: 'on',
-          paid_redirects: 'off',
-          paid_upsells: 'on',
-          payout: 1.23,
-          pixel_html: '<img src="https://example.com/pixel.png">',
-          postback_url: 'http://example.com/postback',
-          redirect_404: 'off',
-          redirect_domain: 'trk_ad2games.cakemarketing.net',
-          review: 'off',
-          test_link: 'http://example.com/test',
-          unique_key_hash: 'sha1',
-          redirect_offer_contract_id: 0,
-          use_offer_contract_payout: 'on'
+          offer_id: offer_id
         )
       end.to raise_error(SoapyCake::RequestFailed, 'Invalid Affiliate')
     end
@@ -72,7 +42,7 @@ RSpec.describe SoapyCake::Campaigns, :vcr do
     it 'updated campaigns' do
       response = client.update(
         23602,
-        affiliate_id: 9643,
+        affiliate_id: affiliate_id,
         display_link_type_id: 1,
         media_type_id: 1,
         offer_contract_id: 10338,
@@ -80,8 +50,9 @@ RSpec.describe SoapyCake::Campaigns, :vcr do
         payout: 1.23,
         pixel_html: '<img src="https://example.com/pixel.png">',
         postback_url: 'http://example.com/postback',
-        redirect_domain: 'trk_ad2games.cakemarketing.net',
+        redirect_domain: redirect_domain,
         test_link: 'http://example.com/test',
+        third_party_name: 'Max',
         unique_key_hash: 'sha1'
       )
       expect(response).to be(nil)
@@ -91,7 +62,7 @@ RSpec.describe SoapyCake::Campaigns, :vcr do
       expect do
         client.update(
           9999999,
-          affiliate_id: 9643,
+          affiliate_id: affiliate_id,
           display_link_type_id: 1,
           media_type_id: 1,
           offer_contract_id: 10338,
@@ -99,11 +70,20 @@ RSpec.describe SoapyCake::Campaigns, :vcr do
           payout: 1.23,
           pixel_html: '<img src="https://example.com/pixel.png">',
           postback_url: 'http://example.com/postback',
-          redirect_domain: 'trk_ad2games.cakemarketing.net',
+          redirect_domain: redirect_domain,
           test_link: 'http://example.com/test',
+          third_party_name: 'Max',
           unique_key_hash: 'sha1'
         )
       end.to raise_error(SoapyCake::RequestFailed, 'Invalid Campaign ID')
+    end
+  end
+
+  describe '#patch' do
+    let(:admin) { SoapyCake::Admin.new }
+
+    it 'updates a campaign without params provided' do
+      client.patch(23733)
     end
   end
 end
