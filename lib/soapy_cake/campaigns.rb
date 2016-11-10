@@ -56,8 +56,8 @@ module SoapyCake
 
     def update(campaign_id, opts = {})
       opts = opts.merge(campaign_id: campaign_id)
-      opts = expiration_date_params(opts)
-      opts = translate_booleans(opts)
+      opts = opts.merge(payout_options.call(opts))
+      opts = opts.merge(expiration_date_options.call(opts))
       opts = NO_CHANGE_VALUES.merge(opts)
       require_params(opts, ALL_PARAMS)
       addedit_campaign(opts)
@@ -66,57 +66,44 @@ module SoapyCake
 
     def patch(campaign_id, opts = {})
       campaign = get(campaign_id: campaign_id).first
-      opts = NO_CHANGE_VALUES.merge(
-        affiliate_id: campaign.fetch(:affiliate).fetch(:affiliate_id),
-        # Only present inproduction:
-        display_link_type_id: campaign.dig(:link_display_type, :link_display_type_id) || 1,
-        media_type_id: campaign.fetch(:media_type).fetch(:media_type_id),
-        offer_contract_id: campaign.fetch(:offer_contract).fetch(:offer_contract_id),
-        offer_id: campaign.fetch(:offer).fetch(:offer_id),
-        payout: campaign.fetch(:payout).fetch(:amount),
-        payout_update_option: 'change',
-        pixel_html: campaign.fetch(:pixel_info).fetch(:pixel_html),
-        postback_url: campaign.fetch(:pixel_info).fetch(:postback_url),
-        redirect_domain: campaign.fetch(:redirect_domain),
-        test_link: campaign.fetch(:test_link),
-        unique_key_hash: campaign.fetch(:pixel_info).fetch(:hash_type).fetch(:hash_type_id),
-        third_party_name: campaign.fetch(:third_party_name, '')
-      )
+      opts = NO_CHANGE_VALUES
+        .merge(
+          affiliate_id: campaign.fetch(:affiliate).fetch(:affiliate_id),
+          # Only present in production:
+          display_link_type_id: campaign.dig(:link_display_type, :link_display_type_id) || 1,
+          media_type_id: campaign.fetch(:media_type).fetch(:media_type_id),
+          offer_contract_id: campaign.fetch(:offer_contract).fetch(:offer_contract_id),
+          offer_id: campaign.fetch(:offer).fetch(:offer_id),
+          payout: campaign.fetch(:payout).fetch(:amount),
+          payout_update_option: 'do_not_change',
+          pixel_html: campaign.fetch(:pixel_info).fetch(:pixel_html),
+          postback_url: campaign.fetch(:pixel_info).fetch(:postback_url),
+          redirect_domain: campaign.fetch(:redirect_domain),
+          test_link: campaign.fetch(:test_link),
+          unique_key_hash: campaign.fetch(:pixel_info).fetch(:hash_type).fetch(:hash_type_id),
+          third_party_name: campaign.fetch(:third_party_name, '')
+        )
+        .merge(opts)
       update(campaign_id, opts)
       nil
     end
 
     private
 
-    def expiration_date_params(opts)
-      case opts[:expiration_date_modification_type]
-      when 'do_not_change', 'remove'
-        opts.merge(expiration_date: Date.new(1970, 1, 1))
-      when 'change'
-        opts
-      when nil
-        opts.merge(
-          expiration_date_modification_type: 'do_not_change',
-          expiration_date: Date.new(1970, 1, 1)
-        )
-      end
+    def payout_options
+      ModificationTypeOptions.new(:payout, :payout_update_option, 0)
     end
 
-    def payout_params(opts)
-      case opts[:payout_update_option]
-      when 'do_not_change', 'remove'
-        opts.merge(payout: 0)
-      when 'change'
-        opts
-      when nil
-        opts.merge(
-          payout_update_option: 'do_not_change',
-          payout: 0
-        )
-      end
+    def expiration_date_options
+      ModificationTypeOptions.new(
+        :expiration_date,
+        :expiration_date_modification_type,
+        Time.new(1970, 1, 1)
+      )
     end
 
     def addedit_campaign(opts)
+      opts = translate_booleans(opts)
       client.run Request.new(:admin, :addedit, :campaign, opts)
     end
 

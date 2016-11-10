@@ -23,6 +23,7 @@ require 'soapy_cake/admin_addedit'
 require 'soapy_cake/admin_track'
 require 'soapy_cake/affiliate'
 
+require 'soapy_cake/modification_type_options'
 require 'soapy_cake/campaigns'
 
 module SoapyCake

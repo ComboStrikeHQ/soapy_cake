@@ -39,7 +39,7 @@ RSpec.describe SoapyCake::Campaigns, :vcr do
   end
 
   describe '#update' do
-    it 'updated campaigns' do
+    it 'updates campaigns' do
       response = client.update(
         23602,
         affiliate_id: affiliate_id,
@@ -81,55 +81,94 @@ RSpec.describe SoapyCake::Campaigns, :vcr do
 
   describe '#patch' do
     let(:admin) { SoapyCake::Admin.new }
+    let(:campaign_id) { 23733 }
 
-    it 'updates a campaign without params provided' do
-      client.patch(23733)
+    it 'updates a campaign' do
+      %w(foo bar).each do |name|
+        client.patch(campaign_id, third_party_name: name)
+        campaign = client.get(campaign_id: campaign_id).first
+        expect(campaign.fetch(:third_party_name)).to eq(name)
+      end
     end
 
-    generative do
-      data(:params) do
-        {
-          account_status_id: admin.account_statuses.map { |s| s.fetch(:account_status_id) }.sample,
-          affiliate_id: affiliate_id,
-          auto_disposition_delay_hours: rand(24),
-          campaign_id: campaign_id,
-          clear_session_on_conversion: %w(on off).sample,
-          currency_id: admin.currencies.map { |s| s.fetch(:currency_id) }.sample,
-          display_link_type_id: 1,
-          expiration_date: Time.current,
-          expiration_date_modification_type: %w(change remove).sample,
-          media_type_id: admin.media_types.map { |s| s.fetch(:media_type_id) }.sample,
-          offer_contract_id: [10338, 10342, 10343, 10344].sample,
-          offer_id: offer_id,
-          paid: %w(on off).sample,
-          paid_redirects: %w(on off).sample,
-          paid_upsells: %w(on off).sample,
-          payout: rand * 3,
-          payout_update_option: %w(change remove).sample,
-          pixel_html: ['', 'pixel'].sample,
-          postback_delay_ms: [-1, rand(1000)].sample,
-          postback_url: ['', 'https://example.com/postback'].sample,
-          redirect_404: %w(on off).sample,
-          redirect_domain: redirect_domain,
-          redirect_offer_contract_id: [10337, 10339, 10340, 10341].sample,
-          review: %w(on off).sample,
-          test_link: ['', 'https://example.com/test'].sample,
-          unique_key_hash: %w(none sha1 md5 sha1_with_base64 md5_with_base64).sample,
-          use_offer_contract_payout: %w(on off).sample,
-          third_party_name: ['', 'Max', 'Peter', 'Oleg'].sample
-        }
+    context 'different pre-existing values' do
+      let(:attribute_sets) do
+        [
+          {
+            affiliate_id: affiliate_id,
+            campaign_id: campaign_id,
+            offer_id: offer_id,
+
+            account_status_id: 1,
+            auto_disposition_delay_hours: 0,
+            clear_session_on_conversion: true,
+            currency_id: 1,
+            display_link_type_id: 1,
+            expiration_date: Time.new(2016, 11, 9),
+            expiration_date_modification_type: 'change',
+            media_type_id: 1,
+            offer_contract_id: 10338,
+            paid: true,
+            paid_redirects: true,
+            paid_upsells: true,
+            payout: 0,
+            payout_update_option: 'remove',
+            pixel_html: '',
+            postback_delay_ms: -1,
+            postback_url: '',
+            redirect_404: true,
+            redirect_domain: redirect_domain,
+            redirect_offer_contract_id: 10337,
+            review: true,
+            test_link: '',
+            unique_key_hash: 'none',
+            use_offer_contract_payout: true,
+            third_party_name: ''
+          },
+          {
+            affiliate_id: affiliate_id,
+            campaign_id: campaign_id,
+            offer_id: offer_id,
+
+            account_status_id: 2,
+            auto_disposition_delay_hours: 1,
+            clear_session_on_conversion: false,
+            currency_id: 2,
+            display_link_type_id: 1,
+            expiration_date: Time.new(1970, 1, 1),
+            expiration_date_modification_type: 'remove',
+            media_type_id: 2,
+            offer_contract_id: 10342,
+            paid: false,
+            paid_redirects: false,
+            paid_upsells: false,
+            payout: 1,
+            payout_update_option: 'change',
+            pixel_html: 'pixelpixelpixel',
+            postback_delay_ms: 100,
+            postback_url: 'https://example.com/postback',
+            redirect_404: false,
+            redirect_domain: redirect_domain,
+            redirect_offer_contract_id: 10339,
+            review: false,
+            test_link: 'https://example.com/test',
+            unique_key_hash: 'sha1',
+            use_offer_contract_payout: false,
+            third_party_name: 'Best Campaign Ever'
+          }
+        ]
       end
 
-      let(:campaign_id) { 23733 }
+      2.times do |i|
+        it "does not change anything unintentionally (attribute set: #{i})" do
+          client.update(campaign_id, attribute_sets[i])
 
-      it 'does not change anything unintentionally' do
-        client.update(campaign_id, params)
+          campaign_before = client.get(campaign_id: campaign_id).first
+          client.patch(campaign_id)
+          campaign_after = client.get(campaign_id: campaign_id).first
 
-        campaign_before = client.get(campaign_id: campaign_id).first
-        client.patch(campaign_id)
-        campaign_after = client.get(campaign_id: campaign_id).first
-
-        expect(campaign_after).to eq(campaign_before)
+          expect(campaign_after).to eq(campaign_before)
+        end
       end
     end
   end

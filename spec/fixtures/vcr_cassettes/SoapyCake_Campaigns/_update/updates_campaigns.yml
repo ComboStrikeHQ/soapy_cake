@@ -13,10 +13,10 @@ http_interactions:
             <cake:Campaign>
               <cake:api_key>cake-api-key</cake:api_key>
               <cake:account_status_id>0</cake:account_status_id>
-              <cake:expiration_date_modification_type>do_not_change</cake:expiration_date_modification_type>
+              <cake:expiration_date_modification_type>remove</cake:expiration_date_modification_type>
               <cake:currency_id>0</cake:currency_id>
               <cake:use_offer_contract_payout>no_change</cake:use_offer_contract_payout>
-              <cake:payout_update_option>do_not_change</cake:payout_update_option>
+              <cake:payout_update_option>change</cake:payout_update_option>
               <cake:paid>no_change</cake:paid>
               <cake:paid_redirects>no_change</cake:paid_redirects>
               <cake:paid_upsells>no_change</cake:paid_upsells>
@@ -39,7 +39,7 @@ http_interactions:
               <cake:third_party_name>Max</cake:third_party_name>
               <cake:unique_key_hash>sha1</cake:unique_key_hash>
               <cake:campaign_id>23602</cake:campaign_id>
-              <cake:expiration_date>1970-01-01T01:00:00</cake:expiration_date>
+              <cake:expiration_date>1970-01-01T00:00:00</cake:expiration_date>
             </cake:Campaign>
           </env:Body>
         </env:Envelope>
@@ -68,7 +68,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Wed, 09 Nov 2016 17:16:24 GMT
+      - Fri, 11 Nov 2016 14:28:53 GMT
       Content-Length:
       - '633'
     body:
@@ -78,5 +78,5 @@ http_interactions:
         xmlns="http://cakemarketing.com/api/3/"><CampaignResult><success>true</success><message>Campaign
         Updated</message><success_info><campaign_id>23602</campaign_id><affiliate_id>9643</affiliate_id><offer_id>11390</offer_id><offer_contract_id>10338</offer_contract_id><media_type_id>1</media_type_id><original>true</original></success_info></CampaignResult></CampaignResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Wed, 09 Nov 2016 17:16:39 GMT
+  recorded_at: Fri, 11 Nov 2016 14:29:15 GMT
 recorded_with: VCR 3.0.3

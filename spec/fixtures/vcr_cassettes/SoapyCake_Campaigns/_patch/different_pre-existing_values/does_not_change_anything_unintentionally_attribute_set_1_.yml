@@ -1,0 +1,383 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://cake-partner-domain.com/api/3/addedit.asmx
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0"?>
+        <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:cake="http://cakemarketing.com/api/3/">
+          <env:Header/>
+          <env:Body>
+            <cake:Campaign>
+              <cake:api_key>cake-api-key</cake:api_key>
+              <cake:account_status_id>2</cake:account_status_id>
+              <cake:expiration_date_modification_type>remove</cake:expiration_date_modification_type>
+              <cake:currency_id>2</cake:currency_id>
+              <cake:use_offer_contract_payout>off</cake:use_offer_contract_payout>
+              <cake:payout_update_option>change</cake:payout_update_option>
+              <cake:paid>off</cake:paid>
+              <cake:paid_redirects>off</cake:paid_redirects>
+              <cake:paid_upsells>off</cake:paid_upsells>
+              <cake:review>off</cake:review>
+              <cake:auto_disposition_delay_hours>1</cake:auto_disposition_delay_hours>
+              <cake:redirect_offer_contract_id>10339</cake:redirect_offer_contract_id>
+              <cake:redirect_404>off</cake:redirect_404>
+              <cake:clear_session_on_conversion>off</cake:clear_session_on_conversion>
+              <cake:postback_delay_ms>100</cake:postback_delay_ms>
+              <cake:affiliate_id>9643</cake:affiliate_id>
+              <cake:campaign_id>23733</cake:campaign_id>
+              <cake:offer_id>11390</cake:offer_id>
+              <cake:display_link_type_id>1</cake:display_link_type_id>
+              <cake:expiration_date>1970-01-01T00:00:00</cake:expiration_date>
+              <cake:media_type_id>2</cake:media_type_id>
+              <cake:offer_contract_id>10342</cake:offer_contract_id>
+              <cake:payout>1</cake:payout>
+              <cake:pixel_html>pixelpixelpixel</cake:pixel_html>
+              <cake:postback_url>https://example.com/postback</cake:postback_url>
+              <cake:redirect_domain>trk_ad2games.cakemarketing.net</cake:redirect_domain>
+              <cake:test_link>https://example.com/test</cake:test_link>
+              <cake:unique_key_hash>sha1</cake:unique_key_hash>
+              <cake:third_party_name>Best Campaign Ever</cake:third_party_name>
+            </cake:Campaign>
+          </env:Body>
+        </env:Envelope>
+    headers:
+      Content-Type:
+      - application/soap+xml;charset=UTF-8
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - application/soap+xml; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Thu, 10 Nov 2016 17:14:48 GMT
+      Content-Length:
+      - '634'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CampaignResponse
+        xmlns="http://cakemarketing.com/api/3/"><CampaignResult><success>true</success><message>Campaign
+        Updated</message><success_info><campaign_id>23733</campaign_id><affiliate_id>9643</affiliate_id><offer_id>11390</offer_id><offer_contract_id>10342</offer_contract_id><media_type_id>2</media_type_id><original>false</original></success_info></CampaignResult></CampaignResponse></soap:Body></soap:Envelope>
+    http_version: 
+  recorded_at: Thu, 10 Nov 2016 17:15:07 GMT
+- request:
+    method: post
+    uri: https://cake-partner-domain.com/api/6/export.asmx
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0"?>
+        <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:cake="http://cakemarketing.com/api/6/">
+          <env:Header/>
+          <env:Body>
+            <cake:Campaigns>
+              <cake:api_key>cake-api-key</cake:api_key>
+              <cake:campaign_id>23733</cake:campaign_id>
+            </cake:Campaigns>
+          </env:Body>
+        </env:Envelope>
+    headers:
+      Content-Type:
+      - application/soap+xml;charset=UTF-8
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - application/soap+xml; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Thu, 10 Nov 2016 17:14:48 GMT
+      Content-Length:
+      - '4146'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CampaignsResponse
+        xmlns="http://cakemarketing.com/api/6/"><CampaignsResult><success>true</success><row_count>1</row_count><campaigns><campaign><campaign_id>23733</campaign_id><third_party_name>Best
+        Campaign Ever</third_party_name><campaign_type><campaign_type_id xmlns="API:id_name_store">1</campaign_type_id><campaign_type_name
+        xmlns="API:id_name_store">Standard</campaign_type_name></campaign_type><affiliate><affiliate_id
+        xmlns="API:id_name_store">9643</affiliate_id><affiliate_name xmlns="API:id_name_store">ad2games</affiliate_name></affiliate><offer><offer_id
+        xmlns="API:id_name_store">11390</offer_id><offer_name xmlns="API:id_name_store">Helge's
+        Awesome Offer (DE CPO)</offer_name></offer><offer_contract><offer_contract_id>10342</offer_contract_id><offer_contract_name>Networks</offer_contract_name><price_format><price_format_id
+        xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></offer_contract><original>false</original><exceptions><allowed_sub_affiliates
+        /><allowed_creatives /></exceptions><account_status><account_status_id xmlns="API:id_name_store">2</account_status_id><account_status_name
+        xmlns="API:id_name_store">Inactive</account_status_name></account_status><payout><is_percentage>false</is_percentage><amount>1.0000</amount><formatted_amount>$1.00</formatted_amount></payout><currency><currency_id
+        xmlns="API:id_name_store">1</currency_id><currency_symbol xmlns="API:id_name_store">$</currency_symbol><currency_name
+        xmlns="API:id_name_store">US Dollar</currency_name><currency_abbr xmlns="API:id_name_store">USD</currency_abbr></currency><media_type><media_type_id
+        xmlns="API:id_name_store">2</media_type_id><media_type_name xmlns="API:id_name_store">Network</media_type_name></media_type><deal_flow><date_contacted
+        xsi:nil="true" /><date_io_sent xsi:nil="true" /><date_io_signed xsi:nil="true"
+        /><date_creative_sent xsi:nil="true" /><date_pixel_placed>2016-11-10T10:40:41.057</date_pixel_placed></deal_flow><paid>false</paid><paid_redirects>false</paid_redirects><disable_prepop_appending>false</disable_prepop_appending><suppression_amount
+        xsi:nil="true" /><redirect_domain>trk_ad2games.cakemarketing.net</redirect_domain><click_cap><limit
+        xsi:nil="true" /><cap_interval><cap_interval_id xmlns="API:id_name_store">0</cap_interval_id><cap_interval_name
+        xmlns="API:id_name_store">None</cap_interval_name></cap_interval><start_date
+        xsi:nil="true" /><review_no_redirect>false</review_no_redirect></click_cap><conversion_cap><limit
+        xsi:nil="true" /><cap_interval><cap_interval_id xmlns="API:id_name_store">0</cap_interval_id><cap_interval_name
+        xmlns="API:id_name_store">None</cap_interval_name></cap_interval><start_date
+        xsi:nil="true" /><review_no_redirect>false</review_no_redirect></conversion_cap><pixel_info><pixel_status>Approved</pixel_status><pixel_html>pixelpixelpixel</pixel_html><hash_type><hash_type_id
+        xmlns="API:id_name_store">0</hash_type_id><hash_type_name xmlns="API:id_name_store">None</hash_type_name></hash_type><postback_url>https://example.com/postback</postback_url><postback_delay_ms>100</postback_delay_ms></pixel_info><upsell_info><disable_upsells>false</disable_upsells><paid_upsells>false</paid_upsells><paid_upsells_same_session_only>false</paid_upsells_same_session_only><clear_session_on_conversion>false</clear_session_on_conversion></upsell_info><test_link>https://example.com/test</test_link><redirect_offer><offer_contract_id>10339</offer_contract_id><offer_contract_name>Networks</offer_contract_name><price_format><price_format_id
+        xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></redirect_offer><redirect_404>false</redirect_404><date_created>2016-11-08T16:49:09.017</date_created><expiration_date
+        xsi:nil="true" /><notes /></campaign></campaigns></CampaignsResult></CampaignsResponse></soap:Body></soap:Envelope>
+    http_version: 
+  recorded_at: Thu, 10 Nov 2016 17:15:08 GMT
+- request:
+    method: post
+    uri: https://cake-partner-domain.com/api/6/export.asmx
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0"?>
+        <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:cake="http://cakemarketing.com/api/6/">
+          <env:Header/>
+          <env:Body>
+            <cake:Campaigns>
+              <cake:api_key>cake-api-key</cake:api_key>
+              <cake:campaign_id>23733</cake:campaign_id>
+            </cake:Campaigns>
+          </env:Body>
+        </env:Envelope>
+    headers:
+      Content-Type:
+      - application/soap+xml;charset=UTF-8
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - application/soap+xml; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Thu, 10 Nov 2016 17:14:49 GMT
+      Content-Length:
+      - '4146'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CampaignsResponse
+        xmlns="http://cakemarketing.com/api/6/"><CampaignsResult><success>true</success><row_count>1</row_count><campaigns><campaign><campaign_id>23733</campaign_id><third_party_name>Best
+        Campaign Ever</third_party_name><campaign_type><campaign_type_id xmlns="API:id_name_store">1</campaign_type_id><campaign_type_name
+        xmlns="API:id_name_store">Standard</campaign_type_name></campaign_type><affiliate><affiliate_id
+        xmlns="API:id_name_store">9643</affiliate_id><affiliate_name xmlns="API:id_name_store">ad2games</affiliate_name></affiliate><offer><offer_id
+        xmlns="API:id_name_store">11390</offer_id><offer_name xmlns="API:id_name_store">Helge's
+        Awesome Offer (DE CPO)</offer_name></offer><offer_contract><offer_contract_id>10342</offer_contract_id><offer_contract_name>Networks</offer_contract_name><price_format><price_format_id
+        xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></offer_contract><original>false</original><exceptions><allowed_sub_affiliates
+        /><allowed_creatives /></exceptions><account_status><account_status_id xmlns="API:id_name_store">2</account_status_id><account_status_name
+        xmlns="API:id_name_store">Inactive</account_status_name></account_status><payout><is_percentage>false</is_percentage><amount>1.0000</amount><formatted_amount>$1.00</formatted_amount></payout><currency><currency_id
+        xmlns="API:id_name_store">1</currency_id><currency_symbol xmlns="API:id_name_store">$</currency_symbol><currency_name
+        xmlns="API:id_name_store">US Dollar</currency_name><currency_abbr xmlns="API:id_name_store">USD</currency_abbr></currency><media_type><media_type_id
+        xmlns="API:id_name_store">2</media_type_id><media_type_name xmlns="API:id_name_store">Network</media_type_name></media_type><deal_flow><date_contacted
+        xsi:nil="true" /><date_io_sent xsi:nil="true" /><date_io_signed xsi:nil="true"
+        /><date_creative_sent xsi:nil="true" /><date_pixel_placed>2016-11-10T10:40:41.057</date_pixel_placed></deal_flow><paid>false</paid><paid_redirects>false</paid_redirects><disable_prepop_appending>false</disable_prepop_appending><suppression_amount
+        xsi:nil="true" /><redirect_domain>trk_ad2games.cakemarketing.net</redirect_domain><click_cap><limit
+        xsi:nil="true" /><cap_interval><cap_interval_id xmlns="API:id_name_store">0</cap_interval_id><cap_interval_name
+        xmlns="API:id_name_store">None</cap_interval_name></cap_interval><start_date
+        xsi:nil="true" /><review_no_redirect>false</review_no_redirect></click_cap><conversion_cap><limit
+        xsi:nil="true" /><cap_interval><cap_interval_id xmlns="API:id_name_store">0</cap_interval_id><cap_interval_name
+        xmlns="API:id_name_store">None</cap_interval_name></cap_interval><start_date
+        xsi:nil="true" /><review_no_redirect>false</review_no_redirect></conversion_cap><pixel_info><pixel_status>Approved</pixel_status><pixel_html>pixelpixelpixel</pixel_html><hash_type><hash_type_id
+        xmlns="API:id_name_store">0</hash_type_id><hash_type_name xmlns="API:id_name_store">None</hash_type_name></hash_type><postback_url>https://example.com/postback</postback_url><postback_delay_ms>100</postback_delay_ms></pixel_info><upsell_info><disable_upsells>false</disable_upsells><paid_upsells>false</paid_upsells><paid_upsells_same_session_only>false</paid_upsells_same_session_only><clear_session_on_conversion>false</clear_session_on_conversion></upsell_info><test_link>https://example.com/test</test_link><redirect_offer><offer_contract_id>10339</offer_contract_id><offer_contract_name>Networks</offer_contract_name><price_format><price_format_id
+        xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></redirect_offer><redirect_404>false</redirect_404><date_created>2016-11-08T16:49:09.017</date_created><expiration_date
+        xsi:nil="true" /><notes /></campaign></campaigns></CampaignsResult></CampaignsResponse></soap:Body></soap:Envelope>
+    http_version: 
+  recorded_at: Thu, 10 Nov 2016 17:15:08 GMT
+- request:
+    method: post
+    uri: https://cake-partner-domain.com/api/3/addedit.asmx
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0"?>
+        <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:cake="http://cakemarketing.com/api/3/">
+          <env:Header/>
+          <env:Body>
+            <cake:Campaign>
+              <cake:api_key>cake-api-key</cake:api_key>
+              <cake:account_status_id>0</cake:account_status_id>
+              <cake:expiration_date_modification_type>do_not_change</cake:expiration_date_modification_type>
+              <cake:currency_id>0</cake:currency_id>
+              <cake:use_offer_contract_payout>no_change</cake:use_offer_contract_payout>
+              <cake:payout_update_option>do_not_change</cake:payout_update_option>
+              <cake:paid>no_change</cake:paid>
+              <cake:paid_redirects>no_change</cake:paid_redirects>
+              <cake:paid_upsells>no_change</cake:paid_upsells>
+              <cake:review>no_change</cake:review>
+              <cake:auto_disposition_delay_hours>0</cake:auto_disposition_delay_hours>
+              <cake:redirect_offer_contract_id>0</cake:redirect_offer_contract_id>
+              <cake:redirect_404>no_change</cake:redirect_404>
+              <cake:clear_session_on_conversion>no_change</cake:clear_session_on_conversion>
+              <cake:postback_delay_ms>-1</cake:postback_delay_ms>
+              <cake:affiliate_id>9643</cake:affiliate_id>
+              <cake:display_link_type_id>1</cake:display_link_type_id>
+              <cake:media_type_id>2</cake:media_type_id>
+              <cake:offer_contract_id>10342</cake:offer_contract_id>
+              <cake:offer_id>11390</cake:offer_id>
+              <cake:payout>1.0000</cake:payout>
+              <cake:pixel_html>pixelpixelpixel</cake:pixel_html>
+              <cake:postback_url>https://example.com/postback</cake:postback_url>
+              <cake:redirect_domain>trk_ad2games.cakemarketing.net</cake:redirect_domain>
+              <cake:test_link>https://example.com/test</cake:test_link>
+              <cake:unique_key_hash>0</cake:unique_key_hash>
+              <cake:third_party_name>Best Campaign Ever</cake:third_party_name>
+              <cake:campaign_id>23733</cake:campaign_id>
+              <cake:expiration_date>1970-01-01T00:00:00</cake:expiration_date>
+            </cake:Campaign>
+          </env:Body>
+        </env:Envelope>
+    headers:
+      Content-Type:
+      - application/soap+xml;charset=UTF-8
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - application/soap+xml; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Thu, 10 Nov 2016 17:14:49 GMT
+      Content-Length:
+      - '634'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CampaignResponse
+        xmlns="http://cakemarketing.com/api/3/"><CampaignResult><success>true</success><message>Campaign
+        Updated</message><success_info><campaign_id>23733</campaign_id><affiliate_id>9643</affiliate_id><offer_id>11390</offer_id><offer_contract_id>10342</offer_contract_id><media_type_id>2</media_type_id><original>false</original></success_info></CampaignResult></CampaignResponse></soap:Body></soap:Envelope>
+    http_version: 
+  recorded_at: Thu, 10 Nov 2016 17:15:08 GMT
+- request:
+    method: post
+    uri: https://cake-partner-domain.com/api/6/export.asmx
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0"?>
+        <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:cake="http://cakemarketing.com/api/6/">
+          <env:Header/>
+          <env:Body>
+            <cake:Campaigns>
+              <cake:api_key>cake-api-key</cake:api_key>
+              <cake:campaign_id>23733</cake:campaign_id>
+            </cake:Campaigns>
+          </env:Body>
+        </env:Envelope>
+    headers:
+      Content-Type:
+      - application/soap+xml;charset=UTF-8
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - application/soap+xml; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Thu, 10 Nov 2016 17:14:49 GMT
+      Content-Length:
+      - '4146'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CampaignsResponse
+        xmlns="http://cakemarketing.com/api/6/"><CampaignsResult><success>true</success><row_count>1</row_count><campaigns><campaign><campaign_id>23733</campaign_id><third_party_name>Best
+        Campaign Ever</third_party_name><campaign_type><campaign_type_id xmlns="API:id_name_store">1</campaign_type_id><campaign_type_name
+        xmlns="API:id_name_store">Standard</campaign_type_name></campaign_type><affiliate><affiliate_id
+        xmlns="API:id_name_store">9643</affiliate_id><affiliate_name xmlns="API:id_name_store">ad2games</affiliate_name></affiliate><offer><offer_id
+        xmlns="API:id_name_store">11390</offer_id><offer_name xmlns="API:id_name_store">Helge's
+        Awesome Offer (DE CPO)</offer_name></offer><offer_contract><offer_contract_id>10342</offer_contract_id><offer_contract_name>Networks</offer_contract_name><price_format><price_format_id
+        xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></offer_contract><original>false</original><exceptions><allowed_sub_affiliates
+        /><allowed_creatives /></exceptions><account_status><account_status_id xmlns="API:id_name_store">2</account_status_id><account_status_name
+        xmlns="API:id_name_store">Inactive</account_status_name></account_status><payout><is_percentage>false</is_percentage><amount>1.0000</amount><formatted_amount>$1.00</formatted_amount></payout><currency><currency_id
+        xmlns="API:id_name_store">1</currency_id><currency_symbol xmlns="API:id_name_store">$</currency_symbol><currency_name
+        xmlns="API:id_name_store">US Dollar</currency_name><currency_abbr xmlns="API:id_name_store">USD</currency_abbr></currency><media_type><media_type_id
+        xmlns="API:id_name_store">2</media_type_id><media_type_name xmlns="API:id_name_store">Network</media_type_name></media_type><deal_flow><date_contacted
+        xsi:nil="true" /><date_io_sent xsi:nil="true" /><date_io_signed xsi:nil="true"
+        /><date_creative_sent xsi:nil="true" /><date_pixel_placed>2016-11-10T10:40:41.057</date_pixel_placed></deal_flow><paid>false</paid><paid_redirects>false</paid_redirects><disable_prepop_appending>false</disable_prepop_appending><suppression_amount
+        xsi:nil="true" /><redirect_domain>trk_ad2games.cakemarketing.net</redirect_domain><click_cap><limit
+        xsi:nil="true" /><cap_interval><cap_interval_id xmlns="API:id_name_store">0</cap_interval_id><cap_interval_name
+        xmlns="API:id_name_store">None</cap_interval_name></cap_interval><start_date
+        xsi:nil="true" /><review_no_redirect>false</review_no_redirect></click_cap><conversion_cap><limit
+        xsi:nil="true" /><cap_interval><cap_interval_id xmlns="API:id_name_store">0</cap_interval_id><cap_interval_name
+        xmlns="API:id_name_store">None</cap_interval_name></cap_interval><start_date
+        xsi:nil="true" /><review_no_redirect>false</review_no_redirect></conversion_cap><pixel_info><pixel_status>Approved</pixel_status><pixel_html>pixelpixelpixel</pixel_html><hash_type><hash_type_id
+        xmlns="API:id_name_store">0</hash_type_id><hash_type_name xmlns="API:id_name_store">None</hash_type_name></hash_type><postback_url>https://example.com/postback</postback_url><postback_delay_ms>100</postback_delay_ms></pixel_info><upsell_info><disable_upsells>false</disable_upsells><paid_upsells>false</paid_upsells><paid_upsells_same_session_only>false</paid_upsells_same_session_only><clear_session_on_conversion>false</clear_session_on_conversion></upsell_info><test_link>https://example.com/test</test_link><redirect_offer><offer_contract_id>10339</offer_contract_id><offer_contract_name>Networks</offer_contract_name><price_format><price_format_id
+        xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></redirect_offer><redirect_404>false</redirect_404><date_created>2016-11-08T16:49:09.017</date_created><expiration_date
+        xsi:nil="true" /><notes /></campaign></campaigns></CampaignsResult></CampaignsResponse></soap:Body></soap:Envelope>
+    http_version: 
+  recorded_at: Thu, 10 Nov 2016 17:15:08 GMT
+recorded_with: VCR 3.0.3
