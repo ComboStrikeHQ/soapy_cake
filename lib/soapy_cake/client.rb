@@ -49,7 +49,7 @@ module SoapyCake
     end
 
     def with_retries(&block)
-      opts = { tries: retry_count + 1, on: [RateLimitError, SocketError], sleep: -> (n) { 3**n } }
+      opts = { tries: retry_count + 1, on: [RateLimitError, SocketError], sleep: ->(n) { 3**n } }
       Retryable.retryable(opts, &block)
     end
 
