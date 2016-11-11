@@ -12,17 +12,12 @@ http_interactions:
           <env:Body>
             <cake:Campaign>
               <cake:api_key>cake-api-key</cake:api_key>
-              <cake:campaign_id>0</cake:campaign_id>
-              <cake:offer_contract_id>0</cake:offer_contract_id>
-              <cake:auto_disposition_delay_hours>0</cake:auto_disposition_delay_hours>
-              <cake:payout_update_option>change</cake:payout_update_option>
-              <cake:postback_delay_ms>-1</cake:postback_delay_ms>
-              <cake:third_party_name/>
               <cake:account_status_id>1</cake:account_status_id>
               <cake:affiliate_id>0</cake:affiliate_id>
               <cake:display_link_type_id>1</cake:display_link_type_id>
               <cake:media_type_id>1</cake:media_type_id>
               <cake:offer_id>11390</cake:offer_id>
+              <cake:campaign_id>0</cake:campaign_id>
             </cake:Campaign>
           </env:Body>
         </env:Envelope>
@@ -51,7 +46,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Fri, 11 Nov 2016 15:41:56 GMT
+      - Fri, 11 Nov 2016 15:57:23 GMT
       Content-Length:
       - '414'
     body:
@@ -61,5 +56,5 @@ http_interactions:
         xmlns="http://cakemarketing.com/api/3/"><CampaignResult><success>false</success><message>Invalid
         Affiliate</message></CampaignResult></CampaignResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Fri, 11 Nov 2016 15:42:19 GMT
+  recorded_at: Fri, 11 Nov 2016 15:57:46 GMT
 recorded_with: VCR 3.0.3

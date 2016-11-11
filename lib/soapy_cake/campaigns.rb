@@ -15,15 +15,6 @@ module SoapyCake
       third_party_name unique_key_hash use_offer_contract_payout
     ).freeze
 
-    DEFAULTS_FOR_CREATION = {
-      campaign_id: 0, # Create a new campaign
-      offer_contract_id: 0, # Use the default offer contract
-      auto_disposition_delay_hours: 0, # Skip
-      payout_update_option: 'change', # Needed?
-      postback_delay_ms: -1, # Skip
-      third_party_name: ''
-    }.freeze
-
     NO_CHANGE_VALUES = {
       account_status_id: 0,
       expiration_date_modification_type: 'do_not_change',
@@ -46,11 +37,7 @@ module SoapyCake
     end
 
     def create(opts = {})
-      if opts.key?(:campaign_id) && opts.fetch(:campaign_id).nonzero?
-        raise 'Cannot create a campaign while specifying a campaign_id'
-      end
-      opts = DEFAULTS_FOR_CREATION.merge(opts)
-      response = addedit_campaign(opts)
+      response = addedit_campaign(opts.merge(campaign_id: 0))
       response.fetch(:success_info).fetch(:campaign_id)
     end
 

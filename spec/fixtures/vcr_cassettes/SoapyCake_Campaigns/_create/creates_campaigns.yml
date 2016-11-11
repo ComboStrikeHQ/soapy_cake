@@ -12,17 +12,12 @@ http_interactions:
           <env:Body>
             <cake:Campaign>
               <cake:api_key>cake-api-key</cake:api_key>
-              <cake:campaign_id>0</cake:campaign_id>
-              <cake:offer_contract_id>0</cake:offer_contract_id>
-              <cake:auto_disposition_delay_hours>0</cake:auto_disposition_delay_hours>
-              <cake:payout_update_option>change</cake:payout_update_option>
-              <cake:postback_delay_ms>-1</cake:postback_delay_ms>
-              <cake:third_party_name/>
               <cake:account_status_id>1</cake:account_status_id>
               <cake:affiliate_id>9643</cake:affiliate_id>
               <cake:display_link_type_id>1</cake:display_link_type_id>
               <cake:media_type_id>1</cake:media_type_id>
               <cake:offer_id>11390</cake:offer_id>
+              <cake:campaign_id>0</cake:campaign_id>
             </cake:Campaign>
           </env:Body>
         </env:Envelope>
@@ -51,7 +46,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Fri, 11 Nov 2016 15:41:56 GMT
+      - Fri, 11 Nov 2016 15:57:24 GMT
       Content-Length:
       - '634'
     body:
@@ -59,7 +54,7 @@ http_interactions:
       string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CampaignResponse
         xmlns="http://cakemarketing.com/api/3/"><CampaignResult><success>true</success><message>Campaign
-        Created</message><success_info><campaign_id>23976</campaign_id><affiliate_id>9643</affiliate_id><offer_id>11390</offer_id><offer_contract_id>10338</offer_contract_id><media_type_id>1</media_type_id><original>false</original></success_info></CampaignResult></CampaignResponse></soap:Body></soap:Envelope>
+        Created</message><success_info><campaign_id>23978</campaign_id><affiliate_id>9643</affiliate_id><offer_id>11390</offer_id><offer_contract_id>10338</offer_contract_id><media_type_id>1</media_type_id><original>false</original></success_info></CampaignResult></CampaignResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Fri, 11 Nov 2016 15:42:19 GMT
+  recorded_at: Fri, 11 Nov 2016 15:57:47 GMT
 recorded_with: VCR 3.0.3

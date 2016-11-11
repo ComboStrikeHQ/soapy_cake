@@ -50,7 +50,7 @@ RSpec.describe SoapyCake::Campaigns do
           :admin,
           :addedit,
           :campaign,
-          a_hash_including(expiration_date: Time.new(1970, 1, 1),
+          a_hash_including(expiration_date: Time.utc(1970, 1, 1),
                            expiration_date_modification_type: 'remove')
         ).and_call_original
 
@@ -80,7 +80,7 @@ RSpec.describe SoapyCake::Campaigns do
           :admin,
           :addedit,
           :campaign,
-          a_hash_including(expiration_date: Time.new(1970, 1, 1),
+          a_hash_including(expiration_date: Time.utc(1970, 1, 1),
                            expiration_date_modification_type: 'remove')
         ).and_call_original
 

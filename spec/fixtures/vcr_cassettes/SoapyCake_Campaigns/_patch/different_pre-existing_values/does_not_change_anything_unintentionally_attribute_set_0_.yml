@@ -68,7 +68,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Fri, 11 Nov 2016 15:41:54 GMT
+      - Fri, 11 Nov 2016 15:57:27 GMT
       Content-Length:
       - '634'
     body:
@@ -78,7 +78,7 @@ http_interactions:
         xmlns="http://cakemarketing.com/api/3/"><CampaignResult><success>true</success><message>Campaign
         Updated</message><success_info><campaign_id>23733</campaign_id><affiliate_id>9643</affiliate_id><offer_id>11390</offer_id><offer_contract_id>10338</offer_contract_id><media_type_id>1</media_type_id><original>false</original></success_info></CampaignResult></CampaignResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Fri, 11 Nov 2016 15:42:17 GMT
+  recorded_at: Fri, 11 Nov 2016 15:57:50 GMT
 - request:
     method: post
     uri: https://cake-partner-domain.com/api/6/export.asmx
@@ -120,16 +120,15 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Fri, 11 Nov 2016 15:41:55 GMT
+      - Fri, 11 Nov 2016 15:57:27 GMT
       Content-Length:
-      - '4162'
+      - '4147'
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CampaignsResponse
-        xmlns="http://cakemarketing.com/api/6/"><CampaignsResult><success>true</success><row_count>1</row_count><campaigns><campaign><campaign_id>23733</campaign_id><third_party_name>Best
-        Campaign Ever</third_party_name><campaign_type><campaign_type_id xmlns="API:id_name_store">1</campaign_type_id><campaign_type_name
-        xmlns="API:id_name_store">Standard</campaign_type_name></campaign_type><affiliate><affiliate_id
+        xmlns="http://cakemarketing.com/api/6/"><CampaignsResult><success>true</success><row_count>1</row_count><campaigns><campaign><campaign_id>23733</campaign_id><third_party_name>bar</third_party_name><campaign_type><campaign_type_id
+        xmlns="API:id_name_store">1</campaign_type_id><campaign_type_name xmlns="API:id_name_store">Standard</campaign_type_name></campaign_type><affiliate><affiliate_id
         xmlns="API:id_name_store">9643</affiliate_id><affiliate_name xmlns="API:id_name_store">ad2games</affiliate_name></affiliate><offer><offer_id
         xmlns="API:id_name_store">11390</offer_id><offer_name xmlns="API:id_name_store">Helge's
         Awesome Offer (DE CPO)</offer_name></offer><offer_contract><offer_contract_id>10338</offer_contract_id><offer_contract_name>Direct</offer_contract_name><price_format><price_format_id
@@ -152,7 +151,7 @@ http_interactions:
         xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></redirect_offer><redirect_404>true</redirect_404><date_created>2016-11-08T16:49:09.017</date_created><expiration_date>2016-11-09T01:00:00</expiration_date><notes
         /></campaign></campaigns></CampaignsResult></CampaignsResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Fri, 11 Nov 2016 15:42:18 GMT
+  recorded_at: Fri, 11 Nov 2016 15:57:51 GMT
 - request:
     method: post
     uri: https://cake-partner-domain.com/api/6/export.asmx
@@ -194,16 +193,15 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Fri, 11 Nov 2016 15:41:55 GMT
+      - Fri, 11 Nov 2016 15:57:28 GMT
       Content-Length:
-      - '4162'
+      - '4147'
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CampaignsResponse
-        xmlns="http://cakemarketing.com/api/6/"><CampaignsResult><success>true</success><row_count>1</row_count><campaigns><campaign><campaign_id>23733</campaign_id><third_party_name>Best
-        Campaign Ever</third_party_name><campaign_type><campaign_type_id xmlns="API:id_name_store">1</campaign_type_id><campaign_type_name
-        xmlns="API:id_name_store">Standard</campaign_type_name></campaign_type><affiliate><affiliate_id
+        xmlns="http://cakemarketing.com/api/6/"><CampaignsResult><success>true</success><row_count>1</row_count><campaigns><campaign><campaign_id>23733</campaign_id><third_party_name>bar</third_party_name><campaign_type><campaign_type_id
+        xmlns="API:id_name_store">1</campaign_type_id><campaign_type_name xmlns="API:id_name_store">Standard</campaign_type_name></campaign_type><affiliate><affiliate_id
         xmlns="API:id_name_store">9643</affiliate_id><affiliate_name xmlns="API:id_name_store">ad2games</affiliate_name></affiliate><offer><offer_id
         xmlns="API:id_name_store">11390</offer_id><offer_name xmlns="API:id_name_store">Helge's
         Awesome Offer (DE CPO)</offer_name></offer><offer_contract><offer_contract_id>10338</offer_contract_id><offer_contract_name>Direct</offer_contract_name><price_format><price_format_id
@@ -226,7 +224,7 @@ http_interactions:
         xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></redirect_offer><redirect_404>true</redirect_404><date_created>2016-11-08T16:49:09.017</date_created><expiration_date>2016-11-09T01:00:00</expiration_date><notes
         /></campaign></campaigns></CampaignsResult></CampaignsResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Fri, 11 Nov 2016 15:42:18 GMT
+  recorded_at: Fri, 11 Nov 2016 15:57:51 GMT
 - request:
     method: post
     uri: https://cake-partner-domain.com/api/3/addedit.asmx
@@ -264,7 +262,7 @@ http_interactions:
               <cake:redirect_domain>trk_ad2games.cakemarketing.net</cake:redirect_domain>
               <cake:test_link>https://example.com/test</cake:test_link>
               <cake:unique_key_hash>0</cake:unique_key_hash>
-              <cake:third_party_name>Best Campaign Ever</cake:third_party_name>
+              <cake:third_party_name>bar</cake:third_party_name>
               <cake:campaign_id>23733</cake:campaign_id>
               <cake:expiration_date>1970-01-01T01:00:00</cake:expiration_date>
             </cake:Campaign>
@@ -295,7 +293,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Fri, 11 Nov 2016 15:41:55 GMT
+      - Fri, 11 Nov 2016 15:57:28 GMT
       Content-Length:
       - '634'
     body:
@@ -305,7 +303,7 @@ http_interactions:
         xmlns="http://cakemarketing.com/api/3/"><CampaignResult><success>true</success><message>Campaign
         Updated</message><success_info><campaign_id>23733</campaign_id><affiliate_id>9643</affiliate_id><offer_id>11390</offer_id><offer_contract_id>10338</offer_contract_id><media_type_id>1</media_type_id><original>false</original></success_info></CampaignResult></CampaignResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Fri, 11 Nov 2016 15:42:18 GMT
+  recorded_at: Fri, 11 Nov 2016 15:57:51 GMT
 - request:
     method: post
     uri: https://cake-partner-domain.com/api/6/export.asmx
@@ -347,16 +345,15 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Fri, 11 Nov 2016 15:41:56 GMT
+      - Fri, 11 Nov 2016 15:57:29 GMT
       Content-Length:
-      - '4162'
+      - '4147'
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CampaignsResponse
-        xmlns="http://cakemarketing.com/api/6/"><CampaignsResult><success>true</success><row_count>1</row_count><campaigns><campaign><campaign_id>23733</campaign_id><third_party_name>Best
-        Campaign Ever</third_party_name><campaign_type><campaign_type_id xmlns="API:id_name_store">1</campaign_type_id><campaign_type_name
-        xmlns="API:id_name_store">Standard</campaign_type_name></campaign_type><affiliate><affiliate_id
+        xmlns="http://cakemarketing.com/api/6/"><CampaignsResult><success>true</success><row_count>1</row_count><campaigns><campaign><campaign_id>23733</campaign_id><third_party_name>bar</third_party_name><campaign_type><campaign_type_id
+        xmlns="API:id_name_store">1</campaign_type_id><campaign_type_name xmlns="API:id_name_store">Standard</campaign_type_name></campaign_type><affiliate><affiliate_id
         xmlns="API:id_name_store">9643</affiliate_id><affiliate_name xmlns="API:id_name_store">ad2games</affiliate_name></affiliate><offer><offer_id
         xmlns="API:id_name_store">11390</offer_id><offer_name xmlns="API:id_name_store">Helge's
         Awesome Offer (DE CPO)</offer_name></offer><offer_contract><offer_contract_id>10338</offer_contract_id><offer_contract_name>Direct</offer_contract_name><price_format><price_format_id
@@ -379,5 +376,5 @@ http_interactions:
         xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></redirect_offer><redirect_404>true</redirect_404><date_created>2016-11-08T16:49:09.017</date_created><expiration_date>2016-11-09T01:00:00</expiration_date><notes
         /></campaign></campaigns></CampaignsResult></CampaignsResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Fri, 11 Nov 2016 15:42:19 GMT
+  recorded_at: Fri, 11 Nov 2016 15:57:52 GMT
 recorded_with: VCR 3.0.3
