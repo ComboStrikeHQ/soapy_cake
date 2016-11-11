@@ -156,9 +156,5 @@ module SoapyCake
     def blacklist_reasons
       run Request.new(:admin, :get, :blacklist_reasons, {})
     end
-
-    def account_statuses
-      run Request.new(:admin, :get, :account_statuses, {})
-    end
   end
 end
