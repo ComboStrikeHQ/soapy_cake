@@ -32,6 +32,8 @@ module SoapyCake
       postback_delay_ms: -1
     }.freeze
 
+    delegate :read_only?, to: :client
+
     def get(opts = {})
       client.run Request.new(:admin, :export, :campaigns, opts)
     end
