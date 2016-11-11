@@ -4,3 +4,5 @@ dependencies:
 test:
   pre:
     - bundle exec rake rubocop
+  post:
+    - bundle exec codeclimate-test-reporter

@@ -5,5 +5,6 @@ gemspec
 
 group :development, :test do
   gem 'rubocop-ci', github: 'ad2games/rubocop-ci'
+  gem 'simplecov'
   gem 'codeclimate-test-reporter', require: false
 end
