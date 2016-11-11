@@ -41,9 +41,9 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 10 Nov 2016 17:14:45 GMT
+      - Fri, 11 Nov 2016 15:15:52 GMT
       Content-Length:
-      - '4162'
+      - '4146'
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
@@ -53,15 +53,15 @@ http_interactions:
         xmlns="API:id_name_store">Standard</campaign_type_name></campaign_type><affiliate><affiliate_id
         xmlns="API:id_name_store">9643</affiliate_id><affiliate_name xmlns="API:id_name_store">ad2games</affiliate_name></affiliate><offer><offer_id
         xmlns="API:id_name_store">11390</offer_id><offer_name xmlns="API:id_name_store">Helge's
-        Awesome Offer (DE CPO)</offer_name></offer><offer_contract><offer_contract_id>10338</offer_contract_id><offer_contract_name>Direct</offer_contract_name><price_format><price_format_id
+        Awesome Offer (DE CPO)</offer_name></offer><offer_contract><offer_contract_id>10342</offer_contract_id><offer_contract_name>Networks</offer_contract_name><price_format><price_format_id
         xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></offer_contract><original>false</original><exceptions><allowed_sub_affiliates
-        /><allowed_creatives /></exceptions><account_status><account_status_id xmlns="API:id_name_store">1</account_status_id><account_status_name
-        xmlns="API:id_name_store">Active</account_status_name></account_status><payout><is_percentage>false</is_percentage><amount>1.0000</amount><formatted_amount>$1.00</formatted_amount></payout><currency><currency_id
+        /><allowed_creatives /></exceptions><account_status><account_status_id xmlns="API:id_name_store">2</account_status_id><account_status_name
+        xmlns="API:id_name_store">Inactive</account_status_name></account_status><payout><is_percentage>false</is_percentage><amount>1.0000</amount><formatted_amount>$1.00</formatted_amount></payout><currency><currency_id
         xmlns="API:id_name_store">1</currency_id><currency_symbol xmlns="API:id_name_store">$</currency_symbol><currency_name
         xmlns="API:id_name_store">US Dollar</currency_name><currency_abbr xmlns="API:id_name_store">USD</currency_abbr></currency><media_type><media_type_id
-        xmlns="API:id_name_store">1</media_type_id><media_type_name xmlns="API:id_name_store">YouTube_Twitch</media_type_name></media_type><deal_flow><date_contacted
+        xmlns="API:id_name_store">2</media_type_id><media_type_name xmlns="API:id_name_store">Network</media_type_name></media_type><deal_flow><date_contacted
         xsi:nil="true" /><date_io_sent xsi:nil="true" /><date_io_signed xsi:nil="true"
-        /><date_creative_sent xsi:nil="true" /><date_pixel_placed>2016-11-10T10:40:41.057</date_pixel_placed></deal_flow><paid>true</paid><paid_redirects>true</paid_redirects><disable_prepop_appending>false</disable_prepop_appending><suppression_amount
+        /><date_creative_sent xsi:nil="true" /><date_pixel_placed>2016-11-10T10:40:41.057</date_pixel_placed></deal_flow><paid>false</paid><paid_redirects>false</paid_redirects><disable_prepop_appending>false</disable_prepop_appending><suppression_amount
         xsi:nil="true" /><redirect_domain>trk_ad2games.cakemarketing.net</redirect_domain><click_cap><limit
         xsi:nil="true" /><cap_interval><cap_interval_id xmlns="API:id_name_store">0</cap_interval_id><cap_interval_name
         xmlns="API:id_name_store">None</cap_interval_name></cap_interval><start_date
@@ -69,11 +69,11 @@ http_interactions:
         xsi:nil="true" /><cap_interval><cap_interval_id xmlns="API:id_name_store">0</cap_interval_id><cap_interval_name
         xmlns="API:id_name_store">None</cap_interval_name></cap_interval><start_date
         xsi:nil="true" /><review_no_redirect>false</review_no_redirect></conversion_cap><pixel_info><pixel_status>Approved</pixel_status><pixel_html>pixelpixelpixel</pixel_html><hash_type><hash_type_id
-        xmlns="API:id_name_store">0</hash_type_id><hash_type_name xmlns="API:id_name_store">None</hash_type_name></hash_type><postback_url>https://example.com/postback</postback_url><postback_delay_ms>100</postback_delay_ms></pixel_info><upsell_info><disable_upsells>false</disable_upsells><paid_upsells>true</paid_upsells><paid_upsells_same_session_only>false</paid_upsells_same_session_only><clear_session_on_conversion>true</clear_session_on_conversion></upsell_info><test_link>https://example.com/test</test_link><redirect_offer><offer_contract_id>10337</offer_contract_id><offer_contract_name>Direct</offer_contract_name><price_format><price_format_id
-        xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></redirect_offer><redirect_404>true</redirect_404><date_created>2016-11-08T16:49:09.017</date_created><expiration_date>2016-11-09T00:00:00</expiration_date><notes
-        /></campaign></campaigns></CampaignsResult></CampaignsResponse></soap:Body></soap:Envelope>
+        xmlns="API:id_name_store">0</hash_type_id><hash_type_name xmlns="API:id_name_store">None</hash_type_name></hash_type><postback_url>https://example.com/postback</postback_url><postback_delay_ms>100</postback_delay_ms></pixel_info><upsell_info><disable_upsells>false</disable_upsells><paid_upsells>false</paid_upsells><paid_upsells_same_session_only>false</paid_upsells_same_session_only><clear_session_on_conversion>false</clear_session_on_conversion></upsell_info><test_link>https://example.com/test</test_link><redirect_offer><offer_contract_id>10339</offer_contract_id><offer_contract_name>Networks</offer_contract_name><price_format><price_format_id
+        xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></redirect_offer><redirect_404>false</redirect_404><date_created>2016-11-08T16:49:09.017</date_created><expiration_date
+        xsi:nil="true" /><notes /></campaign></campaigns></CampaignsResult></CampaignsResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Thu, 10 Nov 2016 17:15:04 GMT
+  recorded_at: Fri, 11 Nov 2016 15:16:14 GMT
 - request:
     method: post
     uri: https://cake-partner-domain.com/api/3/addedit.asmx
@@ -102,8 +102,8 @@ http_interactions:
               <cake:postback_delay_ms>-1</cake:postback_delay_ms>
               <cake:affiliate_id>9643</cake:affiliate_id>
               <cake:display_link_type_id>1</cake:display_link_type_id>
-              <cake:media_type_id>1</cake:media_type_id>
-              <cake:offer_contract_id>10338</cake:offer_contract_id>
+              <cake:media_type_id>2</cake:media_type_id>
+              <cake:offer_contract_id>10342</cake:offer_contract_id>
               <cake:offer_id>11390</cake:offer_id>
               <cake:payout>1.0000</cake:payout>
               <cake:pixel_html>pixelpixelpixel</cake:pixel_html>
@@ -113,7 +113,7 @@ http_interactions:
               <cake:unique_key_hash>0</cake:unique_key_hash>
               <cake:third_party_name>foo</cake:third_party_name>
               <cake:campaign_id>23733</cake:campaign_id>
-              <cake:expiration_date>1970-01-01T00:00:00</cake:expiration_date>
+              <cake:expiration_date>1970-01-01T01:00:00</cake:expiration_date>
             </cake:Campaign>
           </env:Body>
         </env:Envelope>
@@ -142,7 +142,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 10 Nov 2016 17:14:46 GMT
+      - Fri, 11 Nov 2016 15:15:53 GMT
       Content-Length:
       - '634'
     body:
@@ -150,9 +150,9 @@ http_interactions:
       string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CampaignResponse
         xmlns="http://cakemarketing.com/api/3/"><CampaignResult><success>true</success><message>Campaign
-        Updated</message><success_info><campaign_id>23733</campaign_id><affiliate_id>9643</affiliate_id><offer_id>11390</offer_id><offer_contract_id>10338</offer_contract_id><media_type_id>1</media_type_id><original>false</original></success_info></CampaignResult></CampaignResponse></soap:Body></soap:Envelope>
+        Updated</message><success_info><campaign_id>23733</campaign_id><affiliate_id>9643</affiliate_id><offer_id>11390</offer_id><offer_contract_id>10342</offer_contract_id><media_type_id>2</media_type_id><original>false</original></success_info></CampaignResult></CampaignResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Thu, 10 Nov 2016 17:15:05 GMT
+  recorded_at: Fri, 11 Nov 2016 15:16:15 GMT
 - request:
     method: post
     uri: https://cake-partner-domain.com/api/6/export.asmx
@@ -194,9 +194,9 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 10 Nov 2016 17:14:46 GMT
+      - Fri, 11 Nov 2016 15:15:53 GMT
       Content-Length:
-      - '4147'
+      - '4131'
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
@@ -205,15 +205,15 @@ http_interactions:
         xmlns="API:id_name_store">1</campaign_type_id><campaign_type_name xmlns="API:id_name_store">Standard</campaign_type_name></campaign_type><affiliate><affiliate_id
         xmlns="API:id_name_store">9643</affiliate_id><affiliate_name xmlns="API:id_name_store">ad2games</affiliate_name></affiliate><offer><offer_id
         xmlns="API:id_name_store">11390</offer_id><offer_name xmlns="API:id_name_store">Helge's
-        Awesome Offer (DE CPO)</offer_name></offer><offer_contract><offer_contract_id>10338</offer_contract_id><offer_contract_name>Direct</offer_contract_name><price_format><price_format_id
+        Awesome Offer (DE CPO)</offer_name></offer><offer_contract><offer_contract_id>10342</offer_contract_id><offer_contract_name>Networks</offer_contract_name><price_format><price_format_id
         xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></offer_contract><original>false</original><exceptions><allowed_sub_affiliates
-        /><allowed_creatives /></exceptions><account_status><account_status_id xmlns="API:id_name_store">1</account_status_id><account_status_name
-        xmlns="API:id_name_store">Active</account_status_name></account_status><payout><is_percentage>false</is_percentage><amount>1.0000</amount><formatted_amount>$1.00</formatted_amount></payout><currency><currency_id
+        /><allowed_creatives /></exceptions><account_status><account_status_id xmlns="API:id_name_store">2</account_status_id><account_status_name
+        xmlns="API:id_name_store">Inactive</account_status_name></account_status><payout><is_percentage>false</is_percentage><amount>1.0000</amount><formatted_amount>$1.00</formatted_amount></payout><currency><currency_id
         xmlns="API:id_name_store">1</currency_id><currency_symbol xmlns="API:id_name_store">$</currency_symbol><currency_name
         xmlns="API:id_name_store">US Dollar</currency_name><currency_abbr xmlns="API:id_name_store">USD</currency_abbr></currency><media_type><media_type_id
-        xmlns="API:id_name_store">1</media_type_id><media_type_name xmlns="API:id_name_store">YouTube_Twitch</media_type_name></media_type><deal_flow><date_contacted
+        xmlns="API:id_name_store">2</media_type_id><media_type_name xmlns="API:id_name_store">Network</media_type_name></media_type><deal_flow><date_contacted
         xsi:nil="true" /><date_io_sent xsi:nil="true" /><date_io_signed xsi:nil="true"
-        /><date_creative_sent xsi:nil="true" /><date_pixel_placed>2016-11-10T10:40:41.057</date_pixel_placed></deal_flow><paid>true</paid><paid_redirects>true</paid_redirects><disable_prepop_appending>false</disable_prepop_appending><suppression_amount
+        /><date_creative_sent xsi:nil="true" /><date_pixel_placed>2016-11-10T10:40:41.057</date_pixel_placed></deal_flow><paid>false</paid><paid_redirects>false</paid_redirects><disable_prepop_appending>false</disable_prepop_appending><suppression_amount
         xsi:nil="true" /><redirect_domain>trk_ad2games.cakemarketing.net</redirect_domain><click_cap><limit
         xsi:nil="true" /><cap_interval><cap_interval_id xmlns="API:id_name_store">0</cap_interval_id><cap_interval_name
         xmlns="API:id_name_store">None</cap_interval_name></cap_interval><start_date
@@ -221,11 +221,11 @@ http_interactions:
         xsi:nil="true" /><cap_interval><cap_interval_id xmlns="API:id_name_store">0</cap_interval_id><cap_interval_name
         xmlns="API:id_name_store">None</cap_interval_name></cap_interval><start_date
         xsi:nil="true" /><review_no_redirect>false</review_no_redirect></conversion_cap><pixel_info><pixel_status>Approved</pixel_status><pixel_html>pixelpixelpixel</pixel_html><hash_type><hash_type_id
-        xmlns="API:id_name_store">0</hash_type_id><hash_type_name xmlns="API:id_name_store">None</hash_type_name></hash_type><postback_url>https://example.com/postback</postback_url><postback_delay_ms>100</postback_delay_ms></pixel_info><upsell_info><disable_upsells>false</disable_upsells><paid_upsells>true</paid_upsells><paid_upsells_same_session_only>false</paid_upsells_same_session_only><clear_session_on_conversion>true</clear_session_on_conversion></upsell_info><test_link>https://example.com/test</test_link><redirect_offer><offer_contract_id>10337</offer_contract_id><offer_contract_name>Direct</offer_contract_name><price_format><price_format_id
-        xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></redirect_offer><redirect_404>true</redirect_404><date_created>2016-11-08T16:49:09.017</date_created><expiration_date>2016-11-09T00:00:00</expiration_date><notes
-        /></campaign></campaigns></CampaignsResult></CampaignsResponse></soap:Body></soap:Envelope>
+        xmlns="API:id_name_store">0</hash_type_id><hash_type_name xmlns="API:id_name_store">None</hash_type_name></hash_type><postback_url>https://example.com/postback</postback_url><postback_delay_ms>100</postback_delay_ms></pixel_info><upsell_info><disable_upsells>false</disable_upsells><paid_upsells>false</paid_upsells><paid_upsells_same_session_only>false</paid_upsells_same_session_only><clear_session_on_conversion>false</clear_session_on_conversion></upsell_info><test_link>https://example.com/test</test_link><redirect_offer><offer_contract_id>10339</offer_contract_id><offer_contract_name>Networks</offer_contract_name><price_format><price_format_id
+        xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></redirect_offer><redirect_404>false</redirect_404><date_created>2016-11-08T16:49:09.017</date_created><expiration_date
+        xsi:nil="true" /><notes /></campaign></campaigns></CampaignsResult></CampaignsResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Thu, 10 Nov 2016 17:15:05 GMT
+  recorded_at: Fri, 11 Nov 2016 15:16:15 GMT
 - request:
     method: post
     uri: https://cake-partner-domain.com/api/6/export.asmx
@@ -267,9 +267,9 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 10 Nov 2016 17:14:46 GMT
+      - Fri, 11 Nov 2016 15:15:53 GMT
       Content-Length:
-      - '4147'
+      - '4131'
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
@@ -278,15 +278,15 @@ http_interactions:
         xmlns="API:id_name_store">1</campaign_type_id><campaign_type_name xmlns="API:id_name_store">Standard</campaign_type_name></campaign_type><affiliate><affiliate_id
         xmlns="API:id_name_store">9643</affiliate_id><affiliate_name xmlns="API:id_name_store">ad2games</affiliate_name></affiliate><offer><offer_id
         xmlns="API:id_name_store">11390</offer_id><offer_name xmlns="API:id_name_store">Helge's
-        Awesome Offer (DE CPO)</offer_name></offer><offer_contract><offer_contract_id>10338</offer_contract_id><offer_contract_name>Direct</offer_contract_name><price_format><price_format_id
+        Awesome Offer (DE CPO)</offer_name></offer><offer_contract><offer_contract_id>10342</offer_contract_id><offer_contract_name>Networks</offer_contract_name><price_format><price_format_id
         xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></offer_contract><original>false</original><exceptions><allowed_sub_affiliates
-        /><allowed_creatives /></exceptions><account_status><account_status_id xmlns="API:id_name_store">1</account_status_id><account_status_name
-        xmlns="API:id_name_store">Active</account_status_name></account_status><payout><is_percentage>false</is_percentage><amount>1.0000</amount><formatted_amount>$1.00</formatted_amount></payout><currency><currency_id
+        /><allowed_creatives /></exceptions><account_status><account_status_id xmlns="API:id_name_store">2</account_status_id><account_status_name
+        xmlns="API:id_name_store">Inactive</account_status_name></account_status><payout><is_percentage>false</is_percentage><amount>1.0000</amount><formatted_amount>$1.00</formatted_amount></payout><currency><currency_id
         xmlns="API:id_name_store">1</currency_id><currency_symbol xmlns="API:id_name_store">$</currency_symbol><currency_name
         xmlns="API:id_name_store">US Dollar</currency_name><currency_abbr xmlns="API:id_name_store">USD</currency_abbr></currency><media_type><media_type_id
-        xmlns="API:id_name_store">1</media_type_id><media_type_name xmlns="API:id_name_store">YouTube_Twitch</media_type_name></media_type><deal_flow><date_contacted
+        xmlns="API:id_name_store">2</media_type_id><media_type_name xmlns="API:id_name_store">Network</media_type_name></media_type><deal_flow><date_contacted
         xsi:nil="true" /><date_io_sent xsi:nil="true" /><date_io_signed xsi:nil="true"
-        /><date_creative_sent xsi:nil="true" /><date_pixel_placed>2016-11-10T10:40:41.057</date_pixel_placed></deal_flow><paid>true</paid><paid_redirects>true</paid_redirects><disable_prepop_appending>false</disable_prepop_appending><suppression_amount
+        /><date_creative_sent xsi:nil="true" /><date_pixel_placed>2016-11-10T10:40:41.057</date_pixel_placed></deal_flow><paid>false</paid><paid_redirects>false</paid_redirects><disable_prepop_appending>false</disable_prepop_appending><suppression_amount
         xsi:nil="true" /><redirect_domain>trk_ad2games.cakemarketing.net</redirect_domain><click_cap><limit
         xsi:nil="true" /><cap_interval><cap_interval_id xmlns="API:id_name_store">0</cap_interval_id><cap_interval_name
         xmlns="API:id_name_store">None</cap_interval_name></cap_interval><start_date
@@ -294,11 +294,11 @@ http_interactions:
         xsi:nil="true" /><cap_interval><cap_interval_id xmlns="API:id_name_store">0</cap_interval_id><cap_interval_name
         xmlns="API:id_name_store">None</cap_interval_name></cap_interval><start_date
         xsi:nil="true" /><review_no_redirect>false</review_no_redirect></conversion_cap><pixel_info><pixel_status>Approved</pixel_status><pixel_html>pixelpixelpixel</pixel_html><hash_type><hash_type_id
-        xmlns="API:id_name_store">0</hash_type_id><hash_type_name xmlns="API:id_name_store">None</hash_type_name></hash_type><postback_url>https://example.com/postback</postback_url><postback_delay_ms>100</postback_delay_ms></pixel_info><upsell_info><disable_upsells>false</disable_upsells><paid_upsells>true</paid_upsells><paid_upsells_same_session_only>false</paid_upsells_same_session_only><clear_session_on_conversion>true</clear_session_on_conversion></upsell_info><test_link>https://example.com/test</test_link><redirect_offer><offer_contract_id>10337</offer_contract_id><offer_contract_name>Direct</offer_contract_name><price_format><price_format_id
-        xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></redirect_offer><redirect_404>true</redirect_404><date_created>2016-11-08T16:49:09.017</date_created><expiration_date>2016-11-09T00:00:00</expiration_date><notes
-        /></campaign></campaigns></CampaignsResult></CampaignsResponse></soap:Body></soap:Envelope>
+        xmlns="API:id_name_store">0</hash_type_id><hash_type_name xmlns="API:id_name_store">None</hash_type_name></hash_type><postback_url>https://example.com/postback</postback_url><postback_delay_ms>100</postback_delay_ms></pixel_info><upsell_info><disable_upsells>false</disable_upsells><paid_upsells>false</paid_upsells><paid_upsells_same_session_only>false</paid_upsells_same_session_only><clear_session_on_conversion>false</clear_session_on_conversion></upsell_info><test_link>https://example.com/test</test_link><redirect_offer><offer_contract_id>10339</offer_contract_id><offer_contract_name>Networks</offer_contract_name><price_format><price_format_id
+        xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></redirect_offer><redirect_404>false</redirect_404><date_created>2016-11-08T16:49:09.017</date_created><expiration_date
+        xsi:nil="true" /><notes /></campaign></campaigns></CampaignsResult></CampaignsResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Thu, 10 Nov 2016 17:15:06 GMT
+  recorded_at: Fri, 11 Nov 2016 15:16:16 GMT
 - request:
     method: post
     uri: https://cake-partner-domain.com/api/3/addedit.asmx
@@ -327,8 +327,8 @@ http_interactions:
               <cake:postback_delay_ms>-1</cake:postback_delay_ms>
               <cake:affiliate_id>9643</cake:affiliate_id>
               <cake:display_link_type_id>1</cake:display_link_type_id>
-              <cake:media_type_id>1</cake:media_type_id>
-              <cake:offer_contract_id>10338</cake:offer_contract_id>
+              <cake:media_type_id>2</cake:media_type_id>
+              <cake:offer_contract_id>10342</cake:offer_contract_id>
               <cake:offer_id>11390</cake:offer_id>
               <cake:payout>1.0000</cake:payout>
               <cake:pixel_html>pixelpixelpixel</cake:pixel_html>
@@ -338,7 +338,7 @@ http_interactions:
               <cake:unique_key_hash>0</cake:unique_key_hash>
               <cake:third_party_name>bar</cake:third_party_name>
               <cake:campaign_id>23733</cake:campaign_id>
-              <cake:expiration_date>1970-01-01T00:00:00</cake:expiration_date>
+              <cake:expiration_date>1970-01-01T01:00:00</cake:expiration_date>
             </cake:Campaign>
           </env:Body>
         </env:Envelope>
@@ -367,7 +367,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 10 Nov 2016 17:14:47 GMT
+      - Fri, 11 Nov 2016 15:15:54 GMT
       Content-Length:
       - '634'
     body:
@@ -375,9 +375,9 @@ http_interactions:
       string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CampaignResponse
         xmlns="http://cakemarketing.com/api/3/"><CampaignResult><success>true</success><message>Campaign
-        Updated</message><success_info><campaign_id>23733</campaign_id><affiliate_id>9643</affiliate_id><offer_id>11390</offer_id><offer_contract_id>10338</offer_contract_id><media_type_id>1</media_type_id><original>false</original></success_info></CampaignResult></CampaignResponse></soap:Body></soap:Envelope>
+        Updated</message><success_info><campaign_id>23733</campaign_id><affiliate_id>9643</affiliate_id><offer_id>11390</offer_id><offer_contract_id>10342</offer_contract_id><media_type_id>2</media_type_id><original>false</original></success_info></CampaignResult></CampaignResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Thu, 10 Nov 2016 17:15:06 GMT
+  recorded_at: Fri, 11 Nov 2016 15:16:16 GMT
 - request:
     method: post
     uri: https://cake-partner-domain.com/api/6/export.asmx
@@ -419,9 +419,9 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 10 Nov 2016 17:14:47 GMT
+      - Fri, 11 Nov 2016 15:15:54 GMT
       Content-Length:
-      - '4147'
+      - '4131'
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
@@ -430,15 +430,15 @@ http_interactions:
         xmlns="API:id_name_store">1</campaign_type_id><campaign_type_name xmlns="API:id_name_store">Standard</campaign_type_name></campaign_type><affiliate><affiliate_id
         xmlns="API:id_name_store">9643</affiliate_id><affiliate_name xmlns="API:id_name_store">ad2games</affiliate_name></affiliate><offer><offer_id
         xmlns="API:id_name_store">11390</offer_id><offer_name xmlns="API:id_name_store">Helge's
-        Awesome Offer (DE CPO)</offer_name></offer><offer_contract><offer_contract_id>10338</offer_contract_id><offer_contract_name>Direct</offer_contract_name><price_format><price_format_id
+        Awesome Offer (DE CPO)</offer_name></offer><offer_contract><offer_contract_id>10342</offer_contract_id><offer_contract_name>Networks</offer_contract_name><price_format><price_format_id
         xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></offer_contract><original>false</original><exceptions><allowed_sub_affiliates
-        /><allowed_creatives /></exceptions><account_status><account_status_id xmlns="API:id_name_store">1</account_status_id><account_status_name
-        xmlns="API:id_name_store">Active</account_status_name></account_status><payout><is_percentage>false</is_percentage><amount>1.0000</amount><formatted_amount>$1.00</formatted_amount></payout><currency><currency_id
+        /><allowed_creatives /></exceptions><account_status><account_status_id xmlns="API:id_name_store">2</account_status_id><account_status_name
+        xmlns="API:id_name_store">Inactive</account_status_name></account_status><payout><is_percentage>false</is_percentage><amount>1.0000</amount><formatted_amount>$1.00</formatted_amount></payout><currency><currency_id
         xmlns="API:id_name_store">1</currency_id><currency_symbol xmlns="API:id_name_store">$</currency_symbol><currency_name
         xmlns="API:id_name_store">US Dollar</currency_name><currency_abbr xmlns="API:id_name_store">USD</currency_abbr></currency><media_type><media_type_id
-        xmlns="API:id_name_store">1</media_type_id><media_type_name xmlns="API:id_name_store">YouTube_Twitch</media_type_name></media_type><deal_flow><date_contacted
+        xmlns="API:id_name_store">2</media_type_id><media_type_name xmlns="API:id_name_store">Network</media_type_name></media_type><deal_flow><date_contacted
         xsi:nil="true" /><date_io_sent xsi:nil="true" /><date_io_signed xsi:nil="true"
-        /><date_creative_sent xsi:nil="true" /><date_pixel_placed>2016-11-10T10:40:41.057</date_pixel_placed></deal_flow><paid>true</paid><paid_redirects>true</paid_redirects><disable_prepop_appending>false</disable_prepop_appending><suppression_amount
+        /><date_creative_sent xsi:nil="true" /><date_pixel_placed>2016-11-10T10:40:41.057</date_pixel_placed></deal_flow><paid>false</paid><paid_redirects>false</paid_redirects><disable_prepop_appending>false</disable_prepop_appending><suppression_amount
         xsi:nil="true" /><redirect_domain>trk_ad2games.cakemarketing.net</redirect_domain><click_cap><limit
         xsi:nil="true" /><cap_interval><cap_interval_id xmlns="API:id_name_store">0</cap_interval_id><cap_interval_name
         xmlns="API:id_name_store">None</cap_interval_name></cap_interval><start_date
@@ -446,9 +446,9 @@ http_interactions:
         xsi:nil="true" /><cap_interval><cap_interval_id xmlns="API:id_name_store">0</cap_interval_id><cap_interval_name
         xmlns="API:id_name_store">None</cap_interval_name></cap_interval><start_date
         xsi:nil="true" /><review_no_redirect>false</review_no_redirect></conversion_cap><pixel_info><pixel_status>Approved</pixel_status><pixel_html>pixelpixelpixel</pixel_html><hash_type><hash_type_id
-        xmlns="API:id_name_store">0</hash_type_id><hash_type_name xmlns="API:id_name_store">None</hash_type_name></hash_type><postback_url>https://example.com/postback</postback_url><postback_delay_ms>100</postback_delay_ms></pixel_info><upsell_info><disable_upsells>false</disable_upsells><paid_upsells>true</paid_upsells><paid_upsells_same_session_only>false</paid_upsells_same_session_only><clear_session_on_conversion>true</clear_session_on_conversion></upsell_info><test_link>https://example.com/test</test_link><redirect_offer><offer_contract_id>10337</offer_contract_id><offer_contract_name>Direct</offer_contract_name><price_format><price_format_id
-        xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></redirect_offer><redirect_404>true</redirect_404><date_created>2016-11-08T16:49:09.017</date_created><expiration_date>2016-11-09T00:00:00</expiration_date><notes
-        /></campaign></campaigns></CampaignsResult></CampaignsResponse></soap:Body></soap:Envelope>
+        xmlns="API:id_name_store">0</hash_type_id><hash_type_name xmlns="API:id_name_store">None</hash_type_name></hash_type><postback_url>https://example.com/postback</postback_url><postback_delay_ms>100</postback_delay_ms></pixel_info><upsell_info><disable_upsells>false</disable_upsells><paid_upsells>false</paid_upsells><paid_upsells_same_session_only>false</paid_upsells_same_session_only><clear_session_on_conversion>false</clear_session_on_conversion></upsell_info><test_link>https://example.com/test</test_link><redirect_offer><offer_contract_id>10339</offer_contract_id><offer_contract_name>Networks</offer_contract_name><price_format><price_format_id
+        xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></redirect_offer><redirect_404>false</redirect_404><date_created>2016-11-08T16:49:09.017</date_created><expiration_date
+        xsi:nil="true" /><notes /></campaign></campaigns></CampaignsResult></CampaignsResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Thu, 10 Nov 2016 17:15:07 GMT
+  recorded_at: Fri, 11 Nov 2016 15:16:16 GMT
 recorded_with: VCR 3.0.3

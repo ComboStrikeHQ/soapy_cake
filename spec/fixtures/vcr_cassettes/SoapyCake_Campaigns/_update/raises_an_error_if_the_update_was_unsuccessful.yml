@@ -39,7 +39,7 @@ http_interactions:
               <cake:third_party_name>Max</cake:third_party_name>
               <cake:unique_key_hash>sha1</cake:unique_key_hash>
               <cake:campaign_id>9999999</cake:campaign_id>
-              <cake:expiration_date>1970-01-01T00:00:00</cake:expiration_date>
+              <cake:expiration_date>1970-01-01T01:00:00</cake:expiration_date>
             </cake:Campaign>
           </env:Body>
         </env:Envelope>
@@ -68,7 +68,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Fri, 11 Nov 2016 14:28:52 GMT
+      - Fri, 11 Nov 2016 15:15:51 GMT
       Content-Length:
       - '416'
     body:
@@ -78,5 +78,5 @@ http_interactions:
         xmlns="http://cakemarketing.com/api/3/"><CampaignResult><success>false</success><message>Invalid
         Campaign ID</message></CampaignResult></CampaignResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Fri, 11 Nov 2016 14:29:14 GMT
+  recorded_at: Fri, 11 Nov 2016 15:16:14 GMT
 recorded_with: VCR 3.0.3

@@ -98,7 +98,7 @@ module SoapyCake
       ModificationType.new(
         :expiration_date,
         :expiration_date_modification_type,
-        Time.new(1970, 1, 1)
+        Date.new(1970, 1, 1)
       )
     end
 
