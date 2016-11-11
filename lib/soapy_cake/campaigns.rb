@@ -17,10 +17,10 @@ module SoapyCake
 
     NO_CHANGE_VALUES = {
       account_status_id: 0,
-      expiration_date_modification_type: 'do_not_change',
+      expiration_date_modification_type: ModificationType::DO_NOT_CHANGE,
       currency_id: 0,
       use_offer_contract_payout: 'no_change',
-      payout_update_option: 'do_not_change',
+      payout_update_option: ModificationType::DO_NOT_CHANGE,
       paid: 'no_change',
       paid_redirects: 'no_change',
       paid_upsells: 'no_change',
