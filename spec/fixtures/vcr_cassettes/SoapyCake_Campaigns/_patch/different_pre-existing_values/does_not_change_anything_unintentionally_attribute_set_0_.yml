@@ -30,7 +30,7 @@ http_interactions:
               <cake:campaign_id>23733</cake:campaign_id>
               <cake:offer_id>11390</cake:offer_id>
               <cake:display_link_type_id>1</cake:display_link_type_id>
-              <cake:expiration_date>2016-11-09T00:00:00</cake:expiration_date>
+              <cake:expiration_date>2016-11-09T01:00:00</cake:expiration_date>
               <cake:media_type_id>1</cake:media_type_id>
               <cake:offer_contract_id>10338</cake:offer_contract_id>
               <cake:payout>0</cake:payout>
@@ -68,7 +68,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Fri, 11 Nov 2016 15:15:56 GMT
+      - Fri, 11 Nov 2016 15:41:54 GMT
       Content-Length:
       - '634'
     body:
@@ -78,7 +78,7 @@ http_interactions:
         xmlns="http://cakemarketing.com/api/3/"><CampaignResult><success>true</success><message>Campaign
         Updated</message><success_info><campaign_id>23733</campaign_id><affiliate_id>9643</affiliate_id><offer_id>11390</offer_id><offer_contract_id>10338</offer_contract_id><media_type_id>1</media_type_id><original>false</original></success_info></CampaignResult></CampaignResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Fri, 11 Nov 2016 15:16:19 GMT
+  recorded_at: Fri, 11 Nov 2016 15:42:17 GMT
 - request:
     method: post
     uri: https://cake-partner-domain.com/api/6/export.asmx
@@ -120,7 +120,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Fri, 11 Nov 2016 15:15:57 GMT
+      - Fri, 11 Nov 2016 15:41:55 GMT
       Content-Length:
       - '4162'
     body:
@@ -149,10 +149,10 @@ http_interactions:
         xmlns="API:id_name_store">None</cap_interval_name></cap_interval><start_date
         xsi:nil="true" /><review_no_redirect>false</review_no_redirect></conversion_cap><pixel_info><pixel_status>Approved</pixel_status><pixel_html>pixelpixelpixel</pixel_html><hash_type><hash_type_id
         xmlns="API:id_name_store">0</hash_type_id><hash_type_name xmlns="API:id_name_store">None</hash_type_name></hash_type><postback_url>https://example.com/postback</postback_url><postback_delay_ms>100</postback_delay_ms></pixel_info><upsell_info><disable_upsells>false</disable_upsells><paid_upsells>true</paid_upsells><paid_upsells_same_session_only>false</paid_upsells_same_session_only><clear_session_on_conversion>true</clear_session_on_conversion></upsell_info><test_link>https://example.com/test</test_link><redirect_offer><offer_contract_id>10337</offer_contract_id><offer_contract_name>Direct</offer_contract_name><price_format><price_format_id
-        xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></redirect_offer><redirect_404>true</redirect_404><date_created>2016-11-08T16:49:09.017</date_created><expiration_date>2016-11-09T00:00:00</expiration_date><notes
+        xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></redirect_offer><redirect_404>true</redirect_404><date_created>2016-11-08T16:49:09.017</date_created><expiration_date>2016-11-09T01:00:00</expiration_date><notes
         /></campaign></campaigns></CampaignsResult></CampaignsResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Fri, 11 Nov 2016 15:16:19 GMT
+  recorded_at: Fri, 11 Nov 2016 15:42:18 GMT
 - request:
     method: post
     uri: https://cake-partner-domain.com/api/6/export.asmx
@@ -194,7 +194,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Fri, 11 Nov 2016 15:15:57 GMT
+      - Fri, 11 Nov 2016 15:41:55 GMT
       Content-Length:
       - '4162'
     body:
@@ -223,10 +223,10 @@ http_interactions:
         xmlns="API:id_name_store">None</cap_interval_name></cap_interval><start_date
         xsi:nil="true" /><review_no_redirect>false</review_no_redirect></conversion_cap><pixel_info><pixel_status>Approved</pixel_status><pixel_html>pixelpixelpixel</pixel_html><hash_type><hash_type_id
         xmlns="API:id_name_store">0</hash_type_id><hash_type_name xmlns="API:id_name_store">None</hash_type_name></hash_type><postback_url>https://example.com/postback</postback_url><postback_delay_ms>100</postback_delay_ms></pixel_info><upsell_info><disable_upsells>false</disable_upsells><paid_upsells>true</paid_upsells><paid_upsells_same_session_only>false</paid_upsells_same_session_only><clear_session_on_conversion>true</clear_session_on_conversion></upsell_info><test_link>https://example.com/test</test_link><redirect_offer><offer_contract_id>10337</offer_contract_id><offer_contract_name>Direct</offer_contract_name><price_format><price_format_id
-        xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></redirect_offer><redirect_404>true</redirect_404><date_created>2016-11-08T16:49:09.017</date_created><expiration_date>2016-11-09T00:00:00</expiration_date><notes
+        xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></redirect_offer><redirect_404>true</redirect_404><date_created>2016-11-08T16:49:09.017</date_created><expiration_date>2016-11-09T01:00:00</expiration_date><notes
         /></campaign></campaigns></CampaignsResult></CampaignsResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Fri, 11 Nov 2016 15:16:19 GMT
+  recorded_at: Fri, 11 Nov 2016 15:42:18 GMT
 - request:
     method: post
     uri: https://cake-partner-domain.com/api/3/addedit.asmx
@@ -295,7 +295,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Fri, 11 Nov 2016 15:15:57 GMT
+      - Fri, 11 Nov 2016 15:41:55 GMT
       Content-Length:
       - '634'
     body:
@@ -305,7 +305,7 @@ http_interactions:
         xmlns="http://cakemarketing.com/api/3/"><CampaignResult><success>true</success><message>Campaign
         Updated</message><success_info><campaign_id>23733</campaign_id><affiliate_id>9643</affiliate_id><offer_id>11390</offer_id><offer_contract_id>10338</offer_contract_id><media_type_id>1</media_type_id><original>false</original></success_info></CampaignResult></CampaignResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Fri, 11 Nov 2016 15:16:20 GMT
+  recorded_at: Fri, 11 Nov 2016 15:42:18 GMT
 - request:
     method: post
     uri: https://cake-partner-domain.com/api/6/export.asmx
@@ -347,7 +347,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Fri, 11 Nov 2016 15:15:57 GMT
+      - Fri, 11 Nov 2016 15:41:56 GMT
       Content-Length:
       - '4162'
     body:
@@ -376,8 +376,8 @@ http_interactions:
         xmlns="API:id_name_store">None</cap_interval_name></cap_interval><start_date
         xsi:nil="true" /><review_no_redirect>false</review_no_redirect></conversion_cap><pixel_info><pixel_status>Approved</pixel_status><pixel_html>pixelpixelpixel</pixel_html><hash_type><hash_type_id
         xmlns="API:id_name_store">0</hash_type_id><hash_type_name xmlns="API:id_name_store">None</hash_type_name></hash_type><postback_url>https://example.com/postback</postback_url><postback_delay_ms>100</postback_delay_ms></pixel_info><upsell_info><disable_upsells>false</disable_upsells><paid_upsells>true</paid_upsells><paid_upsells_same_session_only>false</paid_upsells_same_session_only><clear_session_on_conversion>true</clear_session_on_conversion></upsell_info><test_link>https://example.com/test</test_link><redirect_offer><offer_contract_id>10337</offer_contract_id><offer_contract_name>Direct</offer_contract_name><price_format><price_format_id
-        xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></redirect_offer><redirect_404>true</redirect_404><date_created>2016-11-08T16:49:09.017</date_created><expiration_date>2016-11-09T00:00:00</expiration_date><notes
+        xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></redirect_offer><redirect_404>true</redirect_404><date_created>2016-11-08T16:49:09.017</date_created><expiration_date>2016-11-09T01:00:00</expiration_date><notes
         /></campaign></campaigns></CampaignsResult></CampaignsResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Fri, 11 Nov 2016 15:16:20 GMT
+  recorded_at: Fri, 11 Nov 2016 15:42:19 GMT
 recorded_with: VCR 3.0.3

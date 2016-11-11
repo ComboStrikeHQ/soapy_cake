@@ -41,7 +41,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Fri, 11 Nov 2016 15:15:52 GMT
+      - Fri, 11 Nov 2016 15:41:50 GMT
       Content-Length:
       - '4146'
     body:
@@ -73,7 +73,7 @@ http_interactions:
         xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></redirect_offer><redirect_404>false</redirect_404><date_created>2016-11-08T16:49:09.017</date_created><expiration_date
         xsi:nil="true" /><notes /></campaign></campaigns></CampaignsResult></CampaignsResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Fri, 11 Nov 2016 15:16:14 GMT
+  recorded_at: Fri, 11 Nov 2016 15:42:13 GMT
 - request:
     method: post
     uri: https://cake-partner-domain.com/api/3/addedit.asmx
@@ -142,7 +142,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Fri, 11 Nov 2016 15:15:53 GMT
+      - Fri, 11 Nov 2016 15:41:50 GMT
       Content-Length:
       - '634'
     body:
@@ -152,7 +152,7 @@ http_interactions:
         xmlns="http://cakemarketing.com/api/3/"><CampaignResult><success>true</success><message>Campaign
         Updated</message><success_info><campaign_id>23733</campaign_id><affiliate_id>9643</affiliate_id><offer_id>11390</offer_id><offer_contract_id>10342</offer_contract_id><media_type_id>2</media_type_id><original>false</original></success_info></CampaignResult></CampaignResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Fri, 11 Nov 2016 15:16:15 GMT
+  recorded_at: Fri, 11 Nov 2016 15:42:13 GMT
 - request:
     method: post
     uri: https://cake-partner-domain.com/api/6/export.asmx
@@ -194,7 +194,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Fri, 11 Nov 2016 15:15:53 GMT
+      - Fri, 11 Nov 2016 15:41:51 GMT
       Content-Length:
       - '4131'
     body:
@@ -225,7 +225,7 @@ http_interactions:
         xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></redirect_offer><redirect_404>false</redirect_404><date_created>2016-11-08T16:49:09.017</date_created><expiration_date
         xsi:nil="true" /><notes /></campaign></campaigns></CampaignsResult></CampaignsResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Fri, 11 Nov 2016 15:16:15 GMT
+  recorded_at: Fri, 11 Nov 2016 15:42:14 GMT
 - request:
     method: post
     uri: https://cake-partner-domain.com/api/6/export.asmx
@@ -267,7 +267,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Fri, 11 Nov 2016 15:15:53 GMT
+      - Fri, 11 Nov 2016 15:41:51 GMT
       Content-Length:
       - '4131'
     body:
@@ -298,7 +298,7 @@ http_interactions:
         xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></redirect_offer><redirect_404>false</redirect_404><date_created>2016-11-08T16:49:09.017</date_created><expiration_date
         xsi:nil="true" /><notes /></campaign></campaigns></CampaignsResult></CampaignsResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Fri, 11 Nov 2016 15:16:16 GMT
+  recorded_at: Fri, 11 Nov 2016 15:42:14 GMT
 - request:
     method: post
     uri: https://cake-partner-domain.com/api/3/addedit.asmx
@@ -367,7 +367,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Fri, 11 Nov 2016 15:15:54 GMT
+      - Fri, 11 Nov 2016 15:41:51 GMT
       Content-Length:
       - '634'
     body:
@@ -377,7 +377,7 @@ http_interactions:
         xmlns="http://cakemarketing.com/api/3/"><CampaignResult><success>true</success><message>Campaign
         Updated</message><success_info><campaign_id>23733</campaign_id><affiliate_id>9643</affiliate_id><offer_id>11390</offer_id><offer_contract_id>10342</offer_contract_id><media_type_id>2</media_type_id><original>false</original></success_info></CampaignResult></CampaignResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Fri, 11 Nov 2016 15:16:16 GMT
+  recorded_at: Fri, 11 Nov 2016 15:42:14 GMT
 - request:
     method: post
     uri: https://cake-partner-domain.com/api/6/export.asmx
@@ -419,7 +419,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Fri, 11 Nov 2016 15:15:54 GMT
+      - Fri, 11 Nov 2016 15:41:52 GMT
       Content-Length:
       - '4131'
     body:
@@ -450,5 +450,5 @@ http_interactions:
         xmlns="API:id_name_store">1</price_format_id><price_format_name xmlns="API:id_name_store">CPA</price_format_name></price_format></redirect_offer><redirect_404>false</redirect_404><date_created>2016-11-08T16:49:09.017</date_created><expiration_date
         xsi:nil="true" /><notes /></campaign></campaigns></CampaignsResult></CampaignsResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Fri, 11 Nov 2016 15:16:16 GMT
+  recorded_at: Fri, 11 Nov 2016 15:42:15 GMT
 recorded_with: VCR 3.0.3

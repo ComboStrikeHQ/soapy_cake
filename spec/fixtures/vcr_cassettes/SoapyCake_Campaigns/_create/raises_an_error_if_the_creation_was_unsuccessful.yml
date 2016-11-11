@@ -51,7 +51,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Fri, 11 Nov 2016 15:15:51 GMT
+      - Fri, 11 Nov 2016 15:41:56 GMT
       Content-Length:
       - '414'
     body:
@@ -61,5 +61,5 @@ http_interactions:
         xmlns="http://cakemarketing.com/api/3/"><CampaignResult><success>false</success><message>Invalid
         Affiliate</message></CampaignResult></CampaignResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Fri, 11 Nov 2016 15:16:13 GMT
+  recorded_at: Fri, 11 Nov 2016 15:42:19 GMT
 recorded_with: VCR 3.0.3
