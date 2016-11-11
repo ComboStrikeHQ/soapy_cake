@@ -1,7 +1,7 @@
 # frozen_string_literal: true
-RSpec.describe SoapyCake::ModificationTypeOptions do
+RSpec.describe SoapyCake::ModificationType do
   subject(:output_opts) do
-    described_class.new(:foo, :foo_mod_type, 'bar').call(input_opts)
+    described_class.new(:foo, :foo_mod_type, 'bar').options(input_opts)
   end
 
   context 'no related params are provided' do
@@ -27,7 +27,7 @@ RSpec.describe SoapyCake::ModificationTypeOptions do
       expect do
         output_opts
       end.to raise_error(
-        SoapyCake::ModificationTypeOptions::InvalidInput,
+        described_class::InvalidInput,
         "`foo_mod_type` was 'change', but no `foo` was provided to change it to"
       )
     end

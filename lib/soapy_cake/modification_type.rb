@@ -1,17 +1,14 @@
 # frozen_string_literal: true
 module SoapyCake
-  class ModificationTypeOptions
+  class ModificationType
     def initialize(key, modification_type_key, default)
       @key = key
       @modification_type_key = modification_type_key
       @default = default
     end
 
-    def call(input_opts)
-      if input_opts[key].nil? && input_opts[modification_type_key] == 'change'
-        raise InvalidInput,
-          "`#{modification_type_key}` was 'change', but no `#{key}` was provided to change it to"
-      end
+    def options(input_opts)
+      validate_input(input_opts)
 
       input_opts.merge(
         key => value(input_opts),
@@ -31,6 +28,12 @@ module SoapyCake
       input_opts.fetch(modification_type_key) do
         input_opts[key] ? 'change' : 'remove'
       end
+    end
+
+    def validate_input(input_opts)
+      return unless input_opts[key].nil? && input_opts[modification_type_key] == 'change'
+      raise InvalidInput,
+        "`#{modification_type_key}` was 'change', but no `#{key}` was provided to change it to"
     end
 
     InvalidInput = Class.new(StandardError)

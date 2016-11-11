@@ -56,8 +56,8 @@ module SoapyCake
 
     def update(campaign_id, opts = {})
       opts = opts.merge(campaign_id: campaign_id)
-      opts = opts.merge(payout_options.call(opts))
-      opts = opts.merge(expiration_date_options.call(opts))
+      opts = opts.merge(payout.options(opts))
+      opts = opts.merge(expiration_date.options(opts))
       opts = NO_CHANGE_VALUES.merge(opts)
       require_params(opts, ALL_PARAMS)
       addedit_campaign(opts)
@@ -90,12 +90,12 @@ module SoapyCake
 
     private
 
-    def payout_options
-      ModificationTypeOptions.new(:payout, :payout_update_option, 0)
+    def payout
+      ModificationType.new(:payout, :payout_update_option, 0)
     end
 
-    def expiration_date_options
-      ModificationTypeOptions.new(
+    def expiration_date
+      ModificationType.new(
         :expiration_date,
         :expiration_date_modification_type,
         Time.new(1970, 1, 1)
