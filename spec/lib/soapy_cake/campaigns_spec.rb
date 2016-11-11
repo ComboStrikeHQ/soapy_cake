@@ -26,18 +26,24 @@ RSpec.describe SoapyCake::Campaigns do
     }
   end
 
+  def expect_request_to_be_built_with(opts)
+    expect(SoapyCake::Request).to receive(:new).with(
+      :admin,
+      :addedit,
+      :campaign,
+      a_hash_including(opts)
+    ).and_call_original
+  end
+
   context 'setting an expiration date' do
     let(:expiration_date) { Time.new(2016, 11, 10) }
 
     context 'without an `expiration_date_modification_type`' do
       it 'changes the expiration date if an `expiration_date` is provided' do
-        expect(SoapyCake::Request).to receive(:new).with(
-          :admin,
-          :addedit,
-          :campaign,
-          a_hash_including(expiration_date: expiration_date,
-                           expiration_date_modification_type: 'change')
-        ).and_call_original
+        expect_request_to_be_built_with(
+          expiration_date: expiration_date,
+          expiration_date_modification_type: 'change'
+        )
 
         campaigns.update(
           campaign_id,
@@ -46,13 +52,10 @@ RSpec.describe SoapyCake::Campaigns do
       end
 
       it 'removes the expiration date if no `expiration_date` is provided' do
-        expect(SoapyCake::Request).to receive(:new).with(
-          :admin,
-          :addedit,
-          :campaign,
-          a_hash_including(expiration_date: Time.utc(1970, 1, 1),
-                           expiration_date_modification_type: 'remove')
-        ).and_call_original
+        expect_request_to_be_built_with(
+          expiration_date: Time.utc(1970, 1, 1),
+          expiration_date_modification_type: 'remove'
+        )
 
         campaigns.update(campaign_id, default_params)
       end
@@ -60,13 +63,10 @@ RSpec.describe SoapyCake::Campaigns do
 
     context 'with an `expiration_date_modification_type` provided' do
       it 'passes along both, the `expiration_date` and `expiration_date_modification_type`' do
-        expect(SoapyCake::Request).to receive(:new).with(
-          :admin,
-          :addedit,
-          :campaign,
-          a_hash_including(expiration_date: expiration_date,
-                           expiration_date_modification_type: 'change')
-        ).and_call_original
+        expect_request_to_be_built_with(
+          expiration_date: expiration_date,
+          expiration_date_modification_type: 'change'
+        )
 
         campaigns.update(
           campaign_id,
@@ -76,13 +76,10 @@ RSpec.describe SoapyCake::Campaigns do
       end
 
       it 'sets the expiration_date to something if the modification type is `remove`' do
-        expect(SoapyCake::Request).to receive(:new).with(
-          :admin,
-          :addedit,
-          :campaign,
-          a_hash_including(expiration_date: Time.utc(1970, 1, 1),
-                           expiration_date_modification_type: 'remove')
-        ).and_call_original
+        expect_request_to_be_built_with(
+          expiration_date: Time.utc(1970, 1, 1),
+          expiration_date_modification_type: 'remove'
+        )
 
         campaigns.update(
           campaign_id,
@@ -95,12 +92,7 @@ RSpec.describe SoapyCake::Campaigns do
   context 'setting a payout' do
     context '`payout_update_option` is not provided' do
       it 'changes the payout if a payout is provided' do
-        expect(SoapyCake::Request).to receive(:new).with(
-          :admin,
-          :addedit,
-          :campaign,
-          a_hash_including(payout: 1.23, payout_update_option: 'change')
-        ).and_call_original
+        expect_request_to_be_built_with(payout: 1.23, payout_update_option: 'change')
 
         campaigns.update(
           campaign_id,
