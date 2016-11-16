@@ -23,6 +23,9 @@ require 'soapy_cake/admin_addedit'
 require 'soapy_cake/admin_track'
 require 'soapy_cake/affiliate'
 
+require 'soapy_cake/modification_type'
+require 'soapy_cake/campaigns'
+
 module SoapyCake
   API_CONFIG = YAML.load(File.read(File.expand_path('../../api.yml', __FILE__)))
   NET_TIMEOUT = 600

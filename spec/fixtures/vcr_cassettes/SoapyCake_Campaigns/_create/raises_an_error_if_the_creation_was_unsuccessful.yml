@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://cake-partner-domain.com/api/3/addedit.asmx
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0"?>
+        <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:cake="http://cakemarketing.com/api/3/">
+          <env:Header/>
+          <env:Body>
+            <cake:Campaign>
+              <cake:api_key>cake-api-key</cake:api_key>
+              <cake:account_status_id>1</cake:account_status_id>
+              <cake:affiliate_id>0</cake:affiliate_id>
+              <cake:display_link_type_id>1</cake:display_link_type_id>
+              <cake:media_type_id>1</cake:media_type_id>
+              <cake:offer_id>11390</cake:offer_id>
+              <cake:campaign_id>0</cake:campaign_id>
+            </cake:Campaign>
+          </env:Body>
+        </env:Envelope>
+    headers:
+      Content-Type:
+      - application/soap+xml;charset=UTF-8
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - application/soap+xml; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Fri, 11 Nov 2016 15:57:23 GMT
+      Content-Length:
+      - '414'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CampaignResponse
+        xmlns="http://cakemarketing.com/api/3/"><CampaignResult><success>false</success><message>Invalid
+        Affiliate</message></CampaignResult></CampaignResponse></soap:Body></soap:Envelope>
+    http_version: 
+  recorded_at: Fri, 11 Nov 2016 15:57:46 GMT
+recorded_with: VCR 3.0.3
