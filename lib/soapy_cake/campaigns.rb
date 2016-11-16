@@ -65,11 +65,11 @@ module SoapyCake
           offer_id: campaign.fetch(:offer).fetch(:offer_id),
           payout: campaign.fetch(:payout).fetch(:amount),
           payout_update_option: 'do_not_change',
-          pixel_html: campaign.fetch(:pixel_info).fetch(:pixel_html),
-          postback_url: campaign.fetch(:pixel_info).fetch(:postback_url),
-          redirect_domain: campaign.fetch(:redirect_domain),
-          test_link: campaign.fetch(:test_link),
-          unique_key_hash: campaign.fetch(:pixel_info).fetch(:hash_type).fetch(:hash_type_id),
+          pixel_html: campaign.dig(:pixel_info, :pixel_html) || '',
+          postback_url: campaign.dig(:pixel_info, :postback_url) || '',
+          redirect_domain: campaign.fetch(:redirect_domain, ''),
+          test_link: campaign[:test_link] || '',
+          unique_key_hash: campaign.dig(:pixel_info, :hash_type, :hash_type_id) || 'none',
           third_party_name: campaign.fetch(:third_party_name, '')
         )
         .merge(opts)
