@@ -108,16 +108,19 @@ RSpec.describe SoapyCake::Campaigns do
 
       campaigns.update(
         campaign_id,
-        default_params.merge(account_status_id: :pending)
+        default_params.merge(account_status: :pending)
       )
     end
 
-    it 'does not translate values that already have a numeric value' do
-      expect_request_to_be_built_with(account_status_id: 3)
-
-      campaigns.update(
-        campaign_id,
-        default_params.merge(account_status_id: 3)
+    it 'raises an exception, if the value cannot be translated' do
+      expect do
+        campaigns.update(
+          campaign_id,
+          default_params.merge(account_status: :misbehaved)
+        )
+      end.to raise_error(
+        ArgumentError,
+        'misbehaved is not a valid value for account_status_id'
       )
     end
   end

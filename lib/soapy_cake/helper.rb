@@ -36,19 +36,20 @@ module SoapyCake
 
     def translate_values(opts)
       opts.map do |k, v|
-        [
-          k,
-          if Const::CONSTS.key?(k) && !v.is_a?(Integer)
-            const_lookup(k, v)
-          else
-            v
-          end
-        ]
+        id_key = :"#{k}_id"
+
+        if Const::CONSTS.key?(id_key)
+          [id_key, const_lookup(id_key, v)]
+        elsif Const::CONSTS.key?(k) && !v.is_a?(Integer)
+          [k, const_lookup(k, v)]
+        else
+          [k, v]
+        end
       end.to_h
     end
 
     def const_lookup(type, key)
-      Const::CONSTS[type].fetch(key) do
+      Const::CONSTS.fetch(type).fetch(key) do
         raise ArgumentError, "#{key} is not a valid value for #{type}"
       end
     end
