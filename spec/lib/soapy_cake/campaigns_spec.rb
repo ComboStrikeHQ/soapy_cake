@@ -101,4 +101,24 @@ RSpec.describe SoapyCake::Campaigns do
       end
     end
   end
+
+  describe 'translating values' do
+    it 'translates values that have a translation' do
+      expect_request_to_be_built_with(account_status_id: 3)
+
+      campaigns.update(
+        campaign_id,
+        default_params.merge(account_status_id: :pending)
+      )
+    end
+
+    it 'does not translate values that already have a numeric value' do
+      expect_request_to_be_built_with(account_status_id: 3)
+
+      campaigns.update(
+        campaign_id,
+        default_params.merge(account_status_id: 3)
+      )
+    end
+  end
 end

@@ -93,6 +93,7 @@ module SoapyCake
 
     def addedit_campaign(opts)
       opts = translate_booleans(opts)
+      opts = translate_values(opts)
       client.run Request.new(:admin, :addedit, :campaign, opts)
     end
 

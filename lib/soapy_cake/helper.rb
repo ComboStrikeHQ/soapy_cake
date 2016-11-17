@@ -34,11 +34,15 @@ module SoapyCake
       end
     end
 
-    def translate_values(opts, params)
+    def translate_values(opts)
       opts.map do |k, v|
         [
           k,
-          params.include?(k) ? const_lookup(k, v) : v
+          if Const::CONSTS.key?(k) && !v.is_a?(Integer)
+            const_lookup(k, v)
+          else
+            v
+          end
         ]
       end.to_h
     end
