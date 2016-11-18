@@ -141,7 +141,7 @@ module SoapyCake
     def update_caps(opts)
       require_params(opts, %i(cap_type_id cap_interval_id cap_amount send_alert_only))
 
-      opts = translate_values(opts, %i(cap_type_id cap_interval_id))
+      opts = translate_values(opts)
 
       run Request.new(:admin, :addedit, :caps, opts)
     end
@@ -149,7 +149,7 @@ module SoapyCake
     def remove_caps(opts)
       require_params(opts, %i(cap_type_id))
 
-      opts = translate_values(opts, %i(cap_type_id))
+      opts = translate_values(opts)
 
       opts = opts.merge(cap_interval_id: 0, cap_amount: -1, send_alert_only: false)
       run Request.new(:admin, :addedit, :caps, opts)
@@ -179,7 +179,7 @@ module SoapyCake
       require_params(opts, %i(offer_id tier_id price_format_id offer_contract_id status_id))
 
       opts = opts.merge(redirect_offer_contract_id: -1, add_edit_option: add_edit_option)
-      opts = translate_values(opts, %i(status_id price_format_id))
+      opts = translate_values(opts)
 
       run Request.new(:admin, :addedit, :offer_tiers, opts)
     end
@@ -217,17 +217,14 @@ module SoapyCake
 
       opts = translate_booleans(opts)
       opts = apply_tag_opts(opts)
-      opts = translate_values(opts, %i(
-                                currency_id offer_status_id offer_type_id price_format_id
-                                conversion_cap_behavior conversion_behavior_on_redirect
-                              ))
+      opts = translate_values(opts)
 
       run(Request.new(:admin, :addedit, :offer, default_offer_options.merge(opts)))[:success_info]
     end
 
     def addedit_offer_contract(opts)
       require_params(opts, REQUIRED_OFFER_CONTRACT_PARAMS)
-      opts = translate_values(opts, %i(price_format_id))
+      opts = translate_values(opts)
 
       run Request.new(:admin, :addedit, :offer_contract, opts)
     end
