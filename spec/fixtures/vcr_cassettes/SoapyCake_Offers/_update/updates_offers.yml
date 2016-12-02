@@ -1,0 +1,117 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://cake-partner-domain.com/api/5/addedit.asmx
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0"?>
+        <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:cake="http://cakemarketing.com/api/5/">
+          <env:Header/>
+          <env:Body>
+            <cake:Offer>
+              <cake:api_key>cake-api-key</cake:api_key>
+              <cake:vertical_id>0</cake:vertical_id>
+              <cake:offer_name/>
+              <cake:third_party_name/>
+              <cake:hidden>no_change</cake:hidden>
+              <cake:offer_status_id>0</cake:offer_status_id>
+              <cake:ssl>no_change</cake:ssl>
+              <cake:click_cookie_days>-1</cake:click_cookie_days>
+              <cake:impression_cookie_days>-1</cake:impression_cookie_days>
+              <cake:redirect_offer_contract_id>0</cake:redirect_offer_contract_id>
+              <cake:redirect_404>no_change</cake:redirect_404>
+              <cake:enable_view_thru_conversions>no_change</cake:enable_view_thru_conversions>
+              <cake:click_trumps_impression>no_change</cake:click_trumps_impression>
+              <cake:disable_click_deduplication>no_change</cake:disable_click_deduplication>
+              <cake:last_touch>no_change</cake:last_touch>
+              <cake:enable_transaction_id_deduplication>no_change</cake:enable_transaction_id_deduplication>
+              <cake:postbacks_only>no_change</cake:postbacks_only>
+              <cake:pixel_html/>
+              <cake:postback_url/>
+              <cake:fire_global_pixel>no_change</cake:fire_global_pixel>
+              <cake:fire_pixel_on_nonpaid_conversions>no_change</cake:fire_pixel_on_nonpaid_conversions>
+              <cake:static_suppression>-1</cake:static_suppression>
+              <cake:conversion_cap_behavior>-1</cake:conversion_cap_behavior>
+              <cake:conversion_behavior_on_redirect>-1</cake:conversion_behavior_on_redirect>
+              <cake:offer_contract_name/>
+              <cake:offer_link/>
+              <cake:thankyou_link/>
+              <cake:preview_link/>
+              <cake:thumbnail_file_import_url/>
+              <cake:offer_description/>
+              <cake:restrictions/>
+              <cake:advertiser_extended_terms/>
+              <cake:testing_instructions/>
+              <cake:allow_affiliates_to_create_creatives>no_change</cake:allow_affiliates_to_create_creatives>
+              <cake:unsubscribe_link/>
+              <cake:from_lines/>
+              <cake:subject_lines/>
+              <cake:conversions_from_whitelist_only>no_change</cake:conversions_from_whitelist_only>
+              <cake:track_search_terms_from_non_supported_search_engines>no_change</cake:track_search_terms_from_non_supported_search_engines>
+              <cake:auto_disposition_type>no_change</cake:auto_disposition_type>
+              <cake:session_regeneration_seconds>-1</cake:session_regeneration_seconds>
+              <cake:session_regeneration_type_id>0</cake:session_regeneration_type_id>
+              <cake:advertiser_id>1</cake:advertiser_id>
+              <cake:allowed_media_type_ids>1</cake:allowed_media_type_ids>
+              <cake:allowed_media_type_modification_type>replace</cake:allowed_media_type_modification_type>
+              <cake:auto_disposition_delay_hours>0</cake:auto_disposition_delay_hours>
+              <cake:cookie_domain>trk_ad2games.cakemarketing.com</cake:cookie_domain>
+              <cake:currency_id>1</cake:currency_id>
+              <cake:offer_contract_hidden>off</cake:offer_contract_hidden>
+              <cake:offer_type_id>1</cake:offer_type_id>
+              <cake:postback_url_ms_delay>0</cake:postback_url_ms_delay>
+              <cake:price_format_id>1</cake:price_format_id>
+              <cake:received_percentage>on</cake:received_percentage>
+              <cake:redirect_domain>example.com</cake:redirect_domain>
+              <cake:tags>foo,bar</cake:tags>
+              <cake:tags_modification_type>replace</cake:tags_modification_type>
+              <cake:payout>1.23</cake:payout>
+              <cake:received>0.9</cake:received>
+              <cake:offer_id>11390</cake:offer_id>
+              <cake:payout_modification_type>change</cake:payout_modification_type>
+              <cake:received_modification_type>change</cake:received_modification_type>
+              <cake:expiration_date>1970-01-01T01:00:00</cake:expiration_date>
+              <cake:expiration_date_modification_type>remove</cake:expiration_date_modification_type>
+            </cake:Offer>
+          </env:Body>
+        </env:Envelope>
+    headers:
+      Content-Type:
+      - application/soap+xml;charset=UTF-8
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - application/soap+xml; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Fri, 02 Dec 2016 15:13:22 GMT
+      Content-Length:
+      - '562'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><OfferResponse
+        xmlns="http://cakemarketing.com/api/5/"><OfferResult><success>true</success><message>Offer
+        11390 Updated</message><success_info><offer_id>11390</offer_id><offer_contract_id>10338</offer_contract_id><campaign_id
+        xsi:nil="true" /><creative_id xsi:nil="true" /></success_info></OfferResult></OfferResponse></soap:Body></soap:Envelope>
+    http_version: 
+  recorded_at: Fri, 02 Dec 2016 15:13:44 GMT
+recorded_with: VCR 3.0.3
