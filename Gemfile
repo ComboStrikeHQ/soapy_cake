@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gemspec
 
 group :development, :test do
-  gem 'rubocop-ci', github: 'ad2games/rubocop-ci'
+  gem 'rubocop-ci', git: 'https://github.com/ad2games/rubocop-ci'
   gem 'simplecov'
   gem 'codeclimate-test-reporter', require: false
 end

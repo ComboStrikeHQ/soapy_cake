@@ -5,9 +5,9 @@ module SoapyCake
       return nil if obj == {}
 
       case obj
-      when Hash
+      when Hash, Saxerator::Builder::HashElement
         obj.map { |hk, hv| [hk, walk_tree(hv, hk, &block)] }.to_h
-      when Array
+      when Array, Saxerator::Builder::ArrayElement
         obj.map { |av| walk_tree(av, &block) }
       else
         yield(obj, key)

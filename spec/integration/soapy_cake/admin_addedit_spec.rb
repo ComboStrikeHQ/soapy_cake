@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 RSpec.describe SoapyCake::AdminAddedit do
-  # rubocop:disable RSpec/NestedGroups
   subject(:admin_addedit) { described_class.new }
 
   around { |example| Timecop.freeze(Time.utc(2015, 2, 17, 12), &example) }

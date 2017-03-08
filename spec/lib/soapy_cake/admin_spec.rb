@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 RSpec.describe SoapyCake::Admin do
-  # rubocop:disable RSpec/NestedGroups
   subject(:admin) { described_class.new }
   let(:opts) { nil }
   let(:cake_opts) { opts }
