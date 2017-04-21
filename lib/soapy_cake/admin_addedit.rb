@@ -23,7 +23,7 @@ module SoapyCake
       pixel_html: '',
       postback_url: '',
       fire_global_pixel: 'no_change',
-      fire_pixel_on_nonpaid_conversions: 'no_change',
+      fire_pixel_on_non_paid_conversions: 'no_change',
       expiration_date_modification_type: 'do_not_change',
       offer_contract_name: '',
       offer_link: '',
@@ -55,7 +55,7 @@ module SoapyCake
       impression_cookie_days redirect_404 enable_view_thru_conversions
       click_trumps_impression disable_click_deduplication last_touch
       enable_transaction_id_deduplication postbacks_only fire_global_pixel
-      fire_pixel_on_nonpaid_conversions offer_link thankyou_link from_lines
+      fire_pixel_on_non_paid_conversions offer_link thankyou_link from_lines
       subject_lines
     ).freeze
 
