@@ -59,7 +59,7 @@ RSpec.describe SoapyCake::AdminAddedit do
         enable_transaction_id_deduplication: true,
         postbacks_only: false,
         fire_global_pixel: true,
-        fire_pixel_on_nonpaid_conversions: false,
+        fire_pixel_on_non_paid_conversions: false,
         offer_link: 'http://www.ree.com',
         thankyou_link: 'http://www.www.ww',
         from_lines: '',

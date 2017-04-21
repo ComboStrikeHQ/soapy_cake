@@ -30,7 +30,7 @@ http_interactions:
               <cake:pixel_html/>
               <cake:postback_url/>
               <cake:fire_global_pixel>no_change</cake:fire_global_pixel>
-              <cake:fire_pixel_on_nonpaid_conversions>no_change</cake:fire_pixel_on_nonpaid_conversions>
+              <cake:fire_pixel_on_non_paid_conversions>no_change</cake:fire_pixel_on_non_paid_conversions>
               <cake:expiration_date_modification_type>do_not_change</cake:expiration_date_modification_type>
               <cake:offer_contract_name/>
               <cake:offer_link/>
