@@ -25,7 +25,7 @@ module SoapyCake
       paid_redirects: 'no_change',
       paid_upsells: 'no_change',
       review: 'no_change',
-      auto_disposition_delay_hours: 0,
+      auto_disposition_delay_hours: -1,
       redirect_offer_contract_id: 0,
       redirect_404: 'no_change',
       clear_session_on_conversion: 'no_change',
