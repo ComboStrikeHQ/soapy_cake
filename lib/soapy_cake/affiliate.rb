@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module SoapyCake
   class Affiliate < Client
     def bills(opts = {})

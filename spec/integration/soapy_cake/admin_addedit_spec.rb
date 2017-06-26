@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 RSpec.describe SoapyCake::AdminAddedit do
   subject(:admin_addedit) { described_class.new }
 
@@ -101,7 +102,7 @@ RSpec.describe SoapyCake::AdminAddedit do
         received_percentage: false,
         payout: 1.5,
 
-        tags: %w(some tags),
+        tags: %w[some tags],
         offer_name: 'Test Offer',
         offer_description: 'TEST1',
         restrictions: 'TEST2',
@@ -109,7 +110,7 @@ RSpec.describe SoapyCake::AdminAddedit do
         testing_instructions: 'TEST4'
       )
 
-      %i(creative_id offer_contract_id offer_id).each do |key|
+      %i[creative_id offer_contract_id offer_id].each do |key|
         expect(result[key]).to be_positive
       end
     end
@@ -151,14 +152,14 @@ RSpec.describe SoapyCake::AdminAddedit do
     it 'creates geo targetings', :vcr do
       result = admin_addedit.edit_geo_targets(
         offer_contract_id: offer_contract_id,
-        countries: %w(DE FR),
+        countries: %w[DE FR],
         allow_countries: true
       )
       expect(result).to include(success: true, row_count: '2')
 
       result = admin_addedit.edit_geo_targets(
         offer_contract_id: offer_contract_id,
-        countries: %w(AT CH),
+        countries: %w[AT CH],
         redirects: {
           'AT' => redirect_offer_contract_id,
           'CH' => redirect_offer_contract_id

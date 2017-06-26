@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 RSpec.describe SoapyCake::TimeConverter do
   subject(:time_converter) { described_class.new('Europe/Berlin') }
 

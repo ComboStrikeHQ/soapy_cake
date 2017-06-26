@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 RSpec.describe SoapyCake::Affiliate do
   let(:affiliate_id) { 42 }
   let(:opts) { { a: 1 } }
@@ -21,12 +22,14 @@ RSpec.describe SoapyCake::Affiliate do
   describe '#bills' do
     let(:service) { :reports }
     let(:method) { :bills }
+
     it_behaves_like 'a cake affiliate method'
   end
 
   describe '#offer_feed' do
     let(:service) { :offers }
     let(:method) { :offer_feed }
+
     it_behaves_like 'a cake affiliate method'
   end
 end

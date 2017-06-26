@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module SoapyCake
   class ModificationType
     CHANGE = 'change'

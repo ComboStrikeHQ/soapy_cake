@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module SoapyCake
   class Request
     DATE_CLASSES = [Date, Time, DateTime, ActiveSupport::TimeWithZone].freeze
@@ -31,7 +32,7 @@ module SoapyCake
     end
 
     def short_response?
-      %w(addedit track signup).include?(service)
+      %w[addedit track signup].include?(service)
     end
 
     def to_s

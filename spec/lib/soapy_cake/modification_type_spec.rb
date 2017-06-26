@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 RSpec.describe SoapyCake::ModificationType do
   subject(:output_opts) do
     described_class.new(:foo, :foo_mod_type, 'bar').options(input_opts)

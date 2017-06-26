@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 RSpec.describe SoapyCake::AdminAddedit do
   subject(:admin_addedit) { described_class.new }
 
@@ -89,7 +90,7 @@ RSpec.describe SoapyCake::AdminAddedit do
       {
         offer_contract_id: 1,
         allow_countries: true,
-        countries: %w(DE)
+        countries: %w[DE]
       }
     end
 
@@ -123,7 +124,7 @@ RSpec.describe SoapyCake::AdminAddedit do
       {
         offer_contract_id: 1,
         allow_countries: true,
-        countries: %w(DE)
+        countries: %w[DE]
       }
     end
 

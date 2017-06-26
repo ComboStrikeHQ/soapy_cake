@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module SoapyCake
   module Helper
     def walk_tree(obj, key = nil, &block)

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
+
 RSpec.shared_examples_for 'a cake admin method' do
   subject(:admin) { described_class.new }
+
   let(:request) { instance_double(SoapyCake::Request) }
 
   it 'runs the request' do

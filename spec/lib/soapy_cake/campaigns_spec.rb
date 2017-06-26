@@ -1,13 +1,9 @@
 # frozen_string_literal: true
+
 RSpec.describe SoapyCake::Campaigns do
   let(:campaigns) { described_class.new }
   let(:client) { instance_double(SoapyCake::Client) }
   let(:campaign_id) { 1 }
-
-  before do
-    allow(SoapyCake::Client).to receive(:new).and_return(client)
-    allow(client).to receive(:run).with(an_instance_of(SoapyCake::Request))
-  end
 
   let(:default_params) do
     {
@@ -24,6 +20,11 @@ RSpec.describe SoapyCake::Campaigns do
       third_party_name: 'Max',
       unique_key_hash: 'foo'
     }
+  end
+
+  before do
+    allow(SoapyCake::Client).to receive(:new).and_return(client)
+    allow(client).to receive(:run).with(an_instance_of(SoapyCake::Request))
   end
 
   def expect_request_to_be_built_with(opts)

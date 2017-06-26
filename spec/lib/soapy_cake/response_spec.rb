@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 RSpec.describe SoapyCake::Response do
   let(:xml) do
     <<-EOD

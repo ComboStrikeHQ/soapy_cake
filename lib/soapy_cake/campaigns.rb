@@ -1,11 +1,12 @@
 # frozen_string_literal: true
+
 module SoapyCake
   class Campaigns
     include Helper
 
     # TODO: Figure out what `static_suppression` is for and whether it needs to
     # be in the list.
-    ALL_PARAMS = %i(
+    ALL_PARAMS = %i[
       account_status_id affiliate_id auto_disposition_delay_hours campaign_id
       clear_session_on_conversion currency_id display_link_type_id
       expiration_date expiration_date_modification_type media_type_id
@@ -13,7 +14,7 @@ module SoapyCake
       payout_update_option pixel_html postback_delay_ms postback_url
       redirect_404 redirect_domain redirect_offer_contract_id review test_link
       third_party_name unique_key_hash use_offer_contract_payout
-    ).freeze
+    ].freeze
 
     NO_CHANGE_VALUES = {
       account_status_id: 0,

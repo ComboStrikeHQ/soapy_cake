@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module SoapyCake
   class TimeConverter
     def initialize(time_zone, time_offset = nil)

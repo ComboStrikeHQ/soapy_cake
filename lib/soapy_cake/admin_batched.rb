@@ -1,10 +1,11 @@
 # frozen_string_literal: true
+
 module SoapyCake
   class AdminBatched
-    ALLOWED_METHODS = %i(
+    ALLOWED_METHODS = %i[
       advertisers affiliates campaigns offers creatives clicks
       conversions events caps exchange_rates
-    ).freeze
+    ].freeze
 
     def initialize(opts = {})
       @opts = opts
