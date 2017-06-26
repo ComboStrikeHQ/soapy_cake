@@ -40,7 +40,9 @@ module SoapyCake
     end
 
     def create(opts = {})
-      response = addedit_campaign(opts.merge(campaign_id: 0))
+      opts = opts.merge(campaign_id: 0)
+      opts = NO_CHANGE_VALUES.merge(opts)
+      response = addedit_campaign(opts)
       response.fetch(:success_info).fetch(:campaign_id)
     end
 

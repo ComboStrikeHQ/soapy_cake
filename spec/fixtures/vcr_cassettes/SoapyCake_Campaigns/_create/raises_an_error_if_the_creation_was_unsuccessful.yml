@@ -13,6 +13,19 @@ http_interactions:
             <cake:Campaign>
               <cake:api_key>cake-api-key</cake:api_key>
               <cake:account_status_id>1</cake:account_status_id>
+              <cake:expiration_date_modification_type>do_not_change</cake:expiration_date_modification_type>
+              <cake:currency_id>0</cake:currency_id>
+              <cake:use_offer_contract_payout>no_change</cake:use_offer_contract_payout>
+              <cake:payout_update_option>do_not_change</cake:payout_update_option>
+              <cake:paid>no_change</cake:paid>
+              <cake:paid_redirects>no_change</cake:paid_redirects>
+              <cake:paid_upsells>no_change</cake:paid_upsells>
+              <cake:review>no_change</cake:review>
+              <cake:auto_disposition_delay_hours>-1</cake:auto_disposition_delay_hours>
+              <cake:redirect_offer_contract_id>0</cake:redirect_offer_contract_id>
+              <cake:redirect_404>no_change</cake:redirect_404>
+              <cake:clear_session_on_conversion>no_change</cake:clear_session_on_conversion>
+              <cake:postback_delay_ms>-1</cake:postback_delay_ms>
               <cake:affiliate_id>0</cake:affiliate_id>
               <cake:display_link_type_id>1</cake:display_link_type_id>
               <cake:media_type_id>1</cake:media_type_id>
@@ -37,24 +50,24 @@ http_interactions:
     headers:
       Cache-Control:
       - private, max-age=0
+      Content-Length:
+      - '414'
       Content-Type:
       - application/soap+xml; charset=utf-8
-      Server:
-      - Microsoft-IIS/8.5
+      Date:
+      - Mon, 26 Jun 2017 08:42:04 GMT
       X-Aspnet-Version:
       - 4.0.30319
       X-Powered-By:
       - ASP.NET
-      Date:
-      - Fri, 11 Nov 2016 15:57:23 GMT
-      Content-Length:
-      - '414'
+      Connection:
+      - close
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CampaignResponse
         xmlns="http://cakemarketing.com/api/3/"><CampaignResult><success>false</success><message>Invalid
         Affiliate</message></CampaignResult></CampaignResponse></soap:Body></soap:Envelope>
-    http_version: 
-  recorded_at: Fri, 11 Nov 2016 15:57:46 GMT
+    http_version:
+  recorded_at: Mon, 26 Jun 2017 08:42:04 GMT
 recorded_with: VCR 3.0.3
