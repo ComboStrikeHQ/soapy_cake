@@ -58,12 +58,24 @@ module SoapyCake
       @logger ||= opts[:logger] || (defined?(::Rails) && ::Rails.logger)
     end
 
+    def log_curl_command(request)
+      curl_headers = HEADERS.map {|k, v| "-H \"#{k}: #{v}\""}.join(' ')
+      curl_body = request.xml
+        .tr("\n", '')
+        .gsub(/>\s*</, '><')
+        .sub(request.api_key, '{{{ INSERT API KEY }}}')
+
+      logger&.info("curl --data '#{curl_body}' #{curl_headers} https://#{domain}/#{request.path}")
+    end
+
     def response_body(request)
       request.opts[:response].presence || http_response(request)
     end
 
     def http_response(request)
       logger&.info("soapy_cake:request #{request}")
+
+      log_curl_command(request) if fetch_opt(:log_curl)
 
       http_request = Net::HTTP::Post.new(request.path, HEADERS)
       http_request.body = request.xml
