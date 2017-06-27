@@ -32,7 +32,7 @@ module SoapyCake
     end
 
     def short_response?
-      %w[addedit track signup].include?(service)
+      %w(addedit track signup).include?(service)
     end
 
     def to_s

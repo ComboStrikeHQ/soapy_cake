@@ -16,16 +16,16 @@ module SoapyCake
     }.freeze
 
     def mass_conversion_insert(opts)
-      require_params(opts, %i[
+      require_params(opts, %i(
                        conversion_date affiliate_id sub_affiliate
                        campaign_id creative_id total_to_insert
-                     ])
+                     ))
 
       run Request.new(:admin, :track, :mass_conversion_insert, opts)
     end
 
     def update_conversion(opts)
-      require_params(opts, %i[offer_id payout])
+      require_params(opts, %i(offer_id payout))
 
       run Request.new(:admin, :track, :update_conversion, CONVERSION_DEFAULTS.merge(opts))
     end

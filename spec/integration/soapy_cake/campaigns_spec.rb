@@ -85,7 +85,7 @@ RSpec.describe SoapyCake::Campaigns, :vcr do
     let(:campaign_id) { 23733 }
 
     it 'updates a campaign' do
-      %w[foo bar].each do |name|
+      %w(foo bar).each do |name|
         client.patch(campaign_id, third_party_name: name)
         campaign = client.get(campaign_id: campaign_id).first
         expect(campaign.fetch(:third_party_name)).to eq(name)

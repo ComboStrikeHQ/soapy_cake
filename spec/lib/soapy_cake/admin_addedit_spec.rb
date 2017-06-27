@@ -90,7 +90,7 @@ RSpec.describe SoapyCake::AdminAddedit do
       {
         offer_contract_id: 1,
         allow_countries: true,
-        countries: %w[DE]
+        countries: %w(DE)
       }
     end
 
@@ -124,7 +124,7 @@ RSpec.describe SoapyCake::AdminAddedit do
       {
         offer_contract_id: 1,
         allow_countries: true,
-        countries: %w[DE]
+        countries: %w(DE)
       }
     end
 

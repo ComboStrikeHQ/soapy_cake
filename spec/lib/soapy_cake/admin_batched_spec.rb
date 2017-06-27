@@ -13,21 +13,21 @@ RSpec.describe SoapyCake::AdminBatched do
 
   it 'returns an enumerator and uses batched CAKE calls' do
     expect(admin).to receive(:offers)
-      .with(advertiser: 1, start_at_row: 1, row_limit: 2).and_return(%i[a b].to_enum)
+      .with(advertiser: 1, start_at_row: 1, row_limit: 2).and_return(%i(a b).to_enum)
     expect(admin).to receive(:offers)
-      .with(advertiser: 1, start_at_row: 3, row_limit: 2).and_return(%i[c].to_enum)
+      .with(advertiser: 1, start_at_row: 3, row_limit: 2).and_return(%i(c).to_enum)
 
     result = admin_batched.offers(advertiser: 1)
 
     expect(result).to be_a(Enumerator)
-    expect(result.to_a).to eq(%i[a b c])
+    expect(result.to_a).to eq(%i(a b c))
   end
 
   it 'can use a custom limit' do
     expect(admin).to receive(:offers)
-      .with(advertiser: 1, start_at_row: 1, row_limit: 100).and_return(%i[a b].to_enum)
+      .with(advertiser: 1, start_at_row: 1, row_limit: 100).and_return(%i(a b).to_enum)
 
-    expect(admin_batched.offers({ advertiser: 1 }, 100).to_a).to eq(%i[a b])
+    expect(admin_batched.offers({ advertiser: 1 }, 100).to_a).to eq(%i(a b))
   end
 
   context 'SoapyCake Batched with XMLResponse set' do
@@ -39,16 +39,16 @@ RSpec.describe SoapyCake::AdminBatched do
 
     it 'returns all affiliates in batched mode' do
       expect(admin).to receive(:affiliates)
-        .with(start_at_row: 1, row_limit: 10).and_return(%i[a].to_enum)
+        .with(start_at_row: 1, row_limit: 10).and_return(%i(a).to_enum)
       expect(admin).to receive(:affiliates)
-        .with(start_at_row: 11, row_limit: 10).and_return(%i[b].to_enum)
+        .with(start_at_row: 11, row_limit: 10).and_return(%i(b).to_enum)
       expect(admin).to receive(:affiliates)
         .with(start_at_row: 21, row_limit: 10).and_return([].to_enum)
 
       result = admin_batched.affiliates({}, 10)
 
       expect(result).to be_a(Enumerator)
-      expect(result.to_a).to eq(%i[a b])
+      expect(result.to_a).to eq(%i(a b))
     end
   end
 

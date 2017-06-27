@@ -51,25 +51,25 @@ module SoapyCake
       tags_modification_type: 'do_not_change'
     }.freeze
 
-    REQUIRED_NEW_OFFER_PARAMS = %i[
+    REQUIRED_NEW_OFFER_PARAMS = %i(
       hidden offer_status_id offer_type_id currency_id ssl click_cookie_days
       impression_cookie_days redirect_404 enable_view_thru_conversions
       click_trumps_impression disable_click_deduplication last_touch
       enable_transaction_id_deduplication postbacks_only fire_global_pixel
       fire_pixel_on_non_paid_conversions offer_link thankyou_link from_lines
       subject_lines
-    ].freeze
+    ).freeze
 
-    REQUIRED_OFFER_PARAMS = %i[
+    REQUIRED_OFFER_PARAMS = %i(
       advertiser_id vertical_id postback_url_ms_delay offer_contract_hidden
       price_format_id received received_percentage payout tags
-    ].freeze
+    ).freeze
 
-    REQUIRED_OFFER_CONTRACT_PARAMS = %i[
+    REQUIRED_OFFER_CONTRACT_PARAMS = %i(
       offer_id offer_contract_id offer_contract_name price_format_id payout received
       received_percentage offer_link thankyou_link offer_contract_hidden
       offer_contract_is_default use_fallback_targeting
-    ].freeze
+    ).freeze
 
     def add_offer(opts)
       require_params(opts, REQUIRED_NEW_OFFER_PARAMS)
@@ -84,7 +84,7 @@ module SoapyCake
     end
 
     def edit_contact(opts)
-      require_params(opts, %i[entity_id contact_id contact_email_address])
+      require_params(opts, %i(entity_id contact_id contact_email_address))
 
       run Request.new(:admin, :addedit, :contact, opts)
     end
@@ -94,7 +94,7 @@ module SoapyCake
     end
 
     def edit_geo_targets(opts)
-      require_params(opts, %i[offer_contract_id allow_countries])
+      require_params(opts, %i(offer_contract_id allow_countries))
 
       opts = if opts[:allow_countries]
                geo_targets_allow_options(opts)
@@ -109,7 +109,7 @@ module SoapyCake
     end
 
     def geo_targets_allow_options(opts)
-      require_params(opts, %i[countries])
+      require_params(opts, %i(countries))
       opts = opts.dup
       countries = Array(opts[:countries])
       opts[:countries] = countries.join(',')
@@ -140,7 +140,7 @@ module SoapyCake
     end
 
     def update_caps(opts)
-      require_params(opts, %i[cap_type_id cap_interval_id cap_amount send_alert_only])
+      require_params(opts, %i(cap_type_id cap_interval_id cap_amount send_alert_only))
 
       opts = translate_values(opts)
 
@@ -148,7 +148,7 @@ module SoapyCake
     end
 
     def remove_caps(opts)
-      require_params(opts, %i[cap_type_id])
+      require_params(opts, %i(cap_type_id))
 
       opts = translate_values(opts)
 
@@ -165,7 +165,7 @@ module SoapyCake
     end
 
     def edit_affiliate(opts)
-      require_params(opts, %i[affiliate_id vat_tax_required])
+      require_params(opts, %i(affiliate_id vat_tax_required))
 
       run Request.new(:admin, :addedit, :affiliate, opts)
     end
@@ -177,7 +177,7 @@ module SoapyCake
     private
 
     def addedit_offer_tier(add_edit_option, opts)
-      require_params(opts, %i[offer_id tier_id price_format_id offer_contract_id status_id])
+      require_params(opts, %i(offer_id tier_id price_format_id offer_contract_id status_id))
 
       opts = opts.merge(redirect_offer_contract_id: -1, add_edit_option: add_edit_option)
       opts = translate_values(opts)

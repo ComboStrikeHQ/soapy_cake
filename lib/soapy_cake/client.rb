@@ -59,7 +59,7 @@ module SoapyCake
     end
 
     def log_curl_command(request)
-      curl_headers = HEADERS.map {|k, v| "-H \"#{k}: #{v}\""}.join(' ')
+      curl_headers = HEADERS.map { |k, v| "-H \"#{k}: #{v}\"" }.join(' ')
       curl_body = request.xml
         .tr("\n", '')
         .gsub(/>\s*</, '><')

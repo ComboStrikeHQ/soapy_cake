@@ -80,14 +80,14 @@ module SoapyCake
     end
 
     def caps(opts)
-      require_params(opts, %i[start_date end_date])
+      require_params(opts, %i(start_date end_date))
       opts = translate_values(opts)
 
       run Request.new(:admin, :reports, :caps, opts)
     end
 
     def exchange_rates(opts)
-      require_params(opts, %i[start_date end_date])
+      require_params(opts, %i(start_date end_date))
 
       run Request.new(:admin, :get, :exchange_rates, opts)
     end
@@ -109,7 +109,7 @@ module SoapyCake
     end
 
     def add_blacklist(opts)
-      require_params(opts, %i[blacklist_date])
+      require_params(opts, %i(blacklist_date))
 
       blacklist_date = opts[:blacklist_date].to_date
       # CAKE applies the blacklisting at 00:00 of the specified day, so add one more day.
@@ -129,7 +129,7 @@ module SoapyCake
     end
 
     def remove_blacklist(opts = {})
-      require_params(opts, %i[blacklist_id])
+      require_params(opts, %i(blacklist_id))
       run Request.new(:admin, :addedit, :remove_blacklist, opts)
     end
 
