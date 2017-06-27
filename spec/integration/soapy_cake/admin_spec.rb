@@ -42,15 +42,15 @@ RSpec.describe SoapyCake::Admin do
 
   it 'returns a clicks report with a defined time range', :vcr do
     result = admin.clicks(
-      start_date: Date.new(2014, 6, 30),
-      end_date: Date.new(2014, 7, 1),
+      start_date: Date.new(2017, 5, 31),
+      end_date: Date.new(2017, 6, 1),
       row_limit: 1
     )
 
     expect(result.count).to eq(1)
     expect(result.first).to include(
-      click_id: 1275452,
-      visitor_id: 1208222
+      click_id: 1633967829,
+      visitor_id: 964629655
     )
   end
 

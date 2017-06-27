@@ -2,18 +2,18 @@
 http_interactions:
 - request:
     method: post
-    uri: https://cake-partner-domain.com/api/7/reports.asmx
+    uri: https://cake-partner-domain.com/api/11/reports.asmx
     body:
       encoding: UTF-8
       string: |
         <?xml version="1.0"?>
-        <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:cake="http://cakemarketing.com/api/7/">
+        <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:cake="http://cakemarketing.com/api/11/">
           <env:Header/>
           <env:Body>
             <cake:Clicks>
               <cake:api_key>cake-api-key</cake:api_key>
-              <cake:start_date>2014-06-30T02:00:00</cake:start_date>
-              <cake:end_date>2014-07-01T02:00:00</cake:end_date>
+              <cake:start_date>2017-05-31T02:00:00</cake:start_date>
+              <cake:end_date>2017-06-01T02:00:00</cake:end_date>
               <cake:row_limit>1</cake:row_limit>
             </cake:Clicks>
           </env:Body>
@@ -21,6 +21,12 @@ http_interactions:
     headers:
       Content-Type:
       - application/soap+xml;charset=UTF-8
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
   response:
     status:
       code: 200
@@ -28,38 +34,47 @@ http_interactions:
     headers:
       Cache-Control:
       - private, max-age=0
+      Content-Length:
+      - '4034'
       Content-Type:
       - application/soap+xml; charset=utf-8
-      Server:
-      - Microsoft-IIS/8.0
+      Date:
+      - Tue, 27 Jun 2017 09:14:48 GMT
       X-Aspnet-Version:
       - 4.0.30319
       X-Powered-By:
       - ASP.NET
-      Date:
-      - Fri, 13 Feb 2015 14:29:42 GMT
-      Content-Length:
-      - '2151'
+      Connection:
+      - close
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ClicksResponse
-        xmlns="http://cakemarketing.com/api/7/"><ClicksResult><success>true</success><row_count>9</row_count><clicks><click><click_id>1275452</click_id><visitor_id>1208222</visitor_id><request_session_id>1303953</request_session_id><click_date>2014-06-30T19:31:35.067</click_date><affiliate><affiliate_id
-        xmlns="API:id_name_store">-1</affiliate_id><affiliate_name xmlns="API:id_name_store">ad2games
-        GmbH</affiliate_name></affiliate><advertiser><advertiser_id xmlns="API:id_name_store">1</advertiser_id><advertiser_name
-        xmlns="API:id_name_store">ad2games GmbH</advertiser_name></advertiser><offer><offer_id
-        xmlns="API:id_name_store">-1</offer_id><offer_name xmlns="API:id_name_store">Global
-        Redirect</offer_name></offer><offer_contract><offer_contract_id xmlns="API:id_name_store">-1</offer_contract_id><offer_contract_name
-        xmlns="API:id_name_store" /></offer_contract><campaign_id>-1</campaign_id><creative><creative_id
-        xmlns="API:id_name_store">-1</creative_id><creative_name xmlns="API:id_name_store">-1
-        - Global Redirect</creative_name></creative><sub_id_1 /><sub_id_2 /><sub_id_3
-        /><sub_id_4 /><sub_id_5 /><ip_address>184.72.184.113</ip_address><user_agent>Cloud%20mapping%20experiment.%20Contact%20research@pdrlabs.net</user_agent><referrer_url
-        /><search_term /><request_url>http://94.236.50.153/</request_url><redirect_url>http://www.getcake.com</redirect_url><country><country_code
+        xmlns="http://cakemarketing.com/api/11/"><ClicksResult><success>true</success><row_count>470134</row_count><clicks><click><click_id>1633967829</click_id><visitor_id>964629655</visitor_id><tracking_id>1251217875</tracking_id><request_session_id>1602923077</request_session_id><click_date>2017-06-01T01:59:59.95</click_date><source_affiliate><source_affiliate_id
+        xmlns="API:id_name_store">26833</source_affiliate_id><source_affiliate_name
+        xmlns="API:id_name_store">Funtomic Adstack</source_affiliate_name></source_affiliate><brand_advertiser><brand_advertiser_id
+        xmlns="API:id_name_store">15176</brand_advertiser_id><brand_advertiser_name
+        xmlns="API:id_name_store">Star Stable Entertainment AB</brand_advertiser_name></brand_advertiser><site_offer><site_offer_id
+        xmlns="API:id_name_store">16698</site_offer_id><site_offer_name xmlns="API:id_name_store">Star
+        Stable (US SOI)</site_offer_name></site_offer><site_offer_contract><site_offer_contract_id
+        xmlns="API:id_name_store">22508</site_offer_contract_id><site_offer_contract_name
+        xmlns="API:id_name_store">Direct</site_offer_contract_name></site_offer_contract><campaign><campaign_id>646697</campaign_id><campaign_type><campaign_type_id>1</campaign_type_id><campaign_type_name>Standard</campaign_type_name></campaign_type></campaign><creative><creative_id
+        xmlns="API:id_name_store">211068</creative_id><creative_name xmlns="API:id_name_store">211068</creative_name></creative><sub_id_1
+        /><sub_id_2>CRpyl4PCacTC-9QTL_8kUg</sub_id_2><sub_id_3>as~</sub_id_3><sub_id_4
+        /><sub_id_5 /><ip_address>73.47.22.147</ip_address><user_agent>Mozilla/5.0%20(Windows%20NT%2010.0;%20WOW64)%20AppleWebKit/537.36%20(KHTML,%20like%20Gecko)%20Chrome/58.0.3029.110%20Safari/537.36</user_agent><referrer_url>http://kizi.com/games/c/family-barn?ref=big_thumb</referrer_url><search_term
+        /><request_url>https://a2g-secure.com/?a=26833&amp;c=211068&amp;s1=&amp;s2=CRpyl4PCacTC-9QTL_8kUg&amp;s3=as~</request_url><redirect_url>https://www.starstable.com/en/creation/offer?affiliate=AD2&amp;utm_source=ad2&amp;utm_medium=cpl&amp;referrer=12344&amp;utm_term=standard&amp;utm_content=empty&amp;AffId=#affid#_#s1#&amp;utm_campaign=US-ad2-Display-Star-Stable&amp;ClickID=#reqid#</redirect_url><country><country_code
         xmlns="API:id_name_store">US</country_code><country_name xmlns="API:id_name_store">United
-        States</country_name></country><region><region_code xmlns="API:id_name_store">VA</region_code><region_name
-        xmlns="API:id_name_store">Virginia</region_name></region><isp><isp_id xmlns="API:id_name_store">29534</isp_id><isp_name
-        xmlns="API:id_name_store">Amazon.Com Inc.</isp_name></isp><disposition>Base
-        Tracking Domain Redirect</disposition><total_clicks>1</total_clicks></click></clicks></ClicksResult></ClicksResponse></soap:Body></soap:Envelope>
+        States</country_name></country><region><region_code xmlns="API:id_name_store">NH</region_code><region_name
+        xmlns="API:id_name_store">New Hampshire</region_name></region><language><language_id
+        xmlns="API:id_name_store">1</language_id><language_name xmlns="API:id_name_store">English</language_name></language><isp><isp_id
+        xmlns="API:id_name_store">16357</isp_id><isp_name xmlns="API:id_name_store">Comcast
+        Cable Communications Inc.</isp_name></isp><operating_system><operating_system_id>18</operating_system_id><operating_system_name>Windows</operating_system_name><operating_system_version><version_id
+        xmlns="API:id_name_store">1</version_id><version_name xmlns="API:id_name_store">Other</version_name></operating_system_version><operating_system_version_minor><version_id
+        xmlns="API:id_name_store">1</version_id><version_name xmlns="API:id_name_store"
+        /></operating_system_version_minor></operating_system><browser><browser_id>2</browser_id><browser_name>Chrome</browser_name><browser_version><version_id
+        xmlns="API:id_name_store">460</version_id><version_name xmlns="API:id_name_store">58</version_name></browser_version><browser_version_minor><version_id
+        xmlns="API:id_name_store">691</version_id><version_name xmlns="API:id_name_store">58.0</version_name></browser_version_minor></browser><disposition
+        /><duplicate>false</duplicate><duplicate_clicks>0</duplicate_clicks><total_clicks>1</total_clicks></click></clicks></ClicksResult></ClicksResponse></soap:Body></soap:Envelope>
     http_version: 
-  recorded_at: Fri, 13 Feb 2015 14:29:53 GMT
+  recorded_at: Mon, 15 Jun 2015 12:00:00 GMT
 recorded_with: VCR 2.9.3

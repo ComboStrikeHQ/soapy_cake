@@ -60,7 +60,7 @@ module SoapyCake
         .merge(
           affiliate_id: campaign.fetch(:affiliate).fetch(:affiliate_id),
           # Only present in production:
-          display_link_type_id: campaign.dig(:link_display_type, :link_display_type_id) || 1,
+          display_link_type_id: campaign.dig(:display_link_type, :link_display_type_id) || 1,
           media_type_id: campaign.fetch(:media_type).fetch(:media_type_id),
           offer_contract_id: campaign.fetch(:offer_contract).fetch(:offer_contract_id),
           offer_id: campaign.fetch(:offer).fetch(:offer_id),
