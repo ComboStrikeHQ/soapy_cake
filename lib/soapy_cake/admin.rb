@@ -68,11 +68,11 @@ module SoapyCake
     end
 
     def conversions(opts = {})
-      run Request.new(:admin, :reports, :conversions, opts.merge(conversion_type: 'conversions'))
+      run event_conversions_request('macro_event_conversions', opts)
     end
 
     def events(opts = {})
-      run Request.new(:admin, :reports, :conversions, opts.merge(conversion_type: 'events'))
+      run event_conversions_request('micro_events', opts)
     end
 
     def traffic(opts = {})
@@ -156,6 +156,12 @@ module SoapyCake
 
     def blacklist_reasons
       run Request.new(:admin, :get, :blacklist_reasons, {})
+    end
+
+    private
+
+    def event_conversions_request(event_type, opts)
+      Request.new(:admin, :reports, :event_conversions, opts.merge(event_type: event_type))
     end
   end
 end
