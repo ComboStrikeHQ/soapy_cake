@@ -14,7 +14,7 @@ RSpec.describe SoapyCake::AdminTrack do
         sub_affiliate: '',
         creative_id: 5521,
         total_to_insert: 3,
-        note: "Test created on #{Date.current}",
+        note: 'Test created on 2017-07-24',
         payout: 0.1,
         received: 0.2,
         transaction_ids: (1..3).map { |i| "test-transaction-id-#{i}" }.join(',')
