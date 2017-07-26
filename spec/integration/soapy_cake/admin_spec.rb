@@ -56,8 +56,8 @@ RSpec.describe SoapyCake::Admin do
 
   it 'does not parse a transaction_id as an integer', :vcr do
     result = admin.conversions(
-      start_date: Date.new(2015, 4, 11),
-      end_date: Date.new(2015, 4, 12),
+      start_date: Date.new(2015, 5, 8),
+      end_date: Date.new(2015, 5, 9),
       row_limit: 1
     )
 

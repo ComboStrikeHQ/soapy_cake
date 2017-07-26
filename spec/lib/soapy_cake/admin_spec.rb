@@ -106,7 +106,8 @@ RSpec.describe SoapyCake::Admin do
 
     describe '#conversions' do
       let(:method) { :conversions }
-      let(:cake_opts) {  { conversion_type: 'conversions' } }
+      let(:cake_method) { :event_conversions }
+      let(:cake_opts) {  { event_type: 'macro_event_conversions' } }
 
       it_behaves_like 'a cake admin method'
     end
@@ -119,8 +120,8 @@ RSpec.describe SoapyCake::Admin do
 
     describe '#events' do
       let(:method) { :events }
-      let(:cake_method) { :conversions }
-      let(:cake_opts) { { conversion_type: 'events' } }
+      let(:cake_method) { :event_conversions }
+      let(:cake_opts) { { event_type: 'micro_events' } }
 
       it_behaves_like 'a cake admin method'
     end

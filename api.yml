@@ -79,7 +79,7 @@ versions:
       caps: 4
       clicks: 11
       conversion_changes: 10
-      conversions: 11
+      event_conversions: 17
       daily_summary_export: 1
       leads_by_affiliate_export: 1
       leads_by_buyer: 4
@@ -162,7 +162,7 @@ read_only:
       - caps
       - clicks
       - conversion_changes
-      - conversions
+      - event_conversions
       - daily_summary_export
       - leads_by_affiliate_export
       - leads_by_buyer
