@@ -1,0 +1,116 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://cake-partner-domain.com/api/1/addedit.asmx
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <?xml version="1.0"?>
+        <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:cake="http://cakemarketing.com/api/1/">
+          <env:Header/>
+          <env:Body>
+            <cake:Creative>
+              <cake:api_key>cake-api-key</cake:api_key>
+              <cake:creative_name>creative_name</cake:creative_name>
+              <cake:creative_status_id>1</cake:creative_status_id>
+              <cake:creative_type_id>3</cake:creative_type_id>
+              <cake:height>0</cake:height>
+              <cake:notes/>
+              <cake:offer_link/>
+              <cake:third_party_name/>
+              <cake:width>0</cake:width>
+              <cake:offer_id>11428</cake:offer_id>
+            </cake:Creative>
+          </env:Body>
+        </env:Envelope>
+    headers:
+      Content-Type:
+      - application/soap+xml;charset=UTF-8
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '450'
+      Content-Type:
+      - application/soap+xml; charset=utf-8
+      Date:
+      - Thu, 03 Aug 2017 09:25:39 GMT
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CreativeResponse
+        xmlns="http://cakemarketing.com/api/1/"><CreativeResult><success>true</success><message>Creative
+        12164 Created</message><creative_id>12164</creative_id></CreativeResult></CreativeResponse></soap:Body></soap:Envelope>
+    http_version: 
+  recorded_at: Tue, 17 Feb 2015 12:00:00 GMT
+- request:
+    method: post
+    uri: https://cake-partner-domain.com/api/1/addedit.asmx
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <?xml version="1.0"?>
+        <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:cake="http://cakemarketing.com/api/1/">
+          <env:Header/>
+          <env:Body>
+            <cake:CreativeFiles>
+              <cake:api_key>cake-api-key</cake:api_key>
+              <cake:creative_file_import_url>http://placehold.it/300x250</cake:creative_file_import_url>
+              <cake:creative_id>12164</cake:creative_id>
+            </cake:CreativeFiles>
+          </env:Body>
+        </env:Envelope>
+    headers:
+      Content-Type:
+      - application/soap+xml;charset=UTF-8
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '621'
+      Content-Type:
+      - application/soap+xml; charset=utf-8
+      Date:
+      - Thu, 03 Aug 2017 09:25:40 GMT
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CreativeFilesResponse
+        xmlns="http://cakemarketing.com/api/1/"><CreativeFilesResult><success>true</success><message>Creative
+        Files 8015 Created.</message><creative_files><creative_file><creative_file_id>8015</creative_file_id><creative_file_name>300x250</creative_file_name><updated>false</updated></creative_file></creative_files></CreativeFilesResult></CreativeFilesResponse></soap:Body></soap:Envelope>
+    http_version: 
+  recorded_at: Tue, 17 Feb 2015 12:00:00 GMT
+recorded_with: VCR 3.0.3

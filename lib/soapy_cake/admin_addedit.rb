@@ -174,7 +174,59 @@ module SoapyCake
       run Request.new(:admin, :addedit, :advertiser, opts.merge(advertiser_id: 0))
     end
 
+    ALLOWED_CREATIVE_OPTS = %i[
+      creative_name
+      creative_status_id
+      creative_type_id
+      height
+      notes
+      offer_id
+      offer_link
+      third_party_name
+      width
+    ].freeze
+
+    ALLOWED_CREATIVE_FILES_OPTS = %i[
+      creative_file_id
+      creative_file_import_url
+      creative_id
+      is_preview_file
+      replace_all_files
+    ].freeze
+
+    def create_creative(opts)
+      raise 'need offer_id to create creative' if opts[:offer_id].blank?
+      raise 'cannot pass creative_id when creating creative' if opts[:creative_id].present?
+
+      creative_opts = opts.select { |key, _| ALLOWED_CREATIVE_OPTS.include? key }
+      create_result = addedit_creative(creative_opts)
+
+      files_opts = opts.select { |key, _| ALLOWED_CREATIVE_FILES_OPTS.include? key }
+        .merge(creative_id: create_result[:creative_id])
+
+      create_result.merge(addedit_creative_files(files_opts)).except(:message)
+    end
+
     private
+
+    def addedit_creative(opts)
+      defaults = {
+        creative_name: '',
+        creative_status_id: 1, # Active: 1, Inactive: 2, Hidden: 3
+        creative_type_id: 3, # Link: 1, Image: 3, Flash: 4, HTML: 6, Email: 2, Text: 5, Video: 7
+        height: 0,
+        notes: '',
+        offer_link: '',
+        third_party_name: '',
+        width: 0
+      }
+
+      run Request.new(:admin, :addedit, :creative, defaults.merge(opts))
+    end
+
+    def addedit_creative_files(opts)
+      run Request.new(:admin, :addedit, :creative_files, opts)
+    end
 
     def addedit_offer_tier(add_edit_option, opts)
       require_params(opts, %i[offer_id tier_id price_format_id offer_contract_id status_id])
