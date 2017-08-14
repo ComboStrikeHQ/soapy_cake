@@ -73,10 +73,14 @@ module SoapyCake
         custom: 4
       },
       creative_type_id: {
+        # taken from https://support.getcake.com/support/solutions/articles/5000546087-addedit-creative-api-version-1
         link: 1,
         email: 2,
         image: 3,
-        flash: 4
+        flash: 4,
+        text: 5,
+        html: 6,
+        video: 7
       },
       creative_status_id: {
         active: 1,
