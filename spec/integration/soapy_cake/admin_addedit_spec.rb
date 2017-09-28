@@ -284,4 +284,25 @@ RSpec.describe SoapyCake::AdminAddedit do
       expect(result[:message]).to eq('Offer Tier Replaced')
     end
   end
+
+  describe '#create_creatives' do
+    it 'creates a creative and adds a file to it', :vcr do
+      result = admin_addedit.create_creative(
+        offer_id: 11428,
+        creative_name: 'creative_name',
+        creative_file_import_url: 'http://placehold.it/300x250'
+      )
+      expect(result).to eq(
+        creative_files: {
+          creative_file: {
+            creative_file_id: 8015,
+            creative_file_name: '300x250',
+            updated: false
+          }
+        },
+        creative_id: 12164,
+        success: true
+      )
+    end
+  end
 end

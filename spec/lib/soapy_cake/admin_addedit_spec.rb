@@ -136,4 +136,46 @@ RSpec.describe SoapyCake::AdminAddedit do
       admin_addedit.add_geo_targets(base_opts)
     end
   end
+
+  describe '#create_creative' do
+    context 'when no offer id was passed' do
+      it 'raises an error' do
+        expect { admin_addedit.create_creative({}) }.to raise_error(
+          'need offer_id to create creative'
+        )
+      end
+    end
+
+    context 'when creative id was passed' do
+      it 'raises an error' do
+        expect { admin_addedit.create_creative(offer_id: 10, creative_id: 11) }.to raise_error(
+          'cannot pass creative_id when creating creative'
+        )
+      end
+    end
+
+    context 'when given the right parameters' do
+      it 'creates a creative and adds a file to it' do
+        expect(admin_addedit).to receive(:addedit_creative).with(
+          offer_id: 10, creative_name: 'creative_name'
+        ).and_return(
+          success: true, message: 'Creative 12163 Created', creative_id: 12163
+        )
+        expect(admin_addedit).to receive(:addedit_creative_files).with(
+          creative_id: 12163, creative_file_import_url: 'http://www.example.org/image.png'
+        ).and_return(
+          success: true, message: 'Creative Files 8013 Created.', creative_files: {
+            creative_file: {
+              creative_file_id: 8013, creative_file_name: 'image.jpg', updated: false
+            }
+          }
+        )
+        admin_addedit.create_creative(
+          offer_id: 10,
+          creative_name: 'creative_name',
+          creative_file_import_url: 'http://www.example.org/image.png'
+        )
+      end
+    end
+  end
 end
