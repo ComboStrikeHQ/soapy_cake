@@ -8,7 +8,7 @@ module SoapyCake
 
     def initialize(message, request_path: nil, request_body: nil, response_body: nil)
       @request_path = request_path
-      @request_body = request_body
+      @request_body = request_body&.sub(ENV.fetch('CAKE_API_KEY'), '[redacted]')
       @response_body = response_body
       super(message)
     end
