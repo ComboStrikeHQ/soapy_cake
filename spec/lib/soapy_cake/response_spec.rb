@@ -2,7 +2,7 @@
 
 RSpec.describe SoapyCake::Response do
   let(:xml) do
-    <<-EOD
+    <<-XML
       <?xml version="1.0" encoding="utf-8"?>
       <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
         <soap:Body>
@@ -22,7 +22,7 @@ RSpec.describe SoapyCake::Response do
           </SomeResponse>
         </soap:Body>
       </soap:Envelope>
-    EOD
+    XML
   end
 
   subject(:response) { described_class.new(xml.strip, false, 0) }
@@ -32,9 +32,6 @@ RSpec.describe SoapyCake::Response do
   end
 
   it 'parses the CAKE XML structure properly' do
-    expect(response.to_enum.to_a).to eq([
-                                          { id: '123' },
-                                          { id: '312' }
-                                        ])
+    expect(response.to_enum.to_a).to eq([{ id: '123' }, { id: '312' }])
   end
 end

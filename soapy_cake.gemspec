@@ -1,4 +1,3 @@
-# coding: utf-8
 # frozen_string_literal: true
 
 lib = File.expand_path('../lib', __FILE__)
@@ -21,16 +20,16 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'activesupport'
-  spec.add_dependency 'saxerator'
   spec.add_dependency 'nokogiri'
   spec.add_dependency 'retryable'
+  spec.add_dependency 'saxerator'
 
   spec.add_development_dependency 'bundler'
+  spec.add_development_dependency 'dotenv'
+  spec.add_development_dependency 'pry'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'rspec', '>= 3.0.0'
+  spec.add_development_dependency 'timecop'
   spec.add_development_dependency 'vcr'
   spec.add_development_dependency 'webmock'
-  spec.add_development_dependency 'pry'
-  spec.add_development_dependency 'timecop'
-  spec.add_development_dependency 'dotenv'
 end

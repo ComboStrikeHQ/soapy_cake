@@ -66,9 +66,12 @@ RSpec.describe SoapyCake::Admin do
   end
 
   it 'raises if there is an error', :vcr do
-    expect do
-      admin.affiliates(affiliate_id: 'bloops')
-    end.to raise_error(SoapyCake::RequestFailed)
+    expect { admin.affiliates(affiliate_id: 'bloops') }
+      .to raise_error(SoapyCake::RequestFailed) do |e|
+        expect(e.request_path).to eq('/api/5/export.asmx')
+        expect(e.request_body).to include('<cake:affiliate_id>bloops</cake:affiliate_id>')
+        expect(e.response_body).to include('There is an error in XML document')
+      end
   end
 
   it 'creates an affiliate and returns the ID', :vcr do

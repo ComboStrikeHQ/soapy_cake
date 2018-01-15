@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Style/DateTime
 RSpec.describe SoapyCake::TimeConverter do
   subject(:time_converter) { described_class.new('Europe/Berlin') }
 
@@ -37,3 +38,4 @@ RSpec.describe SoapyCake::TimeConverter do
     end
   end
 end
+# rubocop:enable Style/DateTime
