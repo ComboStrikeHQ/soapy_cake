@@ -82,7 +82,12 @@ module SoapyCake
       response = perform_http_request(http_request)
 
       unless response.is_a?(Net::HTTPSuccess)
-        raise RequestFailed, "Request failed with HTTP #{response.code}: #{response.body}"
+        raise RequestFailed.new(
+          "Request failed with HTTP #{response.code}",
+          request_path: request.path,
+          request_body: http_request.body,
+          response_body: response.body
+        )
       end
 
       response.body
