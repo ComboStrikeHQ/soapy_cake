@@ -36,7 +36,7 @@ module SoapyCake
 
     protected
 
-    attr_reader :domain, :api_key, :time_converter, :opts, :logger, :retry_count, :write_enabled
+    attr_reader :domain, :api_key, :time_converter, :opts, :retry_count, :write_enabled
 
     private
 
