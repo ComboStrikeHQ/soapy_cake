@@ -164,4 +164,5 @@ module SoapyCake
       Request.new(:admin, :reports, :event_conversions, opts.merge(event_type: event_type))
     end
   end
+  # rubocop:enable Metrics/ClassLength
 end

@@ -14,6 +14,7 @@ RSpec.describe SoapyCake::Affiliate do
         .with(:affiliate, service, method, cake_opts).and_return(request)
       # rubocop:disable RSpec/SubjectStub
       expect(affiliate).to receive(:run).with(request)
+      # rubocop:enable RSpec/SubjectStub
 
       affiliate.public_send(method, opts)
     end

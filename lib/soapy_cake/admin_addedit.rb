@@ -282,4 +282,5 @@ module SoapyCake
       run Request.new(:admin, :addedit, :offer_contract, opts)
     end
   end
+  # rubocop:enable Metrics/ClassLength
 end
