@@ -149,15 +149,16 @@ RSpec.describe SoapyCake::AdminAddedit do
 
     context 'when creative id was passed' do
       it 'raises an error' do
-        expect { admin_addedit.create_creative(offer_id: 10, creative_id: 11) }.to raise_error(
-          'cannot pass creative_id when creating creative'
-        )
+        expect do
+          admin_addedit.create_creative(offer_id: 10, creative_id: 11)
+        end.to raise_error('cannot pass creative_id when creating creative')
       end
     end
 
     context 'when given the right parameters' do
       it 'creates a creative and adds a file to it' do
-        expect(SoapyCake::Request).to receive(:new)
+        expect(SoapyCake::Request)
+          .to receive(:new)
           .with(
             :admin,
             :addedit,
@@ -174,7 +175,8 @@ RSpec.describe SoapyCake::AdminAddedit do
           )
           .and_call_original
 
-        expect(SoapyCake::Request).to receive(:new)
+        expect(SoapyCake::Request)
+          .to receive(:new)
           .with(
             :admin,
             :addedit,

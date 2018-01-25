@@ -37,7 +37,7 @@ module SoapyCake
             e.message,
             request_path: request.path,
             request_body: request.xml,
-            response_body: response.body
+            response_body: e.response_body || response.body
           )
         end
       end
@@ -91,15 +91,22 @@ module SoapyCake
       response = perform_http_request(http_request)
 
       unless response.is_a?(Net::HTTPSuccess)
-        raise RequestFailed, "Request failed with HTTP #{response.code}"
+        raise RequestFailed.new(
+          "Request failed with HTTP #{response.code}",
+          response_body: response.body
+        )
       end
 
       response.body
     end
 
     def perform_http_request(http_request)
-      Net::HTTP.start(domain,
-        use_ssl: true, open_timeout: NET_TIMEOUT, read_timeout: NET_TIMEOUT) do |http|
+      Net::HTTP.start(
+        domain,
+        use_ssl: true,
+        open_timeout: NET_TIMEOUT,
+        read_timeout: NET_TIMEOUT
+      ) do |http|
         http.request(http_request)
       end
     end
