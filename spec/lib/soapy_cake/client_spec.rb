@@ -12,23 +12,13 @@ RSpec.describe SoapyCake::Client do
   end
 
   describe '#run' do
-    before do
-      allow(Net::HTTP)
-        .to receive(:start)
-        .and_yield(http)
-      allow(http)
-        .to receive(:request)
-        .and_return(response)
-    end
-
     context 'receives non-200 HTTP status code' do
-      let(:response) do
-        instance_double(Net::HTTPInternalServerError, code: 500, body: '🔥')
+      before do
+        stub_request(:post, "https://#{ENV.fetch('CAKE_DOMAIN')}/api/1/addedit.asmx")
+          .to_return(status: 500, body: '🔥')
       end
 
       it 'raises an exception with request information' do
-        expect(response).to receive(:is_a?).with(Net::HTTPSuccess).and_return(false)
-
         expect do
           client.run(request)
         end.to raise_error(SoapyCake::RequestFailed, 'Request failed with HTTP 500') do |e|
@@ -40,13 +30,12 @@ RSpec.describe SoapyCake::Client do
     end
 
     context 'receives 200 HTTP status code with errors' do
-      let(:response) do
-        instance_double(Net::HTTPSuccess, code: 200, body: '🔥')
+      before do
+        stub_request(:post, "https://#{ENV.fetch('CAKE_DOMAIN')}/api/1/addedit.asmx")
+          .to_return(status: 200, body: '🔥')
       end
 
       it 'raises an exception with request information' do
-        expect(response).to receive(:is_a?).with(Net::HTTPSuccess).and_return(true)
-
         expect do
           client.run(request)
         end.to raise_error(SoapyCake::RequestFailed, 'Unknown error') do |e|
