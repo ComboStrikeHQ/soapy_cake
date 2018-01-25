@@ -6,6 +6,7 @@ RSpec.describe SoapyCake::AdminAddedit do
   before do
     # rubocop:disable RSpec/SubjectStub
     allow(admin_addedit).to receive(:run).and_return({})
+    # rubocop:enable RSpec/SubjectStub
   end
 
   describe '#edit_offer' do
@@ -148,28 +149,43 @@ RSpec.describe SoapyCake::AdminAddedit do
 
     context 'when creative id was passed' do
       it 'raises an error' do
-        expect { admin_addedit.create_creative(offer_id: 10, creative_id: 11) }.to raise_error(
-          'cannot pass creative_id when creating creative'
-        )
+        expect do
+          admin_addedit.create_creative(offer_id: 10, creative_id: 11)
+        end.to raise_error('cannot pass creative_id when creating creative')
       end
     end
 
     context 'when given the right parameters' do
       it 'creates a creative and adds a file to it' do
-        expect(admin_addedit).to receive(:addedit_creative).with(
-          offer_id: 10, creative_name: 'creative_name'
-        ).and_return(
-          success: true, message: 'Creative 12163 Created', creative_id: 12163
-        )
-        expect(admin_addedit).to receive(:addedit_creative_files).with(
-          creative_id: 12163, creative_file_import_url: 'http://www.example.org/image.png'
-        ).and_return(
-          success: true, message: 'Creative Files 8013 Created.', creative_files: {
-            creative_file: {
-              creative_file_id: 8013, creative_file_name: 'image.jpg', updated: false
-            }
-          }
-        )
+        expect(SoapyCake::Request)
+          .to receive(:new)
+          .with(
+            :admin,
+            :addedit,
+            :creative,
+            creative_name: 'creative_name',
+            creative_status_id: 1,
+            creative_type_id: 3,
+            height: 0,
+            notes: '',
+            offer_link: '',
+            third_party_name: '',
+            width: 0,
+            offer_id: 10
+          )
+          .and_call_original
+
+        expect(SoapyCake::Request)
+          .to receive(:new)
+          .with(
+            :admin,
+            :addedit,
+            :creative_files,
+            creative_file_import_url: 'http://www.example.org/image.png',
+            creative_id: nil
+          )
+          .and_call_original
+
         admin_addedit.create_creative(
           offer_id: 10,
           creative_name: 'creative_name',

@@ -29,8 +29,17 @@ module SoapyCake
       request.time_converter = time_converter
 
       with_retries do
-        response = Response.new(response_body(request), request.short_response?, time_converter)
-        xml_response? ? response.to_xml : response.to_enum
+        begin
+          response = Response.new(response_body(request), request.short_response?, time_converter)
+          xml_response? ? response.to_xml : response.to_enum
+        rescue RequestFailed => e
+          raise RequestFailed.new(
+            e.message,
+            request_path: request.path,
+            request_body: request.xml,
+            response_body: e.response_body || response.body
+          )
+        end
       end
     end
 
@@ -84,8 +93,6 @@ module SoapyCake
       unless response.is_a?(Net::HTTPSuccess)
         raise RequestFailed.new(
           "Request failed with HTTP #{response.code}",
-          request_path: request.path,
-          request_body: http_request.body,
           response_body: response.body
         )
       end
@@ -94,8 +101,12 @@ module SoapyCake
     end
 
     def perform_http_request(http_request)
-      Net::HTTP.start(domain,
-        use_ssl: true, open_timeout: NET_TIMEOUT, read_timeout: NET_TIMEOUT) do |http|
+      Net::HTTP.start(
+        domain,
+        use_ssl: true,
+        open_timeout: NET_TIMEOUT,
+        read_timeout: NET_TIMEOUT
+      ) do |http|
         http.request(http_request)
       end
     end

@@ -89,10 +89,8 @@ RSpec.describe SoapyCake::AdminAddedit do
         thankyou_link: 'http://www.example.com/',
         from_lines: 'from',
         subject_lines: 'subject',
-
         conversion_cap_behavior: :ignore,
         conversion_behavior_on_redirect: :ignore,
-
         advertiser_id: advertiser_id,
         vertical_id: vertical_id,
         postback_url_ms_delay: 60,
@@ -101,7 +99,6 @@ RSpec.describe SoapyCake::AdminAddedit do
         received: 2.0,
         received_percentage: false,
         payout: 1.5,
-
         tags: %w[some tags],
         offer_name: 'Test Offer',
         offer_description: 'TEST1',
