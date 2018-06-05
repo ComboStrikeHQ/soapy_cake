@@ -29,17 +29,15 @@ module SoapyCake
       request.time_converter = time_converter
 
       with_retries do
-        begin
-          response = Response.new(response_body(request), request.short_response?, time_converter)
-          xml_response? ? response.to_xml : response.to_enum
-        rescue RequestFailed => e
-          raise RequestFailed.new(
-            e.message,
-            request_path: request.path,
-            request_body: request.xml,
-            response_body: e.response_body || response.body
-          )
-        end
+        response = Response.new(response_body(request), request.short_response?, time_converter)
+        xml_response? ? response.to_xml : response.to_enum
+      rescue RequestFailed => e
+        raise RequestFailed.new(
+          e.message,
+          request_path: request.path,
+          request_body: request.xml,
+          response_body: e.response_body || response.body
+        )
       end
     end
 
