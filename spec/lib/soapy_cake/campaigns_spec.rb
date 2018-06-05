@@ -32,7 +32,16 @@ RSpec.describe SoapyCake::Campaigns do
       :admin,
       :addedit,
       :campaign,
-      a_hash_including(opts)
+      hash_including(opts)
+    ).and_call_original
+  end
+
+  def expect_request_to_be_built_without(*opts)
+    expect(SoapyCake::Request).to receive(:new).with(
+      :admin,
+      :addedit,
+      :campaign,
+      hash_excluding(opts)
     ).and_call_original
   end
 
@@ -123,6 +132,57 @@ RSpec.describe SoapyCake::Campaigns do
         ArgumentError,
         'misbehaved is not a valid value for account_status_id'
       )
+    end
+  end
+
+  describe '#patch' do
+    before do
+      allow(SoapyCake::Request)
+        .to receive(:new)
+        .with(:admin, :export, :campaigns, campaign_id: 1)
+        .and_return(get_request)
+
+      allow(client)
+        .to receive(:run)
+        .with(get_request)
+        .and_return([campaign])
+    end
+
+    let(:get_request) { instance_double(SoapyCake::Request) }
+
+    let(:campaign) do
+      {
+        affiliate: { affiliate_id: 1 },
+        media_type: { media_type_id: 2 },
+        offer_contract: { offer_contract_id: 3 },
+        offer: { offer_id: 4 },
+        payout: { amount: 5.0 }
+      }
+    end
+
+    context 'a display link type is not set in the campaign' do
+      it 'is not included in the request' do
+        expect(SoapyCake::Request).to receive(:new).with(
+          :admin,
+          :addedit,
+          :campaign,
+          hash_excluding(:display_link_type_id)
+        ).and_call_original
+
+        campaigns.patch(1)
+      end
+    end
+
+    context 'a display link type is set in the campaign' do
+      let(:campaign) do
+        super().merge(display_link_type: { link_display_type_id: 6 })
+      end
+
+      it 'is included in the request as well' do
+        expect_request_to_be_built_with(display_link_type_id: 6)
+
+        campaigns.patch(1)
+      end
     end
   end
 end

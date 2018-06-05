@@ -252,7 +252,6 @@ http_interactions:
               <cake:clear_session_on_conversion>no_change</cake:clear_session_on_conversion>
               <cake:postback_delay_ms>-1</cake:postback_delay_ms>
               <cake:affiliate_id>9643</cake:affiliate_id>
-              <cake:display_link_type_id>1</cake:display_link_type_id>
               <cake:media_type_id>1</cake:media_type_id>
               <cake:offer_contract_id>10338</cake:offer_contract_id>
               <cake:offer_id>11390</cake:offer_id>

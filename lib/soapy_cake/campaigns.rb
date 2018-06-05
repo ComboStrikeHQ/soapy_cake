@@ -8,12 +8,12 @@ module SoapyCake
     # be in the list.
     ALL_PARAMS = %i[
       account_status_id affiliate_id auto_disposition_delay_hours campaign_id
-      clear_session_on_conversion currency_id display_link_type_id
-      expiration_date expiration_date_modification_type media_type_id
-      offer_contract_id offer_id paid paid_redirects paid_upsells payout
-      payout_update_option pixel_html postback_delay_ms postback_url
-      redirect_404 redirect_domain redirect_offer_contract_id review test_link
-      third_party_name unique_key_hash use_offer_contract_payout
+      clear_session_on_conversion currency_id expiration_date
+      expiration_date_modification_type media_type_id offer_contract_id
+      offer_id paid paid_redirects paid_upsells payout payout_update_option
+      pixel_html postback_delay_ms postback_url redirect_404 redirect_domain
+      redirect_offer_contract_id review test_link third_party_name
+      unique_key_hash use_offer_contract_payout
     ].freeze
 
     NO_CHANGE_VALUES = {
@@ -59,8 +59,6 @@ module SoapyCake
       opts = NO_CHANGE_VALUES
         .merge(
           affiliate_id: campaign.fetch(:affiliate).fetch(:affiliate_id),
-          # Only present in production:
-          display_link_type_id: campaign.dig(:display_link_type, :link_display_type_id) || 1,
           media_type_id: campaign.fetch(:media_type).fetch(:media_type_id),
           offer_contract_id: campaign.fetch(:offer_contract).fetch(:offer_contract_id),
           offer_id: campaign.fetch(:offer).fetch(:offer_id),
@@ -73,12 +71,18 @@ module SoapyCake
           unique_key_hash: campaign.dig(:pixel_info, :hash_type, :hash_type_id) || 'none',
           third_party_name: campaign.fetch(:third_party_name, '')
         )
+        .merge(display_link_type_opts(campaign))
         .merge(opts)
       update(campaign_id, opts)
       nil
     end
 
     private
+
+    def display_link_type_opts(campaign)
+      display_link_type_id = campaign.dig(:display_link_type, :link_display_type_id)
+      display_link_type_id.nil? ? {} : { display_link_type_id: display_link_type_id }
+    end
 
     def payout
       ModificationType.new(:payout, :payout_update_option, 0)
