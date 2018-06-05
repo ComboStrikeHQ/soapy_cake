@@ -71,18 +71,12 @@ module SoapyCake
           unique_key_hash: campaign.dig(:pixel_info, :hash_type, :hash_type_id) || 'none',
           third_party_name: campaign.fetch(:third_party_name, '')
         )
-        .merge(display_link_type_opts(campaign))
         .merge(opts)
       update(campaign_id, opts)
       nil
     end
 
     private
-
-    def display_link_type_opts(campaign)
-      display_link_type_id = campaign.dig(:display_link_type, :link_display_type_id)
-      display_link_type_id.nil? ? {} : { display_link_type_id: display_link_type_id }
-    end
 
     def payout
       ModificationType.new(:payout, :payout_update_option, 0)
