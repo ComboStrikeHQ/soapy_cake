@@ -8,12 +8,12 @@ module SoapyCake
     # be in the list.
     ALL_PARAMS = %i[
       account_status_id affiliate_id auto_disposition_delay_hours campaign_id
-      clear_session_on_conversion currency_id display_link_type_id
-      expiration_date expiration_date_modification_type media_type_id
-      offer_contract_id offer_id paid paid_redirects paid_upsells payout
-      payout_update_option pixel_html postback_delay_ms postback_url
-      redirect_404 redirect_domain redirect_offer_contract_id review test_link
-      third_party_name unique_key_hash use_offer_contract_payout
+      clear_session_on_conversion currency_id expiration_date
+      expiration_date_modification_type media_type_id offer_contract_id
+      offer_id paid paid_redirects paid_upsells payout payout_update_option
+      pixel_html postback_delay_ms postback_url redirect_404 redirect_domain
+      redirect_offer_contract_id review test_link third_party_name
+      unique_key_hash use_offer_contract_payout
     ].freeze
 
     NO_CHANGE_VALUES = {
@@ -54,13 +54,14 @@ module SoapyCake
       nil
     end
 
+    # The default for `display_link_type_id` is "Fallback" in Cake, which
+    # doesn't have an ID and, hence, cannot be set via the API. In order to not
+    # change it, it has to be absent from the request.
     def patch(campaign_id, opts = {})
       campaign = get(campaign_id: campaign_id).first
       opts = NO_CHANGE_VALUES
         .merge(
           affiliate_id: campaign.fetch(:affiliate).fetch(:affiliate_id),
-          # Only present in production:
-          display_link_type_id: campaign.dig(:display_link_type, :link_display_type_id) || 1,
           media_type_id: campaign.fetch(:media_type).fetch(:media_type_id),
           offer_contract_id: campaign.fetch(:offer_contract).fetch(:offer_contract_id),
           offer_id: campaign.fetch(:offer).fetch(:offer_id),
