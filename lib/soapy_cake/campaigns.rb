@@ -54,6 +54,9 @@ module SoapyCake
       nil
     end
 
+    # The default for `display_link_type_id` is "Fallback" in Cake, which
+    # doesn't have an ID and, hence, cannot be set via the API. In order to not
+    # change it, it has to be absent from the request.
     def patch(campaign_id, opts = {})
       campaign = get(campaign_id: campaign_id).first
       opts = NO_CHANGE_VALUES
