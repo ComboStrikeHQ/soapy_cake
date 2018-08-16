@@ -6,6 +6,7 @@ gemspec
 
 group :development, :test do
   gem 'codeclimate-test-reporter', require: false
+  gem 'rspec_junit_formatter'
   gem 'rubocop-ci', git: 'https://github.com/ad2games/rubocop-ci'
   gem 'simplecov'
 end
