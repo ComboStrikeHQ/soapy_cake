@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'soapy_cake/request_mass_conversion_insert'
-
 module SoapyCake
   class AdminTrack < Client
     include Helper
@@ -23,7 +21,7 @@ module SoapyCake
                        campaign_id creative_id total_to_insert
                      ])
 
-      run RequestMassConversionInsert.new(:admin, :track, :mass_conversion_insert, opts)
+      run Request.new(:admin, :track, :mass_conversion_insert, opts)
     end
 
     def update_conversion(opts)
