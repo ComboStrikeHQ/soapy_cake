@@ -15,7 +15,7 @@ RSpec.describe SoapyCake::AdminTrack do
 
   describe '#update_conversion' do
     let(:service) { :track }
-    let(:cake_method) { :update_conversion }
+    let(:cake_method) { :update_conversion_events }
     let(:method) { :update_conversion }
     let(:cake_opts) { described_class::CONVERSION_DEFAULTS.merge(opts) }
     let(:opts) { { offer_id: 42, payout: 0 } }
