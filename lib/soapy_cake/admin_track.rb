@@ -27,7 +27,7 @@ module SoapyCake
     def update_conversion(opts)
       require_params(opts, %i[offer_id payout])
 
-      run Request.new(:admin, :track, :update_conversion, CONVERSION_DEFAULTS.merge(opts))
+      run Request.new(:admin, :track, :update_conversion_events, CONVERSION_DEFAULTS.merge(opts))
     end
 
     def decrypt_affiliate_link(opts = {})
