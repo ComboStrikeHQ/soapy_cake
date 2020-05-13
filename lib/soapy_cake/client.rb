@@ -80,13 +80,14 @@ module SoapyCake
     end
 
     def http_response(request)
-      logger&.info("soapy_cake:request #{request}")
-
       log_curl_command(request) if fetch_opt(:log_curl)
 
       http_request = Net::HTTP::Post.new(request.path, HEADERS)
       http_request.body = request.xml
+      t0 = Time.now
       response = perform_http_request(http_request)
+      response_time = Time.now - t0
+      logger&.info("soapy_cake:request #{request} took: #{response_time.round(2)} s")
 
       unless response.is_a?(Net::HTTPSuccess)
         raise RequestFailed.new(
