@@ -28,6 +28,6 @@ require 'soapy_cake/modification_type'
 require 'soapy_cake/campaigns'
 
 module SoapyCake
-  API_CONFIG = YAML.safe_load(File.read(File.expand_path('../../api.yml', __FILE__)))
+  API_CONFIG = YAML.safe_load(File.read(File.expand_path('../api.yml', __dir__)))
   NET_TIMEOUT = 600
 end

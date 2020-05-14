@@ -12,7 +12,7 @@ module SoapyCake
       @api_key = fetch_opt(:api_key) || raise(Error, 'Cake API key missing')
       @retry_count = fetch_opt(:retry_count, 4)
       @write_enabled = ['yes', true].include?(fetch_opt(:write_enabled))
-      @time_converter = TimeConverter.new(fetch_opt(:time_zone), fetch_opt(:time_offset))
+      @time_converter = TimeConverter.new(fetch_opt(:time_zone))
     end
 
     def xml_response?
@@ -53,6 +53,7 @@ module SoapyCake
 
     def check_write_enabled!(request)
       return if request.read_only? || write_enabled
+
       raise Error, 'Writes not enabled (pass write_enabled: true or set CAKE_WRITE_ENABLED=yes)'
     end
 
@@ -80,13 +81,14 @@ module SoapyCake
     end
 
     def http_response(request)
-      logger&.info("soapy_cake:request #{request}")
-
       log_curl_command(request) if fetch_opt(:log_curl)
 
       http_request = Net::HTTP::Post.new(request.path, HEADERS)
       http_request.body = request.xml
+      t0 = Time.now
       response = perform_http_request(http_request)
+      response_time = Time.now - t0
+      logger&.info("soapy_cake:request #{request} took: #{response_time.round(2)} s")
 
       unless response.is_a?(Net::HTTPSuccess)
         raise RequestFailed.new(

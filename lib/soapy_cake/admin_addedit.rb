@@ -239,6 +239,7 @@ module SoapyCake
 
     def apply_tag_opts(opts)
       return opts unless opts[:tags]
+
       opts = apply_tag_modification_type(opts)
       opts[:tags] = Array(opts[:tags]).join(',')
       opts

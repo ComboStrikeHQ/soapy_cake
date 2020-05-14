@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable Style/DateTime
 RSpec.describe SoapyCake::TimeConverter do
   subject(:time_converter) { described_class.new('Europe/Berlin') }
 
@@ -26,16 +25,4 @@ RSpec.describe SoapyCake::TimeConverter do
         .to eq(Time.utc(2015, 6, 11, 12, 53, 40))
     end
   end
-
-  context 'legacy mode / CAKE_TIME_OFFSET' do
-    subject(:time_converter) { described_class.new('Europe/Berlin', 5) }
-
-    it 'works as before (broken, without DST)' do
-      expect(STDERR).to receive(:puts).with(/Please use time_zone/)
-
-      expect(time_converter.to_cake(DateTime.new(2015, 1, 2, 12, 30))).to eq('2015-01-02T17:30:00')
-      expect(time_converter.to_cake(DateTime.new(2015, 6, 2, 12, 30))).to eq('2015-06-02T17:30:00')
-    end
-  end
 end
-# rubocop:enable Style/DateTime
