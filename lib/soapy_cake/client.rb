@@ -12,7 +12,7 @@ module SoapyCake
       @api_key = fetch_opt(:api_key) || raise(Error, 'Cake API key missing')
       @retry_count = fetch_opt(:retry_count, 4)
       @write_enabled = ['yes', true].include?(fetch_opt(:write_enabled))
-      @time_converter = TimeConverter.new(fetch_opt(:time_zone), fetch_opt(:time_offset))
+      @time_converter = TimeConverter.new(fetch_opt(:time_zone))
     end
 
     def xml_response?
