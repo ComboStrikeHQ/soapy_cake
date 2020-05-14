@@ -55,6 +55,7 @@ module SoapyCake
       unless value.nil? || numeric?
         raise Error, "'#{key}' contains non-digit chars but was to be parsed as an integer id"
       end
+
       value.to_i
     end
   end

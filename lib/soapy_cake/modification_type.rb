@@ -37,8 +37,11 @@ module SoapyCake
 
     def validate_input(input_opts)
       return unless input_opts[key].nil? && input_opts[modification_type_key] == CHANGE
-      raise InvalidInput,
+
+      raise(
+        InvalidInput,
         "`#{modification_type_key}` was '#{CHANGE}', but no `#{key}` was provided to change it to"
+      )
     end
 
     InvalidInput = Class.new(StandardError)

@@ -59,6 +59,7 @@ module SoapyCake
 
       error_check_fault!
       return if error_check_special_case?
+
       error_check_success!
     end
 
@@ -70,6 +71,7 @@ module SoapyCake
     def error_check_success!
       return if sax.for_tag(:success).first == 'true'
       raise RateLimitError if error_message == 'Restricted'
+
       raise RequestFailed, error_message
     end
 

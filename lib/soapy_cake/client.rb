@@ -53,6 +53,7 @@ module SoapyCake
 
     def check_write_enabled!(request)
       return if request.read_only? || write_enabled
+
       raise Error, 'Writes not enabled (pass write_enabled: true or set CAKE_WRITE_ENABLED=yes)'
     end
 

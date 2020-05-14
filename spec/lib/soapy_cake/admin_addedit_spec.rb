@@ -26,17 +26,23 @@ RSpec.describe SoapyCake::AdminAddedit do
     end
 
     it 'keeps existing tags' do
-      expect(SoapyCake::Request).to receive(:new)
-        .with(:admin, :addedit, :offer,
-          hash_including(tags: 'new-tag', tags_modification_type: 'add'))
+      expect(SoapyCake::Request).to receive(:new).with(
+        :admin,
+        :addedit,
+        :offer,
+        hash_including(tags: 'new-tag', tags_modification_type: 'add')
+      )
 
       admin_addedit.edit_offer(offer_params)
     end
 
     it 'allows replacing tags' do
-      expect(SoapyCake::Request).to receive(:new)
-        .with(:admin, :addedit, :offer,
-          hash_including(tags: 'new-tag', tags_modification_type: 'replace'))
+      expect(SoapyCake::Request).to receive(:new).with(
+        :admin,
+        :addedit,
+        :offer,
+        hash_including(tags: 'new-tag', tags_modification_type: 'replace')
+      )
 
       admin_addedit.edit_offer(offer_params.merge(tags_replace: true))
     end
@@ -78,9 +84,12 @@ RSpec.describe SoapyCake::AdminAddedit do
     end
 
     it 'always adds on creation' do
-      expect(SoapyCake::Request).to receive(:new)
-        .with(:admin, :addedit, :offer,
-          hash_including(tags: 'tag', tags_modification_type: 'add'))
+      expect(SoapyCake::Request).to receive(:new).with(
+        :admin,
+        :addedit,
+        :offer,
+        hash_including(tags: 'tag', tags_modification_type: 'add')
+      )
 
       admin_addedit.add_offer(offer_params.merge(tags: 'tag', tags_replace: true))
     end
@@ -96,17 +105,23 @@ RSpec.describe SoapyCake::AdminAddedit do
     end
 
     it 'replaces the existing config by default' do
-      expect(SoapyCake::Request).to receive(:new)
-        .with(:admin, :addedit, :geo_targets,
-          hash_including(add_edit_option: 'replace'))
+      expect(SoapyCake::Request).to receive(:new).with(
+        :admin,
+        :addedit,
+        :geo_targets,
+        hash_including(add_edit_option: 'replace')
+      )
 
       admin_addedit.edit_geo_targets(base_opts)
     end
 
     it 'allows to override the add_edit_option' do
-      expect(SoapyCake::Request).to receive(:new)
-        .with(:admin, :addedit, :geo_targets,
-          hash_including(add_edit_option: 'add'))
+      expect(SoapyCake::Request).to receive(:new).with(
+        :admin,
+        :addedit,
+        :geo_targets,
+        hash_including(add_edit_option: 'add')
+      )
 
       admin_addedit.edit_geo_targets(base_opts.merge(add_edit_option: 'add'))
     end
@@ -130,9 +145,12 @@ RSpec.describe SoapyCake::AdminAddedit do
     end
 
     it 'adds geo targets' do
-      expect(SoapyCake::Request).to receive(:new)
-        .with(:admin, :addedit, :geo_targets,
-          hash_including(add_edit_option: 'add'))
+      expect(SoapyCake::Request).to receive(:new).with(
+        :admin,
+        :addedit,
+        :geo_targets,
+        hash_including(add_edit_option: 'add')
+      )
 
       admin_addedit.add_geo_targets(base_opts)
     end
@@ -157,34 +175,28 @@ RSpec.describe SoapyCake::AdminAddedit do
 
     context 'when given the right parameters' do
       it 'creates a creative and adds a file to it' do
-        expect(SoapyCake::Request)
-          .to receive(:new)
-          .with(
-            :admin,
-            :addedit,
-            :creative,
-            creative_name: 'creative_name',
-            creative_status_id: 1,
-            creative_type_id: 3,
-            height: 0,
-            notes: '',
-            offer_link: '',
-            third_party_name: '',
-            width: 0,
-            offer_id: 10
-          )
-          .and_call_original
+        expect(SoapyCake::Request).to receive(:new).with(
+          :admin,
+          :addedit,
+          :creative,
+          creative_name: 'creative_name',
+          creative_status_id: 1,
+          creative_type_id: 3,
+          height: 0,
+          notes: '',
+          offer_link: '',
+          third_party_name: '',
+          width: 0,
+          offer_id: 10
+        ).and_call_original
 
-        expect(SoapyCake::Request)
-          .to receive(:new)
-          .with(
-            :admin,
-            :addedit,
-            :creative_files,
-            creative_file_import_url: 'http://www.example.org/image.png',
-            creative_id: nil
-          )
-          .and_call_original
+        expect(SoapyCake::Request).to receive(:new).with(
+          :admin,
+          :addedit,
+          :creative_files,
+          creative_file_import_url: 'http://www.example.org/image.png',
+          creative_id: nil
+        ).and_call_original
 
         admin_addedit.create_creative(
           offer_id: 10,
