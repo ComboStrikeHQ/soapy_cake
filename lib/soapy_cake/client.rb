@@ -72,14 +72,18 @@ module SoapyCake
       response = nil
       logger.tagged('soapy_cake', unique_id) do
         log_request(request)
-        http_request = Net::HTTP::Post.new(request.path, HEADERS)
-        http_request.body = request.xml
-        response = perform_http_request(http_request)
+        response = perform_http_request(http_request(request))
         log_response(response)
       end
 
       raise_if_unsuccessful(response)
       response.body
+    end
+
+    def http_request(request)
+      http_req = Net::HTTP::Post.new(request.path, HEADERS)
+      http_req.body = request.xml
+      http_req
     end
 
     def unique_id
