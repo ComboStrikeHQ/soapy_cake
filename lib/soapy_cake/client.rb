@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 require 'net/http'
+require 'active_support/tagged_logging'
 
+# rubocop:disable Metrics/ClassLength
 module SoapyCake
   class Client
     HEADERS = { 'Content-Type' => 'application/soap+xml;charset=UTF-8' }.freeze
@@ -62,46 +64,58 @@ module SoapyCake
       Retryable.retryable(opts, &block)
     end
 
-    def logger
-      @logger ||= opts[:logger] || (defined?(::Rails) && ::Rails.logger)
-    end
-
-    def log_curl_command(request)
-      curl_headers = HEADERS.map { |k, v| "-H \"#{k}: #{v}\"" }.join(' ')
-      curl_body = request.xml
-        .tr("\n", '')
-        .gsub(/>\s*</, '><')
-        .sub(request.api_key, '{{{ INSERT API KEY }}}')
-
-      logger&.info("curl --data '#{curl_body}' #{curl_headers} https://#{domain}/#{request.path}")
-    end
-
     def response_body(request)
       request.opts[:response].presence || http_response(request)
     end
 
     def http_response(request)
-      log_curl_command(request) if fetch_opt(:log_curl)
-
-      http_request = Net::HTTP::Post.new(request.path, HEADERS)
-      http_request.body = request.xml
-      t0 = Time.now
-      response = perform_http_request(http_request)
-      response_time = Time.now - t0
-      logger&.info("soapy_cake:request #{request} took: #{response_time.round(2)} s")
-
-      unless response.is_a?(Net::HTTPSuccess)
-        raise RequestFailed.new(
-          "Request failed with HTTP #{response.code}",
-          response_body: response.body
-        )
+      response = nil
+      logger.tagged('soapy_cake', unique_id) do
+        log_request(request)
+        response = perform_http_request(http_request(request))
+        log_response(response)
       end
 
+      raise_if_unsuccessful(response)
       response.body
     end
 
+    def http_request(request)
+      http_req = Net::HTTP::Post.new(request.path, HEADERS)
+      http_req.body = request.xml
+      http_req
+    end
+
+    def unique_id
+      SecureRandom.hex(4)
+    end
+
+    def log_request(request)
+      logger.tagged('request') do
+        logger.info(
+          request
+            .xml
+            .gsub(/>[\n\s]+</, '><')
+            .sub(request.api_key, '[REDACTED]')
+        )
+      end
+    end
+
+    def log_response(response)
+      logger.tagged('response', response.code) do
+        logger.info(response.body)
+      end
+    end
+
+    def logger
+      @logger ||= ActiveSupport::TaggedLogging.new(
+        opts[:logger] || (defined?(::Rails) && ::Rails.logger) || Logger.new('/dev/null')
+      )
+    end
+
     def perform_http_request(http_request)
-      Net::HTTP.start(
+      t0 = Time.now
+      response = Net::HTTP.start(
         domain,
         use_ssl: true,
         open_timeout: NET_TIMEOUT,
@@ -109,6 +123,18 @@ module SoapyCake
       ) do |http|
         http.request(http_request)
       end
+      logger.info("took: #{(Time.now - t0).round(2)} s")
+      response
+    end
+
+    def raise_if_unsuccessful(response)
+      return if response.is_a?(Net::HTTPSuccess)
+
+      raise RequestFailed.new(
+        "Request failed with HTTP #{response.code}",
+        response_body: response.body
+      )
     end
   end
 end
+# rubocop:enable Metrics/ClassLength

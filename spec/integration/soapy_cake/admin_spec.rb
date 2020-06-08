@@ -3,18 +3,21 @@
 RSpec.describe SoapyCake::Admin do
   around { |example| Timecop.freeze(Time.utc(2015, 6, 15, 12), &example) }
 
-  let(:logger) { instance_spy(Logger) }
+  let(:logger) { Logger.new('/dev/null') }
 
   subject(:admin) { described_class.new(logger: logger) }
 
   it 'returns an affiliate with correct data types', :vcr do
-    result = admin.affiliates(affiliate_id: 16027)
-
-    expect(logger).to have_received(:info).with(
-      a_string_matching(
-        /soapy_cake:request admin:export:affiliates:5 {"affiliate_id":16027} took: \d+.\d+ s/
-      )
+    # rubocop:disable RSpec/AnyInstance
+    expect_any_instance_of(Logger).to receive(:info).twice.with(
+      a_string_matching(/^<\?xml/)
     )
+    expect_any_instance_of(Logger).to receive(:info).with(
+      a_string_matching(/took: \d+.\d+ s/)
+    )
+    # rubocop:enable RSpec/AnyInstance
+
+    result = admin.affiliates(affiliate_id: 16027)
 
     expect(result.count).to eq(1)
     expect(result.first).to include(
