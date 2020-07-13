@@ -28,6 +28,7 @@ module SoapyCake
     end
 
     class ExchangeRate
+      # rubocop:disable Metrics/MethodLength
       def initialize(opts)
         if opts.key?(:base_currency_id)
           @base_currency_id = opts[:base_currency_id]
@@ -45,6 +46,7 @@ module SoapyCake
         @start_date = opts[:start_date]
         @end_date = opts[:end_date]
       end
+      # rubocop:enable Metrics/MethodLength
 
       attr_reader :base_currency, :quote_currency, :rate, :start_date, :end_date
 
@@ -66,22 +68,24 @@ module SoapyCake
         }
       end
 
-      def ==(other_exchange_rate)
+      # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity
+      def ==(other)
         (
-          base_currency == other_exchange_rate.base_currency ||
-            base_currency_id == other_exchange_rate.base_currency_id
+          base_currency == other.base_currency ||
+            base_currency_id == other.base_currency_id
         ) && (
-          quote_currency == other_exchange_rate.quote_currency ||
-            quote_currency_id == other_exchange_rate.quote_currency_id
+          quote_currency == other.quote_currency ||
+            quote_currency_id == other.quote_currency_id
         ) &&
-          rate == other_exchange_rate.rate &&
-          start_date == other_exchange_rate.start_date &&
-          end_date == other_exchange_rate.end_date
+          rate == other.rate &&
+          start_date == other.start_date &&
+          end_date == other.end_date
       end
+      # rubocop:enable Metrics/AbcSize, Metrics/CyclomaticComplexity
     end
 
     class Currency
-      def initialize(currency_abbr:, currency_id:, currency_name: , currency_symbol:)
+      def initialize(currency_abbr:, currency_id:, currency_name:, currency_symbol:)
         @currency_abbr = currency_abbr
         @currency_id = currency_id
         @currency_name = currency_name
@@ -90,9 +94,9 @@ module SoapyCake
 
       attr_reader :currency_abbr, :currency_id, :currency_name, :currency_symbol
 
-      def ==(other_currency)
+      def ==(other)
         %i[currency_abbr currency_id currency_name currency_symbol]
-          .map { |attr| public_send(attr) == other_currency.public_send(attr) }
+          .map { |attr| public_send(attr) == other.public_send(attr) }
           .reduce { |a, b| a && b }
       end
     end

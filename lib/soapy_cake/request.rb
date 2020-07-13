@@ -51,17 +51,13 @@ module SoapyCake
     end
 
     def xml_params(xml, opts)
-      opts.each do |k, v|
-        if v.is_a?(Array)
-          xml.public_send(k) do
-            v.each { |v| xml_params(xml, v) }
-          end
-        elsif v.is_a?(Hash)
-          xml.public_send(k) do
-            xml_params(xml, v)
-          end
+      opts.each do |key, value|
+        if value.is_a?(Array)
+          xml.public_send(key) { value.each { |v| xml_params(xml, v) } }
+        elsif value.is_a?(Hash)
+          xml.public_send(key) { xml_params(xml, value) }
         else
-          xml.public_send(k, format_param(k, v))
+          xml.public_send(key, format_param(key, value))
         end
       end
     end
