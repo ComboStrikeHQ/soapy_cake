@@ -28,7 +28,7 @@ jobs:
       - attach_workspace:
           at: .
 
-      - run: bundle exec rake rubocop
+      - run: bundle exec rake rubocop_ci:rubocop:diff
 
   test:
     docker: *docker
