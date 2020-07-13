@@ -1,0 +1,71 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://cake-partner-domain.com/api/1/addedit.asmx
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0"?>
+        <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:cake="http://cakemarketing.com/api/1/">
+          <env:Header/>
+          <env:Body>
+            <cake:ExchangeRate>
+              <cake:api_key>cake-api-key</cake:api_key>
+              <cake:start_date>2020-07-01T00:00:00</cake:start_date>
+              <cake:end_date>2020-08-01T00:00:00</cake:end_date>
+              <cake:exchange_rates>
+                <cake:exchange_rate>
+                  <cake:base_currency_id>2</cake:base_currency_id>
+                  <cake:quote_currency_id>1</cake:quote_currency_id>
+                  <cake:rate>1.13</cake:rate>
+                </cake:exchange_rate>
+              </cake:exchange_rates>
+            </cake:ExchangeRate>
+          </env:Body>
+        </env:Envelope>
+    headers:
+      Content-Type:
+      - application/soap+xml;charset=UTF-8
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - POST,GET,OPTIONS,PUT,DELETE
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '447'
+      Content-Type:
+      - application/soap+xml; charset=utf-8
+      Date:
+      - Mon, 13 Jul 2020 15:13:05 GMT
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ExchangeRateResponse
+        xmlns="http://cakemarketing.com/api/1/"><ExchangeRateResult><success>true</success><message>Exchange
+        Rates Successfully Updated</message></ExchangeRateResult></ExchangeRateResponse></soap:Body></soap:Envelope>
+    http_version:
+  recorded_at: Mon, 13 Jul 2020 15:13:06 GMT
+recorded_with: VCR 5.1.0

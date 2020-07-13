@@ -24,7 +24,8 @@ module SoapyCake
           xml.Header
           xml.Body do
             xml['cake'].public_send(method.camelize.to_sym) do
-              xml_params(xml)
+              xml.api_key(api_key)
+              xml_params(xml, opts)
             end
           end
         end
@@ -49,10 +50,19 @@ module SoapyCake
       "#{role == 'admin' ? '' : "/#{role.pluralize}"}/api/#{version}"
     end
 
-    def xml_params(xml)
-      xml.api_key(api_key)
+    def xml_params(xml, opts)
       opts.each do |k, v|
-        xml.public_send(k, format_param(k, v))
+        if v.is_a?(Array)
+          xml.public_send(k) do
+            v.each { |v| xml_params(xml, v) }
+          end
+        elsif v.is_a?(Hash)
+          xml.public_send(k) do
+            xml_params(xml, v)
+          end
+        else
+          xml.public_send(k, format_param(k, v))
+        end
       end
     end
 
