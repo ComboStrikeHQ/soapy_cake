@@ -88,12 +88,6 @@ module SoapyCake
       end
 
       attr_reader :currency_abbr, :currency_id, :currency_name, :currency_symbol
-
-      def ==(other)
-        %i[currency_abbr currency_id currency_name currency_symbol]
-          .map { |attr| public_send(attr) == other.public_send(attr) }
-          .reduce { |a, b| a && b }
-      end
     end
 
     private
