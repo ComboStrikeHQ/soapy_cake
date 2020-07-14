@@ -26,6 +26,7 @@ require 'soapy_cake/affiliate'
 
 require 'soapy_cake/modification_type'
 require 'soapy_cake/campaigns'
+require 'soapy_cake/exchange_rates'
 
 module SoapyCake
   API_CONFIG = YAML.safe_load(File.read(File.expand_path('../api.yml', __dir__)))

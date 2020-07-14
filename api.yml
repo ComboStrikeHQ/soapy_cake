@@ -21,7 +21,7 @@ versions:
       contact: 2
       creative: 1
       creative_files: 1
-      exchange_rates: 1
+      exchange_rate: 1
       geo_targets: 3
       offer: 5
       offer_contract: 1
