@@ -51,11 +51,11 @@ module SoapyCake
       attr_reader :base_currency, :quote_currency, :rate, :start_date, :end_date
 
       def base_currency_id
-        @base_currency_id || @base_currency_id.fetch(:currency_id)
+        @base_currency_id || @base_currency.currency_id
       end
 
       def quote_currency_id
-        @quote_currency_id || @quote_currency_id.fetch(:currency_id)
+        @quote_currency_id || @quote_currency.currency_id
       end
 
       def to_xml_structure
@@ -70,13 +70,8 @@ module SoapyCake
 
       # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity
       def ==(other)
-        (
-          base_currency == other.base_currency ||
-            base_currency_id == other.base_currency_id
-        ) && (
-          quote_currency == other.quote_currency ||
-            quote_currency_id == other.quote_currency_id
-        ) &&
+        base_currency_id == other.base_currency_id &&
+          quote_currency_id == other.quote_currency_id &&
           rate == other.rate &&
           start_date == other.start_date &&
           end_date == other.end_date
