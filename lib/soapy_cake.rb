@@ -6,7 +6,6 @@ require 'nokogiri'
 require 'saxerator'
 require 'retryable'
 require 'active_support/core_ext/hash/reverse_merge'
-require 'active_support/core_ext/hash/transform_values'
 require 'active_support/time'
 
 require 'soapy_cake/version'
