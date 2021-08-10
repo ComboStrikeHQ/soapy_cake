@@ -33,13 +33,13 @@ module SoapyCake
         if opts.key?(:base_currency_id)
           @base_currency_id = opts[:base_currency_id]
         else
-          @base_currency = Currency.new(opts.fetch(:base_currency))
+          @base_currency = Currency.new(**opts.fetch(:base_currency))
         end
 
         if opts.key?(:quote_currency_id)
           @quote_currency_id = opts[:quote_currency_id]
         else
-          @quote_currency = Currency.new(opts.fetch(:quote_currency))
+          @quote_currency = Currency.new(**opts.fetch(:quote_currency))
         end
 
         @rate = opts.fetch(:rate)
