@@ -3,7 +3,7 @@
 module SoapyCake
   class TimeConverter
     def initialize(time_zone)
-      @zone = ActiveSupport::TimeZone[time_zone]
+      @zone = ActiveSupport::TimeZone.new(time_zone)
     end
 
     def to_cake(date)
