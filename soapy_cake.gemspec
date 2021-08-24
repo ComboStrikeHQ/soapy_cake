@@ -7,11 +7,12 @@ require 'soapy_cake/version'
 Gem::Specification.new do |spec|
   spec.name          = 'soapy_cake'
   spec.version       = SoapyCake::VERSION
-  spec.authors       = ['ad2games GmbH']
-  spec.email         = ['developers@ad2games.com']
+  spec.required_ruby_version = '~> 2.5.3'
+  spec.authors       = ['Combostrike GmbH']
+  spec.email         = ['developers@combostrike.com']
   spec.summary       = 'Simple client for the CAKE API'
   spec.description   = 'Simple client for the CAKE API (http://getcake.com)'
-  spec.homepage      = 'http://ad2games.com'
+  spec.homepage      = 'http://combostrike.com'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -19,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'activesupport'
+  spec.add_dependency 'activesupport', '~> 5.2.6'
   spec.add_dependency 'nokogiri'
   spec.add_dependency 'retryable'
   spec.add_dependency 'saxerator'

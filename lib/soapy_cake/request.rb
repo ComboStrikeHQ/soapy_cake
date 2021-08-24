@@ -21,10 +21,10 @@ module SoapyCake
     def xml
       Nokogiri::XML::Builder.new do |xml|
         xml['env'].Envelope(xml_namespaces) do
-          xml.Header
-          xml.Body do
+          xml['env'].Header
+          xml['env'].Body do
             xml['cake'].public_send(method.camelize.to_sym) do
-              xml.api_key(api_key)
+              xml['cake'].api_key(api_key)
               xml_params(xml, opts)
             end
           end
@@ -53,11 +53,11 @@ module SoapyCake
     def xml_params(xml, opts)
       opts.each do |key, value|
         if value.is_a?(Array)
-          xml.public_send(key) { value.each { |v| xml_params(xml, v) } }
+          xml['cake'].public_send(key) { value.each { |v| xml_params(xml, v) } }
         elsif value.is_a?(Hash)
-          xml.public_send(key) { xml_params(xml, value) }
+          xml['cake'].public_send(key) { xml_params(xml, value) }
         else
-          xml.public_send(key, format_param(key, value))
+          xml['cake'].public_send(key, format_param(key, value))
         end
       end
     end
