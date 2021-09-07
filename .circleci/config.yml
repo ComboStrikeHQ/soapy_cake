@@ -2,7 +2,7 @@ version: 2
 jobs:
   setup:
     docker: &docker
-      - image: circleci/ruby:2.5.1-node
+      - image: circleci/ruby:2.5.3-node
         environment:
           BUNDLE_PATH: vendor/bundle
 
