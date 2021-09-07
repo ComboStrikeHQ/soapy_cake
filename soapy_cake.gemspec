@@ -7,7 +7,7 @@ require 'soapy_cake/version'
 Gem::Specification.new do |spec|
   spec.name          = 'soapy_cake'
   spec.version       = SoapyCake::VERSION
-  spec.required_ruby_version = '~> 2.5.3'
+  spec.required_ruby_version = '~> 2.6.6'
   spec.authors       = ['Combostrike GmbH']
   spec.email         = ['developers@combostrike.com']
   spec.summary       = 'Simple client for the CAKE API'
